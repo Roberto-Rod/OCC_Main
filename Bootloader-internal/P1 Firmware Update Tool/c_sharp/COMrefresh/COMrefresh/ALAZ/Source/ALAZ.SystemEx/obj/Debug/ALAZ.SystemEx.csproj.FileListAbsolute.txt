@@ -1,0 +1,5 @@
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\ALAZ\Source\ALAZ.SystemEx\bin\Debug\ALAZ.SystemEx.dll
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\ALAZ\Source\ALAZ.SystemEx\bin\Debug\ALAZ.SystemEx.pdb
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\ALAZ\Source\ALAZ.SystemEx\obj\Debug\ALAZ.SystemEx.dll
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\ALAZ\Source\ALAZ.SystemEx\obj\Debug\ALAZ.SystemEx.pdb
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\ALAZ\Source\ALAZ.SystemEx\obj\Debug\ALAZ.SystemEx.csprojResolveAssemblyReference.cache

@@ -1,0 +1,16 @@
+Device PIC32MZ2048EFH100
+Hwtool SIM
+set oscillator.frequency 24
+set oscillator.frequencyunit Mega
+set oscillator.rcfrequency 32768
+set oscillator.rcfrequencyunit None
+Set uart1io.uartioenabled true
+Set uart1io.output file
+Set uart1io.outputfile test/sim-test/out.txt
+Program ceedling-build/test/test-build.elf
+Reset
+Sleep 1500
+Break *0x9d0f9ffc
+Run
+Wait 12000
+Quit

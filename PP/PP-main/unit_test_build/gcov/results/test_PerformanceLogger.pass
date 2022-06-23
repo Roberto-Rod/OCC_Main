@@ -1,0 +1,47 @@
+---
+:source:
+  :path: test/unit_test/devices
+  :file: test_PerformanceLogger.c
+:successes:
+- :test: test_SetInternalTemperature
+  :line: 67
+  :message: ''
+- :test: test_SetExternalTemperature
+  :line: 74
+  :message: ''
+- :test: test_SetDifferentialPressure
+  :line: 81
+  :message: ''
+- :test: test_SetExternalPressure
+  :line: 88
+  :message: ''
+- :test: test_SetPumpHistory
+  :line: 95
+  :message: ''
+- :test: test_SetBatteryVoltage
+  :line: 102
+  :message: ''
+- :test: test_InitResetCounter
+  :line: 109
+  :message: ''
+- :test: test_FailedEEPROMWriteDoesNotAdvanceAddress
+  :line: 125
+  :message: ''
+- :test: test_PersistWriteToEEPROMAndAdvanceAddress
+  :line: 138
+  :message: ''
+- :test: test_IPDDuration
+  :line: 189
+  :message: ''
+- :test: test_SkipToNextBlock
+  :line: 196
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 11
+  :passed: 11
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

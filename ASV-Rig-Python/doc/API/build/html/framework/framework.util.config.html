@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>framework.util.config &mdash; PM1 Pachymeter Automated Software Verification Framework B1-STABLE documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="framework.util.data" href="framework.util.data.html" />
+    <link rel="prev" title="framework.util" href="framework.util.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PM1 Pachymeter Automated Software Verification Framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">framework</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="framework.html"><code class="docutils literal notranslate"><span class="pre">framework</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="framework.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="framework.asv_control.html"><code class="docutils literal notranslate"><span class="pre">framework.asv_control</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.constants.html"><code class="docutils literal notranslate"><span class="pre">framework.constants</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.device.html"><code class="docutils literal notranslate"><span class="pre">framework.device</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.module.html"><code class="docutils literal notranslate"><span class="pre">framework.module</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.sequence.html"><code class="docutils literal notranslate"><span class="pre">framework.sequence</span></code></a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="framework.util.html"><code class="docutils literal notranslate"><span class="pre">framework.util</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PM1 Pachymeter Automated Software Verification Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">framework</a> &raquo;</li>
+          <li><a href="framework.html"><code class="docutils literal notranslate"><span class="pre">framework</span></code></a> &raquo;</li>
+          <li><a href="framework.util.html"><code class="docutils literal notranslate"><span class="pre">framework.util</span></code></a> &raquo;</li>
+      <li><code class="docutils literal notranslate"><span class="pre">framework.util.config</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/framework/framework.util.config.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-framework.util.config">
+<span id="framework-util-config"></span><h1><code class="docutils literal notranslate"><span class="pre">framework.util.config</span></code><a class="headerlink" href="#module-framework.util.config" title="Permalink to this headline"></a></h1>
+<p>Automated Software Verification Rig Configuration File Support.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#classes" id="id1">Classes</a></p></li>
+</ul>
+</div>
+<section id="classes">
+<h2><a class="toc-backref" href="#id1">Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#framework.util.config.LoggingConfig" title="framework.util.config.LoggingConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoggingConfig</span></code></a>:
+NamedTuple representing the logging configuration.</p></li>
+<li><p><a class="reference internal" href="#framework.util.config.DigiPotConfig" title="framework.util.config.DigiPotConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">DigiPotConfig</span></code></a>:
+NamedTuple representing the digipot configuration.</p></li>
+<li><p><a class="reference internal" href="#framework.util.config.NiDaqConfig" title="framework.util.config.NiDaqConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">NiDaqConfig</span></code></a>:
+NaedTuple representing the nidaq configuration.</p></li>
+<li><p><a class="reference internal" href="#framework.util.config.SerialDebugConfig" title="framework.util.config.SerialDebugConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">SerialDebugConfig</span></code></a>:
+NamedTuple representing the serial debug configuration.</p></li>
+<li><p><a class="reference internal" href="#framework.util.config.TouchConfig" title="framework.util.config.TouchConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">TouchConfig</span></code></a>:
+NamedTuple representing the serial debug configuration.</p></li>
+<li><p><a class="reference internal" href="#framework.util.config.Config" title="framework.util.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a>:
+Configuration File Support.</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.util.config.LoggingConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.util.config.</span></span><span class="sig-name descname"><span class="pre">LoggingConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.util.config.LoggingConfig" title="Permalink to this definition"></a></dt>
+<dd><p>NamedTuple representing the logging configuration.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-d5b6f037638478ad9631d352e6df093b84b5b0b6.png" alt="Inheritance diagram of LoggingConfig" usemap="#inheritance613436b7a4" class="inheritance graphviz" /></div>
+<map id="inheritance613436b7a4" name="inheritance613436b7a4">
+<area shape="rect" id="node1" href="#framework.util.config.LoggingConfig" target="_top" title="NamedTuple representing the logging configuration." alt="" coords="5,5,108,31"/>
+</map><dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.LoggingConfig.level">
+<span class="sig-name descname"><span class="pre">level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#framework.util.config.LoggingConfig.level" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.LoggingConfig.levels">
+<span class="sig-name descname"><span class="pre">levels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#framework.util.config.LoggingConfig.levels" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.LoggingConfig.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.LoggingConfig.mode" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.LoggingConfig.path">
+<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.LoggingConfig.path" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.util.config.DigiPotConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.util.config.</span></span><span class="sig-name descname"><span class="pre">DigiPotConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ftdi_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.util.config.DigiPotConfig" title="Permalink to this definition"></a></dt>
+<dd><p>NamedTuple representing the digipot configuration.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-3b09aeab2309c3630d3698bc1779c0285d6a6704.png" alt="Inheritance diagram of DigiPotConfig" usemap="#inheritance6fe18e5f5e" class="inheritance graphviz" /></div>
+<map id="inheritance6fe18e5f5e" name="inheritance6fe18e5f5e">
+<area shape="rect" id="node1" href="#framework.util.config.DigiPotConfig" target="_top" title="NamedTuple representing the digipot configuration." alt="" coords="5,5,105,31"/>
+</map><dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.DigiPotConfig.freq">
+<span class="sig-name descname"><span class="pre">freq</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#framework.util.config.DigiPotConfig.freq" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.DigiPotConfig.ftdi_url">
+<span class="sig-name descname"><span class="pre">ftdi_url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.DigiPotConfig.ftdi_url" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.util.config.NiDaqConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.util.config.</span></span><span class="sig-name descname"><span class="pre">NiDaqConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder_lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">di_lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing_counter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timing_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.util.config.NiDaqConfig" title="Permalink to this definition"></a></dt>
+<dd><p>NaedTuple representing the nidaq configuration.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-3786f64fc03dcdc6a7f1aee59431a88fefa699bd.png" alt="Inheritance diagram of NiDaqConfig" usemap="#inheritance2605ef92b6" class="inheritance graphviz" /></div>
+<map id="inheritance2605ef92b6" name="inheritance2605ef92b6">
+<area shape="rect" id="node1" href="#framework.util.config.NiDaqConfig" target="_top" title="NaedTuple representing the nidaq configuration." alt="" coords="5,5,99,31"/>
+</map><dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.NiDaqConfig.device">
+<span class="sig-name descname"><span class="pre">device</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.NiDaqConfig.device" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.NiDaqConfig.di_lines">
+<span class="sig-name descname"><span class="pre">di_lines</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.NiDaqConfig.di_lines" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.NiDaqConfig.do_lines">
+<span class="sig-name descname"><span class="pre">do_lines</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.NiDaqConfig.do_lines" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.NiDaqConfig.encoder_lines">
+<span class="sig-name descname"><span class="pre">encoder_lines</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.NiDaqConfig.encoder_lines" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.NiDaqConfig.signal_channel">
+<span class="sig-name descname"><span class="pre">signal_channel</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.NiDaqConfig.signal_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.NiDaqConfig.timing_counter">
+<span class="sig-name descname"><span class="pre">timing_counter</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.NiDaqConfig.timing_counter" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.NiDaqConfig.timing_source">
+<span class="sig-name descname"><span class="pre">timing_source</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.NiDaqConfig.timing_source" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.util.config.SerialDebugConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.util.config.</span></span><span class="sig-name descname"><span class="pre">SerialDebugConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baudrate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bufsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.util.config.SerialDebugConfig" title="Permalink to this definition"></a></dt>
+<dd><p>NamedTuple representing the serial debug configuration.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-503aee69d195cd44d4289dd796d6db35a8a4e206.png" alt="Inheritance diagram of SerialDebugConfig" usemap="#inheritance879a847a2e" class="inheritance graphviz" /></div>
+<map id="inheritance879a847a2e" name="inheritance879a847a2e">
+<area shape="rect" id="node1" href="#framework.util.config.SerialDebugConfig" target="_top" title="NamedTuple representing the serial debug configuration." alt="" coords="5,5,133,31"/>
+</map><dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.SerialDebugConfig.baudrate">
+<span class="sig-name descname"><span class="pre">baudrate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#framework.util.config.SerialDebugConfig.baudrate" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.SerialDebugConfig.bufsize">
+<span class="sig-name descname"><span class="pre">bufsize</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#framework.util.config.SerialDebugConfig.bufsize" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.SerialDebugConfig.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.SerialDebugConfig.mode" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.SerialDebugConfig.path">
+<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#framework.util.config.SerialDebugConfig.path" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.SerialDebugConfig.ports">
+<span class="sig-name descname"><span class="pre">ports</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#framework.util.config.SerialDebugConfig.ports" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.SerialDebugConfig.timeout">
+<span class="sig-name descname"><span class="pre">timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#framework.util.config.SerialDebugConfig.timeout" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.util.config.TouchConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.util.config.</span></span><span class="sig-name descname"><span class="pre">TouchConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aa_port</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aa_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aa_timeout_ms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">touch_request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">touch_response</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">array.array</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.util.config.TouchConfig" title="Permalink to this definition"></a></dt>
+<dd><p>NamedTuple representing the serial debug configuration.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-6399011f50324ca3180c0b9d48e1ce23ec4b1960.png" alt="Inheritance diagram of TouchConfig" usemap="#inheritance7a7cd33534" class="inheritance graphviz" /></div>
+<map id="inheritance7a7cd33534" name="inheritance7a7cd33534">
+<area shape="rect" id="node1" href="#framework.util.config.TouchConfig" target="_top" title="NamedTuple representing the serial debug configuration." alt="" coords="5,5,99,31"/>
+</map><dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.TouchConfig.aa_addr">
+<span class="sig-name descname"><span class="pre">aa_addr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#framework.util.config.TouchConfig.aa_addr" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.TouchConfig.aa_port">
+<span class="sig-name descname"><span class="pre">aa_port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#framework.util.config.TouchConfig.aa_port" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.TouchConfig.aa_timeout_ms">
+<span class="sig-name descname"><span class="pre">aa_timeout_ms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#framework.util.config.TouchConfig.aa_timeout_ms" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.TouchConfig.touch_request">
+<span class="sig-name descname"><span class="pre">touch_request</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array.array</span></em><a class="headerlink" href="#framework.util.config.TouchConfig.touch_request" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="framework.util.config.TouchConfig.touch_response">
+<span class="sig-name descname"><span class="pre">touch_response</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">array.array</span></em><a class="headerlink" href="#framework.util.config.TouchConfig.touch_response" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.util.config.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.util.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#framework.util.config.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Configuration File Support.</p>
+<p>This class implements a YAML based configuration file.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-fe0ee22f9911eb3e058609a47d624f9c88db63e1.png" alt="Inheritance diagram of Config" usemap="#inheritance7f056fbcd1" class="inheritance graphviz" /></div>
+<map id="inheritance7f056fbcd1" name="inheritance7f056fbcd1">
+<area shape="rect" id="node1" href="#framework.util.config.Config" target="_top" title="Configuration File Support." alt="" coords="5,5,77,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.util.config.Config.get_digipot_config">
+<span class="sig-name descname"><span class="pre">get_digipot_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#framework.util.config.DigiPotConfig" title="framework.util.config.DigiPotConfig"><span class="pre">framework.util.config.DigiPotConfig</span></a></span></span><a class="headerlink" href="#framework.util.config.Config.get_digipot_config" title="Permalink to this definition"></a></dt>
+<dd><p>Get the digipot module configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.util.config.Config.get_logging_config">
+<span class="sig-name descname"><span class="pre">get_logging_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#framework.util.config.LoggingConfig" title="framework.util.config.LoggingConfig"><span class="pre">framework.util.config.LoggingConfig</span></a></span></span><a class="headerlink" href="#framework.util.config.Config.get_logging_config" title="Permalink to this definition"></a></dt>
+<dd><p>Get the logging environment configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.util.config.Config.get_nidaq_config">
+<span class="sig-name descname"><span class="pre">get_nidaq_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#framework.util.config.NiDaqConfig" title="framework.util.config.NiDaqConfig"><span class="pre">framework.util.config.NiDaqConfig</span></a></span></span><a class="headerlink" href="#framework.util.config.Config.get_nidaq_config" title="Permalink to this definition"></a></dt>
+<dd><p>Get the nidaq module configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.util.config.Config.get_serial_debug_config">
+<span class="sig-name descname"><span class="pre">get_serial_debug_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#framework.util.config.SerialDebugConfig" title="framework.util.config.SerialDebugConfig"><span class="pre">framework.util.config.SerialDebugConfig</span></a></span></span><a class="headerlink" href="#framework.util.config.Config.get_serial_debug_config" title="Permalink to this definition"></a></dt>
+<dd><p>Get the serial debug module configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.util.config.Config.get_test_yaml">
+<span class="sig-name descname"><span class="pre">get_test_yaml</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#framework.util.config.Config.get_test_yaml" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the raw YAML representation of the test configuration.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.util.config.Config.get_touch_config">
+<span class="sig-name descname"><span class="pre">get_touch_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#framework.util.config.TouchConfig" title="framework.util.config.TouchConfig"><span class="pre">framework.util.config.TouchConfig</span></a></span></span><a class="headerlink" href="#framework.util.config.Config.get_touch_config" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the touch module configuration.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="framework.util.html" class="btn btn-neutral float-left" title="framework.util" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="framework.util.data.html" class="btn btn-neutral float-right" title="framework.util.data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, LeoTel Software Systems Limited.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+Device PIC24FJ64GA702
+Hwtool SIM
+set oscillator.frequency 8
+set oscillator.frequencyunit Mega
+set oscillator.rcfrequency 32768
+set oscillator.rcfrequencyunit None
+Set uart2io.uartioenabled true
+Set uart2io.output file
+Set uart2io.outputfile Environment-Firmware.X/test/sim-test/out.txt
+Program Environment-Firmware.X/ceedling-build/test/test-build.elf
+Reset
+Sleep 1500
+Break *0x00AEFC
+Run
+Wait 12000
+Quit

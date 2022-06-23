@@ -1,0 +1,42 @@
+---
+:source:
+  :path: test
+  :file: test_u_maths_library.c
+:successes:
+- :test: test_u_sort_sort_empty_array
+  :line: 77
+  :message: ''
+  :unity_test_time: 0
+- :test: test_u_sort_sort_single_el_array
+  :line: 94
+  :message: ''
+  :unity_test_time: 0
+- :test: test_u_sort_sort_small_array_all_el_different
+  :line: 112
+  :message: ''
+  :unity_test_time: 0
+- :test: test_u_sort_sort_small_array_some_el_equal
+  :line: 130
+  :message: ''
+  :unity_test_time: 0
+- :test: test_u_sort_sort_large_array
+  :line: 148
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 5
+  :passed: 5
+  :failed: 0
+  :ignored: 0
+:stdout:
+- Running test...
+- Converting ELF to HEX...
+- Programming device - platform MINGW32...
+- Connecting serial port at COM5...
+- Programming device - platform MINGW32...
+- Waiting for output...
+- Test output -----
+- "-----------------"
+:time: 49.90753570001107

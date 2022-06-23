@@ -1,0 +1,20 @@
+---
+:source:
+  :path: test/acceptance_test
+  :file: test_HET_16.c
+:successes:
+- :test: test_AtIdleSpuriousButtonPressDoesNotStartTherapy
+  :line: 67
+  :message: ''
+- :test: test_AtPumpDownOrTherapyDeliverySpuriousButtonPressesDoNotStopTherapy
+  :line: 100
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 2
+  :passed: 2
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

@@ -1,0 +1,20 @@
+---
+:source:
+  :path: test/acceptance_test
+  :file: test_HET_60.c
+:successes:
+- :test: test_LogInitialPumpDownDurationInPersistentMemoryWhenInTherapyDelivery
+  :line: 100
+  :message: ''
+- :test: test_LogUnsuccessfulInitialPumpDownDurationInPersistentMemoryWhenInFault
+  :line: 230
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 2
+  :passed: 2
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

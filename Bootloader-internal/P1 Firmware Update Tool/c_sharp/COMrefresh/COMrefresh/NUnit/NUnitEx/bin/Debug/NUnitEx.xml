@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NUnitEx</name>
+    </assembly>
+    <members>
+        <member name="T:NUnitEx.StandardDurationCategory">
+            <summary>
+            A selection of standard duration categories, kind-of-logarithmically distributed.
+            </summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Second1Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Second1Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Seconds4Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Seconds4Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Seconds15Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Seconds15Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Minute1Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Minute1Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Minutes4Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Minutes4Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Minutes15Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Minutes15Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Hour1Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Hour1Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Hours5Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Hours5Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Hours24Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Hours24Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Day1Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Day1Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Days7Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Days7Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.Days30Attribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.Days30Attribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategory.InfiniteAttribute">
+            <remarks>Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.</remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.InfiniteAttribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.AttributeFrom(System.TimeSpan)">
+            <summary>
+            Returns the most appropriate standard attribute.
+            </summary>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategory.CaptionFrom(System.TimeSpan)">
+            <summary>
+            Returns the corresponding name suffix.
+            </summary>
+        </member>
+        <member name="T:NUnitEx.StandardDurationCategoriesDummyInstance">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Second1DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Second4DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Second15DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Minute1DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Minutes4DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Minutes15DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Hour1DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Hours5DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Hours24DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Day1DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Days7DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.Days30DummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StandardDurationCategoriesDummyInstance.InfiniteDummyInstance">
+            <remarks>
+            Dummy instance to ensure every standard instance is instantiated and can thus be
+            activated or excluded in the NUnit test runner.
+            </remarks>
+        </member>
+        <member name="T:NUnitEx.TestExecutionContextInformation">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.TestExecutionContextInformation.EstimateTotalExecutionTime">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.ContextDetectorTest">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.ContextDetectorTest.TestIsRunningInNUnit">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.ContextDetector">
+            <summary>
+            Helper indicating whether the process is currently running in NUnit.
+            </summary>
+            <remarks>
+            This helper should only be used if absolutely necessary, as it usually is a sign
+            of bad design.
+            </remarks>
+        </member>
+        <member name="P:NUnitEx.ContextDetector.IsRunningInNUnit">
+            <summary>
+            Gets a value indicating whether the process is currently running in NUnit.
+            </summary>
+            <remarks>
+            This property should only be retrieved if absolutely necessary, as it usually is a sign
+            of bad design.
+            </remarks>
+        </member>
+        <member name="T:NUnitEx.TestCaseDataHelper">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.TestCaseDataHelper.WriteToTempFile(System.Type,NUnit.Framework.TestCaseData,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.TestCaseDescriptor">
+            <summary>
+            Encapsulates information to initialize <see cref="T:NUnit.Framework.TestCaseData"/> objects.
+            </summary>
+            <remarks>
+            Useful to encapsulate information where <see cref="T:NUnit.Framework.TestCaseData"/> objects are
+            not suitable or suboptimal, e.g. where named and typed arguments shall be used rather than
+            just an array of <see cref="T:System.Object"/> named "arg1", "arg2",...
+            </remarks>
+            <remarks>
+            Simply derive from this class and add arguments as needed.
+            </remarks>
+            <remarks>
+            Named 'TestCaseDescriptor' rather than e.g. 'TestCaseDataHelper' for better distinguishing
+            from <see cref="T:NUnit.Framework.TestCaseData"/>.
+            </remarks>
+        </member>
+        <member name="P:NUnitEx.TestCaseDescriptor.Name">
+            <summary>
+            The name for setting <see cref="P:NUnit.Framework.TestCaseData.TestName"/>.
+            </summary>
+        </member>
+        <member name="P:NUnitEx.TestCaseDescriptor.Categories">
+            <summary>
+            The categories for setting <see cref="P:NUnit.Framework.TestCaseData.Categories"/>.
+            </summary>
+        </member>
+        <member name="M:NUnitEx.TestCaseDescriptor.#ctor(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:NUnitEx.TestCaseDescriptor"/> class.
+            </summary>
+        </member>
+        <member name="T:NUnitEx.TestCaseDataEx">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.TestCaseDataEx.ToTestCase(NUnit.Framework.TestCaseData,System.String,System.Collections.Generic.IEnumerable{System.String},System.Object[])">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.TestCaseDataEx.ToTestCase(NUnitEx.TestCaseDescriptor,NUnit.Framework.TestCaseData,System.Object[])">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.CategoryStrings">
+            <remarks>
+            A "Quick" category doesn't make much sense, as almost every short running test could be included
+            in "Quick". It makes much more sense to exclude long running tests via the "Duration" categories.
+            </remarks>
+        </member>
+        <member name="F:NUnitEx.CategoryStrings.Duration">
+            <summary></summary>
+        </member>
+        <member name="F:NUnitEx.CategoryStrings.Endurance">
+            <summary></summary>
+        </member>
+        <member name="F:NUnitEx.CategoryStrings.Stress">
+            <summary></summary>
+        </member>
+        <member name="F:NUnitEx.CategoryStrings.Interactive">
+            <summary></summary>
+        </member>
+        <member name="F:NUnitEx.CategoryStrings.AssertThrows">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.DurationCategoryAttribute">
+            <summary></summary>
+        </member>
+        <member name="F:NUnitEx.DurationCategoryAttribute.duration">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.DurationCategoryAttribute.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.DurationCategoryAttribute.#ctor(System.TimeSpan,System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:NUnitEx.DurationCategoryAttribute.Duration">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.SecondDurationCategoryAttribute">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.SecondDurationCategoryAttribute.#ctor(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="P:NUnitEx.SecondDurationCategoryAttribute.Seconds">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.MinuteDurationCategoryAttribute">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.MinuteDurationCategoryAttribute.#ctor(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="P:NUnitEx.MinuteDurationCategoryAttribute.Minutes">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.HourDurationCategoryAttribute">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.HourDurationCategoryAttribute.#ctor(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="P:NUnitEx.HourDurationCategoryAttribute.Hours">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.DayDurationCategoryAttribute">
+            <summary></summary>
+        </member>
+        <member name="M:NUnitEx.DayDurationCategoryAttribute.#ctor(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="P:NUnitEx.DayDurationCategoryAttribute.Days">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.InfiniteDurationCategoryAttribute">
+            <remarks>
+            Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.InfiniteDurationCategoryAttribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.EnduranceCategoryAttribute">
+            <remarks>
+            Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.EnduranceCategoryAttribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.StressCategoryAttribute">
+            <remarks>
+            Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.StressCategoryAttribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.InteractiveCategoryAttribute">
+            <remarks>
+            Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.InteractiveCategoryAttribute.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:NUnitEx.AssertThrowsCategoryAttribute">
+            <summary>
+            Shall be used to decorate tests that 'Assert.Throws()'.
+            </summary>
+            <remarks>
+            Useful to exclude tests that throw while a debugger is attached,
+            where execution of a series of tests shall not break on expected throws.
+            </remarks>
+            <remarks>
+            Sealed to improve performance during reflection on custom attributes according to FxCop:CA1813.
+            </remarks>
+        </member>
+        <member name="M:NUnitEx.AssertThrowsCategoryAttribute.#ctor">
+            <summary></summary>
+        </member>
+    </members>
+</doc>

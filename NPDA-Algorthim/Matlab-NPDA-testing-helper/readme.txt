@@ -1,0 +1,1 @@
+Run prepare_C_test_caller.m without any params (it is a script) to prepare test files for Ceedling.

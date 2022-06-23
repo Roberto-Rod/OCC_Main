@@ -1,0 +1,2624 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YAT.View.Controls</name>
+    </assembly>
+    <members>
+        <member name="T:YAT.View.Controls.PredefinedCommandSubpageCheckBox">
+            <summary>
+            YAT predefined command subpage variant of <see cref="T:System.Windows.Forms.CheckBox"/>.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandSubpageCheckBox.OnPaint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSubpageCheckBox.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Raises the <see cref="M:ButtonBase.OnPaint(System.Windows.Forms.PaintEventArgs)" /> event.
+            </summary>
+            <param name="pevent">A <see cref="T:PaintEventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandSubpageCheckBox.Text">
+            <remarks>Overridden to hide in designer since fixed by code.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandSubpageCheckBox.SubpageId">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Controls.TextDisplaySettingsSet">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.TextDisplaySettingsSet.SettingsChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.TextDisplaySettingsSet.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.TextDisplaySettingsSet.Settings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.TextDisplaySettingsSet.OnSettingsChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.TextDisplaySettingsSet.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.TextDisplaySettingsSet.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.TextDisplaySettingsSet.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.BinaryDisplaySettingsSet">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.BinaryDisplaySettingsSet.SettingsChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.BinaryDisplaySettingsSet.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.BinaryDisplaySettingsSet.Settings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.BinaryDisplaySettingsSet.OnSettingsChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.BinaryDisplaySettingsSet.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.BinaryDisplaySettingsSet.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.BinaryDisplaySettingsSet.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.SendTextOptionEventArgs">
+             <remarks>
+             \remind (2017-07-23 / MKY)
+             <see cref="T:MKY.EventArgs`1"/> could be used instead of this class. However, the VS2015
+             designer cannot cope with generic event args! Findings:
+              > Designer cannot display the 'SendCommandRequest' of 'SendText' as well as 'Send'.
+              > It crashes again and again! But is this indeed the root cause?
+            
+             \todo
+             Check again with VS2017+.
+             </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SendTextOptionEventArgs.Value">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendTextOptionEventArgs.#ctor(YAT.View.Controls.SendTextOption)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Controls.SendTextOption">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SendTextOption.Normal">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SendTextOption.WithoutEol">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Controls.FindDirection">
+            <summary>
+            The result of a find operation.
+            </summary>
+        </member>
+        <member name="F:YAT.View.Controls.FindDirection.Undetermined">
+            <summary>Find has not been triggered yet, or find has been reset.</summary>
+        </member>
+        <member name="F:YAT.View.Controls.FindDirection.Forward">
+            <summary>Find next, i.e. forward.</summary>
+        </member>
+        <member name="F:YAT.View.Controls.FindDirection.Backward">
+            <summary>Find previous, i.e. backward.</summary>
+        </member>
+        <member name="F:YAT.View.Controls.FindDirection.All">
+            <summary>Find all.</summary>
+        </member>
+        <member name="T:YAT.View.Controls.UsbSerialHidDeviceSettings">
+            <remarks>The preview control is not scalable to simplify implementation.</remarks>
+        </member>
+        <member name="F:YAT.View.Controls.UsbSerialHidDeviceSettings.deviceInfo">
+            <remarks>Used for subsequently updating <see cref="P:YAT.View.Controls.UsbSerialHidDeviceSettings.Preset"/>.</remarks>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidDeviceSettings.PresetChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidDeviceSettings.ReportFormatChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidDeviceSettings.RxFilterUsageChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidDeviceSettings.FlowControlChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidDeviceSettings.AutoOpenChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.SetDeviceInfoWithoutUpdateOfPresets(MKY.IO.Usb.DeviceInfo)">
+            <remarks>
+            Required for...
+            ...setting the base for <see cref="P:YAT.View.Controls.UsbSerialHidDeviceSettings.ReportFormat"/> and <see cref="P:YAT.View.Controls.UsbSerialHidDeviceSettings.RxFilterUsage"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.SetDeviceInfoIncludingUpdateOfPresets(MKY.IO.Usb.DeviceInfo)">
+            <remarks>
+            Required for...
+            ...initially updating <see cref="P:YAT.View.Controls.UsbSerialHidDeviceSettings.Preset"/> and <see cref="P:YAT.View.Controls.UsbSerialHidDeviceSettings.FlowControl"/>.
+            ...subsequently updating <see cref="P:YAT.View.Controls.UsbSerialHidDeviceSettings.Preset"/> and <see cref="P:YAT.View.Controls.UsbSerialHidDeviceSettings.FlowControl"/>.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidDeviceSettings.Preset">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidDeviceSettings.ReportFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidDeviceSettings.RxFilterUsage">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidDeviceSettings.FlowControl">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidDeviceSettings.AutoOpen">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidDeviceSettings.UsbSerialHidPortSettings_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.UsbSerialHidPortSettings_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.UsbSerialHidDeviceSettings_EnabledChanged(System.Object,System.EventArgs)">
+            <summary>
+            Ensure that all controls are cleared when control gets disabled.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.OnPresetChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.OnReportFormatChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.OnRxFilterUsageChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.OnFlowControlChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.OnAutoOpenChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.UsbSerialHidDeviceSettings.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSettings.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.UsbSerialHidDeviceSelection">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.UsbSerialHidDeviceSelection.deviceListIsBeingSetOrHasAlreadyBeenSet">
+            <summary>
+            Only set device list and controls once as soon as this control is enabled. This saves
+            some time on startup since scanning for the devices may take some time.
+            </summary>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidDeviceSelection.DeviceInfoChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSelection.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidDeviceSelection.DeviceInfo">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidDeviceSelection.IsValid">
+            <summary>
+            Indicates whether the device selection is a valid device.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSelection.RefreshDeviceList">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidDeviceSelection.UsbSerialHidPortSelection_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSelection.UsbSerialHidPortSelection_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSelection.UsbSerialHidDeviceSelection_EnabledChanged(System.Object,System.EventArgs)">
+            <summary>
+            Ensure that all controls are cleared when control gets disabled.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSelection.SetDeviceList">
+             <remarks>
+             Without precaution, and in case of no devices, the message box may appear twice due to
+             the recursion described above (out of doc tag due to words not recognized by StyleCop).
+             This issue is fixed by setting 'deviceListIsBeingSetOrIsAlreadySet' upon entering this method.
+            
+             Note that the same fix has been implemented in <see cref="T:YAT.View.Controls.SerialPortSelection"/> and <see cref="T:YAT.View.Controls.SocketSelection"/>.
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSelection.ShowNoneAvailableMessage">
+            <remarks>
+            Showing this as on dialog message instead of <see cref="T:System.Windows.Forms.MessageBox"/> to reduce the number of potentially annoying popups.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSelection.OnDeviceInfoChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.UsbSerialHidDeviceSelection.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSelection.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidDeviceSelection.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.Send">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.Send.DesignedFullHeight">
+            <summary>
+            The designed height when both (text and file) panels are visible.
+            </summary>
+        </member>
+        <member name="F:YAT.View.Controls.Send.DesignedHalfHeight">
+            <summary>
+            The designed height when one (text or file) panel is visible.
+            </summary>
+        </member>
+        <member name="E:YAT.View.Controls.Send.TextCommandChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.Send.TextFocusedChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.Send.SendTextCommandRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.Send.FileCommandChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.Send.SendFileCommandRequest">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.StandbyInUserInput">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.SelectAndPrepareUserInput">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.ValidateSendTextInput">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.NotifyKeyDown(System.Windows.Forms.KeyEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.NotifyKeyUp(System.Windows.Forms.KeyEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.OnFormDeactivateWorkaround">
+            <remarks>See remarks in <see cref="T:MKY.Windows.Forms.ComboBoxEx"/>.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.Send.TextCommand">
+            <summary>
+            This property always returns a <see cref="T:YAT.Model.Types.Command"/> object, it never returns <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.RecentTextCommands">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.FileCommand">
+            <summary>
+            Command always returns a <see cref="T:YAT.Model.Types.Command"/> object, it never returns <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.RecentFileCommands">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.TerminalType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.UseExplicitDefaultRadix">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.ParseModeForText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.SendTextImmediately">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.RootDirectoryForFile">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.TerminalIsReadyToSendForSomeTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.TextPanelIsVisible">
+            <remarks>
+            No explicit 'Default' constant as the default is given by <see cref="T:System.Windows.Forms.SplitContainer"/>.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.Send.FilePanelIsVisible">
+            <remarks>
+            No explicit 'Default' constant as the default is given by <see cref="T:System.Windows.Forms.SplitContainer"/>.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.Send.SendSplitterDistance">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Send.TextFocused">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.OnTextCommandChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.OnTextFocusedChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.OnSendTextCommandRequest(YAT.View.Controls.SendTextOptionEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.OnFileCommandChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.OnSendFileCommandRequest(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.Send.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.Send.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.Send.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.SocketSettings">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SocketSettings.TcpClientAutoReconnectChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SocketSettings.UdpServerSendModeChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSettings.SocketType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSettings.TcpClientAutoReconnect">
+            <remarks>
+            Structs cannot be used with the designer.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSettings.UdpServerSendMode">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSettings.SocketSettings_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSettings.SocketSettings_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSettings.SocketSettings_EnabledChanged(System.Object,System.EventArgs)">
+            <summary>
+            Ensure that all controls are cleared when control gets disabled.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSettings.OnTcpClientAutoReconnectChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSettings.OnUdpServerSendModeChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SocketSettings.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSettings.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSettings.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.Monitor">
+            <summary>
+            This monitor implements a list box based terminal monitor in a speed optimized way.
+            </summary>
+        </member>
+        <member name="E:YAT.View.Controls.Monitor.TextFocusedChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.Monitor.SelectedLinesChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.Monitor.FindItemStateChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.Monitor.FindAllSuccessChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.Monitor.FindAllDeactivatedWithinMonitor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.ShowStatusPanel">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.RepositoryType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.ActivityState">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.MaxLineCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.FormatSettings">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.ShowLineNumbers">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.LineNumberSelection">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.LineNumberOffset">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.ShowTimeStatus">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.ActiveConnectTime">
+            <summary></summary>
+            <remarks>A default value of TimeSpan.Zero is not possible because it is not constant.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.TotalConnectTime">
+            <summary></summary>
+            <remarks>A default value of TimeSpan.Zero is not possible because it is not constant.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.ShowDataStatus">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.Counts">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.Rates">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.ShowCopyOfActiveLine">
+            <remarks>
+            Name only "Active" instead of "LastActive" for simplicity.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.TextFocused">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.SelectedTextInCopyOfActiveLine">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.DebugEnabled">
+            <remarks>
+            Flag in a addition to configuration item to allow selective debugging of just a single
+            monitor, e.g. the bidir monitor, to reduce debug output.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.DebugCaption">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.Activate">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.Deactivate">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.SetHeaderBackColor(System.Drawing.Color)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.AddElement(YAT.Domain.DisplayElement)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.AddElements(YAT.Domain.DisplayElementCollection)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ReplaceCurrentLine(YAT.Domain.DisplayElementCollection)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ClearCurrentLine">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.AddLine(YAT.Domain.DisplayLine)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.AddLines(YAT.Domain.DisplayLineCollection)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.Clear">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ResetLineNumbers">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.Reload">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.Reload(YAT.Domain.DisplayLineCollection)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.SelectAll">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.SelectNone">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindOnEdit(System.String,YAT.Application.Types.FindOptions,YAT.View.Controls.FindDirection@)">
+            <remarks>
+            Using "pattern" instead of "textOrPattern" for simplicity.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindNext(System.String,YAT.Application.Types.FindOptions)">
+            <remarks>
+            Using "pattern" instead of "textOrPattern" for simplicity.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindPrevious(System.String,YAT.Application.Types.FindOptions)">
+            <remarks>
+            Using "pattern" instead of "textOrPattern" for simplicity.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.EmptyFindOnEdit">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.LeaveFindOnEdit">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ResetFindOnEdit">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ResetFindAll">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ActivateFindAll(System.String,YAT.Application.Types.FindOptions)">
+            <remarks>
+            Using "pattern" instead of "textOrPattern" for simplicity.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DeactivateFindAll(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.PrepareFind(System.String,YAT.Application.Types.FindOptions)">
+            <remarks>
+            Using "pattern" instead of "textOrPattern" for simplicity.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindNextAndNotify">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindPreviousAndNotify">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindNextAnyNotify(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindNextAndNotify(System.Int32,System.Int32@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindPreviousAndNotify(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindPreviousAndNotify(System.Int32,System.Int32@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindAllAndNotify">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryFindAllWithoutNotify">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryGetCurrentStartIndex(System.Int32@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryGetNextStartIndex(System.Int32@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TryGetPreviousStartIndex(System.Int32@)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.SelectedLineCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.SelectedLines">
+            <remarks>
+            If no lines are available, an empty collection is returned, never <c>null</c>.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.Monitor.SelectedOrAllLines">
+            <remarks>
+            If no lines are available, an empty collection is returned, never <c>null</c>.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.SetTimeStatus(System.TimeSpan,System.TimeSpan)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ResetTimeStatus">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.SetDataStatus(YAT.Model.CountsRatesTuple)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ResetDataStatus">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.Monitor_Resize(System.Object,System.EventArgs)">
+            <remarks>
+            Labels are manually resized/relocated because <see cref="P:System.Windows.Forms.Label.AutoSize"/> doesn't work
+            with <see cref="P:System.Windows.Forms.Label.AutoEllipsis"/>. But, not using <see cref="P:System.Windows.Forms.Label.AutoSize"/> means
+            that label will not adjust to different font size, well...
+            </remarks>
+            <remarks>
+            From YAT 2.4.0, two separate labels are used. This prevents undesireable line breaks a
+            single label containing two lines will show when size becomes too small. Both labels
+            have a <see cref="P:System.Windows.Forms.Control.Height"/> of 15, i.e. half the 'IconPanelHeightAvailable'.
+            </remarks>
+            <remarks>
+            Note a limitation of <see cref="P:System.Windows.Forms.Label.AutoEllipsis"/>:
+            As soon as ellipsis are required, <see cref="P:System.Windows.Forms.Label.TextAlign"/> will fallback to the
+            default of <see cref="F:System.Drawing.ContentAlignment.TopLeft"/>, resulting an odd looking 'BidirTx'
+            label. This limitation is considered acceptable.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.fastListBox_LineNumbers_DrawItem(System.Object,System.Windows.Forms.DrawItemEventArgs)">
+            <remarks>
+            Note that the 'MeasureItem' event only measures the height and an item and is thus
+            only needed for 'OwnerDrawnVariable' and not for 'OwnerDrawnFixed'.
+            </remarks>
+        </member>
+        <member name="F:YAT.View.Controls.Monitor.lbmon_DrawItem_lastTopIndex">
+             <remarks>
+             Intentionally initializing to 0 and not ControlEx.InvalidIndex. Doing so would result in
+             an unnecessary initial VerticalScrollToIndex() request.
+            
+             This also matches to behavior of <see cref="P:System.Windows.Forms.ListBox.TopIndex"/>:
+            
+             Initially, the item with the index position zero (0) is at the top of the visible region
+             of the ListBox. If the contents of the ListBox have been scrolled, another item might be
+             at the top of the control's display area.
+             You can use this property to obtain the index within the ListBox.ObjectCollection for the
+             ListBox of the item that is currently positioned at the top of the visible region of the
+             control.
+             You can also use this property to position an item in the list at the top of the visible
+             region of the control.
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.fastListBox_Monitor_DrawItem(System.Object,System.Windows.Forms.DrawItemEventArgs)">
+             <remarks>
+             Note that the 'MeasureItem' event is not needed for 'OwnerDrawnFixed' (item height only).
+            
+             ListBox
+             -------
+            
+             Whether we like it or not, <see cref="M:System.Windows.Forms.ListBox.OnDrawItem(System.Windows.Forms.DrawItemEventArgs)"/> calls
+             this method pretty often. Actually it's called twice each time a new line is added. In
+             addition, another call is needed for the next still empty line. Thus:
+             1st line received => 3 calls to DrawItem() at index 0 | 0 | 1
+             2nd line received => 5                     at index 0 | 1 | 0 | 1 | 2
+             3rd line received => 7                     at index 0 | 1 | 2 | 0 | 1 | 2 | 3
+             ...
+             Nth line received => 2*N + 1               at index 0 | 1 | 2...N | 0 | 1 | 2...N | N+1
+            
+             Each call takes a 0..2 ms. For 25 lines this results in something like:
+             51 x 2 ms = 100 ms per update!
+             At least scrolling is handled properly, i.e. as soon as the listbox starts to scroll,
+             the number of calls doesn't increase anymore.
+            
+             Example measurements for SIR @ 18 samples per second:
+             1.99.20 => 30% CPU usage
+             1.99.22 with owner drawn and delayed scrolling => 25% CPU usage
+             1.99.22 with owner drawn without DrawItem() => 10% CPU usage
+             1.99.22 with normal drawn => 20% CPU usage
+            
+             Double-buffered = <c>true</c> (form and control) doesn't make much difference either...
+            
+            
+             FastListBox
+             -----------
+            
+             Fast and smooth :-)
+            
+             CPU usage is about the same as above, however, FastListBox has no flickering at all
+             whereas the standard ListBox has.
+            
+            
+             Timed updated FastListBox
+             -------------------------
+             In case of really large data, the FastListBox still proved too slow. Thus, a timed
+             update has been implemented to further improve the performance. Three approaches
+             have been tried to implement such timed update:
+             1. More sophisticated handling within <see cref="M:YAT.View.Controls.Monitor.fastListBox_Monitor_DrawItem(System.Object,System.Windows.Forms.DrawItemEventArgs)"/>
+                => Doesn't work because list box's back ground has already been drawn before
+                   this event is invoked, thus it just increases flickering...
+             2. More sophisticated handling within additional 'FastListBox.OnPaintBackground'
+                => Doesn't work because list box has already been cleaned to a black background
+                   before this event is invoked, thus it increases flickering too...
+             3. Temporarily suspending the adding of elements. The elements are then added upon
+                the next update. See <see cref="M:YAT.View.Controls.Monitor.MonitorUpdateHasToBePerformed"/> for details.
+            
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.timer_MonitorUpdateTimeout_Tick(System.Object,System.EventArgs)">
+            <remarks>
+            This 'Windows.Forms.Timer' event handler will be called on the application main thread.
+            No additional synchronization or prevention of a race condition is needed.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.timer_DataStatusUpdateTimeout_Tick(System.Object,System.EventArgs)">
+            <remarks>
+            This 'Windows.Forms.Timer' event handler will be called on the application main thread.
+            No additional synchronization or prevention of a race condition is needed.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.timer_ProcessorLoad_Tick(System.Object,System.EventArgs)">
+            <remarks>
+            This 'Windows.Forms.Timer' event handler will be called on the application main thread.
+            No additional synchronization or prevention of a race condition is needed.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.timer_Opacity_Tick(System.Object,System.EventArgs)">
+            <remarks>
+            This 'Windows.Forms.Timer' event handler will be called on the application main thread,
+            i.e. is single-threaded. No additional synchronization or prevention of a race condition is needed.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ApplyFont">
+            <summary>
+            Applies the font to the list boxes.
+            </summary>
+            <remarks>
+            Directly apply the new settings to the list boxes. This ensures that update is only done
+            done when required, as the update leads to move of list box to top, and re-drawing. Both
+            takes time and impacts the monitor behavior. Thus, only update if really needed.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.AddElementsOrLines(System.Object)">
+            <remarks>
+            This method will always be called on the application main thread, either from a
+            synchronized invocation or the synchronized 'Windows.Forms.Timer' event handler.
+            No additional synchronization or prevention of a race condition is needed.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.TriggerMonitorUpdate">
+            <remarks>
+            This method will always be called on the application main thread, either from a
+            synchronized invocation or the synchronized 'Windows.Forms.Timer' event handler.
+            No additional synchronization or prevention of a race condition is needed.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.UpdateFastListBoxWithPendingElementsAndLines">
+            <remarks>
+            This method will always be called on the application main thread, either from a
+            synchronized invocation or the synchronized 'Windows.Forms.Timer' event handler.
+            No additional synchronization or prevention of a race condition is needed.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.AddElementToListBox(YAT.Domain.DisplayElement)">
+            <summary>
+            Adds an element to the list box.
+            </summary>
+            <remarks>
+            Neither calls <see cref="M:System.Windows.Forms.ListBox.BeginUpdate"/> nor <see cref="M:System.Windows.Forms.ListBox.EndUpdate"/>.
+            If performance requires it, the calling function must do so.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.UpdateCurrentIfFindAllIsActive(MKY.Windows.Forms.FastListBox)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.IsLineStart(YAT.Domain.DisplayElement)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ClearCurrentLineInPendingElementsAndLines">
+            <remarks>
+            <c>private</c> because <see cref="T:YAT.View.Controls.Monitor.ClearResult"/> is <c>private</c>.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ClearCurrentLineInListBoxes">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.RemoveCurrentLineFromListBoxes">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.ClearAndResetListBoxes">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.SetCopyOfActiveLine(System.Object)">
+            <remarks>
+            Name only "Active" instead of "LastActive" for simplicity.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.SetTimeStatusVisible">
+            <remarks>Separated from <see cref="M:YAT.View.Controls.Monitor.SetTimeStatusText"/> to improve performance.</remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.SetTimeStatusText">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.SetDataStatusVisible">
+            <remarks>Separated from <see cref="M:YAT.View.Controls.Monitor.SetDataStatusText"/> to improve performance.</remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.SetDataStatusText">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.CalculateUpdateTickInterval(System.Int32)">
+             <summary>
+             The update interval is calculated dependent on the total CPU load:
+            
+                  update interval in ms
+                             ^
+                  max = 1125 |-------------xx|
+                             |            x  |
+                             |           x   |
+                             |          x    |
+                             |       xx      |
+                    min = 41 |xxxxx          |
+                             o-----------------> total CPU load in %
+                             0  25  50  75  100
+            
+             Up to 25%, the update is done more or less immediately.
+             Above 95%, the update is done every 1125 ms.
+             Quadratic inbetween, at y = x^2.
+            
+             Rationale:
+              - For better user expericence, interval shall gradually increase.
+              - Even at high CPU load, there shall still be some updating.
+             </summary>
+             <param name="processorLoadPercentage">
+             Load in %, i.e. values from 0 to 100.
+             </param>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.MonitorUpdateHasToBePerformed">
+            <summary>
+            Either perform the update if immediate update is active (e.g. low data traffic)
+            or if the tick interval has expired.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.StartMonitorUpdateTimeout(System.Int32)">
+            <param name="timeout">
+            The value cannot be less than one.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="timeout"/> value is less than one.
+            </exception>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DataStatusUpdateHasToBePerformed">
+            <summary>
+            Either perform the update if immediate update is active (e.g. low data traffic)
+            or if the tick interval has expired.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.OnTextFocusedChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.OnSelectedLinesChanged(MKY.EventArgs{System.Int32})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.OnFindItemStateChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.OnFindAllSuccessChanged(MKY.EventArgs{System.Boolean})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.OnFindAllDeactivatedWithinMonitor(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DebugMessage(System.String,System.Object[])">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with the formatted message, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DebugContent(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DebugUpdate(System.String)">
+            <remarks>
+            Using <see cref="M:System.Diagnostics.Debug.Write(System.String)"/> for manually composing line.
+            </remarks>
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DebugVerticalAutoScroll(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DebugSetSelected(System.Int32,System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DebugClearSelected(System.Int32,System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DebugClearSelected(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.DebugSelected">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="F:YAT.View.Controls.Monitor.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.Monitor.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.MultiLineBox">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MultiLineBox.#ctor(YAT.Model.Types.Command,YAT.Domain.Radix,YAT.Domain.Parser.Mode)">
+            <remarks>
+            This mini-form must be located in 'Controls' rather than 'Forms' because other controls
+            use it.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.MultiLineBox.CommandResult">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MultiLineBox.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+            <remarks>
+            In case of pressing a modifier key (e.g. [Shift]), this method is invoked twice! Both
+            invocations will state msg=0x100 (WM_KEYDOWN)! See:
+            https://msdn.microsoft.com/en-us/library/system.windows.forms.control.processcmdkey.aspx:
+            The ProcessCmdKey method first determines whether the control has a ContextMenu, and if
+            so, enables the ContextMenu to process the command key. If the command key is not a menu
+            shortcut and the control has a parent, the key is passed to the parent's ProcessCmdKey
+            method. The net effect is that command keys are "bubbled" up the control hierarchy. In
+            addition to the key the user pressed, the key data also indicates which, if any, modifier
+            keys were pressed at the same time as the key. Modifier keys include the SHIFT, CTRL, and
+            ALT keys.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.MultiLineBox.MultiLineBox_Shown(System.Object,System.EventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            The 'Shown' event is only raised the first time a form is displayed; subsequently
+            minimizing, maximizing, restoring, hiding, showing, or invalidating and repainting will
+            not raise this event again.
+            Note that the 'Shown' event is raised after the 'Load' event and will also be raised if
+            the application is started minimized. Also note that operations called in the 'Shown'
+            event can depend on a properly drawn form, as the 'Paint' event of this form and its
+            child controls has been raised before this 'Shown' event.
+            </remarks>
+        </member>
+        <member name="F:YAT.View.Controls.MultiLineBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.MultiLineBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.MultiLineBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.PredefinedCommandSettingsSet">
+            <summary>
+            Provides command edit. Control keeps track of the edit state to properly react on all
+            possible edit states.
+            </summary>
+            <remarks>
+            On focus enter, edit state is always reset.
+            On focus leave, edit state is kept depending on how focus is leaving.
+            </remarks>
+            <remarks>
+            Note that similar code exists in <see cref="T:YAT.View.Controls.SendText"/> and <see cref="T:YAT.View.Controls.SendFile"/>.
+            The diff among these three implementations shall be kept as small as possible.
+            For a future refactoring, consider to separate the common code into a common view-model.
+            </remarks>
+        </member>
+        <member name="E:YAT.View.Controls.PredefinedCommandSettingsSet.CommandChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandSettingsSet.Command">
+            <remarks>
+            This property always returns a <see cref="P:YAT.View.Controls.PredefinedCommandSettingsSet.Command"/> object, it never returns <c>null</c>.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandSettingsSet.TerminalType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandSettingsSet.UseExplicitDefaultRadix">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandSettingsSet.ParseModeForText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandSettingsSet.RootDirectoryForFile">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.SetEditFocusState(YAT.View.Controls.PredefinedCommandSettingsSet.EditFocusState)">
+            <remarks>Dedicated function for symmetricity with <see cref="T:YAT.View.Controls.SendText"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.PrepareUserInput">
+             <remarks>
+             Required to be called "from the outside" because...
+             ...if called in the constructor of the control, SetControls() has not yet been called.
+             ...if called in the 'Enter' handler of the control, it doesn't work ?!?
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.ClearCommand">
+            <summary>
+            Clears the command.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandSettingsSet.PredefinedCommandSettingsSet_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.PredefinedCommandSettingsSet_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.textBox_SingleLineText_Leave(System.Object,System.EventArgs)">
+             <remarks>
+             Event sequence when focus is leaving, e.g. TAB is pressed.
+             1. TextBox.Leave()
+             2. TextBox.Validating()
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.textBox_SingleLineText_Validating(System.Object,System.ComponentModel.CancelEventArgs)">
+             <remarks>
+             Event sequence when focus is leaving, e.g. TAB is pressed.
+             1. TextBox.Leave()
+             2. TextBox.Validating()
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.ShowMultiLineBox(System.Windows.Forms.Control)">
+            <remarks>
+            Almost duplicated code in <see cref="M:YAT.View.Controls.SendText.ShowMultiLineBox(System.Windows.Forms.Control)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.OnCommandChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.PredefinedCommandSettingsSet.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandSettingsSet.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.SerialPortSelection">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SerialPortSelection.PortIdDefault">
+            <remarks>Must be constant (and not a readonly) to be usable as attribute argument.</remarks>
+        </member>
+        <member name="F:YAT.View.Controls.SerialPortSelection.portListIsBeingSetOrHasAlreadyBeenSet">
+            <summary>
+            Only set device list and controls once as soon as this control is enabled. This saves
+            some time on startup since scanning for the ports may take some time.
+            </summary>
+        </member>
+        <member name="F:YAT.View.Controls.SerialPortSelection.portId">
+            <remarks>
+            Attention: Do not use <see cref="P:MKY.IO.Ports.SerialPortId.FirstAvailablePort"/>
+            for the default port. <see cref="P:MKY.IO.Ports.SerialPortId.FirstStandardPort"/>
+            is way better performing and good enough for most use cases.
+            </remarks>
+        </member>
+        <member name="E:YAT.View.Controls.SerialPortSelection.PortIdChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SerialPortSelection.ActivePortInUseInfoChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSelection.PortId">
+            <remarks><see cref="M:YAT.View.Controls.SerialPortSelection.RefreshPortList"/> may have to be triggered when property gets changed.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSelection.IsValid">
+            <summary>
+            Indicates whether the device selection is a valid device.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSelection.ActivePortInUseInfo">
+            <remarks><see cref="M:YAT.View.Controls.SerialPortSelection.RefreshPortList"/> may have to be triggered when property gets changed.</remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.RefreshPortList">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.OnFormDeactivateWorkaround">
+            <remarks>See remarks in <see cref="T:MKY.Windows.Forms.ComboBoxEx"/>.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSelection.SerialPortSelection_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.SerialPortSelection_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.SerialPortSelection_EnabledChanged(System.Object,System.EventArgs)">
+            <summary>
+            Ensure that all controls are cleared when control gets disabled.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.SetPortList">
+             <remarks>
+             Without precaution, and in case of no ports, the message box may appear twice due to
+             the recursion described above (out of doc tag due to words not recognized by StyleCop).
+             This issue is fixed by setting 'portListIsBeingSetOrIsAlreadySet' upon entering this method.
+            
+             Note that the same fix has been implemented in <see cref="T:YAT.View.Controls.SocketSelection"/> and <see cref="T:YAT.View.Controls.UsbSerialHidDeviceSelection"/>.
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.ShowNoneAvailableMessage">
+            <remarks>
+            Showing this as on dialog message instead of <see cref="T:System.Windows.Forms.MessageBox"/> to reduce the number of potentially annoying popups.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.OnPortIdChanged(System.EventArgs)">
+            <summary>
+            Invokes the <see cref="E:YAT.View.Controls.SerialPortSelection.PortIdChanged"/> event.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.OnActivePortInUseInfoChanged(System.EventArgs)">
+            <summary>
+            Invokes the <see cref="E:YAT.View.Controls.SerialPortSelection.ActivePortInUseInfoChanged"/> event.
+            </summary>
+        </member>
+        <member name="F:YAT.View.Controls.SerialPortSelection.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelection.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.SerialPortSettings">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SerialPortSettings.BaudRateChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SerialPortSettings.DataBitsChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SerialPortSettings.ParityChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SerialPortSettings.StopBitsChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SerialPortSettings.FlowControlChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SerialPortSettings.AliveMonitorChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SerialPortSettings.AutoReopenChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSettings.BaudRate">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSettings.DataBits">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSettings.Parity">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSettings.StopBits">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSettings.FlowControl">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSettings.AliveMonitor">
+            <remarks>
+            Structs cannot be used with the designer.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSettings.AutoReopen">
+            <remarks>
+            Structs cannot be used with the designer.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.OnFormDeactivateWorkaround">
+            <remarks>See remarks in <see cref="T:MKY.Windows.Forms.ComboBoxEx"/>.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SerialPortSettings.SerialPortSettings_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.SerialPortSettings_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.SerialPortSettings_EnabledChanged(System.Object,System.EventArgs)">
+            <summary>
+            Ensure that all controls are cleared when control gets disabled.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.OnBaudRateChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.OnDataBitsChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.OnParityChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.OnStopBitsChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.OnFlowControlChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.OnAliveMonitorChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.OnAutoReopenChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SerialPortSettings.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSettings.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.PredefinedCommands">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.PredefinedCommands.PageLayoutChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.PredefinedCommands.SelectedPageIdChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.PredefinedCommands.SendCommandRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.PredefinedCommands.DefineCommandRequest">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommands.PageLayout">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommands.Pages">
+            <remarks>
+            For performance reasons, opposed to other control properties, this property does not
+            only set the properly if it has changed, but rather sets it always. Reasons:
+            <list type="bullet">
+            <item><description><code>IEnumerableEx.ItemsEqual()</code> takes time.</description></item>
+            <item><description>This property is only set by the parent terminal if the commands changed indeed.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommands.SelectedPageId">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommands.SelectedPageIndex">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommands.ParseModeForText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommands.RootDirectoryForFile">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommands.TerminalIsReadyToSendForSomeTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommands.HideUndefinedCommands">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.NextPage">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.PreviousPage">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.TryGetCommandFromId(System.Int32,YAT.Model.Types.Command@)">
+            <summary>
+            Sets <paramref name="command"/> to the command specified by <paramref name="id"/>.
+            Returns <c>false</c> and sets <paramref name="command"/> to <c>null</c> if command is undefined or invalid.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.TryGetCommandIdFromLocation(System.Drawing.Point,System.Int32@)">
+            <summary>
+            Sets <paramref name="id"/> to command ID (1..max) that is assigned to the button at the specified location.
+            Returns <c>false</c> and sets <paramref name="id"/> to <c>0</c> if no button.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.TryGetCommandFromLocation(System.Drawing.Point,YAT.Model.Types.Command@)">
+            <summary>
+            Sets <paramref name="command"/> to the command that is assigned to the button at the specified location.
+            Returns <c>false</c> and sets <paramref name="command"/> to <c>null</c> if command is undefined or invalid.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.SuspendCommandStateUpdate">
+            <remarks>Useful to improve performance.</remarks>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.ResumeCommandStateUpdate(System.Boolean)">
+            <remarks>Useful to improve performance.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommands.CommandStateUpdateIsSuspended">
+            <remarks>Useful to improve performance.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommands.PredefinedCommands_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.PredefinedCommands_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.RequestSendCommand(System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.RequestDefineCommand(System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.OnPageLayoutChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.OnSelectedPageIdChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.OnSendCommandRequest(YAT.Model.Types.PredefinedCommandEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.OnDefineCommandRequest(YAT.Model.Types.PredefinedCommandEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.PredefinedCommands.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommands.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.PredefinedCommandButtonSet">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.PredefinedCommandButtonSet.buttons_commands_wasDefined">
+            <summary>Array of flags indicating the previous state of each button.</summary>
+            <remarks>Used for improving performance because <see cref="P:System.Drawing.SystemFonts.DefaultFont"/> and <see cref="P:MKY.Drawing.FontEx.DefaultFontItalic"/> are quite slow.</remarks>
+        </member>
+        <member name="E:YAT.View.Controls.PredefinedCommandButtonSet.SendCommandRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.PredefinedCommandButtonSet.DefineCommandRequest">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandButtonSet.SubpageId">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandButtonSet.Commands">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandButtonSet.ParseModeForText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandButtonSet.RootDirectoryForFile">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandButtonSet.TerminalIsReadyToSendForSomeTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandButtonSet.HideUndefinedCommands">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.TryGetCommandFromId(System.Int32,YAT.Model.Types.Command@)">
+            <summary>
+            Sets <paramref name="command"/> to the command specified by <paramref name="id"/>.
+            Returns <c>false</c> and sets <paramref name="command"/> to <c>null</c> if command is undefined or invalid.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.TryGetCommandIdFromLocation(System.Drawing.Point,System.Int32@)">
+            <summary>
+            Sets <paramref name="id"/> to command ID (1..max) that is assigned to the button at the specified location.
+            Returns <c>false</c> and sets <paramref name="id"/> to <c>0</c> if no button.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.TryGetCommandFromLocation(System.Drawing.Point,YAT.Model.Types.Command@)">
+            <summary>
+            Sets <paramref name="command"/> to the command that is assigned to the button at the specified location.
+            Returns <c>false</c> and sets <paramref name="command"/> to <c>null</c> if command is undefined or invalid.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.SuspendCommandStateUpdate">
+            <remarks>Useful to improve performance.</remarks>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.ResumeCommandStateUpdate(System.Boolean)">
+            <remarks>Useful to improve performance.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandButtonSet.CommandStateUpdateIsSuspended">
+            <remarks>Useful to improve performance.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandButtonSet.PredefinedCommandButtonSet_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.PredefinedCommandButtonSet_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandButtonSet.SubpageIndex">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.PredefinedCommandButtonSet.SubpageCommandIndexOffset">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.RequestSendCommand(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.RequestDefineCommand(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.OnSendCommandRequest(YAT.Model.Types.PredefinedCommandEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.OnDefineCommandRequest(YAT.Model.Types.PredefinedCommandEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.PredefinedCommandButtonSet.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.PredefinedCommandButtonSet.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.SendText">
+             <summary>
+             Provides command edit and send. Control keeps track of the edit state to properly
+             react on all possible edit states.
+             </summary>
+             <remarks>
+             On focus enter, edit state is always reset.
+             On focus leave, edit state is kept depending on how focus is leaving.
+             </remarks>
+             <remarks>
+             Note that similar code exists in <see cref="T:YAT.View.Controls.SendFile"/> and <see cref="T:YAT.View.Controls.PredefinedCommandSettingsSet"/>.
+             The diff among these three implementations shall be kept as small as possible.
+            
+             For a future refactoring, consider to separate the common code into a common view-model.
+             </remarks>
+        </member>
+        <member name="T:YAT.View.Controls.SendText.TextFocusState">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SendText.TextFocusState.EditIsInactive">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SendText.TextFocusState.EditHasFocus">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SendText.TextFocusState.IsLeavingEdit">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SendText.TextFocusState.IsLeavingParent">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SendText.SendImmediatelyDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SendText.SendSplitterDistanceDefault">
+            <remarks>
+            The designer requires that this is a constant.
+            Set same value as splitContainer.SplitterDistance is designed.
+            </remarks>
+        </member>
+        <member name="F:YAT.View.Controls.SendText.userInputIsInStandby">
+            <summary>
+            Flag to work around the issue described further below.
+            </summary>
+        </member>
+        <member name="E:YAT.View.Controls.SendText.CommandChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SendText.TextFocusedChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SendText.SendCommandRequest">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendText.Command">
+            <remarks>
+            This property always returns a <see cref="P:YAT.View.Controls.SendText.Command"/> object, it never returns <c>null</c>.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SendText.Recent">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendText.TerminalType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendText.UseExplicitDefaultRadix">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendText.ParseMode">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendText.SendImmediately">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendText.TerminalIsReadyToSendForSomeTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendText.SendSplitterDistance">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.SetTextFocusState(YAT.View.Controls.SendText.TextFocusState)">
+            <remarks>
+            Function instead of property to emphasize purpose and prevent naming conflict among enum and property.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SendText.TextFocused">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.StandbyInUserInput">
+            <remarks>
+            Required to be called "from the outside" because...
+            ...if called in the constructor of the control, SetControls() has not yet been called.
+            ...if called in the 'Paint' handler of the control, the last terminal in the application
+               gets selected.    (due to the fact that an application  ^ ^ only has one focus)
+            ...if called in the 'Enter' handler of the control, the (front) input gets selected even
+               when focus enters "from the back".
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.PrepareUserInput">
+            <remarks>
+            Required to be called "from the outside" because...
+            ...if called in the constructor of the control, SetControls() has not yet been called.
+            ...if called in the 'Paint' handler of the control, the last terminal in the application
+               gets selected.    (due to the fact that an application  ^ ^ only has one focus)
+            ...if called in the 'Enter' handler of the control, the (front) input gets selected even
+               when focus enters "from the back".
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.ValidateInput">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.NotifyKeyDown(System.Windows.Forms.KeyEventArgs)">
+            <remarks>Somewhat ugly workaround to handle key events...</remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.NotifyKeyUp(System.Windows.Forms.KeyEventArgs)">
+            <remarks>Somewhat ugly workaround to handle key events...</remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.OnFormDeactivateWorkaround">
+            <remarks>See remarks in <see cref="T:MKY.Windows.Forms.ComboBoxEx"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+            <remarks>
+            In case of pressing a modifier key (e.g. [Shift]), this method is invoked twice! Both
+            invocations will state msg=0x100 (WM_KEYDOWN)! See:
+            https://msdn.microsoft.com/en-us/library/system.windows.forms.control.processcmdkey.aspx:
+            The ProcessCmdKey method first determines whether the control has a ContextMenu, and if
+            so, enables the ContextMenu to process the command key. If the command key is not a menu
+            shortcut and the control has a parent, the key is passed to the parent's ProcessCmdKey
+            method. The net effect is that command keys are "bubbled" up the control hierarchy. In
+            addition to the key the user pressed, the key data also indicates which, if any, modifier
+            keys were pressed at the same time as the key. Modifier keys include the SHIFT, CTRL, and
+            ALT keys.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SendText.SendText_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.SendText_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.SendText_Enter(System.Object,System.EventArgs)">
+            <remarks>
+            Do not modify <see cref="F:YAT.View.Controls.SendText.isValidated"/>. Command may already have been validated.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.SendText_Leave(System.Object,System.EventArgs)">
+             <remarks>
+             Event sequence when focus is leaving control, e.g. other MDI child activated.
+             1. ComboBox.Leave()
+             2. UserControl.Leave()
+             3. ComboBox.Validating()
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.comboBox_SingleLineText_Leave(System.Object,System.EventArgs)">
+             <remarks>
+             Event sequence when focus is leaving, e.g. TAB is pressed.
+             1. ComboBox.Leave()
+             2. ComboBox.Validating()
+            
+             Event sequence when focus is leaving control, e.g. other MDI child activated.
+             1. ComboBox.Leave()
+             2. UserControl.Leave()
+             3. ComboBox.Validating()
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.comboBox_SingleLineText_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <remarks>
+            This _SelectedIndexChanged() handler is useful even though
+                 _ExplicitDefaultRadix_Validating() below gets called anyway.
+            because <see cref="F:YAT.View.Controls.SendText.isValidated"/> gets set here.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.comboBox_SingleLineText_Validating(System.Object,System.ComponentModel.CancelEventArgs)">
+             <remarks>
+             Event sequence when focus is leaving, e.g. TAB is pressed.
+             1. ComboBox.Leave()
+             2. ComboBox.Validating()
+            
+             Event sequence when focus is leaving control, e.g. other MDI child activated.
+             1. ComboBox.Leave()
+             2. UserControl.Leave()
+             3. ComboBox.Validating()
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.SetCommandControls">
+            <remarks>
+            Separate function as it is not needed to set this text on any change.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.ShowMultiLineBox(System.Windows.Forms.Control)">
+            <remarks>
+            Almost duplicated code in <see cref="M:YAT.View.Controls.PredefinedCommandSettingsSet.ShowMultiLineBox(System.Windows.Forms.Control)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.OnCommandChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.OnTextFocusedChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.OnSendCommandRequest(YAT.View.Controls.SendTextOptionEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.DebugUserInputEnter(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.DebugUserInputLeave">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.DebugUserInputState">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="F:YAT.View.Controls.SendText.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.SendText.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.SendFile">
+             <remarks>
+             Note that similar code exists in <see cref="T:YAT.View.Controls.SendText"/> and <see cref="T:YAT.View.Controls.PredefinedCommandSettingsSet"/>.
+             The diff among these three implementations shall be kept as small as possible.
+            
+             For a future refactoring, consider to separate the common code into a common view-model.
+             </remarks>
+        </member>
+        <member name="F:YAT.View.Controls.SendFile.SendSplitterDistanceDefault">
+            <remarks>
+            The designer requires that this is a constant.
+            Set same value as splitContainer.SplitterDistance is designed.
+            </remarks>
+        </member>
+        <member name="E:YAT.View.Controls.SendFile.CommandChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SendFile.SendCommandRequest">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendFile.Command">
+            <remarks>
+            This property always returns a <see cref="P:YAT.View.Controls.SendFile.Command"/> object, it never returns <c>null</c>.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SendFile.Recent">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendFile.RootDirectory">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendFile.TerminalType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendFile.UseExplicitDefaultRadix">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendFile.TerminalIsReadyToSendForSomeTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SendFile.SendSplitterDistance">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+            <remarks>
+            In case of pressing a modifier key (e.g. [Shift]), this method is invoked twice! Both
+            invocations will state msg=0x100 (WM_KEYDOWN)! See:
+            https://msdn.microsoft.com/en-us/library/system.windows.forms.control.processcmdkey.aspx:
+            The ProcessCmdKey method first determines whether the control has a ContextMenu, and if
+            so, enables the ContextMenu to process the command key. If the command key is not a menu
+            shortcut and the control has a parent, the key is passed to the parent's ProcessCmdKey
+            method. The net effect is that command keys are "bubbled" up the control hierarchy. In
+            addition to the key the user pressed, the key data also indicates which, if any, modifier
+            keys were pressed at the same time as the key. Modifier keys include the SHIFT, CTRL, and
+            ALT keys.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SendFile.SendFile_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.SendFile_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.comboBox_ExplicitDefaultRadix_Validating(System.Object,System.ComponentModel.CancelEventArgs)">
+            <remarks>Using 'Validation' instead of 'SelectedIndexChanged' for symmetricity with <see cref="T:YAT.View.Controls.SendText"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.OnCommandChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.OnSendCommandRequest(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.DebugCommandEnter(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.DebugCommandLeave">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.DebugCommandState">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="F:YAT.View.Controls.SendFile.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.SendFile.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.SocketSelection">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SocketSelection.localInterfaceListIsBeingSetOrHasAlreadyBeenSet">
+            <summary>
+            Only set interface list and controls once as soon as this control is enabled. This saves
+            some time on startup since scanning for the interfaces may take some time.
+            </summary>
+        </member>
+        <member name="E:YAT.View.Controls.SocketSelection.RemoteHostChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SocketSelection.RemoteTcpPortChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SocketSelection.RemoteUdpPortChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SocketSelection.LocalInterfaceChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SocketSelection.LocalFilterChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SocketSelection.LocalTcpPortChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.SocketSelection.LocalUdpPortChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.SocketType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.RemoteHost">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.RemoteTcpPort">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.RemoteUdpPort">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.LocalInterface">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.LocalFilter">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.LocalTcpPort">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.LocalUdpPort">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.RecentRemoteHosts">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.RecentLocalFilters">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.RecentPorts">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.RefreshLocalInterfaceList">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.OnFormDeactivateWorkaround">
+            <remarks>See remarks in <see cref="T:MKY.Windows.Forms.ComboBoxEx"/>.</remarks>
+        </member>
+        <member name="P:YAT.View.Controls.SocketSelection.SocketSelection_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.SocketSelection_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.SocketSelection_EnabledChanged(System.Object,System.EventArgs)">
+            <summary>
+            Ensure that all controls are cleared when control gets disabled.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.SetLocalInterfaceList">
+             <remarks>
+             Without precaution, and in case of no interfaces, the message box may appear twice due to
+             the recursion described above (out of doc tag due to words not recognized by StyleCop).
+             This issue is fixed by setting 'localInterfaceListIsBeingSetOrIsAlreadySet' upon entering this method.
+            
+             Note that the same fix has been implemented in <see cref="T:YAT.View.Controls.SerialPortSelection"/> and <see cref="T:YAT.View.Controls.UsbSerialHidDeviceSelection"/>.
+             </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.ShowNoneAvailableMessage">
+            <remarks>
+            Showing this as on dialog message instead of <see cref="T:System.Windows.Forms.MessageBox"/> to reduce the number of potentially annoying popups.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.OnRemoteHostChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.OnRemoteTcpPortChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.OnRemoteUdpPortChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.OnLocalInterfaceChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.OnLocalFilterChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.OnLocalTcpPortChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.OnLocalUdpPortChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.SocketSelection.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.SocketSelection.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.TerminalSelection">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.TerminalSelection.NewTerminalHelpText">
+            <remarks>\fixme: Replace this help text with a real help.</remarks>
+        </member>
+        <member name="E:YAT.View.Controls.TerminalSelection.TerminalTypeChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.TerminalSelection.IOTypeChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.TerminalSelection.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.TerminalSelection.TerminalType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.TerminalSelection.IOType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.TerminalSelection.TerminalSelection_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.TerminalSelection.TerminalSelection_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.TerminalSelection.TerminalSelection_EnabledChanged(System.Object,System.EventArgs)">
+            <summary>
+            Ensure that all controls are cleared when control gets disabled.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.TerminalSelection.OnTerminalTypeChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.TerminalSelection.OnIOTypeChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.TerminalSelection.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.TerminalSelection.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.TerminalSelection.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.TextFormat">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.TextFormat.FormatChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.TextFormat.CustomColorsChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.TextFormat.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.TextFormat.FormatFont">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.TextFormat.FormatFontWithoutStyle">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.TextFormat.FormatFontStyle">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.TextFormat.FormatColor">
+            <remarks>
+            The default is the value of the <see cref="P:System.Windows.Forms.Control.DefaultForeColor"/> property.
+            </remarks>
+        </member>
+        <member name="P:YAT.View.Controls.TextFormat.CustomColors">
+            <summary>
+            Gets or sets the set of custom colors shown in the dialog box.
+            </summary>
+            <returns>
+            A set of custom colors shown by the dialog box. The default value is null.
+            </returns>
+        </member>
+        <member name="M:YAT.View.Controls.TextFormat.OnFormatChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.TextFormat.OnCustomColorsChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.TextFormat.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.TextFormat.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.TextFormat.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Properties.Resources.Image_Monitor_Bidir_28x28_BluePurple">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Properties.Resources.Image_Monitor_Bidir_28x28_Grey">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Properties.Resources.Image_Monitor_Rx_28x28_Grey">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Properties.Resources.Image_Monitor_Rx_28x28_Purple">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Properties.Resources.Image_Monitor_Tx_28x28_Blue">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Properties.Resources.Image_Monitor_Tx_28x28_Grey">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Properties.Resources.Image_Tool_arrow_refresh_small_16x16">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.Properties.Resources.Image_Tool_lightning_16x16">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.UsbSerialHidReportFormatPreview">
+            <remarks>This control is not scalable to simplify implementation.</remarks>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidReportFormatPreview.UseIdChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidReportFormatPreview.PrependPayloadByteLengthChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidReportFormatPreview.AppendTerminatingZeroChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidReportFormatPreview.FillLastReportChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.UsbSerialHidReportFormatPreview.FormatChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidReportFormatPreview.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:YAT.View.Controls.UsbSerialHidReportFormatPreview"/> class.
+            </summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidReportFormatPreview.UseId">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidReportFormatPreview.PrependPayloadByteLength">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidReportFormatPreview.AppendTerminatingZero">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidReportFormatPreview.FillLastReport">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidReportFormatPreview.Format">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.UsbSerialHidReportFormatPreview.UsbSerialHidReportFormatPreview_Paint_IsFirst">
+            <summary>
+            Flag only used by the following event handler.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidReportFormatPreview.UsbSerialHidReportFormatPreview_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            Use paint event to ensure that message boxes in case of errors (e.g. validation errors)
+            are shown on top of a properly painted control or form.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidReportFormatPreview.ExactOrNearest(System.Linq.Lookup{System.Int32,System.String},System.Int32)">
+            <summary>
+            Evaluates the exact or nearest match.
+            </summary>
+            <remarks>
+            Required because scaling may lead to slightly off values.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidReportFormatPreview.OnUseIdChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidReportFormatPreview.OnPrependPayloadByteLengthChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidReportFormatPreview.OnAppendTerminatingZeroChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidReportFormatPreview.OnFillLastReportChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidReportFormatPreview.OnFormatChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.UsbSerialHidReportFormatPreview.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidReportFormatPreview.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:YAT.View.Controls.UsbSerialHidReportFormatPreview.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.SerialPortSelectionWorker">
+            <remarks>
+            Not using <see cref="T:System.ComponentModel.BackgroundWorker"/> due to its limitations:
+             - Not possible to abort the thread (required for cases where system calls crash).
+             - Somewhat cumbersome event/message handling ('UserState').
+            </remarks>
+        </member>
+        <member name="F:YAT.View.Controls.SerialPortSelectionWorker.eventHelper">
+            <summary>
+            A dedicated event helper to allow ignoring the 'ThreadAbortException' when cancelling.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelectionWorker.NotifyThreadAbortWillHappen">
+            <summary>
+            Notifies the worker that a thread abort is about to happen soon.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelectionWorker.OnStatus1Changed(MKY.EventArgs{System.String})">
+            <summary>
+            Invokes the <see cref="E:YAT.View.Controls.SerialPortSelectionWorker.Status1Changed"/> event.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelectionWorker.OnStatus2Changed(MKY.EventArgs{System.String})">
+            <summary>
+            Invokes the <see cref="E:YAT.View.Controls.SerialPortSelectionWorker.Status2Changed"/> event.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Controls.SerialPortSelectionWorker.OnIsDone(MKY.EventArgs{System.Windows.Forms.DialogResult})">
+            <summary>
+            Invokes the <see cref="E:YAT.View.Controls.SerialPortSelectionWorker.IsDone"/> event.
+            </summary>
+        </member>
+        <member name="T:YAT.View.Controls.MonitorRenderer">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.MonitorRenderer.staticLineNumberFontCache">
+            <remarks>
+            For performance reasons, cache font.
+            </remarks>
+        </member>
+        <member name="F:YAT.View.Controls.MonitorRenderer.staticLineNumberFormat">
+            <summary>String format used for drawing line numbers.</summary>
+        </member>
+        <member name="F:YAT.View.Controls.MonitorRenderer.staticMonitorFormat">
+            <summary>String format used for drawing monitor strings.</summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorRenderer.DrawAndMeasureLineNumber(System.String,YAT.Format.Settings.FormatSettings,System.Drawing.Graphics,System.Drawing.Rectangle,System.Int32@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorRenderer.DrawAndMeasureLine(YAT.Domain.DisplayLine,System.Drawing.Font,System.Drawing.Graphics,System.Drawing.Rectangle,System.Windows.Forms.DrawItemState,System.Drawing.Color,System.Drawing.Color,System.Int32@)">
+            <remarks>
+            This overload is used if formatting is disabled.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorRenderer.DrawAndMeasureLine(YAT.Domain.DisplayLine,YAT.Format.Settings.FormatSettings,System.Drawing.IDeviceContext,System.Drawing.Rectangle,System.Windows.Forms.DrawItemState,System.Int32@)">
+            <remarks>
+            This overload is used if formatting is enabled.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorRenderer.DrawAndMeasureElement(YAT.Domain.DisplayElement,YAT.Format.Settings.FormatSettings,System.Drawing.IDeviceContext,System.Drawing.Rectangle,System.Windows.Forms.DrawItemState,System.Boolean,System.Int32@,System.Int32@)">
+            <remarks>
+            This overload is used if formatting is enabled.
+            </remarks>
+        </member>
+        <member name="T:YAT.View.Controls.MonitorActivityState">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.MonitorActivityState.Inactive">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.MonitorActivityState.Active">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.View.Controls.MonitorActivityState.Pending">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Controls.MonitorDataStatusHelper">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.MonitorDataStatusHelper.StatusTextChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorDataStatusHelper.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.MonitorDataStatusHelper.RepositoryType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.MonitorDataStatusHelper.Counts">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.MonitorDataStatusHelper.Rates">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.MonitorDataStatusHelper.TxStatusText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.MonitorDataStatusHelper.RxStatusText">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorDataStatusHelper.SetCounts(YAT.Model.BytesLinesTuple)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorDataStatusHelper.SetRates(YAT.Model.BytesLinesTuple)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorDataStatusHelper.SetCountsAndRates(YAT.Model.CountsRatesTuple)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorDataStatusHelper.Reset">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorDataStatusHelper.OnStatusTextChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Controls.MonitorTimeStatusHelper">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.View.Controls.MonitorTimeStatusHelper.StatusTextChanged">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorTimeStatusHelper.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.MonitorTimeStatusHelper.ActiveConnectTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.MonitorTimeStatusHelper.TotalConnectTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.MonitorTimeStatusHelper.ActiveStatusText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Controls.MonitorTimeStatusHelper.TotalStatusText">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorTimeStatusHelper.Set(System.TimeSpan,System.TimeSpan)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorTimeStatusHelper.Reset">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Controls.MonitorTimeStatusHelper.OnStatusTextChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+    </members>
+</doc>

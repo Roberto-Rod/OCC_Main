@@ -1,0 +1,1530 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MKY.Windows.Forms</name>
+    </assembly>
+    <members>
+        <member name="T:MKY.Windows.Forms.Chronometer">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.Windows.Forms.Chronometer.TimeSpanChanged">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.#ctor(System.ComponentModel.IContainer)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.Chronometer.Interval">
+            <remarks>
+            No explicit 'Default' constant as the default is given by <see cref="T:System.Windows.Forms.Timer"/>.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.Chronometer.TimeSpan">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.Start">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.Stop">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.StartStop">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.Reset">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.Restart">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.timer_Chronometer_Tick(System.Object,System.EventArgs)">
+            <remarks>
+            This 'Windows.Forms.Timer' event handler will be called on the application main thread,
+            i.e. is single-threaded. No synchronization or prevention of a race condition is needed.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.OnTimeSpanChanged(MKY.TimeSpanEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.Windows.Forms.Chronometer.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.Chronometer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MKY.Windows.Forms.IOnFormDeactivateWorkaround">
+            <remarks>See remarks in <see cref="T:MKY.Windows.Forms.ComboBoxEx"/>.</remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.IOnFormDeactivateWorkaround.OnFormDeactivateWorkaround">
+            <remarks>See remarks in <see cref="T:MKY.Windows.Forms.ComboBoxEx"/>.</remarks>
+        </member>
+        <member name="T:MKY.Windows.Forms.ExtendedMessageBox">
+            <summary>
+            Extends <see cref="T:System.Windows.Forms.MessageBox"/> with optional checkbox and link label.
+            </summary>
+            <remarks><para>
+            The API follows the API of <see cref="T:System.Windows.Forms.MessageBox"/>, i.e. based on static methods.
+            </para><para>
+            The layout best follows the layout of a <see cref="T:System.Windows.Forms.MessageBox"/>:
+            <list type="bullet">
+            <item><description>Buttons are right-aligned.</description></item>
+            <item><description>Minimum height is 133 pixels (on Win10 screen) = 140 pixels (in Visual Studio designer).</description></item>
+            <item><description>Minimum width is 124 pixels (on Win10 screen) = 126 pixels (in Visual Studio designer).</description></item>
+            <item><description>Maximum width is 412 pixels (on Win10 screen) = 426 pixels (in Visual Studio designer).</description></item>
+            </list></para><para>
+            <see cref="P:System.Windows.Forms.Control.RightToLeft"/> is not supported.
+            </para></remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ExtendedMessageBox.#cctor">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ExtendedMessageBox.Show(System.Windows.Forms.IWin32Window,System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary>
+            Displays a message box with the specified text, caption, buttons, icon, default
+            button and optional checkbox and link label.
+            </summary>
+            <param name="owner">
+            An implementation of <see cref="T:System.Windows.Forms.IWin32Window"/> that will own the modal dialog box.
+            </param>
+            <param name="text">
+            The text to display in the message box.
+            </param>
+            <param name="caption">
+            The text to display in the title bar of the status box.
+            </param>
+            <param name="buttons">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxButtons"/> values that specifies which buttons to display in the message box.
+            </param>
+            <param name="icon">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxIcon"/> values that specifies which icon to display in the message box.
+            </param>
+            <param name="defaultButton">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxDefaultButton"/> values that specifies the default button for the message box.
+            </param>
+            <returns>
+            One of the <see cref="T:System.Windows.Forms.DialogResult"/> values.
+            </returns>
+        </member>
+        <member name="M:MKY.Windows.Forms.ExtendedMessageBox.Show(System.Windows.Forms.IWin32Window,System.String,System.Collections.Generic.ICollection{System.Windows.Forms.LinkLabel.Link},System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary>
+            Displays a message box with the specified text, caption, buttons, icon, default
+            button and optional checkbox and link label.
+            </summary>
+            <param name="owner">
+            An implementation of <see cref="T:System.Windows.Forms.IWin32Window"/> that will own the modal dialog box.
+            </param>
+            <param name="text">
+            The text to display in the message box.
+            </param>
+            <param name="links">
+            An optional collection of links, resulting in use of a <see cref="T:System.Windows.Forms.LinkLabel"/>.
+            </param>
+            <param name="caption">
+            The text to display in the title bar of the status box.
+            </param>
+            <param name="buttons">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxButtons"/> values that specifies which buttons to display in the message box.
+            </param>
+            <param name="icon">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxIcon"/> values that specifies which icon to display in the message box.
+            </param>
+            <param name="defaultButton">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxDefaultButton"/> values that specifies the default button for the message box.
+            </param>
+            <returns>
+            One of the <see cref="T:System.Windows.Forms.DialogResult"/> values.
+            </returns>
+        </member>
+        <member name="M:MKY.Windows.Forms.ExtendedMessageBox.Show(System.Windows.Forms.IWin32Window,System.String,System.String,System.String,System.Boolean@,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary>
+            Displays a status box in front of the specified object and with the specified
+            status and caption and returns the result.
+            </summary>
+            <param name="owner">
+            An implementation of System.Windows.Forms.IWin32Window that will own the modal dialog box.
+            </param>
+            <param name="text">
+            The text to display in the message box.
+            </param>
+            <param name="caption">
+            The text to display in the title bar of the status box.
+            </param>
+            <param name="buttons">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxButtons"/> values that specifies which buttons to display in the message box.
+            </param>
+            <param name="icon">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxIcon"/> values that specifies which icon to display in the message box.
+            </param>
+            <param name="defaultButton">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxDefaultButton"/> values that specifies the default button for the message box.
+            </param>
+            <param name="checkText">
+            The text of the setting check box.
+            </param>
+            <param name="checkValue">
+            The value of the setting.
+            </param>
+            <returns>
+            One of the <see cref="T:System.Windows.Forms.DialogResult"/> values.
+            </returns>
+        </member>
+        <member name="M:MKY.Windows.Forms.ExtendedMessageBox.Show(System.Windows.Forms.IWin32Window,System.String,System.Collections.Generic.ICollection{System.Windows.Forms.LinkLabel.Link},System.String,System.String,System.Boolean@,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary>
+            Displays a status box in front of the specified object and with the specified
+            status and caption and returns the result.
+            </summary>
+            <param name="owner">
+            An implementation of System.Windows.Forms.IWin32Window that will own the modal dialog box.
+            </param>
+            <param name="text">
+            The text to display in the message box.
+            </param>
+            <param name="links">
+            An optional collection of links, resulting in use of a <see cref="T:System.Windows.Forms.LinkLabel"/>.
+            </param>
+            <param name="caption">
+            The text to display in the title bar of the status box.
+            </param>
+            <param name="buttons">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxButtons"/> values that specifies which buttons to display in the message box.
+            </param>
+            <param name="icon">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxIcon"/> values that specifies which icon to display in the message box.
+            </param>
+            <param name="defaultButton">
+            One of the <see cref="T:System.Windows.Forms.MessageBoxDefaultButton"/> values that specifies the default button for the message box.
+            </param>
+            <param name="checkText">
+            The text of the setting check box.
+            </param>
+            <param name="checkValue">
+            The value of the setting.
+            </param>
+            <returns>
+            One of the <see cref="T:System.Windows.Forms.DialogResult"/> values.
+            </returns>
+        </member>
+        <member name="M:MKY.Windows.Forms.ExtendedMessageBox.#ctor">
+            <remarks>Default constructor needed for designer support.</remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ExtendedMessageBox.#ctor(System.String,System.Collections.Generic.ICollection{System.Windows.Forms.LinkLabel.Link},System.String,System.String,System.Boolean@,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ExtendedMessageBox.Caption">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ExtendedMessageBox.MessageText">
+            <remarks>
+            Named "Message" rather than just "Text" to disambiguate <see cref="P:System.Windows.Forms.Form.Text"/>.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ExtendedMessageBox.LinkText">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ExtendedMessageBox.CheckValue">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.Windows.Forms.ExtendedMessageBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ExtendedMessageBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.ExtendedMessageBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MKY.Windows.Forms.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:MKY.Windows.Forms.ToolStripComboBoxEx">
+            <summary>
+            An improved <see cref="T:System.Windows.Forms.ToolStripComboBox"/> that additionally provides:
+            <list type="bullet">
+            <item><description>The [Ctrl+Backspace] shortcut.</description></item>
+            <item><description>Restore of cursor position and text selection on getting focus, same behavior as <see cref="T:System.Windows.Forms.TextBox"/>.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ToolStripComboBoxEx.CursorAndSelectionHelper">
+            <summary>
+            Gets or sets the previous cursor position and text selection.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ToolStripComboBoxEx.PreviousCursorIsAtEnd">
+            <summary>
+            Gets whether the previous cursor position is at the end of the editable portion of the combo box.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ToolStripComboBoxEx.PreviousSelectionStart">
+            <summary>
+            Gets the previous starting index of text selected in the combo box.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ToolStripComboBoxEx.PreviousSelectionLength">
+            <summary>
+            Gets the previous number of characters selected in the editable portion of the combo box.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ToolStripComboBoxEx.PreviousSelectionSpansEnd">
+            <summary>
+            Gets whether the previous selection spans to the end of the editable portion of the combo box.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ToolStripComboBoxEx.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+            <remarks>
+            Based on https://stackoverflow.com/questions/1124639/winforms-textbox-using-ctrl-backspace-to-delete-whole-word.
+            </remarks>
+            <remarks>
+            In case of pressing a modifier key (e.g. [Shift]), this method is invoked twice! Both
+            invocations will state msg=0x100 (WM_KEYDOWN)! See:
+            https://msdn.microsoft.com/en-us/library/system.windows.forms.control.processcmdkey.aspx:
+            The ProcessCmdKey method first determines whether the control has a ContextMenu, and if
+            so, enables the ContextMenu to process the command key. If the command key is not a menu
+            shortcut and the control has a parent, the key is passed to the parent's ProcessCmdKey
+            method. The net effect is that command keys are "bubbled" up the control hierarchy. In
+            addition to the key the user pressed, the key data also indicates which, if any, modifier
+            keys were pressed at the same time as the key. Modifier keys include the SHIFT, CTRL, and
+            ALT keys.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ToolStripComboBoxEx.OnGotFocus(System.EventArgs)">
+             <summary>
+             Implements the same selection behavior on getting focus as <see cref="T:System.Windows.Forms.TextBox"/>.
+             </summary>
+             <remarks>
+             Attention: Thanks to the Microsoft guys, the implementation is trickier than necessary!
+            
+             Event sequence on entering the control using [Tab]:
+              1. 'Enter'
+              2. 'LostFocus' !?!
+              3. 'GotFocus'
+            
+             Event sequence on entering the control by mouse click within same control or form:
+              1. 'Enter'
+              2. 'GotFocus'
+            
+             Event sequence on entering the control when switching among MDI children (e.g. using [Ctrl+Tab]):
+              1. 'Enter'
+              2. 'LostFocus' !?!
+              3. 'GotFocus'
+            
+             Event sequence on entering the control when changing applications (e.g. using [Alt+Tab]):
+                  No 'Enter' !?!
+              1. 'LostFocus' !?!
+              2. 'GotFocus'
+            
+             (Note that this is "slightly" different to what is stated at
+             https://docs.microsoft.com/en-us/dotnet/framework/winforms/order-of-events-in-windows-forms...)
+            
+             Event sequence on leaving the control using [Tab]:
+              1. 'Leave'     and values are OK.
+              2. 'LostFocus' but values already are 0/0...
+            
+             Event sequence on leaving the control by mouse click within same control or form:
+              1. 'LostFocus' but values already are 0/0...
+              2. 'Leave'     but values invalidly are 0/0 !?!
+            
+             Event sequence on leaving the control when switching among MDI children (e.g. using [Ctrl+Tab]):
+              1. 'LostFocus' but values already are 0/0...
+              2. 'Leave'     but values invalidly are 0/0 !?!
+            
+             Event sequence on leaving the control when changing applications (e.g. using [Alt+Tab]):
+              1. 'LostFocus' but values already are 0/0...
+            
+             Resulting constraints and solution/workaround/remaining:
+              a') 'LostFocus' is called just before 'GotFocus' in several cases, thus focus state would have to be kept as well.
+              a)  'LostFocus' cannot keep the values anyway, for whatever reason...
+                    => 'Leave' is OK for [Tab], but [Ctrl+Tab] and [Alt+Tab] must be notified from parent form.
+                    => 'Leave' is *not* OK for mouse click, and there is no known workaround! [YAT bug #403 "Issues with ComboBoxEx"]
+              b') 'Enter' couldn't restore the values, for whatever reason it is too early.
+              b)  'Enter' cannot restore the values anyway, since it isn't called on [Alt+Tab].
+                    => 'GotFocus' is OK.
+             </remarks>
+             <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.ToolStripComboBoxEx.OnLeave(System.EventArgs)">
+             <summary>
+             Implements the same selection behavior on getting focus as <see cref="T:System.Windows.Forms.TextBox"/>.
+             </summary>
+             <remarks>
+             Attention: See remarks in <see cref="M:MKY.Windows.Forms.ToolStripComboBoxEx.OnGotFocus(System.EventArgs)"/>!
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+             <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.ToolStripComboBoxEx.OnFormDeactivateWorkaround">
+             <summary>
+             Implements the same selection behavior on getting focus as <see cref="T:System.Windows.Forms.TextBox"/>.
+             </summary>
+             <remarks>
+             Attention: See remarks in <see cref="M:MKY.Windows.Forms.ToolStripComboBoxEx.OnGotFocus(System.EventArgs)"/>!
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ToolStripComboBoxEx.DebugCursorAndSelection(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.Windows.Forms.TextBoxEx">
+            <summary>
+            An improved <see cref="T:System.Windows.Forms.TextBox"/> that additionally provides:
+            <list type="bullet">
+            <item><description>The [Ctrl+Backspace] shortcut.</description></item>
+            <item><description>The [Ctrl+A] shortcut also if <see cref="P:System.Windows.Forms.TextBoxBase.ReadOnly"/> or <see cref="P:System.Windows.Forms.TextBox.Multiline"/> is <c>true</c>.</description></item>
+            <item><description>Setting <see cref="P:MKY.Windows.Forms.TextBoxEx.Text"/> doesn't select all if <see cref="P:System.Windows.Forms.TextBoxBase.ReadOnly"/> or <see cref="P:System.Windows.Forms.TextBox.Multiline"/> is <c>true</c>.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.TextBoxEx.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+            <remarks>
+            Based on https://stackoverflow.com/questions/1124639/winforms-textbox-using-ctrl-backspace-to-delete-whole-word.
+            </remarks>
+            <remarks>
+            In case of pressing a modifier key (e.g. [Shift]), this method is invoked twice! Both
+            invocations will state msg=0x100 (WM_KEYDOWN)! See:
+            https://msdn.microsoft.com/en-us/library/system.windows.forms.control.processcmdkey.aspx:
+            The ProcessCmdKey method first determines whether the control has a ContextMenu, and if
+            so, enables the ContextMenu to process the command key. If the command key is not a menu
+            shortcut and the control has a parent, the key is passed to the parent's ProcessCmdKey
+            method. The net effect is that command keys are "bubbled" up the control hierarchy. In
+            addition to the key the user pressed, the key data also indicates which, if any, modifier
+            keys were pressed at the same time as the key. Modifier keys include the SHIFT, CTRL, and
+            ALT keys.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.TextBoxEx.Text">
+            <summary>
+            Gets or sets the text.
+            </summary>
+        </member>
+        <member name="T:MKY.Windows.Forms.ComboBoxEx">
+            <summary>
+            An improved <see cref="T:System.Windows.Forms.ComboBox"/> that additionally provides:
+            <list type="bullet">
+            <item><description>The [Ctrl+Backspace] shortcut.</description></item>
+            <item><description>Restore of cursor position and text selection on getting focus, same behavior as <see cref="T:System.Windows.Forms.TextBox"/>.</description></item>
+            </list>
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ComboBoxEx.CursorAndSelectionHelper">
+            <summary>
+            Gets or sets the previous cursor position and text selection.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ComboBoxEx.PreviousCursorIsAtEnd">
+            <summary>
+            Gets whether the previous cursor position is at the end of the editable portion of the combo box.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ComboBoxEx.PreviousSelectionStart">
+            <summary>
+            Gets the previous starting index of text selected in the combo box.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ComboBoxEx.PreviousSelectionLength">
+            <summary>
+            Gets the previous number of characters selected in the editable portion of the combo box.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ComboBoxEx.PreviousSelectionSpansEnd">
+            <summary>
+            Gets whether the previous selection spans to the end of the editable portion of the combo box.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ComboBoxEx.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+            <remarks>
+            Based on https://stackoverflow.com/questions/1124639/winforms-textbox-using-ctrl-backspace-to-delete-whole-word.
+            </remarks>
+            <remarks>
+            In case of pressing a modifier key (e.g. [Shift]), this method is invoked twice! Both
+            invocations will state msg=0x100 (WM_KEYDOWN)! See:
+            https://msdn.microsoft.com/en-us/library/system.windows.forms.control.processcmdkey.aspx:
+            The ProcessCmdKey method first determines whether the control has a ContextMenu, and if
+            so, enables the ContextMenu to process the command key. If the command key is not a menu
+            shortcut and the control has a parent, the key is passed to the parent's ProcessCmdKey
+            method. The net effect is that command keys are "bubbled" up the control hierarchy. In
+            addition to the key the user pressed, the key data also indicates which, if any, modifier
+            keys were pressed at the same time as the key. Modifier keys include the SHIFT, CTRL, and
+            ALT keys.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ComboBoxEx.OnGotFocus(System.EventArgs)">
+             <summary>
+             Implements the same selection behavior on getting focus as <see cref="T:System.Windows.Forms.TextBox"/>.
+             </summary>
+             <remarks>
+             Attention: Thanks to the Microsoft guys, the implementation is trickier than necessary!
+            
+             Event sequence on entering the control using [Tab]:
+              1. 'Enter'
+              2. 'LostFocus' !?!
+              3. 'GotFocus'
+            
+             Event sequence on entering the control by mouse click within same control or form:
+              1. 'Enter'
+              2. 'GotFocus'
+            
+             Event sequence on entering the control when switching among MDI children (e.g. using [Ctrl+Tab]):
+              1. 'Enter'
+              2. 'LostFocus' !?!
+              3. 'GotFocus'
+            
+             Event sequence on entering the control when changing applications (e.g. using [Alt+Tab]):
+                  No 'Enter' !?!
+              1. 'LostFocus' !?!
+              2. 'GotFocus'
+            
+             (Note that this is "slightly" different to what is stated at
+             https://docs.microsoft.com/en-us/dotnet/framework/winforms/order-of-events-in-windows-forms...)
+            
+             Event sequence on leaving the control using [Tab]:
+              1. 'Leave'     and values are OK.
+              2. 'LostFocus' but values already are 0/0...
+            
+             Event sequence on leaving the control by mouse click within same control or form:
+              1. 'LostFocus' but values already are 0/0...
+              2. 'Leave'     but values invalidly are 0/0 !?!
+            
+             Event sequence on leaving the control when switching among MDI children (e.g. using [Ctrl+Tab]):
+              1. 'LostFocus' but values already are 0/0...
+              2. 'Leave'     but values invalidly are 0/0 !?!
+            
+             Event sequence on leaving the control when changing applications (e.g. using [Alt+Tab]):
+              1. 'LostFocus' but values already are 0/0...
+            
+             Resulting constraints and solution/workaround/remaining:
+              a') 'LostFocus' is called just before 'GotFocus' in several cases, thus focus state would have to be kept as well.
+              a)  'LostFocus' cannot keep the values anyway, for whatever reason...
+                    => 'Leave' is OK for [Tab], but [Ctrl+Tab] and [Alt+Tab] must be notified from parent form.
+                    => 'Leave' is *not* OK for mouse click, and there is no known workaround! [YAT bug #403 "Issues with ComboBoxEx"]
+              b') 'Enter' couldn't restore the values, for whatever reason it is too early.
+              b)  'Enter' cannot restore the values anyway, since it isn't called on [Alt+Tab].
+                    => 'GotFocus' is OK.
+             </remarks>
+             <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.ComboBoxEx.OnLeave(System.EventArgs)">
+             <summary>
+             Implements the same selection behavior on getting focus as <see cref="T:System.Windows.Forms.TextBox"/>.
+             </summary>
+             <remarks>
+             Attention: See remarks in <see cref="M:MKY.Windows.Forms.ComboBoxEx.OnGotFocus(System.EventArgs)"/>!
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+             <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.ComboBoxEx.OnFormDeactivateWorkaround">
+             <summary>
+             Implements the same selection behavior on getting focus as <see cref="T:System.Windows.Forms.TextBox"/>.
+             </summary>
+             <remarks>
+             Attention: See remarks in <see cref="M:MKY.Windows.Forms.ComboBoxEx.OnGotFocus(System.EventArgs)"/>!
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ComboBoxEx.DebugCursorAndSelection(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.Windows.Forms.StatusStripEx">
+             <summary>
+             Extends <see cref="T:System.Windows.Forms.StatusStrip"/>.
+             </summary>
+             <remarks>
+             Workaround to the Windows/WinForms requirement to first activate the application before
+             a menu or tool strip can be invoked. Based on:
+             http://stackoverflow.com/questions/3427696/windows-requires-a-click-to-activate-a-window-before-a-second-click-will-select.
+            
+             Attention:
+             The same code also exists in <see cref="T:MKY.Windows.Forms.MenuStripEx"/> and <see cref="T:MKY.Windows.Forms.ToolStripEx"/>.
+             Changes here must be applied there too.
+             </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusStripEx.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            Processes Windows messages.
+            </summary>
+            <param name="m">The Windows <see cref="T:System.Windows.Forms.Message" /> to process.</param>
+        </member>
+        <member name="T:MKY.Windows.Forms.ToolStripEx">
+             <summary>
+             Extends <see cref="T:System.Windows.Forms.ToolStrip"/>.
+             </summary>
+             <remarks>
+             Workaround to the Windows/WinForms requirement to first activate the application before
+             a menu or tool strip can be invoked. Based on:
+             http://stackoverflow.com/questions/3427696/windows-requires-a-click-to-activate-a-window-before-a-second-click-will-select
+            
+             Attention:
+             The same code also exists in <see cref="T:MKY.Windows.Forms.MenuStripEx"/> and <see cref="T:MKY.Windows.Forms.StatusStripEx"/>.
+             Changes here must be applied there too.
+             </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ToolStripEx.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            Processes Windows messages.
+            </summary>
+            <param name="m">The Windows <see cref="T:System.Windows.Forms.Message" /> to process.</param>
+        </member>
+        <member name="T:MKY.Windows.Forms.MenuStripEx">
+             <summary>
+             Extends <see cref="T:System.Windows.Forms.MenuStrip"/>.
+             </summary>
+             <remarks>
+             Workaround to the Windows/WinForms requirement to first activate the application before
+             a menu or tool strip can be invoked. Based on:
+             http://stackoverflow.com/questions/3427696/windows-requires-a-click-to-activate-a-window-before-a-second-click-will-select.
+            
+             Attention:
+             The same code also exists in <see cref="T:MKY.Windows.Forms.StatusStripEx"/> and <see cref="T:MKY.Windows.Forms.ToolStripEx"/>.
+             Changes here must be applied there too.
+             </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.MenuStripEx.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            Processes Windows messages.
+            </summary>
+            <param name="m">The Windows <see cref="T:System.Windows.Forms.Message" /> to process.</param>
+        </member>
+        <member name="T:MKY.Windows.Forms.ListBoxEx">
+            <summary>
+            An improved <see cref="T:System.Windows.Forms.ListBox"/> that additionally provides:
+            <list type="bullet">
+            <item><description>The <see cref="M:MKY.Windows.Forms.ListBoxEx.SelectAll"/> method.</description></item>
+            <item><description>Several "VerticalScroll...()" methods.</description></item>
+            </list>
+            </summary>
+            <remarks>
+            Ideally, the two properties 'HorizontalAutoScroll' and 'VerticalAutoScroll' and the
+            corresponding automatism would be supported by this ListBox extension. However, no feasible
+            implementation has been found. Thus, it was decided to skip the automatism and simply
+            provide the necessary methods that allow the control's parent to trigger scrolling.
+            </remarks>
+        </member>
+        <member name="F:MKY.Windows.Forms.ListBoxEx.DebugEnabledDefault">
+            <remarks>Public for use in parent controls.</remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MKY.Windows.Forms.ListBoxEx"/> class.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.OnDrawItem(System.Windows.Forms.DrawItemEventArgs)">
+            <summary>
+            Raises the <see cref="E:DrawItem" /> event.
+            </summary>
+            <param name="e">The <see cref="T:System.Windows.Forms.DrawItemEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.OnSelectedIndexChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:SelectedIndexChanged" /> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.EvaluateClientItemCapacity">
+            <summary>
+            Sets the number of items that the client area can show.
+            </summary>
+            <remarks>
+            If the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawFixed"/>,
+            all items have the same height. When the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to
+            <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawVariable"/>, the <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property
+            specifies the height of each item added to the <see cref="T:System.Windows.Forms.ListBox"/>. Because each item
+            in an owner-drawn list can have a different height, you can use the <see cref="M:System.Windows.Forms.ListBox.GetItemHeight(System.Int32)"/>
+            method to get the height of a specific item in the <see cref="T:System.Windows.Forms.ListBox"/>. If you use the
+            <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property on a <see cref="T:System.Windows.Forms.ListBox"/> with items of
+            variable height, this property returns the height of the first item in the control.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.ClientItemCapacity">
+            <summary>
+            Gets the number of items that the client area can show.
+            </summary>
+            <remarks>
+            If <see cref="P:System.Windows.Forms.ListBox.IntegralHeight"/> is set to <c>false</c>, the top or bottom most
+            item may only be partially shown and the resulting value will fractional.
+            </remarks>
+            <remarks>
+            If the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawFixed"/>,
+            all items have the same height. When the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to
+            <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawVariable"/>, the <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property
+            specifies the height of each item added to the <see cref="T:System.Windows.Forms.ListBox"/>. Because each item
+            in an owner-drawn list can have a different height, you can use the <see cref="M:System.Windows.Forms.ListBox.GetItemHeight(System.Int32)"/>
+            method to get the height of a specific item in the <see cref="T:System.Windows.Forms.ListBox"/>. If you use the
+            <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property on a <see cref="T:System.Windows.Forms.ListBox"/> with items of
+            variable height, this property returns the height of the first item in the control.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.FullyVisibleClientItemCapacity">
+            <remarks>
+            If the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawFixed"/>,
+            all items have the same height. When the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to
+            <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawVariable"/>, the <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property
+            specifies the height of each item added to the <see cref="T:System.Windows.Forms.ListBox"/>. Because each item
+            in an owner-drawn list can have a different height, you can use the <see cref="M:System.Windows.Forms.ListBox.GetItemHeight(System.Int32)"/>
+            method to get the height of a specific item in the <see cref="T:System.Windows.Forms.ListBox"/>. If you use the
+            <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property on a <see cref="T:System.Windows.Forms.ListBox"/> with items of
+            variable height, this property returns the height of the first item in the control.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.TotalVisibleClientItemCapacity">
+            <remarks>
+            If the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawFixed"/>,
+            all items have the same height. When the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to
+            <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawVariable"/>, the <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property
+            specifies the height of each item added to the <see cref="T:System.Windows.Forms.ListBox"/>. Because each item
+            in an owner-drawn list can have a different height, you can use the <see cref="M:System.Windows.Forms.ListBox.GetItemHeight(System.Int32)"/>
+            method to get the height of a specific item in the <see cref="T:System.Windows.Forms.ListBox"/>. If you use the
+            <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property on a <see cref="T:System.Windows.Forms.ListBox"/> with items of
+            variable height, this property returns the height of the first item in the control.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.FirstIndex">
+            <summary>
+            The zero-based index of the first item in the control.
+            </summary>
+            <remarks>
+            If no items are available, this property returns <see cref="F:MKY.Windows.Forms.ControlEx.InvalidIndex"/>.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.LastIndex">
+            <summary>
+            The zero-based index of the last item in the control.
+            </summary>
+            <remarks>
+            If no items are available, this property returns <see cref="F:MKY.Windows.Forms.ControlEx.InvalidIndex"/>.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.FirstItem">
+            <summary>
+            The first item in the control.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.LastItem">
+            <summary>
+            The  last item in the control.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.FullyVisibleItemCount">
+            <remarks>
+            If the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawFixed"/>,
+            all items have the same height. When the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to
+            <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawVariable"/>, the <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property
+            specifies the height of each item added to the <see cref="T:System.Windows.Forms.ListBox"/>. Because each item
+            in an owner-drawn list can have a different height, you can use the <see cref="M:System.Windows.Forms.ListBox.GetItemHeight(System.Int32)"/>
+            method to get the height of a specific item in the <see cref="T:System.Windows.Forms.ListBox"/>. If you use the
+            <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property on a <see cref="T:System.Windows.Forms.ListBox"/> with items of
+            variable height, this property returns the height of the first item in the control.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.TotalVisibleItemCount">
+            <remarks>
+            If the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawFixed"/>,
+            all items have the same height. When the <see cref="T:System.Windows.Forms.DrawMode"/> property is set to
+            <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawVariable"/>, the <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property
+            specifies the height of each item added to the <see cref="T:System.Windows.Forms.ListBox"/>. Because each item
+            in an owner-drawn list can have a different height, you can use the <see cref="M:System.Windows.Forms.ListBox.GetItemHeight(System.Int32)"/>
+            method to get the height of a specific item in the <see cref="T:System.Windows.Forms.ListBox"/>. If you use the
+            <see cref="P:System.Windows.Forms.ListBox.ItemHeight"/> property on a <see cref="T:System.Windows.Forms.ListBox"/> with items of
+            variable height, this property returns the height of the first item in the control.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.BottomIndex">
+            <summary>
+            The zero-based index of the last visible item in the control.
+            If the last item is only partially visible, that index is returned.
+            </summary>
+            <remarks>
+            Same as <see cref="P:System.Windows.Forms.ListBox.TopIndex"/>, this property initially returns zero (0).
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.ItemIsSelected">
+            <remarks>
+            Note that items gets deselected if another control gets the focus.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.VisibleItemIsSelected">
+            <remarks>
+            Note that items gets deselected if another control gets the focus.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.OnlyOneOfTheLastFewItemsIsSelected">
+            <remarks>
+            Note that items gets deselected if another control gets the focus.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.CurrentOrFormerFirstSelectedIndex">
+            <summary>
+            Gets the index of the currently or former selected item,
+            the index of the first item if multiple items are selected.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.SelectAll">
+            <summary>
+            Select all items within the list box.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.FindNext(System.String,System.Boolean,System.Boolean,System.Text.RegularExpressions.Regex,System.Int32)">
+            <summary>
+            Finds the next item in the <see cref="T:System.Windows.Forms.ListBox"/> that matches the given text and/or regex.
+            </summary>
+            <remarks>
+            The <see cref="M:System.Windows.Forms.ListBox.FindString(System.String,System.Int32)"/> method seems promising at first,
+            but there are severe limitations:
+            <list type="bullet">
+            <item><description>Only searches simple case-sensitive matches.</description></item>
+            <item><description>Only searches down.</description></item>
+            <item><description>...when reaches the bottom...it continues searching from the top...</description></item>
+            <item><description>...first item...that starts with the specified string...</description></item>
+            </list>
+            </remarks>
+            <returns>
+            The zero-based index of the first item found; returns <see cref="F:System.Windows.Forms.ListBox.NoMatches"/> if
+            no match is found.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="startIndex"/> parameter is less than <see cref="F:System.Windows.Forms.ListBox.NoMatches"/> or
+            greater than or equal to the value of the <see cref="P:System.Windows.Forms.ListBox.ObjectCollection.Count"/> property.
+            </exception>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.FindPrevious(System.String,System.Boolean,System.Boolean,System.Text.RegularExpressions.Regex,System.Int32)">
+            <summary>
+            Finds the previous item in the <see cref="T:System.Windows.Forms.ListBox"/> that matches the given text and/or regex.
+            </summary>
+            <remarks>
+            The <see cref="M:System.Windows.Forms.ListBox.FindString(System.String,System.Int32)"/> method seems promising at first,
+            but there are severe limitations:
+            <list type="bullet">
+            <item><description>Only searches simple case-sensitive matches.</description></item>
+            <item><description>Only searches down.</description></item>
+            <item><description>...when reaches the bottom...it continues searching from the top...</description></item>
+            <item><description>...first item...that starts with the specified string...</description></item>
+            </list>
+            </remarks>
+            <returns>
+            The zero-based index of the first item found; returns <see cref="F:System.Windows.Forms.ListBox.NoMatches"/> if
+            no match is found.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="startIndex"/> parameter is less than <see cref="F:System.Windows.Forms.ListBox.NoMatches"/> or
+            greater than or equal to the value of the <see cref="P:System.Windows.Forms.ListBox.ObjectCollection.Count"/> property.
+            </exception>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.FindAt(System.String,System.Boolean,System.Boolean,System.Text.RegularExpressions.Regex,System.Int32)">
+            <summary>
+            Finds the previous item in the <see cref="T:System.Windows.Forms.ListBox"/> that matches the given text and/or regex.
+            </summary>
+            <remarks>
+            The <see cref="M:System.Windows.Forms.ListBox.FindString(System.String,System.Int32)"/> method seems promising at first,
+            but there are severe limitations:
+            <list type="bullet">
+            <item><description>Only searches simple case-sensitive matches.</description></item>
+            <item><description>Only searches down.</description></item>
+            <item><description>...when reaches the bottom...it continues searching from the top...</description></item>
+            <item><description>...first item...that starts with the specified string...</description></item>
+            </list>
+            </remarks>
+            <returns>
+            <paramref name="index"/> if match is found; returns <see cref="F:System.Windows.Forms.ListBox.NoMatches"/> if
+            no match is found.
+            </returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="index"/> parameter is less than <see cref="F:System.Windows.Forms.ListBox.NoMatches"/> or
+            greater than or equal to the value of the <see cref="P:System.Windows.Forms.ListBox.ObjectCollection.Count"/> property.
+            </exception>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.TryFind(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.EvaluateWhetherUserIsScrolling">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.UserIsScrolling">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.VerticalScrollBarIsNearBottom">
+            <remarks>
+            "NearBottom" means at bottom or at least half the visible items close to it.
+            This margin accounts for two effects:
+             > When an item is added, the item count is already incremented while the top index is still lower.
+             > When the user wants to reactivate vertical auto scroll while a lot of data is being received, the margin "glues" scrolling.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.ListBoxEx.DebugEnabled">
+            <remarks>
+            Flag in a addition to configuration items to allow selective debugging of just a single
+            list box, in order to reduce debug output.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.NotifyCleared">
+            <summary>
+            Notifies the control that the items got cleared.
+            </summary>
+            <remarks>
+            Required to reset <see cref="P:MKY.Windows.Forms.ListBoxEx.UserIsScrolling"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.VerticalScrollToBottom">
+            <summary>
+            Vertically scroll the list to the bottom.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.VerticalScrollToBottomIfNoItemIsSelected">
+            <summary>
+            Vertically scroll the list to the bottom if no items are selected.
+            </summary>
+            <remarks>
+            Note that items gets deselected if another control gets the focus.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.VerticalScrollToBottomIfNoVisibleItemIsSelected(System.Boolean)">
+            <summary>
+            Vertically scroll the list to the bottom if no visible items are selected.
+            </summary>
+            <remarks>
+            Note that items gets deselected if another control gets the focus.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.VerticalScrollToBottomIfNoVisibleItemIsSelected(System.Boolean,System.Boolean@)">
+            <summary>
+            Vertically scroll the list to the bottom if no visible items are selected.
+            </summary>
+            <remarks>
+            Note that items gets deselected if another control gets the focus.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.VerticalScrollToBottomIfNoVisibleItemOrOnlyOneOfTheLastFewItemsIsSelected(System.Boolean)">
+            <summary>
+            Vertically scroll the list to the bottom if no visible items are selected, except for the last.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.VerticalScrollToBottomIfNoVisibleItemOrOnlyOneOfTheLastFewItemsIsSelected(System.Boolean,System.Boolean@)">
+            <summary>
+            Vertically scroll the list to the bottom if no visible items are selected, except for the last.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.VerticalScrollToBottomIfOnlyOneOfTheLastFewItemsIsSelected(System.Boolean)">
+            <summary>
+            Vertically scroll the list to the bottom if only one of the last items is selected.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.VerticalScrollToBottomIfOnlyOneOfTheLastFewItemsIsSelected(System.Boolean,System.Boolean@)">
+            <summary>
+            Vertically scroll the list to the bottom if only one of the last items is selected.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.VerticalScrollToIndex(System.Int32)">
+            <summary>
+            Vertically scroll the list to the given index.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.DebugClientArea(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.DebugCountAndIndices(System.String)">
+             <remarks>
+             Attention, requires that <see cref="T:System.Diagnostics.ConditionalAttribute"/> is activated in in multiple files!
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.DebugCountAndIndices(System.String,System.Int32)">
+             <remarks>
+             Attention, requires that <see cref="T:System.Diagnostics.ConditionalAttribute"/> is activated in in multiple files!
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.ListBoxEx.DebugVerticalSemiAutoScroll(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.Windows.Forms.PathComboBox">
+            <summary>
+            Provides a label that displays path strings with ellipsis.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.PathComboBox.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Draws string with ellipsis.
+            </summary>
+            <remarks>
+            Actually doesn't work at all. See #308 "Minor issues with commands".
+            </remarks>
+        </member>
+        <member name="T:MKY.Windows.Forms.FastListBox">
+            <summary>
+            Fast implementation of a list box. The original <see cref="T:System.Windows.Forms.ListBox"/> is rather slow if
+            there are many consecutive updates/adds. The difference among the different variants is
+            demonstrated in the 'MKY.Windows.Forms.Test' test application:
+             > The <see cref="T:System.Windows.Forms.ListBox"/> and <see cref="T:MKY.Windows.Forms.ListBoxEx"/> flicker on vertical scrolling.
+             > This <see cref="T:MKY.Windows.Forms.FastListBox"/> doesn't flicker on vertical scrolling.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.FastListBox.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.FastListBox.DrawMode">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.FastListBox.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <remarks>
+            Is only called if draw mode is <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawFixed"/>
+            or <see cref="F:System.Windows.Forms.DrawMode.OwnerDrawVariable"/>.
+            If draw mode is <see cref="F:System.Windows.Forms.DrawMode.Normal"/>,
+            only ListBox.OnDrawItem() is called.
+            </remarks>
+        </member>
+        <member name="T:MKY.Windows.Forms.PathLabel">
+            <summary>
+            Provides a label that displays path strings with ellipsis.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.PathLabel.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Draws string with ellipsis.
+            </summary>
+        </member>
+        <member name="T:MKY.Windows.Forms.PictureBoxEx">
+            <summary>
+            Provides a picture box that extends <see cref="T:System.Windows.Forms.PictureBox"/>.
+            </summary>
+        </member>
+        <member name="F:MKY.Windows.Forms.PictureBoxEx.ImageRotationDefault">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.PictureBoxEx.AspectRatio">
+            <summary>
+            Gets the aspect ratio of the control's rectangle.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.PictureBoxEx.Image">
+            <summary>
+            Gets or sets the image that is displayed by this picture box in 'face up' orientation,
+            i.e. as if 'RotateNone' was selected.
+            </summary>
+            <remarks>
+            Overridden to handle image changes.
+            </remarks>
+            <remarks>
+            The image is cloned to the base image to ensure each instance has its own clone of the image
+            and can perform operations as needed without creating retroactive effects.
+            </remarks>
+        </member>
+        <member name="P:MKY.Windows.Forms.PictureBoxEx.ImageAspectRatio">
+            <summary>
+            Gets the aspect ratio of the original's image rectangle.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.PictureBoxEx.ImageRotation">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.Windows.Forms.PictureBoxEx.ApplyBaseImageRotation_imageRotationOld">
+            <summary>
+            This variable is used to get the difference between the actual and the desired rotation.
+            Without this, the image would have to be re-cloned from <see cref="F:MKY.Windows.Forms.PictureBoxEx.imageNotRotated"/>.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.PictureBoxEx.ImageScaledAspectRatio">
+            <summary>
+            Gets the aspect ratio of the scaled image rectangle.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.PictureBoxEx.ImageScaledSize">
+            <summary>
+            Returns the effective size of the image after it got scaled according to
+            <see cref="P:System.Windows.Forms.PictureBox.SizeMode"/>.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.PictureBoxEx.ImageScaledLocation">
+            <summary>
+            Returns the effective location of the image after it got scaled according to
+            <see cref="P:System.Windows.Forms.PictureBox.SizeMode"/>.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.PictureBoxEx.ImageScaledRectangle">
+            <summary>
+            Returns the rectangle of the image after it got scaled according to
+            <see cref="P:System.Windows.Forms.PictureBox.SizeMode"/>.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.PictureBoxEx.ImageVisibleRectangle">
+            <summary>
+            Returns the effectively visible rectangle of the image after it got scaled according to
+            <see cref="P:System.Windows.Forms.PictureBox.SizeMode"/>.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.PictureBoxEx.ImageVisibleSize">
+            <summary>
+            Returns the size of the effectively visible rectangle of the image after it got scaled
+            according to <see cref="P:System.Windows.Forms.PictureBox.SizeMode"/>.
+            </summary>
+        </member>
+        <member name="T:MKY.Windows.Forms.StatusBox">
+             <summary>
+             Provides a status box similar to <see cref="T:System.Windows.Forms.MessageBox"/>.
+             </summary>
+             <remarks><para>
+             The API follows the API of <see cref="T:System.Windows.Forms.MessageBox"/>, i.e. based on static methods.
+             </para><para>
+             The layout best follows the layout of a <see cref="T:System.Windows.Forms.MessageBox"/>:
+             <list type="bullet">
+             <item><description>Buttons are right-aligned.</description></item>
+             <item><description>Minimum height is 152 pixels.</description></item>
+            </list></para><para>
+             <see cref="P:System.Windows.Forms.Control.RightToLeft"/> is not supported.
+             </para></remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.Show(System.Windows.Forms.IWin32Window,System.String,System.String,System.String)">
+            <summary>
+            Displays a status box in front of the specified object and with the specified
+            status and caption and returns the result.
+            </summary>
+            <param name="owner">
+            An implementation of <see cref="T:System.Windows.Forms.IWin32Window"/> that will own the modal dialog box.
+            </param>
+            <param name="caption">
+            The text to display in the title bar of the status box.
+            </param>
+            <param name="status1">
+            The text to display in the first line of status box.
+            </param>
+            <param name="status2">
+            The text to display in the second line of status box.
+            </param>
+            <returns>
+            One of the <see cref="T:System.Windows.Forms.DialogResult"/> values.
+            </returns>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.Show(System.Windows.Forms.IWin32Window,System.String,System.String,System.String,System.String,System.Boolean@,System.Boolean,System.Int32)">
+            <summary>
+            Displays a status box in front of the specified object and with the specified
+            status and caption and returns the result.
+            </summary>
+            <param name="owner">
+            An implementation of <see cref="T:System.Windows.Forms.IWin32Window"/> that will own the modal dialog box.
+            </param>
+            <param name="caption">
+            The text to display in the title bar of the status box.
+            </param>
+            <param name="status1">
+            The text to display in the first line of status box.
+            </param>
+            <param name="status2">
+            The text to display in the second line of status box.
+            </param>
+            <param name="checkText">
+            The text of an optional check box.
+            </param>
+            <param name="checkValue">
+            The value of the setting.
+            </param>
+            <param name="showCancel">
+            Flag whether the cancel button shall be shown.
+            </param>
+            <param name="timeout">
+            Optional time-out.
+            </param>
+            <returns>
+            One of the <see cref="T:System.Windows.Forms.DialogResult"/> values.
+            </returns>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.Create(System.String,System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.#ctor">
+            <remarks>Default constructor needed for designer support.</remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.#ctor(System.String,System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.#ctor(System.String,System.String,System.String,System.String,System.Boolean,System.Boolean,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.StatusBox.Caption">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.StatusBox.Status1">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.StatusBox.Status2">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.StatusBox.CheckValue">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.StatusBox.ShowCancel">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.StatusBox.Timeout">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.StatusBox.IsShowing">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.ShowDialog(System.Windows.Forms.IWin32Window,System.String,System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.ShowDialog(System.Windows.Forms.IWin32Window,System.String,System.Boolean@,System.Boolean,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.ShowDialog(System.Windows.Forms.IWin32Window,System.String,System.String,System.String,System.String,System.Boolean@,System.Boolean,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.SetStatus1Synchronized(System.String)">
+            <summary>
+            Updates the first status line of the status box.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.SetStatus1(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.SetStatus2Synchronized(System.String)">
+            <summary>
+            Updates the second status line of the status box.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.SetStatus2(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.CloseSynchronized(System.Windows.Forms.DialogResult)">
+            <summary>
+            Closes the status box.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.Close(System.Windows.Forms.DialogResult)">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.Windows.Forms.StatusBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.StatusBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MKY.Windows.Forms.StringListEdit">
+            <summary>
+            Provides a list box including edit buttons to edit a list of strings.
+            </summary>
+        </member>
+        <member name="E:MKY.Windows.Forms.StringListEdit.Validating">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.Windows.Forms.StringListEdit.ListChanged">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StringListEdit.#ctor">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.StringListEdit.StringList">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StringListEdit.OnValidating(MKY.ComponentModel.StringCancelEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StringListEdit.OnStringListChanged(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.Windows.Forms.StringListEdit.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.StringListEdit.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.StringListEdit.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MKY.Windows.Forms.TextInputBox">
+            <summary>
+            Provides a simple text input box similar to <see cref="T:System.Windows.Forms.MessageBox"/>.
+            </summary>
+            <remarks><para>
+            The API follows the API of <see cref="T:System.Windows.Forms.MessageBox"/>, i.e. based on static methods.
+            </para><para>
+            <see cref="P:System.Windows.Forms.Control.RightToLeft"/> is not supported.
+            </para></remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.TextInputBox.Show(System.Windows.Forms.IWin32Window,System.String,System.String,System.String,System.String@)">
+            <summary>
+            Displays a input box in front of the specified object and with the specified
+            text and caption and returns the result.
+            </summary>
+            <param name="owner">
+            An implementation of <see cref="T:System.Windows.Forms.IWin32Window"/> that will own the modal dialog box.
+            </param>
+            <param name="text">
+            The text to display in the input box.
+            </param>
+            <param name="caption">
+            The text to display in the title bar of the input box.
+            </param>
+            <param name="initialInputText">
+            The initial text that is in the input box.
+            </param>
+            <param name="inputText">
+            The text that was entered in the input box.
+            </param>
+            <returns>
+            One of the <see cref="T:System.Windows.Forms.DialogResult"/> values.
+            </returns>
+        </member>
+        <member name="M:MKY.Windows.Forms.TextInputBox.Show(System.Windows.Forms.IWin32Window,System.String,System.String,System.String,System.EventHandler{MKY.ComponentModel.StringCancelEventArgs},System.String@)">
+            <summary>
+            Displays a input box in front of the specified object and with the specified
+            text and caption and returns the result.
+            </summary>
+            <param name="owner">
+            An implementation of <see cref="T:System.Windows.Forms.IWin32Window"/> that will own the modal dialog box.
+            </param>
+            <param name="text">
+            The text to display in the input box.
+            </param>
+            <param name="caption">
+            The text to display in the title bar of the input box.
+            </param>
+            <param name="initialInputText">
+            The initial text that is in the input box.
+            </param>
+            <param name="inputValidationCallback">
+            Input validation callback.
+            </param>
+            <param name="inputText">
+            The text that was entered in the input box.
+            </param>
+            <returns>
+            One of the <see cref="T:System.Windows.Forms.DialogResult"/> values.
+            </returns>
+        </member>
+        <member name="E:MKY.Windows.Forms.TextInputBox.Validating">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.TextInputBox.#ctor">
+            <remarks>Default constructor needed for designer support.</remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.TextInputBox.#ctor(System.String,System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.TextInputBox.InputText">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.TextInputBox.TextInputBox_Shown(System.Object,System.EventArgs)">
+            <summary>
+            Initially set controls and validate its contents where needed.
+            </summary>
+            <remarks>
+            The 'Shown' event is only raised the first time a form is displayed; subsequently
+            minimizing, maximizing, restoring, hiding, showing, or invalidating and repainting will
+            not raise this event again.
+            Note that the 'Shown' event is raised after the 'Load' event and will also be raised if
+            the application is started minimized. Also note that operations called in the 'Shown'
+            event can depend on a properly drawn form, as the 'Paint' event of this form and its
+            child controls has been raised before this 'Shown' event.
+            </remarks>
+        </member>
+        <member name="M:MKY.Windows.Forms.TextInputBox.OnValidating(MKY.ComponentModel.StringCancelEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.Windows.Forms.TextInputBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.TextInputBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.TextInputBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MKY.Windows.Forms.TransparentButton">
+            <summary>
+            Provides a transparent box. It can be used to handle user input on an invisible rectangle.
+            </summary>
+            <remarks>
+            Due to some reason, <see cref="T:System.Windows.Forms.ButtonBase"/> doesn't support transparency. In contrast,
+            <see cref="T:System.Windows.Forms.Panel"/> does (as shown in <see cref="T:MKY.Windows.Forms.TransparentPanel"/>). In order to provide
+            button-like functionality in a transparent way, this <see cref="T:MKY.Windows.Forms.TransparentButton"/> can
+            be used.
+            </remarks>
+        </member>
+        <member name="F:MKY.Windows.Forms.TransparentButton.BorderStyleDefault">
+            <summary>
+            Default value of the <see cref="P:MKY.Windows.Forms.TransparentButton.BorderStyle"/> property.
+            </summary>
+        </member>
+        <member name="F:MKY.Windows.Forms.TransparentButton.UseMnemonicDefault">
+            <summary>
+            Default value of the <see cref="P:MKY.Windows.Forms.TransparentButton.UseMnemonic"/> property.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.TransparentButton.CreateParams">
+            <summary>
+            Gets the required creation parameters when the control handle is created.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.TransparentButton.BorderStyle">
+            <summary>
+            Gets or sets the border style for the control.
+            </summary>
+            <value>
+            One of the <see cref="P:MKY.Windows.Forms.TransparentButton.BorderStyle"/> values. The default is specified by
+            <see cref="F:MKY.Windows.Forms.TransparentButton.BorderStyleDefault"/>.
+            </value>
+        </member>
+        <member name="M:MKY.Windows.Forms.TransparentButton.OnGotFocus(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.GotFocus"/> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.TransparentButton.OnLostFocus(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.LostFocus"/> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.TransparentButton.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Paints the foreground of the control.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs"/> that contains information about the control to paint.</param>
+        </member>
+        <member name="M:MKY.Windows.Forms.TransparentButton.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Paints the background of the control.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs"/> that contains information about the control to paint.</param>
+        </member>
+        <member name="P:MKY.Windows.Forms.TransparentButton.UseMnemonic">
+            <summary>
+            Gets or sets a value indicating whether the first character that is preceded by an
+            ampersand (&amp;) is used as the mnemonic key of the control.
+            </summary>
+            <value>
+            <c>true</c> if the first character that is preceded by an ampersand (&amp;) is used as
+            the mnemonic key of the control; otherwise, <c>false</c>. The default is specified by
+            <see cref="F:MKY.Windows.Forms.TransparentButton.UseMnemonicDefault"/>.
+            </value>
+        </member>
+        <member name="M:MKY.Windows.Forms.TransparentButton.ProcessMnemonic(System.Char)">
+            <summary>
+            Processes a mnemonic character.
+            </summary>
+            <param name="charCode">The character to process.</param>
+            <returns> <c>true</c> if the character was processed as a mnemonic by the control;
+            otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="P:MKY.Windows.Forms.TransparentButton.DialogResult">
+            <summary>
+            Gets or sets the value returned to the parent form when the button is clicked.
+            </summary>
+            <value>
+            One of the <see cref="P:MKY.Windows.Forms.TransparentButton.DialogResult"/> values.
+            </value>
+        </member>
+        <member name="M:MKY.Windows.Forms.TransparentButton.NotifyDefault(System.Boolean)">
+            <summary>
+            Notifies a control that it is the default button so that its appearance and behavior is adjusted accordingly.
+            </summary>
+            <param name="value">
+            <c>true</c> if the control should behave as a default button; otherwise, <c>false</c>.
+            </param>
+        </member>
+        <member name="M:MKY.Windows.Forms.TransparentButton.PerformClick">
+            <summary>
+            Generates a <see cref="E:System.Windows.Forms.Control.Click"/> event for the control.
+            </summary>
+        </member>
+        <member name="T:MKY.Windows.Forms.TransparentPanel">
+            <summary>
+            Provides a transparent panel. It can be used to handle user input on an invisible rectangle.
+            </summary>
+        </member>
+        <member name="P:MKY.Windows.Forms.TransparentPanel.CreateParams">
+            <summary>
+            Gets the required creation parameters when the control handle is created.
+            </summary>
+        </member>
+        <member name="M:MKY.Windows.Forms.TransparentPanel.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Paints the background of the control.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs"/> that contains the event data.</param>
+        </member>
+    </members>
+</doc>

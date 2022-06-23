@@ -1,0 +1,33 @@
+
+
+count=0 
+ls -1rt xx* | while read FILE ; do
+    echo ${FILE}
+
+    if [[ "$count" -eq 0 ]]; then 
+         echo Compare ${FILE}   and refDownload1A
+         diff ${FILE} refDownload1A
+    fi
+
+    if [[ "$count" -eq 1 ]]; then 
+         echo Compare ${FILE}   and refDownload1B
+         diff ${FILE} refDownload1B
+    fi
+
+    if [[ "$count" -eq 2 ]]; then 
+         echo Compare ${FILE}   and refDownload1C
+         diff ${FILE} refDownload1C
+    fi
+
+    if [[ "$count" -eq 3 ]]; then 
+         echo Compare ${FILE}   and refDownload1D
+         diff ${FILE} refDownload1D
+    fi
+
+    count=$((count+1))
+    if [[ "$count" -ge 4 ]]; then 
+        count=0
+    fi
+
+    echo -----------------------------------------------------------
+done

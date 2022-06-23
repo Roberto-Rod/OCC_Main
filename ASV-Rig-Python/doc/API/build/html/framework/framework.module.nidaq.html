@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>framework.module.nidaq &mdash; PM1 Pachymeter Automated Software Verification Framework B1-STABLE documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="framework.module.serial_debug" href="framework.module.serial_debug.html" />
+    <link rel="prev" title="framework.module.digipot" href="framework.module.digipot.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PM1 Pachymeter Automated Software Verification Framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">framework</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="framework.html"><code class="docutils literal notranslate"><span class="pre">framework</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="framework.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="framework.asv_control.html"><code class="docutils literal notranslate"><span class="pre">framework.asv_control</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.constants.html"><code class="docutils literal notranslate"><span class="pre">framework.constants</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.device.html"><code class="docutils literal notranslate"><span class="pre">framework.device</span></code></a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="framework.module.html"><code class="docutils literal notranslate"><span class="pre">framework.module</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.sequence.html"><code class="docutils literal notranslate"><span class="pre">framework.sequence</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.util.html"><code class="docutils literal notranslate"><span class="pre">framework.util</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PM1 Pachymeter Automated Software Verification Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">framework</a> &raquo;</li>
+          <li><a href="framework.html"><code class="docutils literal notranslate"><span class="pre">framework</span></code></a> &raquo;</li>
+          <li><a href="framework.module.html"><code class="docutils literal notranslate"><span class="pre">framework.module</span></code></a> &raquo;</li>
+      <li><code class="docutils literal notranslate"><span class="pre">framework.module.nidaq</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/framework/framework.module.nidaq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-framework.module.nidaq">
+<span id="framework-module-nidaq"></span><h1><code class="docutils literal notranslate"><span class="pre">framework.module.nidaq</span></code><a class="headerlink" href="#module-framework.module.nidaq" title="Permalink to this headline"></a></h1>
+<p>Pachymeter Automated Software Verification Rig NI DAQ Module Implementation.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#classes" id="id1">Classes</a></p></li>
+</ul>
+</div>
+<section id="classes">
+<h2><a class="toc-backref" href="#id1">Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#framework.module.nidaq.EncoderWaveformTask" title="framework.module.nidaq.EncoderWaveformTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">EncoderWaveformTask</span></code></a>:
+Implements a streamed encoder waveform task.</p></li>
+<li><p><a class="reference internal" href="#framework.module.nidaq.PdaWaveformTask" title="framework.module.nidaq.PdaWaveformTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">PdaWaveformTask</span></code></a>:
+Implements a streamed PDA signal waveform task.</p></li>
+<li><p><a class="reference internal" href="#framework.module.nidaq.ScanWaveformTask" title="framework.module.nidaq.ScanWaveformTask"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScanWaveformTask</span></code></a>:
+Implements a synchronised PDA signal and encoder waveform task.</p></li>
+<li><p><a class="reference internal" href="#framework.module.nidaq.AnalogOutputControl" title="framework.module.nidaq.AnalogOutputControl"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnalogOutputControl</span></code></a>:
+Implements a control for the on-demand analog output.</p></li>
+<li><p><a class="reference internal" href="#framework.module.nidaq.DigitalInputOnChangeControl" title="framework.module.nidaq.DigitalInputOnChangeControl"><code class="xref py py-class docutils literal notranslate"><span class="pre">DigitalInputOnChangeControl</span></code></a>:
+Implements a control for the n-change digital inputs.</p></li>
+<li><p><a class="reference internal" href="#framework.module.nidaq.DigitalOutputControl" title="framework.module.nidaq.DigitalOutputControl"><code class="xref py py-class docutils literal notranslate"><span class="pre">DigitalOutputControl</span></code></a>:
+Implements a control for the on-demand digital outputs.</p></li>
+<li><p><a class="reference internal" href="#framework.module.nidaq.NiDaq" title="framework.module.nidaq.NiDaq"><code class="xref py py-class docutils literal notranslate"><span class="pre">NiDaq</span></code></a>:
+NI DAQ Control.</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.module.nidaq.EncoderWaveformTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.module.nidaq.</span></span><span class="sig-name descname"><span class="pre">EncoderWaveformTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samp_clk_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">nidaqmx.constants.AcquisitionType</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">AcquisitionType.FINITE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.module.nidaq.EncoderWaveformTask" title="Permalink to this definition"></a></dt>
+<dd><p>Implements a streamed encoder waveform task.</p>
+<p>This class provides streaming of the simulated motor encoder pulses A, B and Z on P0.0, P0.1 and P0.2.
+The ndarray of digital sample data should be a 1D array of uint32 where A is bit 0, B is bit 1 and Z is bit 2.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-1050744d6b0565c05f911ce0fafc8ba77873aac5.png" alt="Inheritance diagram of EncoderWaveformTask" usemap="#inheritancea01546c129" class="inheritance graphviz" /></div>
+<map id="inheritancea01546c129" name="inheritancea01546c129">
+<area shape="rect" id="node1" href="framework.device.ni6363.html#framework.device.ni6363.DigitalOutputWaveformTask" target="_top" title="A task to write a digital waveform output to the specified lines." alt="" coords="125,5,308,31"/>
+<area shape="rect" id="node3" href="#framework.module.nidaq.EncoderWaveformTask" target="_top" title="Implements a streamed encoder waveform task." alt="" coords="356,5,511,31"/>
+</map></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.module.nidaq.PdaWaveformTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.module.nidaq.</span></span><span class="sig-name descname"><span class="pre">PdaWaveformTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samp_clk_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">nidaqmx.constants.AcquisitionType</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">AcquisitionType.FINITE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.module.nidaq.PdaWaveformTask" title="Permalink to this definition"></a></dt>
+<dd><p>Implements a streamed PDA signal waveform task.</p>
+<p>This class provides streaming of the simulated PDA signal on AO 0.
+The ndarray of analog sample data should be a 1D arrays of float where AO 0 is the range -5V to +5V.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-370085ca944fbb098dd39ce404358c86a9b4334c.png" alt="Inheritance diagram of PdaWaveformTask" usemap="#inheritance2160fab05a" class="inheritance graphviz" /></div>
+<map id="inheritance2160fab05a" name="inheritance2160fab05a">
+<area shape="rect" id="node1" href="framework.device.ni6363.html#framework.device.ni6363.AnalogOutputWaveformTask" target="_top" title="A task to write the specified analog output channel multiple times." alt="" coords="125,5,312,31"/>
+<area shape="rect" id="node3" href="#framework.module.nidaq.PdaWaveformTask" target="_top" title="Implements a streamed PDA signal waveform task." alt="" coords="360,5,491,31"/>
+</map></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.module.nidaq.ScanWaveformTask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.module.nidaq.</span></span><span class="sig-name descname"><span class="pre">ScanWaveformTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">nidaqmx.constants.AcquisitionType</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">AcquisitionType.FINITE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.module.nidaq.ScanWaveformTask" title="Permalink to this definition"></a></dt>
+<dd><p>Implements a synchronised PDA signal and encoder waveform task.</p>
+<p>This class provides synchronised streaming of the simulated PDA signal on AO 0 and the simulated motor encoder pulses A, B
+and Z on P0.0, P0.1 and P0.2.
+The ndarrays of sample data should be 1D arrays of the same length with the AO 0 data being float in the range -5V to +5V
+and the digital data being uint32 where A is bit 0, B is bit 1 and Z is bit 2.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-079c8a78271b079363684633f5afd8469f325291.png" alt="Inheritance diagram of ScanWaveformTask" usemap="#inheritancecb9a81cbb1" class="inheritance graphviz" /></div>
+<map id="inheritancecb9a81cbb1" name="inheritancecb9a81cbb1">
+<area shape="rect" id="node1" href="#framework.module.nidaq.ScanWaveformTask" target="_top" title="Implements a synchronised PDA signal and encoder waveform task." alt="" coords="125,5,263,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.ScanWaveformTask.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.nidaq.ScanWaveformTask.start" title="Permalink to this definition"></a></dt>
+<dd><p>Transitions the task to the running state to begin the measurement
+or generation. Using this method is required for some applications and
+is optional for others.</p>
+<p>If you do not use this method, a measurement task starts automatically
+when the DAQmx Read method runs. The autostart input of the DAQmx Write
+method determines if a generation task starts automatically when the
+DAQmx Write method runs.</p>
+<p>If you do not use the DAQmx Start Task method and the DAQmx Stop Task
+method when you use the DAQmx Read method or the DAQmx Write method
+multiple times, such as in a loop, the task starts and stops
+repeatedly. Starting and stopping a task repeatedly reduces the
+performance of the application.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.ScanWaveformTask.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.nidaq.ScanWaveformTask.stop" title="Permalink to this definition"></a></dt>
+<dd><p>Stops the task and returns it to the state the task was in before the
+DAQmx Start Task method ran or the DAQmx Write method ran with the
+autostart input set to TRUE.</p>
+<p>If you do not use the DAQmx Start Task method and the DAQmx Stop Task
+method when you use the DAQmx Read method or the DAQmx Write method
+multiple times, such as in a loop, the task starts and stops
+repeatedly. Starting and stopping a task repeatedly reduces the
+performance of the application.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.module.nidaq.AnalogOutputControl">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.module.nidaq.</span></span><span class="sig-name descname"><span class="pre">AnalogOutputControl</span></span><a class="headerlink" href="#framework.module.nidaq.AnalogOutputControl" title="Permalink to this definition"></a></dt>
+<dd><p>Implements a control for the on-demand analog output.</p>
+<p>The NI DAQ analog channel used is:</p>
+<p>AO 0 - -5V/+5V</p>
+<p>NI_AOUT_0 is initialised to 0.000V on initialisation i.e. mid-range.
+This will translate to an NI_AOUT_0_3V3 of 1.667V.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-87fdfe5610a16ced957faacdbfeb7c7b649e656c.png" alt="Inheritance diagram of AnalogOutputControl" usemap="#inheritance8727404e90" class="inheritance graphviz" /></div>
+<map id="inheritance8727404e90" name="inheritance8727404e90">
+<area shape="rect" id="node1" href="#framework.module.nidaq.AnalogOutputControl" target="_top" title="Implements a control for the on&#45;demand analog output." alt="" coords="5,5,148,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.AnalogOutputControl.get_vout">
+<span class="sig-name descname"><span class="pre">get_vout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#framework.module.nidaq.AnalogOutputControl.get_vout" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the analog output voltage.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.AnalogOutputControl.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#framework.module.nidaq.AnalogOutputControl.reset" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the AnalogOutputControl object to its default state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.AnalogOutputControl.set_vout">
+<span class="sig-name descname"><span class="pre">set_vout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.nidaq.AnalogOutputControl.set_vout" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the analog output voltage.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalInputOnChangeControl">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.module.nidaq.</span></span><span class="sig-name descname"><span class="pre">DigitalInputOnChangeControl</span></span><a class="headerlink" href="#framework.module.nidaq.DigitalInputOnChangeControl" title="Permalink to this definition"></a></dt>
+<dd><p>Implements a control for the n-change digital inputs.</p>
+<p>The NI DAQ digital inputs used are:</p>
+<p>P0.4 - Laser LON command (active high).</p>
+<p>P0.5 - Encoder M+/M- detection (active high).</p>
+<p>P0.6 - Spare.</p>
+<p>P0.7 - Spare.</p>
+<p>On-change detection requires buffered access so on the NI 6363 this control can only be used with port 0.
+This controller is implemented as a persistent task.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-3a4bb1fdc5daea5ef4fe3052d128a0a6437a048b.png" alt="Inheritance diagram of DigitalInputOnChangeControl" usemap="#inheritance90492a57e5" class="inheritance graphviz" /></div>
+<map id="inheritance90492a57e5" name="inheritance90492a57e5">
+<area shape="rect" id="node1" href="#framework.module.nidaq.DigitalInputOnChangeControl" target="_top" title="Implements a control for the n&#45;change digital inputs." alt="" coords="348,5,536,31"/>
+<area shape="rect" id="node2" href="framework.device.ni6363.html#framework.device.ni6363.DigitalInputOnChangeTask" target="_top" title="A task to read the specified digital input lines on&#45;change." alt="" coords="125,5,300,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalInputOnChangeControl.is_enc_m">
+<span class="sig-name descname"><span class="pre">is_enc_m</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalInputOnChangeControl.is_enc_m" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether ENC_M is active (high) or inactive (low).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if ENC_M is active (high), False if ENC_M is inactive (low).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalInputOnChangeControl.is_lsr_lon">
+<span class="sig-name descname"><span class="pre">is_lsr_lon</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalInputOnChangeControl.is_lsr_lon" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether LSR_LON is active (high) or inactive (low).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if LSR_LON is active (high), False if LSR_LON is inactive (low).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalInputOnChangeControl.register_callback">
+<span class="sig-name descname"><span class="pre">register_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_method</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalInputOnChangeControl.register_callback" title="Permalink to this definition"></a></dt>
+<dd><p>Method to allow scripts to monitor digital inputs via callbacks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>(</strong><strong>function</strong><strong>)</strong> (<em>callback_method</em>) – a callback method to be invoked via the on_change callback.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalInputOnChangeControl.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#framework.module.nidaq.DigitalInputOnChangeControl.reset" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the DigitalInputOnChangeControl object to its default state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalInputOnChangeControl.wait_for_enc_m">
+<span class="sig-name descname"><span class="pre">wait_for_enc_m</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalInputOnChangeControl.wait_for_enc_m" title="Permalink to this definition"></a></dt>
+<dd><p>Wait for ENC_M to be active (high) or inactive (low).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalInputOnChangeControl.wait_for_lsr_lon">
+<span class="sig-name descname"><span class="pre">wait_for_lsr_lon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalInputOnChangeControl.wait_for_lsr_lon" title="Permalink to this definition"></a></dt>
+<dd><p>Wait for LSR_LON to be active (high) or inactive (low).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalOutputControl">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.module.nidaq.</span></span><span class="sig-name descname"><span class="pre">DigitalOutputControl</span></span><a class="headerlink" href="#framework.module.nidaq.DigitalOutputControl" title="Permalink to this definition"></a></dt>
+<dd><p>Implements a control for the on-demand digital outputs.</p>
+<p>The NI DAQ digital outputs used are:</p>
+<p>P1.0 - Laser LPON confirmation (active high).</p>
+<p>P1.1 - USB pass-through enable (active high).</p>
+<p>P1.2 - DUT power enable (active high).</p>
+<p>P1.3 - Spare.</p>
+<p>This controller is implemented as a persistent task.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-f4422a3dad3d76534badc96cd7844124e40152c9.png" alt="Inheritance diagram of DigitalOutputControl" usemap="#inheritance64ca6feebb" class="inheritance graphviz" /></div>
+<map id="inheritance64ca6feebb" name="inheritance64ca6feebb">
+<area shape="rect" id="node1" href="#framework.module.nidaq.DigitalOutputControl" target="_top" title="Implements a control for the on&#45;demand digital outputs." alt="" coords="299,5,437,31"/>
+<area shape="rect" id="node2" href="framework.device.ni6363.html#framework.device.ni6363.DigitalOutputTask" target="_top" title="A task to write the specified digital output lines on&#45;demand." alt="" coords="125,5,251,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalOutputControl.is_dut_en">
+<span class="sig-name descname"><span class="pre">is_dut_en</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalOutputControl.is_dut_en" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether DUT_EN output is active (high).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns True if DUT_EN is active (high), False if DUT_EN is inactive (low).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalOutputControl.is_lsr_lpon1">
+<span class="sig-name descname"><span class="pre">is_lsr_lpon1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalOutputControl.is_lsr_lpon1" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether LSR_LPON1 output is active (high).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns True if LSR_LPON1 is active (high), False if LSR_LPON1 is inactive (low).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalOutputControl.is_usb_en">
+<span class="sig-name descname"><span class="pre">is_usb_en</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalOutputControl.is_usb_en" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether USB_EN output is active (high).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns True if USB_EN is active (high), False if USB_EN is inactive (low).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalOutputControl.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#framework.module.nidaq.DigitalOutputControl.reset" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the DigitalOutputControl object to its default state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalOutputControl.set_dut_en">
+<span class="sig-name descname"><span class="pre">set_dut_en</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalOutputControl.set_dut_en" title="Permalink to this definition"></a></dt>
+<dd><p>Set DUT_EN output active (high) or inactive (low).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalOutputControl.set_lsr_lpon1">
+<span class="sig-name descname"><span class="pre">set_lsr_lpon1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalOutputControl.set_lsr_lpon1" title="Permalink to this definition"></a></dt>
+<dd><p>Set LSR_LPON1 active (high) or inactive (low).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.DigitalOutputControl.set_usb_en">
+<span class="sig-name descname"><span class="pre">set_usb_en</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.nidaq.DigitalOutputControl.set_usb_en" title="Permalink to this definition"></a></dt>
+<dd><p>Set USB_EN output active (high) or inactive (low).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.module.nidaq.NiDaq">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.module.nidaq.</span></span><span class="sig-name descname"><span class="pre">NiDaq</span></span><a class="headerlink" href="#framework.module.nidaq.NiDaq" title="Permalink to this definition"></a></dt>
+<dd><p>NI DAQ Control.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-ac25933a73997f7a687a41c56699f21a291a685f.png" alt="Inheritance diagram of NiDaq" usemap="#inheritancebc06e96c2c" class="inheritance graphviz" /></div>
+<map id="inheritancebc06e96c2c" name="inheritancebc06e96c2c">
+<area shape="rect" id="node1" href="#framework.module.nidaq.NiDaq" target="_top" title="NI DAQ Control." alt="" coords="5,5,77,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.NiDaq.is_auto_lpon1">
+<span class="sig-name descname"><span class="pre">is_auto_lpon1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#framework.module.nidaq.NiDaq.is_auto_lpon1" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether automatic LPON1 tracking of LON is active.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if automatic LPON1 tracking is active, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.NiDaq.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#framework.module.nidaq.NiDaq.reset" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the NiDaq object to its default state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.nidaq.NiDaq.set_auto_lpon1">
+<span class="sig-name descname"><span class="pre">set_auto_lpon1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.nidaq.NiDaq.set_auto_lpon1" title="Permalink to this definition"></a></dt>
+<dd><p>Enables or disables automatic (software) tracking of LPON1 by LON.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="framework.module.digipot.html" class="btn btn-neutral float-left" title="framework.module.digipot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="framework.module.serial_debug.html" class="btn btn-neutral float-right" title="framework.module.serial_debug" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, LeoTel Software Systems Limited.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

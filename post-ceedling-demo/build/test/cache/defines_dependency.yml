@@ -1,0 +1,9 @@
+---
+src/a.c:
+- TEST
+src/adder.c:
+- TEST
+src/vectors.c:
+- TEST
+test/support/vector_helper.c:
+- TEST

@@ -1,0 +1,50 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: ddr}
+children:
+- type: Symbols
+  children:
+  - type: Boolean
+    attributes: {id: DDR_AUTO_PWR_DOWN}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
+    attributes: {id: DDR_ODT_READ_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
+  - type: String
+    attributes: {id: DDR_PHY_DDR_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DDR_PHY_DDR_TYPE_DDR2}
+  - type: Boolean
+    attributes: {id: DDR_PHY_ODT_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
+  - type: String
+    attributes: {id: DDR_PHY_SCL_BURST_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: DDR_PHY_SCL_BURST_MODE_8}
+  - type: Integer
+    attributes: {id: DDR_SIZE_MB}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '32'}
+- type: ElementPosition
+  attributes: {x: '216', y: '18', id: ddr}

@@ -1,0 +1,68 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: sqi1}
+children:
+- type: Symbols
+  children:
+  - type: Comment
+    attributes: {id: SQI_CLK_DIV_COMMENT}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: text}
+        children:
+        - {type: Value, value: '*** SQI Clock Frequency Is Set To 200000000 for REFCLK2
+            Frequency At 200000000'}
+  - type: KeyValueSet
+    attributes: {id: SQI_CSEN}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '1'}
+  - type: Boolean
+    attributes: {id: SQI_FLASH_STATUS_CHECK}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
+  - type: KeyValueSet
+    attributes: {id: SQI_STATBYTES}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'false'}
+  - type: Hex
+    attributes: {id: SQI_STATCMD}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'false'}
+  - type: KeyValueSet
+    attributes: {id: SQI_STATPOS}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'false'}
+  - type: Combo
+    attributes: {id: SQI_STATTYPE}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'false'}
+- type: ElementPosition
+  attributes: {x: '180', y: '255', id: sqi1}

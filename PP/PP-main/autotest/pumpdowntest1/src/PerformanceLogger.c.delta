@@ -1,0 +1,37 @@
+a32 7
+// SCU for error generate and record
+static uint8_t errorCount = 0;
+void logError(const uint16_t errorNo);
+
+void logCount(void);
+// SCU end
+
+a61 6
+    else //SCU
+    {
+        errorCount++;
+        logError((1 << 8) + errorCount);
+    }
+
+a100 17
+void logError(const uint16_t errorNo);
+
+void logError(const uint16_t errorNo)
+{
+    uint8_t err = (performanceLogger.refVddForTemperature >> 8) | (errorNo >> 8);
+
+    performanceLogger.refVddForTemperature = (err << 8) + (errorNo & 0xFF);
+}
+
+// SCU Log a sequential number in the log buffer
+static uint16_t cnt = 0;
+void logCount(void)
+{
+    performanceLogger.refVddForTemperature = cnt;
+    cnt++;
+}
+
+a102 1
+    /* SCU  Overwrite temperature    One
+a103 1
+    */

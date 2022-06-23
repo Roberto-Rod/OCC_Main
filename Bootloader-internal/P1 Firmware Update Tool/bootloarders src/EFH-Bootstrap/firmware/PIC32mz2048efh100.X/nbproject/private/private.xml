@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/bootloader_org/Bootloader-master/EFH-Bootstrap/firmware/src/main.c</file>
+            <file>file:/C:/bootloader_org/Bootloader-master/EFH-Bootstrap/firmware/src/app.c</file>
+            <file>file:/C:/bootloader_org/Bootloader-master/EFH-Bootstrap/firmware/src/app.h</file>
+        </group>
+        <group name="bootloader">
+            <file>file:/C:/Bootloader-internal/P1%20Firmware%20Update%20Tool/bootloarders%20src/EFH-Bootstrap/firmware/src/app.c</file>
+            <file>file:/C:/Bootloader-internal/P1%20Firmware%20Update%20Tool/bootloarders%20src/EFH-Bootstrap/firmware/src/config/pic32mz2048efh100/peripheral/uart/plib_uart1.c</file>
+            <file>file:/C:/Bootloader-internal/P1%20Firmware%20Update%20Tool/bootloarders%20src/EFH-Bootstrap/firmware/src/config/pic32mz2048efh100/initialization.c</file>
+        </group>
+        <group name="new boot"/>
+    </open-files>
+</project-private>

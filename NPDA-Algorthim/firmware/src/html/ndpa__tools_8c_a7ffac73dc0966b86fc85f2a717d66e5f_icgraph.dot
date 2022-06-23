@@ -1,0 +1,25 @@
+digraph "median"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="median",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Returns the median of the specified vector of size n."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="find_ac_peak",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa__tools_8h.html#a40fe109609d9d6d6e5c032cd6caa0719",tooltip="Returning a data window (q1, q2) in scany containing the points above half height around the specifie..."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ndpa_block_end",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa_8h.html#af7418c4e788a4841515797272d65b82d",tooltip="End of measurement block processing. Finding AC and PC peaks in the averaged data."];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="update_average",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa__tools_8h.html#a4c8c46c43f5a98069e303f05daeb8cf5",tooltip="Find AC peak in interpolated data in __ndpa_y, use it as an offset to merge to current average data s..."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ndpa_scan",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa_8h.html#aafa296477a207bc42f6fc57df4aaa517",tooltip="Called after new scan data presented within __ndpa_x0 and __ndpa_y0."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="median",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa__tools_8h.html#ac8a2f1276b7638e65fdca585eecb0e92",tooltip="Returns the median of the specified vector of size n."];
+  Node6 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="ndpa_measurement_end",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa_8h.html#ae0e20c51ab9c3501771684593a00a145",tooltip="End of measurement. Returning aggregated corneal thickness, etc."];
+  Node6 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

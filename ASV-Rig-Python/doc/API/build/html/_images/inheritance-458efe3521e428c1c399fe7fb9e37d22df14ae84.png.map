@@ -1,0 +1,4 @@
+<map id="inheritance5f8c11ac7f" name="inheritance5f8c11ac7f">
+<area shape="rect" id="node1" href="#framework.device.ni6363.DigitalInputOnChangeTask" target="_top" title="A task to read the specified digital input lines on&#45;change." alt="" coords="125,5,300,31"/>
+<area shape="rect" id="node2" title="Represents a DAQmx Task." alt="" coords="5,5,77,31"/>
+</map>

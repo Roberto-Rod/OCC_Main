@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/glcd_rgba8888_mxt_mzda_intddr_sk/debug/aria_qs_mzda_intddr_sk_meb2_tm4301b.X.debug.elf">                 
+    <memory name="program">                 
+      <units>bytes</units>                 
+      <length>2098304</length>                 
+      <used>247820</used>                     
+      <free>1850484</free>                     
+    </memory>                              
+    <memory name="data">              
+      <units>bytes</units>                 
+      <length>656000</length>                 
+      <used>298616</used>                     
+      <free>357384</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 

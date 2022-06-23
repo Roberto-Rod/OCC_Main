@@ -1,0 +1,40 @@
+---
+:source:
+  :path: test-m-npda-bulk
+  :file: test_m_npda_034.c
+:successes: []
+:failures:
+- :test: test_npda_JR_2020_09_18_11_26_59_15_300_Raw_cal_02
+  :line: 132
+  :message: Expected 11 Was 1000
+  :unity_test_time: 0
+- :test: test_npda_JR_2020_09_18_11_27_39_15_300_Raw_cal_02
+  :line: 171
+  :message: Expected 11 Was 1000
+  :unity_test_time: 0
+:ignores: []
+:counts:
+  :total: 2
+  :passed: 0
+  :failed: 2
+  :ignored: 0
+:stdout:
+- Running test...
+- Converting ELF to HEX...
+- Programming device - platform MINGW32...
+- Connecting serial port at COM5...
+- Programming device - platform MINGW32...
+- Waiting for output...
+- Test output -----
+- 'TEST FILE: test_m_npda.c: Data mem usage: 409724b. Heap size: 512b. Stack size:
+  114008b of which 161b are used. TEST FILE: test_m_npda.c: Data mem usage: 409724b.
+  Heap size: 512b. Stack size: 114008b of which 161b are used. [NPDA_SCAN() ERROR]
+  iret=451, block_cnt=4, scan_cnt=1; [NPDA_SCAN() ERROR] iret=451, block_cnt=7, scan_cnt=9;
+  NPDA iret=600; TEST: run_npda: Execution time: 184143us, Max stack usage: 10948bytes,
+  iret: 1000 vs 11, Thickness: 523.3779 vs 520.1788, Precision: 15.08535 vs 12.94023,
+  Blocks: 10 vs 10'
+- "[NPDA_BLOCK_END() ERROR] iret=301, block_cnt=5; NPDA iret=600; TEST: run_npda:
+  Execution time: 175455us, Max stack usage: 10948bytes, iret: 1000 vs 11, Thickness:
+  534.1191 vs 535.5759, Precision: 12.47396 vs 10.99719, Blocks: 9 vs 10"
+- "-----------------"
+:time: 62.23095579998335

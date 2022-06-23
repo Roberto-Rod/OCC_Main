@@ -1,0 +1,46 @@
+
+destin=$1
+
+ff=/usr/bin/find.exe
+
+src=src
+
+echo ${destin}
+
+mkdir ${destin}
+
+mkdir ${destin}/${src}
+
+chmod 777  ${destin}/*
+chmod 777  ${destin}/${src}/*
+
+${ff} ${destin}/${src} -type f -name '*.[h|c]' | while read FILE ; do
+    echo ${FILE} 
+    newfile2="$(echo ${FILE} |sed -e 's/$/.mod/')" ;
+    newfiled="$(echo ${FILE} |sed -e 's/$/.delta/')" ;
+    echo ${newfile2}
+    if [[ -f ${FILE} ]]; then 
+        if [[ -f ${newfile2} ]]; then 
+            echo exists
+
+            echo gggg cmp --silent ${FILE} ${newfile2}
+            cmp --silent ${FILE} ${newfile2}
+            RETVAL=$?
+            if  [ $RETVAL -ne 0 ]; then 
+              echo xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+              rm -f ${newfiled}
+              diff -n  ${FILE}  ${newfile2} >  ${newfiled}
+              dos2unix  ${newfiled}
+            fi
+            [ $RETVAL -eq 0 ] && echo Pass:: $1
+            [ $RETVAL -ne 0 ] && echo Fail:: Files are different :::::::: diff  $1  $FILE
+        fi 
+        
+    else
+        echo does not exist 
+    fi 
+
+
+    echo xxxxxxxxxxxxxxxxxxxxx
+    echo ${newfile2}
+done 

@@ -1,0 +1,644 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov-sanitised.info - /c/Repos/RR/Pico2/PP-main/sourcePico/managers/StateMachinePOST_internal.c</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="title">LCOV - code coverage report</td></tr>
+        <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+        <tr>
+          <td width="100%">
+            <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">c/Repos/RR/Pico2/PP-main/sourcePico/managers</a> - StateMachinePOST_internal.c<span style="font-size: 80%;"> (source / <a href="StateMachinePOST_internal.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov-sanitised.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">161</td>
+            <td class="headerCovTableEntry">161</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-06-21 16:29:00</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+              <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+      </table>
+
+      <table cellpadding=0 cellspacing=0 border=0>
+        <tr>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /********************************************************************************</a>
+<span class="lineNum">       2 </span>            : * File : StateMachinePOST_internal.c
+<span class="lineNum">       3 </span>            : *
+<span class="lineNum">       4 </span>            : * Description : Implements the POST state for the device state machine
+<span class="lineNum">       5 </span>            : *
+<span class="lineNum">       6 </span>            : ********************************************************************************/
+<span class="lineNum">       7 </span>            : /* ******************************************************************************
+<span class="lineNum">       8 </span>            :  * This file is copyrighted by and the property of Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">       9 </span>            :  * It contains confidential and proprietary information. It must not be copied
+<span class="lineNum">      10 </span>            :  * (in whole or in part) or otherwise disclosed without prior written consent
+<span class="lineNum">      11 </span>            :  * of the company. Any copies of this file (in whole or in part), made by any
+<span class="lineNum">      12 </span>            :  * method must also include a copy of this legend.
+<span class="lineNum">      13 </span>            :  *
+<span class="lineNum">      14 </span>            :  * (c) 2018, 2019 Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">      15 </span>            :  *
+<span class="lineNum">      16 </span>            :  ***************************************************************************** */
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : #include &quot;StateMachinePOST.h&quot;
+<span class="lineNum">      19 </span>            : #include &quot;StateMachinePOST_internal.h&quot;
+<span class="lineNum">      20 </span>            : #include &quot;pic16lf1509.h&quot;
+<span class="lineNum">      21 </span>            : #include &quot;pin_manager.h&quot;
+<span class="lineNum">      22 </span>            : #include &quot;PowerControl.h&quot;
+<span class="lineNum">      23 </span>            : #include &quot;Pressure_Part1.h&quot;
+<span class="lineNum">      24 </span>            : #include &quot;adc.h&quot;
+<span class="lineNum">      25 </span>            : #include &quot;Timer.h&quot;
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : static POSTSubState_t subStateNum = POST_STATE_INITIAL;
+<span class="lineNum">      28 </span>            : static uint8_t prevRA = 0x02;  //entry into test mode TP13 = RA0 = Ground
+<span class="lineNum">      29 </span>            :                                //                     TP14 = RA1 = 3.0V
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            : /****************************************************************************
+<span class="lineNum">      32 </span>            : Function Name  :  iPOST_doPOST
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : Parameters     :  None
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">      37 </span>            : 
+<a name="38"><span class="lineNum">      38 </span>            : Description    :  Checks the pins to see if we should go into POST mode or not</a>
+<span class="lineNum">      39 </span>            : *****************************************************************************/
+<span class="lineNum">      40 </span><span class="lineCov">         52 : uint8_t  iPOST_doPOST(void)</span>
+<span class="lineNum">      41 </span>            : {
+<span class="lineNum">      42 </span><span class="lineCov">         52 :   uint8_t returnVal = 0;</span>
+<span class="lineNum">      43 </span>            :   
+<span class="lineNum">      44 </span><span class="lineCov">         52 :   if (subStateNum == POST_STATE_INITIAL)</span>
+<span class="lineNum">      45 </span>            :   {
+<span class="lineNum">      46 </span><span class="lineCov">         47 :     subStateNum = POST_STATE_MAX;</span>
+<span class="lineNum">      47 </span><span class="lineCov">         52 :     if ((0 == IO_RA0_GetValue()) &amp;&amp; </span>
+<span class="lineNum">      48 </span><span class="lineCov">          5 :         (1 == IO_RA1_GetValue()))</span>
+<span class="lineNum">      49 </span>            :     {
+<span class="lineNum">      50 </span><span class="lineCov">          5 :       subStateNum = POST_STATE_00;</span>
+<span class="lineNum">      51 </span><span class="lineCov">          5 :       prevRA = 0x02; //RA1 set, RA0 cleared.</span>
+<span class="lineNum">      52 </span><span class="lineCov">          5 :       returnVal = 1;</span>
+<span class="lineNum">      53 </span><span class="lineCov">          5 :       IO_RC2_SetLow();</span>
+<span class="lineNum">      54 </span><span class="lineCov">          5 :       IO_RC3_SetLow();</span>
+<span class="lineNum">      55 </span><span class="lineCov">          5 :       IO_RC4_SetLow();</span>
+<span class="lineNum">      56 </span><span class="lineCov">          5 :       IO_RC5_SetLow();</span>
+<span class="lineNum">      57 </span><span class="lineCov">          5 :       RC6_SetLow();  //NCO1</span>
+<span class="lineNum">      58 </span><span class="lineCov">          5 :       IO_RC7_SetLow();</span>
+<span class="lineNum">      59 </span><span class="lineCov">          5 :       IO_RB5_SetLow();</span>
+<span class="lineNum">      60 </span><span class="lineCov">          5 :       MP_SetReferenceVoltageBoost(VBOOST_REF_0V);    </span>
+<span class="lineNum">      61 </span>            :     }
+<span class="lineNum">      62 </span>            :   }
+<span class="lineNum">      63 </span><span class="lineCov">         52 :   if(POST_STATE_MAX != subStateNum)</span>
+<span class="lineNum">      64 </span>            :   {
+<span class="lineNum">      65 </span><span class="lineCov">          9 :     returnVal = 1  ;</span>
+<span class="lineNum">      66 </span>            :   }
+<span class="lineNum">      67 </span>            :   
+<span class="lineNum">      68 </span><span class="lineCov">         52 :   return(returnVal);</span>
+<span class="lineNum">      69 </span>            : }
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            : /****************************************************************************
+<span class="lineNum">      72 </span>            : Function Name  :  iPOST_getSubStateNum
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            : Parameters     :  None
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">      77 </span>            : 
+<a name="78"><span class="lineNum">      78 </span>            : Description    :  Returns the sub state</a>
+<span class="lineNum">      79 </span>            : *****************************************************************************/
+<span class="lineNum">      80 </span><span class="lineCov">        280 : POSTSubState_t iPOST_getSubStateNum(void)</span>
+<span class="lineNum">      81 </span>            : {
+<span class="lineNum">      82 </span><span class="lineCov">        280 :   return subStateNum;</span>
+<span class="lineNum">      83 </span>            : }
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span>            : /****************************************************************************
+<span class="lineNum">      86 </span>            : Function Name  :  iPOST_updateSubStateNum
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            : Parameters     :  None
+<span class="lineNum">      89 </span>            : 
+<span class="lineNum">      90 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            : Description    :  Gets the latest value of the RA port, compares it to the
+<span class="lineNum">      93 </span>            :                   stored value. If RA0 and RA1 have both toggled then the state
+<a name="94"><span class="lineNum">      94 </span>            :                   number is increased up to the threshold</a>
+<span class="lineNum">      95 </span>            : *****************************************************************************/
+<span class="lineNum">      96 </span><span class="lineCov">        176 : void iPOST_updateSubStateNum(void)</span>
+<span class="lineNum">      97 </span>            : {
+<span class="lineNum">      98 </span><span class="lineCov">        176 :   uint8_t  currentRA = (uint8_t) (IO_RA0_GetValue() + (IO_RA1_GetValue() &lt;&lt; 1)); </span>
+<span class="lineNum">      99 </span>            :   
+<span class="lineNum">     100 </span><span class="lineCov">        176 :   if (3 == ((currentRA ^ prevRA) &amp; 0x03))</span>
+<span class="lineNum">     101 </span>            :   {
+<span class="lineNum">     102 </span><span class="lineCov">        102 :     prevRA = currentRA;</span>
+<span class="lineNum">     103 </span><span class="lineCov">        102 :     if (POST_STATE_MAX &lt;= ++subStateNum)</span>
+<span class="lineNum">     104 </span>            :     {
+<span class="lineNum">     105 </span><span class="lineCov">          7 :       subStateNum = POST_STATE_00;</span>
+<span class="lineNum">     106 </span>            :     }
+<span class="lineNum">     107 </span>            :   }
+<span class="lineNum">     108 </span><span class="lineCov">        176 : }</span>
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            : /****************************************************************************
+<span class="lineNum">     111 </span>            : Function Name  :  iPOST_setSubStateNum
+<span class="lineNum">     112 </span>            : 
+<span class="lineNum">     113 </span>            : Parameters     :  newStateNum - value to set the sub state number to
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     116 </span>            : 
+<a name="117"><span class="lineNum">     117 </span>            : Description    :  Sets the internal sub state variable to the desired value</a>
+<span class="lineNum">     118 </span>            : *****************************************************************************/
+<span class="lineNum">     119 </span><span class="lineCov">         55 : void iPOST_setSubStateNum(POSTSubState_t  newStateNum)</span>
+<span class="lineNum">     120 </span>            : {
+<span class="lineNum">     121 </span><span class="lineCov">         55 :   subStateNum = newStateNum;</span>
+<span class="lineNum">     122 </span><span class="lineCov">         55 : }</span>
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            : /****************************************************************************
+<span class="lineNum">     125 </span>            : Function Name  :  iPOST_State00
+<span class="lineNum">     126 </span>            : 
+<span class="lineNum">     127 </span>            : Parameters     :  None
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            : Description    :  GPIO   : Only Set RC4 (uC_LAT)
+<span class="lineNum">     132 </span>            :                   DAC    : 0.0V
+<span class="lineNum">     133 </span>            :                   ADC    : None
+<span class="lineNum">     134 </span>            :                   I2C    : None
+<a name="135"><span class="lineNum">     135 </span>            :                   EUSART : None</a>
+<span class="lineNum">     136 </span>            : *****************************************************************************/
+<span class="lineNum">     137 </span><span class="lineCov">         27 : ErrorCode_t iPOST_State00(void)</span>
+<span class="lineNum">     138 </span>            : {
+<span class="lineNum">     139 </span><span class="lineCov">         27 :   ErrorCode_t result = EC_OK_E;</span>
+<span class="lineNum">     140 </span>            :   
+<span class="lineNum">     141 </span><span class="lineCov">         27 :   IO_RC4_SetHigh();</span>
+<span class="lineNum">     142 </span>            :   
+<span class="lineNum">     143 </span><span class="lineCov">         27 :   return result;</span>
+<span class="lineNum">     144 </span>            : }
+<span class="lineNum">     145 </span>            : 
+<span class="lineNum">     146 </span>            : /****************************************************************************
+<span class="lineNum">     147 </span>            : Function Name  :  iPOST_State01
+<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     149 </span>            : Parameters     :  None
+<span class="lineNum">     150 </span>            : 
+<span class="lineNum">     151 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     152 </span>            : 
+<span class="lineNum">     153 </span>            : Description    :  GPIO   : Clear All
+<span class="lineNum">     154 </span>            :                   DAC    : 1.7V
+<span class="lineNum">     155 </span>            :                   ADC    : None
+<span class="lineNum">     156 </span>            :                   I2C    : None
+<a name="157"><span class="lineNum">     157 </span>            :                   EUSART : None</a>
+<span class="lineNum">     158 </span>            : *****************************************************************************/
+<span class="lineNum">     159 </span><span class="lineCov">         13 : ErrorCode_t iPOST_State01(void)</span>
+<span class="lineNum">     160 </span>            : {
+<span class="lineNum">     161 </span>            :   ErrorCode_t result;
+<span class="lineNum">     162 </span>            :   uint8_t  message[4];
+<span class="lineNum">     163 </span>            :   
+<span class="lineNum">     164 </span><span class="lineCov">         13 :   MP_SetReferenceVoltageBoost(VBOOST_REF_27V);</span>
+<span class="lineNum">     165 </span>            :   
+<span class="lineNum">     166 </span><span class="lineCov">         13 :   uint16_t ADCResult = ADC_GetConversion(Boost_Voltage);</span>
+<span class="lineNum">     167 </span>            : 
+<span class="lineNum">     168 </span>            :   //send message on the TX
+<span class="lineNum">     169 </span><span class="lineCov">         13 :   message[0] = 1;</span>
+<span class="lineNum">     170 </span><span class="lineCov">         13 :   message[1] = (uint8_t) (ADCResult &amp; 0x00FFU);</span>
+<span class="lineNum">     171 </span><span class="lineCov">         13 :   message[2] = (uint8_t) (ADCResult &gt;&gt; 8);</span>
+<span class="lineNum">     172 </span><span class="lineCov">         13 :   message[3] = (uint8_t) (message[0] ^ message[1] ^ message[2]);</span>
+<span class="lineNum">     173 </span><span class="lineCov">         13 :   result = TX_Write(message, 4);</span>
+<span class="lineNum">     174 </span>            :   
+<span class="lineNum">     175 </span><span class="lineCov">         13 :   return result;</span>
+<span class="lineNum">     176 </span>            : }
+<span class="lineNum">     177 </span>            : 
+<span class="lineNum">     178 </span>            : /****************************************************************************
+<span class="lineNum">     179 </span>            : Function Name  :  iPOST_State02
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span>            : Parameters     :  None
+<span class="lineNum">     182 </span>            : 
+<span class="lineNum">     183 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     184 </span>            : 
+<span class="lineNum">     185 </span>            : Description    :  GPIO   : Only Set RC7 (green LED)
+<span class="lineNum">     186 </span>            :                   DAC    : 0.0V
+<span class="lineNum">     187 </span>            :                   ADC    : None
+<span class="lineNum">     188 </span>            :                   I2C    : None
+<a name="189"><span class="lineNum">     189 </span>            :                   EUSART : None</a>
+<span class="lineNum">     190 </span>            : *****************************************************************************/
+<span class="lineNum">     191 </span><span class="lineCov">         12 : ErrorCode_t iPOST_State02(void)</span>
+<span class="lineNum">     192 </span>            : {
+<span class="lineNum">     193 </span><span class="lineCov">         12 :   ErrorCode_t result = EC_OK_E;</span>
+<span class="lineNum">     194 </span>            :   
+<span class="lineNum">     195 </span><span class="lineCov">         12 :   MP_SetReferenceVoltageBoost(VBOOST_REF_0V);</span>
+<span class="lineNum">     196 </span><span class="lineCov">         12 :   IO_RC7_SetHigh();</span>
+<span class="lineNum">     197 </span>            :   
+<span class="lineNum">     198 </span><span class="lineCov">         12 :   return result;</span>
+<span class="lineNum">     199 </span>            : }
+<span class="lineNum">     200 </span>            : 
+<span class="lineNum">     201 </span>            : /****************************************************************************
+<span class="lineNum">     202 </span>            : Function Name  :  iPOST_State03
+<span class="lineNum">     203 </span>            : 
+<span class="lineNum">     204 </span>            : Parameters     :  None
+<span class="lineNum">     205 </span>            : 
+<span class="lineNum">     206 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     207 </span>            : 
+<span class="lineNum">     208 </span>            : Description    :  GPIO   : Only set RC5 (Orange LED)
+<span class="lineNum">     209 </span>            :                   DAC    : 0.0V
+<span class="lineNum">     210 </span>            :                   ADC    : None
+<span class="lineNum">     211 </span>            :                   I2C    : None
+<a name="212"><span class="lineNum">     212 </span>            :                   EUSART : None</a>
+<span class="lineNum">     213 </span>            : *****************************************************************************/
+<span class="lineNum">     214 </span><span class="lineCov">         12 : ErrorCode_t iPOST_State03(void)</span>
+<span class="lineNum">     215 </span>            : {
+<span class="lineNum">     216 </span><span class="lineCov">         12 :   ErrorCode_t result = EC_OK_E;</span>
+<span class="lineNum">     217 </span><span class="lineCov">         12 :   IO_RC7_SetLow();</span>
+<span class="lineNum">     218 </span><span class="lineCov">         12 :   IO_RC5_SetHigh();</span>
+<span class="lineNum">     219 </span>            :   
+<span class="lineNum">     220 </span><span class="lineCov">         12 :   return result;</span>
+<span class="lineNum">     221 </span>            : }
+<span class="lineNum">     222 </span>            : 
+<span class="lineNum">     223 </span>            : /****************************************************************************
+<span class="lineNum">     224 </span>            : Function Name  :  iPOST_State04
+<span class="lineNum">     225 </span>            : 
+<span class="lineNum">     226 </span>            : Parameters     :  None
+<span class="lineNum">     227 </span>            : 
+<span class="lineNum">     228 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     229 </span>            : 
+<span class="lineNum">     230 </span>            : Description    :  GPIO   : Only set RC2 (uC_SensorSupply)
+<span class="lineNum">     231 </span>            :                   DAC    : 0.0V
+<span class="lineNum">     232 </span>            :                   ADC    : None
+<span class="lineNum">     233 </span>            :                   I2C    : Read from internal pressure sensor
+<a name="234"><span class="lineNum">     234 </span>            :                   EUSART : Tx internal pressure value</a>
+<span class="lineNum">     235 </span>            : *****************************************************************************/
+<span class="lineNum">     236 </span><span class="lineCov">         13 : ErrorCode_t iPOST_State04(void)</span>
+<span class="lineNum">     237 </span>            : {
+<span class="lineNum">     238 </span>            :   ErrorCode_t result;
+<span class="lineNum">     239 </span>            :   uint16_t    currentVacuum;
+<span class="lineNum">     240 </span>            :   uint16_t    internalPressure;
+<span class="lineNum">     241 </span>            :   uint16_t    externalPressure;
+<span class="lineNum">     242 </span><span class="lineCov">         13 :   IO_RC5_SetLow();</span>
+<span class="lineNum">     243 </span><span class="lineCov">         13 :   IO_RC2_SetHigh();</span>
+<span class="lineNum">     244 </span>            :   uint8_t  message[4];
+<span class="lineNum">     245 </span>            :   
+<span class="lineNum">     246 </span>            :   //get reading from the external pressure sensor
+<span class="lineNum">     247 </span><span class="lineCov">         13 :   result = GetVacuum(&amp;internalPressure, &amp;externalPressure, &amp;currentVacuum);</span>
+<span class="lineNum">     248 </span>            :   
+<span class="lineNum">     249 </span><span class="lineCov">         13 :   if(EC_OK_E == result)</span>
+<span class="lineNum">     250 </span>            :   {
+<span class="lineNum">     251 </span>            :     //send message on the TX
+<span class="lineNum">     252 </span><span class="lineCov">         12 :     message[0] = 4;</span>
+<span class="lineNum">     253 </span><span class="lineCov">         12 :     message[1] = (uint8_t) (externalPressure &amp; 0x00FFU);</span>
+<span class="lineNum">     254 </span><span class="lineCov">         12 :     message[2] = (uint8_t) (externalPressure &gt;&gt; 8);</span>
+<span class="lineNum">     255 </span><span class="lineCov">         12 :     message[3] = (uint8_t) (message[0] ^ message[1] ^ message[2]);</span>
+<span class="lineNum">     256 </span><span class="lineCov">         12 :     result = TX_Write(message, 4);</span>
+<span class="lineNum">     257 </span>            :   }  
+<span class="lineNum">     258 </span><span class="lineCov">         13 :   return result;</span>
+<span class="lineNum">     259 </span>            : }
+<span class="lineNum">     260 </span>            : 
+<span class="lineNum">     261 </span>            : /****************************************************************************
+<span class="lineNum">     262 </span>            : Function Name  :  iPOST_State05
+<span class="lineNum">     263 </span>            : 
+<span class="lineNum">     264 </span>            : Parameters     :  None
+<span class="lineNum">     265 </span>            : 
+<span class="lineNum">     266 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     267 </span>            : 
+<span class="lineNum">     268 </span>            : Description    :  GPIO   : Clear All
+<span class="lineNum">     269 </span>            :                   DAC    : 0.0V
+<span class="lineNum">     270 </span>            :                   ADC    : None
+<span class="lineNum">     271 </span>            :                   I2C    : Read from external pressure sensor
+<a name="272"><span class="lineNum">     272 </span>            :                   EUSART : Tx external pressure value</a>
+<span class="lineNum">     273 </span>            : *****************************************************************************/
+<span class="lineNum">     274 </span><span class="lineCov">         13 : ErrorCode_t iPOST_State05(void)</span>
+<span class="lineNum">     275 </span>            : {
+<span class="lineNum">     276 </span>            :   ErrorCode_t result;
+<span class="lineNum">     277 </span>            :   uint16_t    currentVacuum;
+<span class="lineNum">     278 </span>            :   uint16_t    internalPressure;
+<span class="lineNum">     279 </span>            :   uint16_t    externalPressure;
+<span class="lineNum">     280 </span>            :   
+<span class="lineNum">     281 </span>            :   uint8_t  message[4];
+<span class="lineNum">     282 </span>            :  
+<span class="lineNum">     283 </span><span class="lineCov">         13 :   IO_RC2_SetLow();</span>
+<span class="lineNum">     284 </span>            : 
+<span class="lineNum">     285 </span>            :   //get reading from the internal pressure sensor
+<span class="lineNum">     286 </span><span class="lineCov">         13 :   result = GetVacuum(&amp;internalPressure, &amp;externalPressure, &amp;currentVacuum);</span>
+<span class="lineNum">     287 </span>            :   
+<span class="lineNum">     288 </span>            :   //send message on the TX
+<span class="lineNum">     289 </span><span class="lineCov">         13 :   if(EC_OK_E == result)</span>
+<span class="lineNum">     290 </span>            :   {
+<span class="lineNum">     291 </span><span class="lineCov">         12 :     message[0] = 5;</span>
+<span class="lineNum">     292 </span><span class="lineCov">         12 :     message[1] = (uint8_t) (internalPressure &amp; 0x00FFU);</span>
+<span class="lineNum">     293 </span><span class="lineCov">         12 :     message[2] = (uint8_t) (internalPressure &gt;&gt; 8);</span>
+<span class="lineNum">     294 </span><span class="lineCov">         12 :     message[3] = (uint8_t) (message[0] ^ message[1] ^ message[2]);</span>
+<span class="lineNum">     295 </span><span class="lineCov">         12 :     result = TX_Write(message, 4);</span>
+<span class="lineNum">     296 </span>            :   }
+<span class="lineNum">     297 </span><span class="lineCov">         13 :   return result;</span>
+<span class="lineNum">     298 </span>            : }
+<span class="lineNum">     299 </span>            : 
+<span class="lineNum">     300 </span>            : /****************************************************************************
+<span class="lineNum">     301 </span>            : Function Name  :  iPOST_State06
+<span class="lineNum">     302 </span>            : 
+<span class="lineNum">     303 </span>            : Parameters     :  None
+<span class="lineNum">     304 </span>            : 
+<span class="lineNum">     305 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     306 </span>            : 
+<span class="lineNum">     307 </span>            : Description    :  GPIO   : Clear All
+<span class="lineNum">     308 </span>            :                   DAC    : 0.0V
+<span class="lineNum">     309 </span>            :                   ADC    : None
+<span class="lineNum">     310 </span>            :                   I2C    : Write to EEPROM and Read Back
+<a name="311"><span class="lineNum">     311 </span>            :                   EUSART : Tx pass/fail if read back data matches written data</a>
+<span class="lineNum">     312 </span>            : *****************************************************************************/
+<span class="lineNum">     313 </span><span class="lineCov">         14 : ErrorCode_t iPOST_State06(void)</span>
+<span class="lineNum">     314 </span>            : {
+<span class="lineNum">     315 </span><span class="lineCov">         14 :   ErrorCode_t readResult  = EC_OK_E;</span>
+<span class="lineNum">     316 </span>            :   ErrorCode_t writeResult;
+<span class="lineNum">     317 </span>            :   ErrorCode_t TXResult;
+<span class="lineNum">     318 </span><span class="lineCov">         14 :   uint8_t  writtenData[2] = {0xAA, 0x55};</span>
+<span class="lineNum">     319 </span><span class="lineCov">         14 :   uint8_t  resetData[2] = {0xFF, 0xFF};</span>
+<span class="lineNum">     320 </span><span class="lineCov">         14 :   uint8_t  readData[2] = {0x00, 0x00};</span>
+<span class="lineNum">     321 </span>            :   uint8_t  message[4];
+<span class="lineNum">     322 </span>            :   uint8_t  tempData; // temporary result
+<span class="lineNum">     323 </span><span class="lineCov">         14 :   const uint32_t eepromAddress = 0; // 0x10000 64K</span>
+<span class="lineNum">     324 </span>            : 
+<span class="lineNum">     325 </span><span class="lineCov">         14 :   MP_EnableExternalPeripheralsSupply();</span>
+<span class="lineNum">     326 </span>            :   /*lint -e{522} Suppress: Highest String ?PM_Delay? lacks side-effects.*/
+<span class="lineNum">     327 </span><span class="lineCov">         14 :   PM_Delay((uint32_t) 8);</span>
+<span class="lineNum">     328 </span>            : 
+<span class="lineNum">     329 </span>            :   //Memory_Write
+<span class="lineNum">     330 </span><span class="lineCov">         14 :   writeResult = I2E_Write(eepromAddress, writtenData, 2);</span>
+<span class="lineNum">     331 </span>            :     
+<span class="lineNum">     332 </span>            :   //Memory_Read.
+<span class="lineNum">     333 </span>            :   // Keep retrying because there is a write delay flashing EEPROM from previous write operation.
+<span class="lineNum">     334 </span>            :   // See http://www.mouser.com/ds/2/389/m24m02-dr-954993.pdf
+<span class="lineNum">     335 </span>            :   /*lint -e{522} Suppress: Highest String ?PM_Delay? lacks side-effects.*/
+<span class="lineNum">     336 </span><span class="lineCov">         14 :   PM_Delay((uint32_t) 10);</span>
+<span class="lineNum">     337 </span><span class="lineCov">         14 :   uint8_t delayAfterWriteCount = 5;</span>
+<span class="lineNum">     338 </span><span class="lineCov">         33 :   while(delayAfterWriteCount-- &gt; 0)</span>
+<span class="lineNum">     339 </span>            :   {
+<span class="lineNum">     340 </span><span class="lineCov">         18 :     readResult = I2E_Read(eepromAddress, readData, 2);</span>
+<span class="lineNum">     341 </span><span class="lineCov">         18 :     if (readResult == EC_OK_E) {break;}</span>
+<span class="lineNum">     342 </span>            :   }
+<span class="lineNum">     343 </span>            : 
+<span class="lineNum">     344 </span>            :   //send message on the TX
+<span class="lineNum">     345 </span><span class="lineCov">         14 :   message[0] = 6;</span>
+<span class="lineNum">     346 </span>            :   
+<span class="lineNum">     347 </span>            :   // The following line, 
+<span class="lineNum">     348 </span>            :   // message[1] = (EC_OK_E == writeResult) + ((EC_OK_E == readResult) &lt;&lt; 1);
+<span class="lineNum">     349 </span>            :   // has been re-written below to avoid the lint Warning 514: Unusual use of a Boolean expression.
+<span class="lineNum">     350 </span>            :   // It also saves program memory.
+<span class="lineNum">     351 </span><span class="lineCov">         14 :   tempData = 0x00U; // reset all bits</span>
+<span class="lineNum">     352 </span><span class="lineCov">         14 :   tempData = tempData; // avoids Compiler Warning (1090) &quot;variable is not used&quot;.</span>
+<span class="lineNum">     353 </span><span class="lineCov">         14 :   if (writeResult == EC_OK_E)</span>
+<span class="lineNum">     354 </span>            :   {
+<span class="lineNum">     355 </span><span class="lineCov">         13 :     tempData |= 0x01U; // set bit 0</span>
+<span class="lineNum">     356 </span>            :   }
+<span class="lineNum">     357 </span><span class="lineCov">         14 :   if (readResult == EC_OK_E)</span>
+<span class="lineNum">     358 </span>            :   {
+<span class="lineNum">     359 </span><span class="lineCov">         13 :     tempData |= 0x02U; // set bit 1</span>
+<span class="lineNum">     360 </span>            :   }
+<span class="lineNum">     361 </span>            :   // result is in bits 0-1: bit 0=writeResult, bit1=readResult
+<span class="lineNum">     362 </span><span class="lineCov">         14 :   message[1] = tempData;</span>
+<span class="lineNum">     363 </span>            :   
+<span class="lineNum">     364 </span>            :   // The following line, 
+<span class="lineNum">     365 </span>            :   // message[2] = (uint8_t) ((readData[0] == writtenData[0]) + ((readData[1] == writtenData[1]) &lt;&lt; 1));
+<span class="lineNum">     366 </span>            :   // has been re-written below to avoid the lint Warning 514: Unusual use of a Boolean expression.
+<span class="lineNum">     367 </span>            :   // It also saves program memory.
+<span class="lineNum">     368 </span><span class="lineCov">         14 :   tempData = 0x00U; // reset all bits</span>
+<span class="lineNum">     369 </span><span class="lineCov">         14 :   if (readData [0] == writtenData [0])</span>
+<span class="lineNum">     370 </span>            :   {
+<span class="lineNum">     371 </span><span class="lineCov">          6 :     tempData |= 0x01U; // set bit 0</span>
+<span class="lineNum">     372 </span>            :   }
+<span class="lineNum">     373 </span><span class="lineCov">         14 :   if (readData [1] == writtenData [1])</span>
+<span class="lineNum">     374 </span>            :   {
+<span class="lineNum">     375 </span><span class="lineCov">          4 :     tempData |= 0x02U; // set bit 1</span>
+<span class="lineNum">     376 </span>            :   }
+<span class="lineNum">     377 </span>            :   // result is in bits 0-1: bit 0=Data Byte 0 Result, bit1=Data Byte 1 Result 
+<span class="lineNum">     378 </span><span class="lineCov">         14 :   message[2] = tempData;</span>
+<span class="lineNum">     379 </span>            :   
+<span class="lineNum">     380 </span><span class="lineCov">         14 :   message[3] = (uint8_t) (message[0] ^ message[1] ^ message[2]);</span>
+<span class="lineNum">     381 </span>            :   
+<span class="lineNum">     382 </span><span class="lineCov">         14 :   TXResult = TX_Write(message, 4);</span>
+<span class="lineNum">     383 </span>            :   
+<span class="lineNum">     384 </span>            :   // Allow the longest write time of 10ms
+<span class="lineNum">     385 </span><span class="lineCov">         14 :   I2E_Write(eepromAddress, resetData, 2);</span>
+<span class="lineNum">     386 </span>            :   /*lint -e{522} Suppress: Highest String ?PM_Delay? lacks side-effects.*/
+<span class="lineNum">     387 </span><span class="lineCov">         14 :   PM_Delay((uint32_t) 10);</span>
+<span class="lineNum">     388 </span>            : 
+<span class="lineNum">     389 </span><span class="lineCov">         14 :   MP_DisableExternalPeripheralsSupply();</span>
+<span class="lineNum">     390 </span>            : 
+<span class="lineNum">     391 </span><span class="lineCov">         14 :   return TXResult;</span>
+<span class="lineNum">     392 </span>            : }
+<span class="lineNum">     393 </span>            : 
+<span class="lineNum">     394 </span>            : /****************************************************************************
+<span class="lineNum">     395 </span>            : Function Name  :  iPOST_State07
+<span class="lineNum">     396 </span>            : 
+<span class="lineNum">     397 </span>            : Parameters     :  None
+<span class="lineNum">     398 </span>            : 
+<span class="lineNum">     399 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     400 </span>            : 
+<span class="lineNum">     401 </span>            : Description    :  GPIO   : Toggle RC6 (PWM-1) at 10Hz - 5Hz 50% duty cycle,
+<span class="lineNum">     402 </span>            :                            clear RC3 (PWM-2)
+<span class="lineNum">     403 </span>            :                   DAC    : 1.7V
+<span class="lineNum">     404 </span>            :                   ADC    : Read AN4/RC0
+<span class="lineNum">     405 </span>            :                   I2C    : None
+<a name="406"><span class="lineNum">     406 </span>            :                   EUSART : Tx the values read by the ADC</a>
+<span class="lineNum">     407 </span>            : *****************************************************************************/
+<span class="lineNum">     408 </span><span class="lineCov">          9 : ErrorCode_t iPOST_State07(void)</span>
+<span class="lineNum">     409 </span>            : {
+<span class="lineNum">     410 </span>            :   ErrorCode_t result;
+<span class="lineNum">     411 </span>            :   uint8_t  message[4];
+<span class="lineNum">     412 </span>            :   
+<span class="lineNum">     413 </span><span class="lineCov">          9 :   NCO1CON = 0x00;</span>
+<span class="lineNum">     414 </span><span class="lineCov">          9 :   IO_RC2_SetHigh();</span>
+<span class="lineNum">     415 </span>            :   
+<span class="lineNum">     416 </span><span class="lineCov">          9 :   RC6_Toggle();  //NCO1: assume POST is running at 100ms interval</span>
+<span class="lineNum">     417 </span><span class="lineCov">          9 :   IO_RC3_SetLow();</span>
+<span class="lineNum">     418 </span><span class="lineCov">          9 :   MP_SetReferenceVoltageBoost(VBOOST_REF_27V);</span>
+<span class="lineNum">     419 </span>            :     
+<span class="lineNum">     420 </span><span class="lineCov">          9 :   uint16_t ADCResult = ADC_GetConversion(HBridge_Current);</span>
+<span class="lineNum">     421 </span>            : 
+<span class="lineNum">     422 </span>            :   //send message on the TX
+<span class="lineNum">     423 </span><span class="lineCov">          9 :   message[0] = 7;</span>
+<span class="lineNum">     424 </span><span class="lineCov">          9 :   message[1] = (uint8_t) (ADCResult &amp; 0x00FFU);</span>
+<span class="lineNum">     425 </span><span class="lineCov">          9 :   message[2] = (uint8_t) (ADCResult &gt;&gt; 8);</span>
+<span class="lineNum">     426 </span><span class="lineCov">          9 :   message[3] = (uint8_t) (message[0] ^ message[1] ^ message[2]);</span>
+<span class="lineNum">     427 </span><span class="lineCov">          9 :   result = TX_Write(message, 4);</span>
+<span class="lineNum">     428 </span>            :    
+<span class="lineNum">     429 </span><span class="lineCov">          9 :   return result;</span>
+<span class="lineNum">     430 </span>            : }
+<span class="lineNum">     431 </span>            : 
+<span class="lineNum">     432 </span>            : /****************************************************************************
+<span class="lineNum">     433 </span>            : Function Name  :  iPOST_State08
+<span class="lineNum">     434 </span>            : 
+<span class="lineNum">     435 </span>            : Parameters     :  None
+<span class="lineNum">     436 </span>            : 
+<span class="lineNum">     437 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     438 </span>            : 
+<span class="lineNum">     439 </span>            : Description    :  GPIO   : Toggle RC6 (PWM-1) at 10Hz - 5Hz 50% duty cycle,
+<span class="lineNum">     440 </span>            : *                          set RC3 (PWM-2)
+<span class="lineNum">     441 </span>            :                   DAC    : 1.7V
+<span class="lineNum">     442 </span>            :                   ADC    : Read AN4/RC0
+<span class="lineNum">     443 </span>            :                   I2C    : None
+<a name="444"><span class="lineNum">     444 </span>            :                   EUSART : Tx the values read by the ADC</a>
+<span class="lineNum">     445 </span>            : *****************************************************************************/
+<span class="lineNum">     446 </span><span class="lineCov">          9 : ErrorCode_t iPOST_State08(void)</span>
+<span class="lineNum">     447 </span>            : {
+<span class="lineNum">     448 </span>            :   ErrorCode_t result;
+<span class="lineNum">     449 </span>            :   uint8_t  message[4];
+<span class="lineNum">     450 </span>            :   
+<span class="lineNum">     451 </span><span class="lineCov">          9 :   NCO1CON = 0x00;</span>
+<span class="lineNum">     452 </span><span class="lineCov">          9 :   IO_RC2_SetHigh();</span>
+<span class="lineNum">     453 </span>            :   
+<span class="lineNum">     454 </span><span class="lineCov">          9 :   RC6_Toggle();  //NCO1: assume POST is running at 100ms interval</span>
+<span class="lineNum">     455 </span><span class="lineCov">          9 :   IO_RC3_SetHigh();</span>
+<span class="lineNum">     456 </span><span class="lineCov">          9 :   MP_SetReferenceVoltageBoost(VBOOST_REF_27V);</span>
+<span class="lineNum">     457 </span>            :     
+<span class="lineNum">     458 </span><span class="lineCov">          9 :   uint16_t ADCResult = ADC_GetConversion(HBridge_Current);</span>
+<span class="lineNum">     459 </span>            : 
+<span class="lineNum">     460 </span>            :   //send message on the TX
+<span class="lineNum">     461 </span><span class="lineCov">          9 :   message[0] = 8;</span>
+<span class="lineNum">     462 </span><span class="lineCov">          9 :   message[1] = (uint8_t) (ADCResult &amp; 0x00FFU);</span>
+<span class="lineNum">     463 </span><span class="lineCov">          9 :   message[2] = (uint8_t) (ADCResult &gt;&gt; 8);</span>
+<span class="lineNum">     464 </span><span class="lineCov">          9 :   message[3] = (uint8_t) (message[0] ^ message[1] ^ message[2]);</span>
+<span class="lineNum">     465 </span><span class="lineCov">          9 :   result = TX_Write(message, 4);</span>
+<span class="lineNum">     466 </span>            :  
+<span class="lineNum">     467 </span><span class="lineCov">          9 :   return result;</span>
+<span class="lineNum">     468 </span>            : }
+<span class="lineNum">     469 </span>            : 
+<span class="lineNum">     470 </span>            : /****************************************************************************
+<span class="lineNum">     471 </span>            : Function Name  :  iPOST_State09
+<span class="lineNum">     472 </span>            : 
+<span class="lineNum">     473 </span>            : Parameters     :  None
+<span class="lineNum">     474 </span>            : 
+<span class="lineNum">     475 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     476 </span>            : 
+<span class="lineNum">     477 </span>            : Description    :  GPIO   : Read value of RA5
+<span class="lineNum">     478 </span>            :                   DAC    : None
+<span class="lineNum">     479 </span>            :                   ADC    : None
+<span class="lineNum">     480 </span>            :                   I2C    : None
+<a name="481"><span class="lineNum">     481 </span>            :                   EUSART : Tx Value of RA5</a>
+<span class="lineNum">     482 </span>            : *****************************************************************************/
+<span class="lineNum">     483 </span><span class="lineCov">          9 : ErrorCode_t iPOST_State09(void)</span>
+<span class="lineNum">     484 </span>            : {
+<span class="lineNum">     485 </span>            :   ErrorCode_t result;
+<span class="lineNum">     486 </span>            :   uint8_t  message[4];
+<span class="lineNum">     487 </span>            : 
+<span class="lineNum">     488 </span><span class="lineCov">          9 :   MP_SetReferenceVoltageBoost(VBOOST_REF_0V);</span>
+<span class="lineNum">     489 </span><span class="lineCov">          9 :   IO_RC3_SetLow();</span>
+<span class="lineNum">     490 </span>            :   
+<span class="lineNum">     491 </span><span class="lineCov">          9 :   uint8_t RA5Result = IO_RA5_GetValue();</span>
+<span class="lineNum">     492 </span>            :   
+<span class="lineNum">     493 </span>            :   //send message on the TX
+<span class="lineNum">     494 </span><span class="lineCov">          9 :   message[0] = 9;</span>
+<span class="lineNum">     495 </span><span class="lineCov">          9 :   message[1] = RA5Result;</span>
+<span class="lineNum">     496 </span><span class="lineCov">          9 :   message[2] = 0;</span>
+<span class="lineNum">     497 </span><span class="lineCov">          9 :   message[3] = (uint8_t) (message[0] ^ message[1] ^ message[2]);</span>
+<span class="lineNum">     498 </span><span class="lineCov">          9 :   result = TX_Write(message, 4);</span>
+<span class="lineNum">     499 </span>            :      
+<span class="lineNum">     500 </span><span class="lineCov">          9 :   return result;</span>
+<span class="lineNum">     501 </span>            : }
+<span class="lineNum">     502 </span>            : 
+<span class="lineNum">     503 </span>            : /****************************************************************************
+<span class="lineNum">     504 </span>            : Function Name  :  iPOST_State10
+<span class="lineNum">     505 </span>            : 
+<span class="lineNum">     506 </span>            : Parameters     :  None
+<span class="lineNum">     507 </span>            : 
+<span class="lineNum">     508 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     509 </span>            : 
+<span class="lineNum">     510 </span>            : Description    :  GPIO   : Set RB5 pin (OSC_Supply)
+<span class="lineNum">     511 </span>            :                   DAC    : None
+<span class="lineNum">     512 </span>            :                   ADC    : Take
+<span class="lineNum">     513 </span>            :                   I2C    : None
+<a name="514"><span class="lineNum">     514 </span>            :                   EUSART : None</a>
+<span class="lineNum">     515 </span>            : *****************************************************************************/
+<span class="lineNum">     516 </span><span class="lineCov">          8 : ErrorCode_t iPOST_State10(void)</span>
+<span class="lineNum">     517 </span>            : {
+<span class="lineNum">     518 </span><span class="lineCov">          8 :   ErrorCode_t result = EC_OK_E;</span>
+<span class="lineNum">     519 </span><span class="lineCov">          8 :   IO_RB5_SetHigh();</span>
+<span class="lineNum">     520 </span>            : 
+<span class="lineNum">     521 </span>            :   /* Note this is the last state. We should not do any Tx here
+<span class="lineNum">     522 </span>            :    */
+<span class="lineNum">     523 </span><span class="lineCov">          8 :   return result;</span>
+<span class="lineNum">     524 </span>            : }
+<span class="lineNum">     525 </span>            : 
+<span class="lineNum">     526 </span>            : /****************************************************************************
+<span class="lineNum">     527 </span>            : Function Name  :  iPOST_StateError
+<span class="lineNum">     528 </span>            : 
+<span class="lineNum">     529 </span>            : Parameters     :  None
+<span class="lineNum">     530 </span>            : 
+<span class="lineNum">     531 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">     532 </span>            : 
+<span class="lineNum">     533 </span>            : Description    :  GPIO   : Set RB5 pin (OSC_Supply)
+<span class="lineNum">     534 </span>            :                   DAC    : None
+<span class="lineNum">     535 </span>            :                   ADC    : Take
+<span class="lineNum">     536 </span>            :                   I2C    : None
+<a name="537"><span class="lineNum">     537 </span>            :                   EUSART : None</a>
+<span class="lineNum">     538 </span>            : *****************************************************************************/
+<span class="lineNum">     539 </span><span class="lineCov">          2 : ErrorCode_t iPOST_StateError(void)</span>
+<span class="lineNum">     540 </span>            : {
+<span class="lineNum">     541 </span>            :  ErrorCode_t result;
+<span class="lineNum">     542 </span>            :  uint8_t  message[4];
+<span class="lineNum">     543 </span>            :   
+<span class="lineNum">     544 </span>            :   //send message on the TX
+<span class="lineNum">     545 </span><span class="lineCov">          2 :   message[0] = 0xFF;</span>
+<span class="lineNum">     546 </span><span class="lineCov">          2 :   message[1] = 0x0A;</span>
+<span class="lineNum">     547 </span><span class="lineCov">          2 :   message[2] = 0xA0;</span>
+<span class="lineNum">     548 </span><span class="lineCov">          2 :   message[3] = (uint8_t) (message[0] ^ message[1] ^ message[2]);</span>
+<span class="lineNum">     549 </span><span class="lineCov">          2 :   result = TX_Write(message, 4);</span>
+<span class="lineNum">     550 </span>            :      
+<span class="lineNum">     551 </span><span class="lineCov">          2 :   return result;</span>
+<span class="lineNum">     552 </span>            : }
+<span class="lineNum">     553 </span>            : 
+<span class="lineNum">     554 </span>            : /****************************************************************************
+<span class="lineNum">     555 </span>            : Function Name  :  iPOST_Init
+<span class="lineNum">     556 </span>            : 
+<span class="lineNum">     557 </span>            : Parameters     :  None
+<span class="lineNum">     558 </span>            : 
+<span class="lineNum">     559 </span>            : Return Value   :  None
+<span class="lineNum">     560 </span>            : 
+<span class="lineNum">     561 </span>            : Description    :  Initialises the UART transmit and I2C EEPROM
+<a name="562"><span class="lineNum">     562 </span>            :  </a>
+<span class="lineNum">     563 </span>            : *****************************************************************************/
+<span class="lineNum">     564 </span><span class="lineCov">         26 : void iPOST_Init(void)</span>
+<span class="lineNum">     565 </span>            : {
+<span class="lineNum">     566 </span><span class="lineCov">         26 :   TX_Init();</span>
+<span class="lineNum">     567 </span><span class="lineCov">         26 :   I2E_Init();</span>
+<span class="lineNum">     568 </span><span class="lineCov">         26 : }</span>
+    </pre>
+          </td>
+        </tr>
+      </table>
+      <br>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+      </table>
+      <br>
+
+</body>
+</html>

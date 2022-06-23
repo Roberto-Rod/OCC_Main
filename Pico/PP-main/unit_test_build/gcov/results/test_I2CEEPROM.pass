@@ -1,0 +1,41 @@
+---
+:source:
+  :path: test/unit_test/devices
+  :file: test_I2CEEPROM.c
+:successes:
+- :test: test_InitJustCallsTheLowerLevelInit
+  :line: 57
+  :message: ''
+- :test: test_ReadDoesRangeChecking
+  :line: 64
+  :message: ''
+- :test: test_ReadHappyCase
+  :line: 104
+  :message: ''
+- :test: test_ReadHappyRetry
+  :line: 127
+  :message: ''
+- :test: test_ReadRetryFailure
+  :line: 157
+  :message: ''
+- :test: test_WriteDoesRangeChecking
+  :line: 187
+  :message: ''
+- :test: test_WriteHappyCase
+  :line: 227
+  :message: ''
+- :test: test_WriteHappyRetry
+  :line: 248
+  :message: ''
+- :test: test_WriteRetryFailure
+  :line: 275
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 9
+  :passed: 9
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

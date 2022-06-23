@@ -1,0 +1,73 @@
+---
+:source:
+  :path: test/unit_test/managers
+  :file: test_StateMachinePumpDown.c
+:successes:
+- :test: test_OnInitDisableStateTimerInitialiseStateVacuumAndReurnOk
+  :line: 100
+  :message: ''
+- :test: test_PumpDownStateReturnsInvalidInputParameter
+  :line: 110
+  :message: ''
+- :test: test_PumpDownRunsUntilReachingTargetVacuumWithVacuumReadAndPumpActivateAlternating
+  :line: 125
+  :message: ''
+- :test: test_PumpDownDurationUpdatedWithPerformanceLogger
+  :line: 178
+  :message: ''
+- :test: test_PumpDownRunsFor20SecondWhenPressureReachedButOutwith5SecondWindow
+  :line: 196
+  :message: ''
+- :test: test_PumpDownRunsCannotReachTargetVacuum
+  :line: 251
+  :message: ''
+- :test: test_PumpDownFailsToTakeVacuumReadingAndReturnsError
+  :line: 271
+  :message: ''
+- :test: test_PumpDownDetectButtonPressAndEventuallyGoesInShutdown
+  :line: 293
+  :message: ''
+- :test: test_PumpDownRunsButExternalPressureIncreasesCausingNoneReturnValveError
+  :line: 343
+  :message: ''
+- :test: test_PumpDownRunnningDetectsExternalOverTemperatureEventAndEntersNRE
+  :line: 391
+  :message: ''
+- :test: test_PumpDownRunnningDetectsInternalOverTemperatureEventAndEntersNRE
+  :line: 415
+  :message: ''
+- :test: test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_IntInitalise
+  :line: 438
+  :message: ''
+- :test: test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_IntStart
+  :line: 461
+  :message: ''
+- :test: test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_IntNotReady
+  :line: 484
+  :message: ''
+- :test: test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_IntReadFailed
+  :line: 507
+  :message: ''
+- :test: test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_ExtInitalise
+  :line: 530
+  :message: ''
+- :test: test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_ExtStart
+  :line: 553
+  :message: ''
+- :test: test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_ExtNotReady
+  :line: 576
+  :message: ''
+- :test: test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_ExtReadFailed
+  :line: 599
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 19
+  :passed: 19
+  :failed: 0
+  :ignored: 0
+:stdout:
+- 'Assert raised at sourcePico/managers/StateMachinePumpDown.c[72] on test: aNewState
+  != NULL'
+- ''

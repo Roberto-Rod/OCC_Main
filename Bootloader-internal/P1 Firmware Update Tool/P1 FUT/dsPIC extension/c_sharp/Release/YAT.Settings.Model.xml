@@ -1,0 +1,818 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YAT.Settings.Model</name>
+    </assembly>
+    <members>
+        <member name="T:YAT.Settings.Model.CommandPageSettingsRoot">
+            <remarks>Root name is relevant for potential future 'AlternateXmlElements'.</remarks>
+            <remarks>An explicit name makes little sense as this is the very root of the XML.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.CommandPageSettingsRoot.settingsVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.CommandPageSettingsRoot.productVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPageSettingsRoot.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPageSettingsRoot.#ctor(YAT.Settings.Model.CommandPageSettingsRoot)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPageSettingsRoot.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPageSettingsRoot.SettingsName">
+            <remarks>Settings name is kind of a title, therefore capital 'C', 'P' and 'D'.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPageSettingsRoot.SettingsVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPageSettingsRoot.ProductVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPageSettingsRoot.Warning">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPageSettingsRoot.Mark">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPageSettingsRoot.Page">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPageSettingsRoot.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPageSettingsRoot.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPageSettingsRoot.Equals(YAT.Settings.Model.CommandPageSettingsRoot)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPageSettingsRoot.op_Equality(YAT.Settings.Model.CommandPageSettingsRoot,YAT.Settings.Model.CommandPageSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPageSettingsRoot.op_Inequality(YAT.Settings.Model.CommandPageSettingsRoot,YAT.Settings.Model.CommandPageSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Settings.Model.CommandPagesSettingsRoot">
+            <remarks>Root name is relevant for potential future 'AlternateXmlElements'.</remarks>
+            <remarks>An explicit name makes little sense as this is the very root of the XML.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.CommandPagesSettingsRoot.settingsVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.CommandPagesSettingsRoot.productVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPagesSettingsRoot.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPagesSettingsRoot.#ctor(YAT.Settings.Model.CommandPagesSettingsRoot)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPagesSettingsRoot.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPagesSettingsRoot.SettingsName">
+            <remarks>Settings name is kind of a title, therefore capital 'C', 'P' and 'D'.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPagesSettingsRoot.SettingsVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPagesSettingsRoot.ProductVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPagesSettingsRoot.Warning">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPagesSettingsRoot.Mark">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandPagesSettingsRoot.Pages">
+            <remarks>
+            Commands are intentionally organized as pages but not as subpages.
+            Reason: Subpages are only a representation of the view, but not the settings.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPagesSettingsRoot.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPagesSettingsRoot.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPagesSettingsRoot.Equals(YAT.Settings.Model.CommandPagesSettingsRoot)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPagesSettingsRoot.op_Equality(YAT.Settings.Model.CommandPagesSettingsRoot,YAT.Settings.Model.CommandPagesSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandPagesSettingsRoot.op_Inequality(YAT.Settings.Model.CommandPagesSettingsRoot,YAT.Settings.Model.CommandPagesSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Settings.Model.CommandSettingsRoot">
+            <remarks>Root name is relevant for potential future 'AlternateXmlElements'.</remarks>
+            <remarks>An explicit name makes little sense as this is the very root of the XML.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.CommandSettingsRoot.settingsVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.CommandSettingsRoot.productVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandSettingsRoot.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandSettingsRoot.#ctor(YAT.Settings.Model.CommandSettingsRoot)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandSettingsRoot.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandSettingsRoot.SettingsName">
+            <remarks>Settings name is kind of a title, therefore capital 'C' and 'D'.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandSettingsRoot.SettingsVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandSettingsRoot.ProductVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandSettingsRoot.Warning">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandSettingsRoot.Mark">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.CommandSettingsRoot.Command">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandSettingsRoot.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandSettingsRoot.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandSettingsRoot.Equals(YAT.Settings.Model.CommandSettingsRoot)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandSettingsRoot.op_Equality(YAT.Settings.Model.CommandSettingsRoot,YAT.Settings.Model.CommandSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.CommandSettingsRoot.op_Inequality(YAT.Settings.Model.CommandSettingsRoot,YAT.Settings.Model.CommandSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Settings.Model.TerminalExplicitSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Settings.Model.TerminalExplicitSettings.LogIsOnDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Settings.Model.TerminalExplicitSettings.UserNameDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalExplicitSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalExplicitSettings.#ctor(MKY.Settings.SettingsType)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalExplicitSettings.#ctor(YAT.Settings.Model.TerminalExplicitSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalExplicitSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalExplicitSettings.LogIsOn">
+             <remarks>
+             This property is intentionally located in 'explicit' for the following reasons:
+              > The decision whether or not to log something is something explicit.
+              > Opposed to <see cref="P:YAT.Settings.Model.TerminalImplicitSettings.TerminalIsStarted"/>, logging produces data.
+              > Logging is coupled to the terminal state, so it will only become active then the
+                terminal is started.
+            
+             Note that this setting as well as <see cref="P:YAT.Settings.Model.TerminalImplicitSettings.TerminalIsStarted"/> both
+             used to be 'implicit' up to 1.99.34 and then got moved to 'explicit' for 1.99.50/51/52.
+             But, as described in <see cref="P:YAT.Settings.Model.TerminalImplicitSettings.TerminalIsStarted"/>, that setting got
+             reverted for 1.99.70+ while this settings is kept here for the above stated reasons.
+             </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalExplicitSettings.UserName">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalExplicitSettings.Terminal">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalExplicitSettings.PredefinedCommand">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalExplicitSettings.AutoAction">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalExplicitSettings.AutoResponse">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalExplicitSettings.Format">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalExplicitSettings.Log">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalExplicitSettings.Find">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalExplicitSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalExplicitSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalExplicitSettings.Equals(YAT.Settings.Model.TerminalExplicitSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalExplicitSettings.op_Equality(YAT.Settings.Model.TerminalExplicitSettings,YAT.Settings.Model.TerminalExplicitSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalExplicitSettings.op_Inequality(YAT.Settings.Model.TerminalExplicitSettings,YAT.Settings.Model.TerminalExplicitSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Settings.Model.TerminalImplicitSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Settings.Model.TerminalImplicitSettings.TerminalIsStartedDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalImplicitSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalImplicitSettings.#ctor(MKY.Settings.SettingsType)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalImplicitSettings.#ctor(YAT.Settings.Model.TerminalImplicitSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalImplicitSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalImplicitSettings.TerminalIsStarted">
+             <remarks>
+             This property is intentionally located in 'implicit' for the following reasons:
+              > The action of starting/stopping or opening/closing is something temporary. A user may
+                do this several times during a session. Such changes shall not be indicated.
+              > A port that has previously been available may not be available right now. Such change
+                shall neither be indicated.
+            
+             Note that this setting as well as <see cref="P:YAT.Settings.Model.TerminalExplicitSettings.LogIsOn"/> both used to
+             be 'implicit' up to 1.99.34 and then got moved to 'explicit' for 1.99.50/51/52. But,
+             this just leads to too many occasions where a user is asked for "Save Terminal?" where
+             it just doesn't make much sense. So it was decided to revert that change for 1.99.70+.
+             </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalImplicitSettings.SendText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalImplicitSettings.SendFile">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalImplicitSettings.Predefined">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalImplicitSettings.Window">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalImplicitSettings.Layout">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalImplicitSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalImplicitSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalImplicitSettings.Equals(YAT.Settings.Model.TerminalImplicitSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalImplicitSettings.op_Equality(YAT.Settings.Model.TerminalImplicitSettings,YAT.Settings.Model.TerminalImplicitSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalImplicitSettings.op_Inequality(YAT.Settings.Model.TerminalImplicitSettings,YAT.Settings.Model.TerminalImplicitSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Settings.Model.TerminalSettingsRoot">
+            <remarks>Root name is relevant for <see cref="P:YAT.Settings.Model.TerminalSettingsRoot.AlternateXmlElements"/>.</remarks>
+            <remarks>An explicit name makes little sense as this is the very root of the XML.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.TerminalSettingsRoot.settingsVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.TerminalSettingsRoot.productVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.#ctor">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.#ctor(YAT.Settings.Model.TerminalSettingsRoot)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.SettingsName">
+            <remarks>Settings name is kind of a title, therefore capital 'T' and 'S'.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.SettingsVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.ProductVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Warning">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Mark">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.AutoSaved">
+            <summary>
+            Auto save means that the settings have been saved at an automatically chosen location,
+            without telling the user anything about it.
+            </summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Explicit">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Implicit">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.UserName">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.TerminalIsStarted">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.LogIsOn">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.TerminalType">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Terminal">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.IO">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.IOType">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.SerialPortId">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.SocketLocalPort">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.SocketRemoteHost">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.SocketRemotePort">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Status">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Buffer">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Display">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.CharReplace">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.CharHide">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.CharAction">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Send">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.TextTerminal">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.BinaryTerminal">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.PredefinedCommand">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.AutoAction">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.AutoResponse">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Format">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Log">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Find">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.SendText">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.SendFile">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Predefined">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Window">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.Layout">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.AutoIsActive">
+            <summary>
+            Gets a value indicating whether one or more automatic items are active.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.GetValidAutoActionTriggerItems">
+            <summary>
+            The currently valid triggers usable for automatic action.
+            </summary>
+            <remarks>
+            Located here in 'Settings' instead of 'Model' since only accessing settings items.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.GetValidAutoResponseTriggerItems">
+            <summary>
+            The currently valid triggers usable for automatic response.
+            </summary>
+            <remarks>
+            Located here in 'Settings' instead of 'Model' since only accessing settings items.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.GetValidAutoTriggerItems(System.Boolean)">
+            <summary>
+            The currently valid triggers usable for automatic action or response.
+            </summary>
+            <remarks>
+            Located here in 'Settings' instead of 'Model' since only accessing settings items.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.IsValidAutoTriggerCommand(YAT.Model.Types.Command,System.Boolean)">
+            <remarks>Trigger can never be a file command.</remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.GetValidAutoActionItems">
+            <summary>
+            The currently valid response items usable for automatic action.
+            </summary>
+            <remarks>
+            Located here in 'Settings' instead of 'Model' since only accessing settings items.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.GetValidAutoResponseItems(System.String)">
+            <summary>
+            The currently valid response items usable for automatic response.
+            </summary>
+            <remarks>
+            Located here in 'Settings' instead of 'Model' since only accessing settings items.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.IsValidAutoResponseCommand(YAT.Model.Types.Command,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.TryGetActiveAutoActionTrigger(YAT.Model.Types.Command@,System.String@,System.Text.RegularExpressions.Regex@)">
+            <summary>
+            The currently active trigger used for automatic action.
+            </summary>
+            <remarks>
+            Located here in 'Settings' instead of 'Model' since only accessing settings items.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.TryGetActiveAutoResponseTrigger(YAT.Model.Types.Command@,System.String@,System.Text.RegularExpressions.Regex@)">
+            <summary>
+            The currently active trigger used for automatic response.
+            </summary>
+            <remarks>
+            Located here in 'Settings' instead of 'Model' since only accessing settings items.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.TryGetActiveAutoTrigger(YAT.Model.Types.AutoTriggerEx,YAT.Model.Types.AutoTriggerOptions,System.Boolean,YAT.Model.Types.Command@,System.String@,System.Text.RegularExpressions.Regex@)">
+            <summary>
+            Gets the corresponding automatic trigger.
+            </summary>
+            <remarks>
+            Located here in 'Settings' instead of 'Model' since only accessing settings items.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.HasLinkedSettings">
+            <summary>
+            Gets a value indicating whether this instance has linked settings.
+            </summary>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.LinkedSettingsHaveChanged">
+            <summary>
+            Gets a value indicating whether this instance's linked settings have changed.
+            </summary>
+        </member>
+        <member name="F:YAT.Settings.Model.TerminalSettingsRoot.StaticAlternateXmlElements">
+            <summary>
+            Alternate XML elements for backward compatibility with old settings.
+            </summary>
+            <remarks>
+            \remind (2008-06-07 / MKY) (2 hours to the first Euro2008 game :-)
+            Instead of this approach, an [AlternateXmlElementAttribute] based approach should be tried
+            in a future version. Such approach would be beneficial in terms of modularity because the
+            XML path wouldn't need to be considered, i.e. changes in the path could be handled. This is
+            not the case currently.
+            \remind (2011-10-09 / MKY) (no Euro2012 games with Switzerland :-(
+            Cannot alternate 'Display.ShowConnectTime|ShowCounters' to 'Status.ShowConnectTime|ShowCountAndRate'
+            due to limitation described above.
+            \remind (2012-10-29 / MKY)
+            Attention, the solution above is OK for the give use case, however, it wouldn't allow to
+            alternate the depth of the path as well. Such alternate is required for the commented
+            case with 'EolComment' below.
+            \remind (2016-04-05 / MKY)
+            Ideally, simple alternate elements should be definable right at the element. Example:
+            "SocketSettings.HostType" got simplified to "SocketSettings.Type"
+            The alternate name (i.e. the old name) should be definable in 'SocketSettings'.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.TerminalSettingsRoot.AlternateXmlElements">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.Equals(YAT.Settings.Model.TerminalSettingsRoot)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.op_Equality(YAT.Settings.Model.TerminalSettingsRoot,YAT.Settings.Model.TerminalSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.TerminalSettingsRoot.op_Inequality(YAT.Settings.Model.TerminalSettingsRoot,YAT.Settings.Model.TerminalSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Settings.Model.WorkspaceSettingsRoot">
+            <remarks>Root name is relevant for <see cref="P:YAT.Settings.Model.WorkspaceSettingsRoot.AlternateXmlElements"/>.</remarks>
+            <remarks>An explicit name makes little sense as this is the very root of the XML.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.WorkspaceSettingsRoot.settingsVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.WorkspaceSettingsRoot.productVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.WorkspaceSettingsRoot.#ctor">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.WorkspaceSettingsRoot.#ctor(YAT.Settings.Model.WorkspaceSettingsRoot)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.WorkspaceSettingsRoot.SettingsName">
+            <remarks>Settings name is kind of a title, therefore capital 'W' and 'S'.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.WorkspaceSettingsRoot.SettingsVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.WorkspaceSettingsRoot.ProductVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.WorkspaceSettingsRoot.Warning">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.WorkspaceSettingsRoot.Mark">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.WorkspaceSettingsRoot.AutoSaved">
+            <summary>
+            Auto save means that the settings have been saved at an automatically chosen location,
+            without telling the user anything about it.
+            </summary>
+        </member>
+        <member name="P:YAT.Settings.Model.WorkspaceSettingsRoot.Workspace">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Model.WorkspaceSettingsRoot.TerminalSettings">
+            <remarks>Attention, this is just a shortcut for convenience, not a true property.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Model.WorkspaceSettingsRoot.StaticAlternateXmlElements">
+            <summary>
+            Alternate XML elements for backward compatibility with old settings.
+            </summary>
+            <remarks>
+            \remind (2008-06-07 / MKY) (2 hours to the first Euro2008 game :-)
+            Instead of this approach, an [AlternateXmlElementAttribute] based approach should be tried
+            in a future version. Such approach would be beneficial in terms of modularity because the
+            XML path wouldn't need to be considered, i.e. changes in the path could be handled. This is
+            not the case currently.
+            \remind (2011-10-09 / MKY) (no Euro2012 games with Switzerland :-(
+            Cannot alternate 'Display.ShowConnectTime|ShowCounters' to 'Status.ShowConnectTime|ShowCountAndRate'
+            due to limitation described above.
+            \remind (2012-10-29 / MKY)
+            Attention, the solution above is OK for the give use case, however, it wouldn't allow to
+            alternate the depth of the path as well. Such alternate is required for the commented
+            case with 'EolComment' below.
+            \remind (2016-04-05 / MKY)
+            Ideally, simple alternate elements should be definable right at the element. Example:
+            "SocketSettings.HostType" got simplified to "SocketSettings.Type"
+            The alternate name (i.e. the old name) should be definable in 'SocketSettings'.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Model.WorkspaceSettingsRoot.AlternateXmlElements">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Model.WorkspaceSettingsRoot.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.WorkspaceSettingsRoot.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.WorkspaceSettingsRoot.Equals(YAT.Settings.Model.WorkspaceSettingsRoot)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Model.WorkspaceSettingsRoot.op_Equality(YAT.Settings.Model.WorkspaceSettingsRoot,YAT.Settings.Model.WorkspaceSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Model.WorkspaceSettingsRoot.op_Inequality(YAT.Settings.Model.WorkspaceSettingsRoot,YAT.Settings.Model.WorkspaceSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+    </members>
+</doc>

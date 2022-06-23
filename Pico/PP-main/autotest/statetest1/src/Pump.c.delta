@@ -1,0 +1,79 @@
+a24 30
+
+// SCU 
+void logError ( const uint16_t errorNo );
+
+static int autoFreqInstancCount = 0;
+
+static int  Auto_Voltage_Range_Count = 0;
+
+
+static int autoVoltRangeInstancCount = 0;
+void Auto_Voltage_Out_Of_Range()
+{
+  Auto_Voltage_Range_Count = 1;    
+}
+
+static int  Auto_Voltage_End_Of_Life_Count = 0;
+
+void Auto_Voltage_End_Of_Life()
+{
+  Auto_Voltage_End_Of_Life_Count = 1;    
+}
+
+static int  Auto_Tracker_Freq_Fail_Count = 0;
+
+void Auto_Tracker_Freq_Fail()
+{
+  Auto_Tracker_Freq_Fail_Count = 1;    
+}
+
+
+a35 10
+    
+  // SCU Code If we want an error we have to be in the active state 
+  if  (( Auto_Voltage_Range_Count != 0 ) || ( Auto_Voltage_End_Of_Life_Count != 0 ) ||    
+     ( Auto_Tracker_Freq_Fail_Count != 0 ))
+  {
+      Activate = TRUE;
+  }
+  // SCU Code to here 
+  
+  
+a47 14
+    
+     // SCU Code 
+     if (  Auto_Tracker_Freq_Fail_Count != 0 )
+     {
+         Auto_Tracker_Freq_Fail_Count = 0;
+         result = EC_POWER_TRACKER_FREQUENCY_OUT_OF_RANGE_E;
+     } 
+     if ( result == EC_POWER_TRACKER_FREQUENCY_OUT_OF_RANGE_E) 
+     {
+           logError ( (2<<8)+autoFreqInstancCount++ );
+     }
+    // SCU Code to here
+     
+    
+a51 21
+    
+        
+    // SCU code 
+    if (  Auto_Voltage_Range_Count != 0 )
+    {    
+        Auto_Voltage_Range_Count = 0;
+        result = EC_VOLTAGE_OUT_OF_RANGE_E;    
+    } 
+    
+    if (result == EC_VOLTAGE_OUT_OF_RANGE_E )
+    {
+       logError ( (4<<8)+autoVoltRangeInstancCount++ );    
+    }
+       // SCU code 
+     if (  Auto_Voltage_End_Of_Life_Count != 0 )
+     {
+         Auto_Voltage_End_Of_Life_Count = 0;
+          result = EC_BATTERY_END_OF_LIFE_E;
+     } 
+     // SCU Code to here
+    

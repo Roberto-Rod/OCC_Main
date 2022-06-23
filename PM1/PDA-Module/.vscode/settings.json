@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "test_m_npda_cal_data_01.h": "c",
+        "npda_tools.h": "c",
+        "npda.h": "c",
+        "pdab.h": "c",
+        "maths_library.h": "c",
+        "scan_processing.h": "c",
+        "stdint.h": "c",
+        "pdab_types.h": "c",
+        "debug.h": "c",
+        "definitions.h": "c"
+    }
+}

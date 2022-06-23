@@ -1,0 +1,32 @@
+---
+:source:
+  :path: test/unit_test/devices
+  :file: test_Battery.c
+:successes:
+- :test: test_BatteryOutOfRangeWhenVddIsOver3V6
+  :line: 94
+  :message: ''
+- :test: test_BoostVoltageIsOutOfRangeWhenBoostVoltageIsAbove33V
+  :line: 108
+  :message: ''
+- :test: test_BoostVoltageIsOutOfRangeWhenBoostVoltageIsBelow16V
+  :line: 121
+  :message: ''
+- :test: test_BatteryEndOfLifeWhenVddIsBelow1V9AndInitBoostDemandBelow18V
+  :line: 134
+  :message: ''
+- :test: test_ReduceInitBootstDemandWhenVddIsBelow2V2
+  :line: 142
+  :message: ''
+- :test: test_ReduceInitBootstDemandDownTo18VWhenVddIsBelow2V2
+  :line: 160
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 6
+  :passed: 6
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

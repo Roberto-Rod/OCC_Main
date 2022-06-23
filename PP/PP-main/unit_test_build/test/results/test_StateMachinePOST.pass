@@ -1,0 +1,56 @@
+---
+:source:
+  :path: test/unit_test/managers
+  :file: test_StateMachinePOST.c
+:successes:
+- :test: test_OnInitSetsStateToZeroAndReturnsZero
+  :line: 29
+  :message: ''
+- :test: test_ifNotDoingPOSTRunTransistionsToIdleState
+  :line: 35
+  :message: ''
+- :test: test_onRunStateTestGoToDefaultWithInvalidSwitch
+  :line: 48
+  :message: ''
+- :test: test_onRunState00CalledWhenStateIsZero
+  :line: 76
+  :message: ''
+- :test: test_onRunState01CalledWhenStateIsOne
+  :line: 99
+  :message: ''
+- :test: test_onRunState02CalledWhenStateIsTwo
+  :line: 120
+  :message: ''
+- :test: test_onRunState03CalledWhenStateIsThree
+  :line: 141
+  :message: ''
+- :test: test_onRunState04CalledWhenStateIsFour
+  :line: 162
+  :message: ''
+- :test: test_onRunState05CalledWhenStateIsFive
+  :line: 183
+  :message: ''
+- :test: test_onRunState06CalledWhenStateIsSix
+  :line: 204
+  :message: ''
+- :test: test_onRunState07CalledWhenStateIsSeven
+  :line: 225
+  :message: ''
+- :test: test_onRunState08CalledWhenStateIsEight
+  :line: 246
+  :message: ''
+- :test: test_onRunState09CalledWhenStateIsNine
+  :line: 267
+  :message: ''
+- :test: test_onRunState10CalledWhenStateIsTen
+  :line: 288
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 14
+  :passed: 14
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

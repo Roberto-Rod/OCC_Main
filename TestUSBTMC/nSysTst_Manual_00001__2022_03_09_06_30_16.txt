@@ -1,0 +1,26 @@
+Date: 03/09/2022, 06:30:16
+Tester Name: Roberto Rodrigues
+Hardware Version: OCC-P1-EA-01-B
+PE Controller SW version: V1.03
+PI Controller SW version: V1.14
+PDA Controller SW version: V1.13
+LSC Controller SW version: V1.04
+Verifying SRS-003 Program memory size for dsPIC33CK128MP203...
+PASS
+Verifying SRS-003 Program memory size for PIC32MZ1024EFH100...
+PASS
+Verifying SRS-003 Program memory size for PIC24FJ64GA702...
+PASS
+Verifying SRS-003 Program memory size for PIC32MZ2064DAR169...
+PASS
+Program Memory Test PASSED.
+Verifying SRS-004 Data memory size for dsPIC33CK128MP203...
+PASS
+Verifying SRS-004 Data memory size for PIC32MZ1024EFH100...
+PASS
+Verifying SRS-004 Data memory size for PIC24FJ64GA702...
+PASS
+Verifying SRS-004 Data memory size for PIC32MZ2064DAR169...
+PASS
+Data Memory Test PASSED.
+nSysTst_Manual_00001 Test Complete: PASS

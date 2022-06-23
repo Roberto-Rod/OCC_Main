@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<TestRun>
+	<FailedTests>
+		<Test id="1">
+			<Name>test/unit_test/date_and_time/test_date_and_time.c::test_dayOfTheWeek_Returns_Monday</Name>
+			<FailureType>Assertion</FailureType>
+			<Location>
+				<File>test/unit_test/date_and_time/test_date_and_time.c</File>
+				<Line>107</Line>
+			</Location>
+			<Message>Incorrect result, should return Monday.</Message>
+		</Test>
+	</FailedTests>
+	<SuccessfulTests>
+		<Test id="2">
+			<Name>test/unit_test/date_and_time/test_date_and_time.c::test_isLeapYear_Returns_True_When_YR_2004</Name>
+		</Test>
+		<Test id="3">
+			<Name>test/unit_test/date_and_time/test_date_and_time.c::test_isLeapYear_Returns_True_When_YR_2000</Name>
+		</Test>
+		<Test id="4">
+			<Name>test/unit_test/date_and_time/test_date_and_time.c::test_isLeapYear_Returns_False_When_YR_1999</Name>
+		</Test>
+		<Test id="5">
+			<Name>test/unit_test/date_and_time/test_date_and_time.c::test_isLeapYear_Returns_False_When_YR_1009</Name>
+		</Test>
+		<Test id="6">
+			<Name>test/unit_test/date_and_time/test_date_and_time.c::test_getNumberOfDaysInMonth_Returns_31_When_May_2022</Name>
+		</Test>
+		<Test id="7">
+			<Name>test/unit_test/date_and_time/test_date_and_time.c::test_getNumberOfDaysInMonth_Returns_30_When_June_2022</Name>
+		</Test>
+		<Test id="8">
+			<Name>test/unit_test/date_and_time/test_date_and_time.c::test_getNumberOfDaysInMonth_Returns_28_When_February_2022</Name>
+		</Test>
+		<Test id="9">
+			<Name>test/unit_test/date_and_time/test_date_and_time.c::test_getNumberOfDaysInMonth_Returns_29_When_February_2004</Name>
+		</Test>
+		<Test id="10">
+			<Name>test/unit_test/date_and_time/test_date_and_time.c::test_getNumberOfDaysInMonth_Returns_29_When_February_2000</Name>
+		</Test>
+	</SuccessfulTests>
+	<IgnoredTests/>
+	<Statistics>
+		<Tests>10</Tests>
+		<Ignores>0</Ignores>
+		<FailuresTotal>1</FailuresTotal>
+		<Errors>0</Errors>
+		<Failures>1</Failures>
+	</Statistics>
+</TestRun>

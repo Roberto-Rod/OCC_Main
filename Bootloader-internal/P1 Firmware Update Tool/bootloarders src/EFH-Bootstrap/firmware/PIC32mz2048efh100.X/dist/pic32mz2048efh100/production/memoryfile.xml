@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/pic32mz2048efh100/production/PIC32mz2048efh100.X.production.elf">                 
+    <memory name="program">                 
+      <units>bytes</units>                 
+      <length>2094208</length>                 
+      <used>46236</used>                     
+      <free>2047972</free>                     
+    </memory>                              
+    <memory name="data">              
+      <units>bytes</units>                 
+      <length>524272</length>                 
+      <used>2596</used>                     
+      <free>521676</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 

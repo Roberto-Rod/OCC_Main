@@ -1,0 +1,13 @@
+configName: PIC32MZ2064DAR169
+folderName: ''
+format_version: v1.0
+frameworkPath: ../../../Microchip/Harmony/V3_00
+processor: PIC32MZ2064DAR169
+projectName: ''
+settings:
+  PackageFilter: aerospace;audio;bootloader;bootloader_apps_uart;bootloader_apps_usb;bsp;bt;core;core_apps_pic32mz_da;core_apps_pic32mz_ef;crypto;csp;csp_apps_pic32mz_da;csp_apps_pic32mz_ef;gfx;gfx_apps;micrium_ucos3;motor_control;reference_apps;net;quick_docs;touch;usb;wireless;
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  CMSISPath: .\dev_packs\arm\CMSIS\5.6.0
+  MERGE_STRATEGY: USER_RECENT
+  DFPPath: .\dev_packs\Microchip\PIC32MZ-DA_DFP\1.1.98\atdf\PIC32MZ2064DAR169.atdf

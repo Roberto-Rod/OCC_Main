@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov-sanitised.info - /d/Repos/Damysus/PIC.EmbeddedSoftware/sourcePico/managers/StateMachineNre.c</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="title">LCOV - code coverage report</td></tr>
+        <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+        <tr>
+          <td width="100%">
+            <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../index.html">top level</a> - <a href="index.html">d/Repos/Damysus/PIC.EmbeddedSoftware/sourcePico/managers</a> - StateMachineNre.c<span style="font-size: 80%;"> (source / <a href="StateMachineNre.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov-sanitised.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-01-05 09:25:44</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+              <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+      </table>
+
+      <table cellpadding=0 cellspacing=0 border=0>
+        <tr>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /********************************************************************************</a>
+<span class="lineNum">       2 </span>            : * File : StateMachineNre.c
+<span class="lineNum">       3 </span>            : *
+<span class="lineNum">       4 </span>            : * Description : Implements the Non Recoverable Error state for the device state
+<span class="lineNum">       5 </span>            : *               machine, that is turning off the device if a NRE or a battery
+<span class="lineNum">       6 </span>            : *               depleted condition is detected. The device cannot exit this state
+<span class="lineNum">       7 </span>            : *
+<span class="lineNum">       8 </span>            : ********************************************************************************/
+<span class="lineNum">       9 </span>            : /* ******************************************************************************
+<span class="lineNum">      10 </span>            :  * This file is copyrighted by and the property of Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">      11 </span>            :  * It contains confidential and proprietary information. It must not be copied
+<span class="lineNum">      12 </span>            :  * (in whole or in part) or otherwise disclosed without prior written consent
+<span class="lineNum">      13 </span>            :  * of the company. Any copies of this file (in whole or in part), made by any
+<span class="lineNum">      14 </span>            :  * method must also include a copy of this legend.
+<span class="lineNum">      15 </span>            :  *
+<span class="lineNum">      16 </span>            :  * (c) 2018, 2019, 2020 Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">      17 </span>            :  *
+<span class="lineNum">      18 </span>            :  ***************************************************************************** */
+<span class="lineNum">      19 </span>            : 
+<span class="lineNum">      20 </span>            : #include &quot;StateMachineNre.h&quot;
+<span class="lineNum">      21 </span>            : #include &quot;Pressure_Part1.h&quot;
+<span class="lineNum">      22 </span>            : #include &quot;PowerControl.h&quot;
+<span class="lineNum">      23 </span>            : #include &quot;PerformanceLogger.h&quot;
+<span class="lineNum">      24 </span>            : #include &quot;Timer.h&quot;
+<span class="lineNum">      25 </span>            : #include &quot;Assert.h&quot;
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : static ErrorCode_t NonRecoverableError_OnEntry(void);
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : /****************************************************************************
+<span class="lineNum">      30 </span>            : Function Name  :  NonRecoverableError
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : Parameters     :  bool_t executeEntry   - TRUE if this is the first pass through this state
+<span class="lineNum">      33 </span>            :                   State_t *newState     - pointer to the next state, which remains NRE_E
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            : Return Value   :  EC_OK_E
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : Description    :  Implements the NRE state for the device state machine.
+<span class="lineNum">      38 </span>            :                   The device cannot leave this state
+<a name="39"><span class="lineNum">      39 </span>            : ******************************************************************************/</a>
+<span class="lineNum">      40 </span>            : /*lint -e{613} Suppress: Possible use of null pointer 'newState' in argument to operator 'unary *'. */
+<span class="lineNum">      41 </span><span class="lineCov">     216346 : ErrorCode_t NonRecoverableError(bool_t executeEntry, State_t *newState)</span>
+<span class="lineNum">      42 </span>            : {
+<span class="lineNum">      43 </span><span class="lineCov">     216346 :     ASSERT(newState != NULL);</span>
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span><span class="lineCov">     216346 :     *newState = NRE_E;</span>
+<span class="lineNum">      46 </span>            : 
+<span class="lineNum">      47 </span>            :     // Normal operations
+<span class="lineNum">      48 </span><span class="lineCov">     216346 :     if (executeEntry)</span>
+<span class="lineNum">      49 </span>            :     {
+<span class="lineNum">      50 </span><span class="lineCov">          9 :         NonRecoverableError_OnEntry();</span>
+<span class="lineNum">      51 </span>            :     }
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span><span class="lineCov">     216346 :     return EC_OK_E;</span>
+<span class="lineNum">      54 </span>            : }
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            : /****************************************************************************
+<span class="lineNum">      57 </span>            : Function Name  :  NonRecoverableError_OnEntry
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span>            : Parameters     :  None
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : Return Value   :  EC_OK_E
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : Description    :  Run only once on entering the state. It shuts the entire
+<a name="64"><span class="lineNum">      64 </span>            :                   device down</a>
+<span class="lineNum">      65 </span>            : *****************************************************************************/
+<span class="lineNum">      66 </span><span class="lineCov">          9 : static ErrorCode_t NonRecoverableError_OnEntry(void)</span>
+<span class="lineNum">      67 </span>            : {
+<span class="lineNum">      68 </span>            :     // Save the NRE reason in the Device Status
+<span class="lineNum">      69 </span><span class="lineCov">          9 :     uint8_t combinedStatus = (uint8_t) DeviceStatus_GetState() &amp; 0xF;</span>
+<span class="lineNum">      70 </span><span class="lineCov">          9 :     combinedStatus |= ((uint8_t) DeviceStatus_GetNRE_Event() &amp; 0xF) &lt;&lt; 4;</span>
+<span class="lineNum">      71 </span><span class="lineCov">          9 :     PerformanceLogger_SetStatus(combinedStatus);</span>
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            :     //Force a write of the last performance record containing the NRE reason
+<span class="lineNum">      74 </span><span class="lineCov">          9 :     PerformanceLogger_Persist();</span>
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            :     // Set NRE flag in EEPROM
+<span class="lineNum">      77 </span><span class="lineCov">          9 :     PerformanceLogger_SetNRE();</span>
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span><span class="lineCov">          9 :     TimerCounters_Init();</span>
+<span class="lineNum">      80 </span><span class="lineCov">          9 :     MP_SetReferenceVoltageBoost(VBOOST_REF_0V);</span>
+<span class="lineNum">      81 </span><span class="lineCov">          9 :     MP_DisablePumpPWM();</span>
+<span class="lineNum">      82 </span><span class="lineCov">          9 :     MP_DisableExternalPeripheralsSupply();</span>
+<span class="lineNum">      83 </span><span class="lineCov">          9 :     MP_DisableMainCircuitPower();</span>
+<span class="lineNum">      84 </span>            : 
+<span class="lineNum">      85 </span><span class="lineCov">          9 :     return EC_OK_E;</span>
+<span class="lineNum">      86 </span>            : }
+    </pre>
+          </td>
+        </tr>
+      </table>
+      <br>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+      </table>
+      <br>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>framework.device.mcp4261 &mdash; PM1 Pachymeter Automated Software Verification Framework B1-STABLE documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="framework.device.ni6363" href="framework.device.ni6363.html" />
+    <link rel="prev" title="framework.device.ft232h_spi" href="framework.device.ft232h_spi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PM1 Pachymeter Automated Software Verification Framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">framework</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="framework.html"><code class="docutils literal notranslate"><span class="pre">framework</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="framework.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="framework.asv_control.html"><code class="docutils literal notranslate"><span class="pre">framework.asv_control</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.constants.html"><code class="docutils literal notranslate"><span class="pre">framework.constants</span></code></a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="framework.device.html"><code class="docutils literal notranslate"><span class="pre">framework.device</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.module.html"><code class="docutils literal notranslate"><span class="pre">framework.module</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.sequence.html"><code class="docutils literal notranslate"><span class="pre">framework.sequence</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.util.html"><code class="docutils literal notranslate"><span class="pre">framework.util</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PM1 Pachymeter Automated Software Verification Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">framework</a> &raquo;</li>
+          <li><a href="framework.html"><code class="docutils literal notranslate"><span class="pre">framework</span></code></a> &raquo;</li>
+          <li><a href="framework.device.html"><code class="docutils literal notranslate"><span class="pre">framework.device</span></code></a> &raquo;</li>
+      <li><code class="docutils literal notranslate"><span class="pre">framework.device.mcp4261</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/framework/framework.device.mcp4261.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-framework.device.mcp4261">
+<span id="framework-device-mcp4261"></span><h1><code class="docutils literal notranslate"><span class="pre">framework.device.mcp4261</span></code><a class="headerlink" href="#module-framework.device.mcp4261" title="Permalink to this headline"></a></h1>
+<p>Pachymeter Automated Software Verification Rig MCP4261 Device Support.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#classes" id="id1">Classes</a></p></li>
+</ul>
+</div>
+<section id="classes">
+<h2><a class="toc-backref" href="#id1">Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#framework.device.mcp4261.MCP4261" title="framework.device.mcp4261.MCP4261"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCP4261</span></code></a>:
+MCP4261 Device Support.</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.device.mcp4261.MCP4261">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.device.mcp4261.</span></span><span class="sig-name descname"><span class="pre">MCP4261</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs_pin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.device.mcp4261.MCP4261" title="Permalink to this definition"></a></dt>
+<dd><p>MCP4261 Device Support.</p>
+<p>8-Bit Dual SPI Digital POT with Non-Volatile Memory.
+Connected via an FT232H and PyFtdi/PyUSB packages.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-4c7b2aedcd15fadcdcca94db8bd089afcf805930.png" alt="Inheritance diagram of MCP4261" usemap="#inheritance1cf3e0978a" class="inheritance graphviz" /></div>
+<map id="inheritance1cf3e0978a" name="inheritance1cf3e0978a">
+<area shape="rect" id="node1" href="#framework.device.mcp4261.MCP4261" target="_top" title="MCP4261 Device Support." alt="" coords="5,5,84,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.device.mcp4261.MCP4261.decr_w">
+<span class="sig-name descname"><span class="pre">decr_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wiper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.device.mcp4261.MCP4261.decr_w" title="Permalink to this definition"></a></dt>
+<dd><p>Decrement volatile wiper position</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.device.mcp4261.MCP4261.incr_w">
+<span class="sig-name descname"><span class="pre">incr_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wiper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.device.mcp4261.MCP4261.incr_w" title="Permalink to this definition"></a></dt>
+<dd><p>Increment volatile wiper position</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.device.mcp4261.MCP4261.read_nv_w">
+<span class="sig-name descname"><span class="pre">read_nv_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wiper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#framework.device.mcp4261.MCP4261.read_nv_w" title="Permalink to this definition"></a></dt>
+<dd><p>Read non-volatile wiper position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>wiper position or zero if CMDERR is detected or value is out of range</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.device.mcp4261.MCP4261.read_status">
+<span class="sig-name descname"><span class="pre">read_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#framework.device.mcp4261.MCP4261.read_status" title="Permalink to this definition"></a></dt>
+<dd><p>Read the current STATUS register contents.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.device.mcp4261.MCP4261.read_tcon">
+<span class="sig-name descname"><span class="pre">read_tcon</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#framework.device.mcp4261.MCP4261.read_tcon" title="Permalink to this definition"></a></dt>
+<dd><p>Read the current TCON register contents.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.device.mcp4261.MCP4261.read_w">
+<span class="sig-name descname"><span class="pre">read_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wiper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#framework.device.mcp4261.MCP4261.read_w" title="Permalink to this definition"></a></dt>
+<dd><p>Read volatile wiper position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>wiper position or STEPS_DEFAULT if CMDERR is detected or value is out of range</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.device.mcp4261.MCP4261.write_nv_w">
+<span class="sig-name descname"><span class="pre">write_nv_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wiper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.device.mcp4261.MCP4261.write_nv_w" title="Permalink to this definition"></a></dt>
+<dd><p>Write non-volatile wiper position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>steps</strong> – requested non-volatile wiper position</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.device.mcp4261.MCP4261.write_w">
+<span class="sig-name descname"><span class="pre">write_w</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wiper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.device.mcp4261.MCP4261.write_w" title="Permalink to this definition"></a></dt>
+<dd><p>Write volatile wiper position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>steps</strong> – requested wiper position</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="framework.device.ft232h_spi.html" class="btn btn-neutral float-left" title="framework.device.ft232h_spi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="framework.device.ni6363.html" class="btn btn-neutral float-right" title="framework.device.ni6363" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, LeoTel Software Systems Limited.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

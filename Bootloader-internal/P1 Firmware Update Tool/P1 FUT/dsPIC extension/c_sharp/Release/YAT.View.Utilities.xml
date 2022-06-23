@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YAT.View.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:YAT.View.Utilities.PlotInteractionDataSet">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.PlotInteractionDataSet.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.PlotInteractionDataSet.AddByFunctionTable">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.PlotInteractionDataSet.AddByInputTable">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Utilities.AsciiTableDataSet">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.AsciiTableDataSet.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.AsciiTableDataSet.AddAsciiTable">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Utilities.CommandPagesSettingsClipboardHelper">
+            <remarks>
+            Note there are similar implementations "Change", "Clipboard", "File" and "FileLink" to deal
+            with subtle differences in behavior. Intentionally kept in parallel rather than making the
+            implementation all-inclusive but less comprehensive. Separate classes to ease diffing.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TrySet(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.Int32)">
+            <summary>
+            Copies to the clipboard, prompting the user as required.
+            </summary>
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Set' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.SetText(System.String)"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TrySetAll(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings)">
+            <summary>
+            Copies all pages to the clipboard.
+            </summary>
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Set' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.SetText(System.String)"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TrySetOne(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.Int32)">
+            <summary>
+            Copies the given page to the clipboard.
+            </summary>
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Set' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.SetText(System.String)"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TrySet(System.Windows.Forms.IWin32Window,YAT.Model.Types.PredefinedCommandPageCollection,System.Int32)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Set' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.SetText(System.String)"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TrySet(System.Windows.Forms.IWin32Window,YAT.Model.Types.PredefinedCommandPage)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Set' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.SetText(System.String)"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TrySet(System.Windows.Forms.IWin32Window,YAT.Model.Types.PredefinedCommandPageCollection)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Set' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.SetText(System.String)"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TryGet(System.Windows.Forms.IWin32Window,YAT.Model.Types.PredefinedCommandPageCollection@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Get' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.GetText"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TryGetAndImportAll(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Get' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.GetText"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TryGetAndImport(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Get' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.GetText"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TryGetAndInsert(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.Int32,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Get' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.GetText"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TryGetAndAdd(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+            <remarks>Named 'Get' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.GetText"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TryReplace(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Types.PredefinedCommandPageCollection,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.TryAddOrInsert(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Types.PredefinedCommandPageCollection,System.Int32,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsClipboardHelper.ConfirmImport(System.Windows.Forms.IWin32Window,YAT.Model.Types.PredefinedCommandPageLayout,YAT.Model.Types.PredefinedCommandPageCollection,YAT.View.Utilities.CommandPagesSettingsClipboardHelper.Mode@,YAT.Model.Types.PredefinedCommandPageLayout@)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Utilities.CommandPagesSettingsChangeHelper">
+            <remarks>
+            Note there are similar implementations "Change", "Clipboard", "File" and "FileLink" to deal
+            with subtle differences in behavior. Intentionally kept in parallel rather than making the
+            implementation all-inclusive but less comprehensive. Separate classes to ease diffing.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsChangeHelper.TryChange(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Types.PredefinedCommandPageLayout,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsChangeHelper.ConfirmChange(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Types.PredefinedCommandPageLayout,YAT.View.Utilities.CommandPagesSettingsChangeHelper.Mode@,YAT.Model.Types.PredefinedCommandPageLayout@)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper">
+            <remarks>
+            Note there are similar implementations "Change", "Clipboard", "File" and "FileLink" to deal
+            with subtle differences in behavior. Intentionally kept in parallel rather than making the
+            implementation all-inclusive but less comprehensive. Separate classes to ease diffing.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.TryLoad(System.String,YAT.Model.Types.PredefinedCommandPage@,System.Exception@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.ShowSaveAsFileDialog(System.Windows.Forms.IWin32Window,System.String,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.ShowOpenFileDialog(System.Windows.Forms.IWin32Window,System.String,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.ShowOpenFileDialogAndTryLoad(System.Windows.Forms.IWin32Window,System.String@,YAT.Model.Types.PredefinedCommandPage@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.TryLoadAndLink(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.Int32,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.TryLink(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.Int32,System.String,YAT.Model.Types.PredefinedCommandPage,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.ConfirmLink(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.Int32,YAT.Model.Types.PredefinedCommandPage,YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.Mode@,YAT.Model.Types.PredefinedCommandPageLayout@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.TryClearLink(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.Int32,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.TryClearLinkAll(YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>Boolean return for symmetricity with other methods.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileLinkHelper.TryClearLinkOne(YAT.Model.Settings.PredefinedCommandSettings,System.Int32,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>Boolean return for symmetricity with other methods.</remarks>
+        </member>
+        <member name="T:YAT.View.Utilities.CommandSettingsClipboardHelper">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.View.Utilities.CommandSettingsClipboardHelper.ClipboardContainsText">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandSettingsClipboardHelper.TrySet(System.Windows.Forms.IWin32Window,YAT.Model.Types.Command)">
+            <remarks>Named 'Set' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.SetText(System.String)"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandSettingsClipboardHelper.TrySetTextOrFilePath(System.Windows.Forms.IWin32Window,YAT.Model.Types.Command)">
+            <summary>Copies the command text or file path to the clipboard.</summary>
+            <remarks>Named 'Set' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.SetText(System.String)"/>.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandSettingsClipboardHelper.TryGet(System.Windows.Forms.IWin32Window,YAT.Model.Types.Command@)">
+            <remarks>Named 'Get' same as e.g. <see cref="M:System.Windows.Forms.Clipboard.GetText"/>.</remarks>
+        </member>
+        <member name="T:YAT.View.Utilities.CommandPagesSettingsFileHelper">
+            <remarks>
+            Note there are similar implementations "Change", "Clipboard", "File" and "FileLink" to deal
+            with subtle differences in behavior. Intentionally kept in parallel rather than making the
+            implementation all-inclusive but less comprehensive. Separate classes to ease diffing.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryExport(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.Int32,System.String)">
+            <summary>
+            Exports to a .yacp or .yacps file, prompting the user as required.
+            </summary>
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryExportAll(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.String)">
+            <summary>
+            Prompts the user to export all pages to a .yacps file.
+            </summary>
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryExportOne(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.Int32)">
+            <summary>
+            Prompts the user to export the given page to a .yacp file.
+            </summary>
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryExport(System.Windows.Forms.IWin32Window,YAT.Model.Types.PredefinedCommandPageCollection,System.String)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TrySave(YAT.Model.Types.PredefinedCommandPage,System.String,System.Exception@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TrySave(YAT.Model.Types.PredefinedCommandPageCollection,System.String,System.Exception@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryLoad(System.String,YAT.Model.Types.PredefinedCommandPage@,System.Exception@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryLoad(System.String,YAT.Model.Types.PredefinedCommandPageCollection@,System.Exception@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryLoad(System.String,YAT.Model.Settings.PredefinedCommandSettings@,System.Exception@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.ShowOpenFileDialogAndTryLoad(System.Windows.Forms.IWin32Window,YAT.Model.Types.PredefinedCommandPageCollection@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryLoadAndImportAll(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryLoadAndImport(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryLoadAndInsert(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,System.Int32,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryLoadAndAdd(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <remarks>In case of an error, a modal message box is shown to the user.</remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryReplace(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Types.PredefinedCommandPageCollection,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.TryAddOrInsert(System.Windows.Forms.IWin32Window,YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Types.PredefinedCommandPageCollection,System.Int32,YAT.Model.Settings.PredefinedCommandSettings@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.CommandPagesSettingsFileHelper.ConfirmImport(System.Windows.Forms.IWin32Window,YAT.Model.Types.PredefinedCommandPageLayout,YAT.Model.Types.PredefinedCommandPageCollection,YAT.View.Utilities.CommandPagesSettingsFileHelper.Mode@,YAT.Model.Types.PredefinedCommandPageLayout@)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Utilities.RtfPrinter">
+            <summary>
+            Utility class providing RTF printer functionality for YAT.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Utilities.RtfPrinter.#ctor(System.Drawing.Printing.PrinterSettings)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.RtfPrinter.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.View.Utilities.RtfPrinter.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="M:YAT.View.Utilities.RtfPrinter.Print(YAT.Domain.DisplayLineCollection,YAT.Format.Settings.FormatSettings)">
+            <remarks>
+            Pragmatic implementation of printing RTF. Yet limited to printing in 'Device' format.
+            </remarks>
+            <exception cref="T:System.Drawing.Printing.InvalidPrinterException">
+            The printer named in the <see cref="P:System.Drawing.Printing.PrinterSettings.PrinterName"/> property does not exist.
+            </exception>
+        </member>
+        <member name="M:YAT.View.Utilities.RtfPrinter.Print(System.Windows.Forms.RichTextBox)">
+            <remarks>
+            Pragmatic implementation of printing RTF. Yet limited to printing in 'Device' format.
+            </remarks>
+            <exception cref="T:System.Drawing.Printing.InvalidPrinterException">
+            The printer named in the <see cref="P:System.Drawing.Printing.PrinterSettings.PrinterName"/> property does not exist.
+            </exception>
+        </member>
+        <member name="T:YAT.View.Utilities.RtfWriterHelper">
+            <summary>
+            Static utility class providing RTF writer functionality for YAT.
+            </summary>
+        </member>
+        <member name="F:YAT.View.Utilities.RtfWriterHelper.staticTxDataFontCache">
+            <remarks>
+            For performance reasons, cache fonts.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.RtfWriterHelper.CopyLinesToClipboard(YAT.Domain.DisplayLineCollection,YAT.Format.Settings.FormatSettings)">
+            <remarks>
+            Pragmatic implementation of copying RTF to the clipboard. 'netrtfwriter' is only used for stream-based logging.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.RtfWriterHelper.SaveLinesToFile(YAT.Domain.DisplayLineCollection,System.String,YAT.Format.Settings.FormatSettings)">
+            <remarks>
+            Pragmatic implementation of saving RTF to a file. 'netrtfwriter' is only used for stream-based logging.
+            </remarks>
+        </member>
+        <member name="M:YAT.View.Utilities.RtfWriterHelper.CopyLinesToRichTextBox(YAT.Domain.DisplayLineCollection,YAT.Format.Settings.FormatSettings)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.View.Utilities.TextWriterHelper">
+            <summary>
+            Static utility class providing text writer functionality for YAT.
+            </summary>
+        </member>
+        <member name="M:YAT.View.Utilities.TextWriterHelper.SaveLinesToFile(YAT.Domain.DisplayLineCollection,System.String,YAT.Format.Settings.FormatSettings)">
+            <remarks>
+            Pragmatic implementation of saving text to a file.
+            </remarks>
+        </member>
+        <member name="T:YAT.View.Utilities.ValidationHelper">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.ValidationHelper.ValidateTextSilently(System.String,YAT.Domain.Parser.Mode,YAT.Domain.Radix)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.ValidationHelper.ValidateText(System.Windows.Forms.IWin32Window,System.String,System.String,System.Int32@,System.Int32@,YAT.Domain.Parser.Mode,YAT.Domain.Radix)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.ValidationHelper.ValidateRadix(System.Windows.Forms.IWin32Window,System.String,System.String,YAT.Domain.Parser.Mode,YAT.Domain.Radix)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.ValidationHelper.ValidateSettings(System.Windows.Forms.IWin32Window,YAT.Model.Settings.NewTerminalSettings)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.ValidationHelper.ValidateSettings(System.Windows.Forms.IWin32Window,YAT.Settings.Model.TerminalExplicitSettings)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.ValidationHelper.ValidateSettings(System.Windows.Forms.IWin32Window,MKY.Net.IPHostEx,MKY.Net.IPNetworkInterfaceEx)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.View.Utilities.ValidationHelper.ValidateSettings(System.Windows.Forms.IWin32Window,MKY.Net.IPNetworkInterfaceEx,MKY.Net.IPFilterEx)">
+            <summary></summary>
+        </member>
+    </members>
+</doc>

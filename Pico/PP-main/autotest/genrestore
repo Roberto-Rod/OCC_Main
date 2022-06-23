@@ -1,0 +1,44 @@
+
+destin="./base1"
+
+echo $1
+
+destin=$1
+
+src=src
+
+echo ${destin}
+
+mkdir ${destin}
+
+ff ../sourcePico -type f -name '*.[h|c]' | while read FILE ; do
+    echo ${FILE} 
+    newfile="$(echo ${FILE} |sed -e 's/.*\///')" ;
+    newfiled="$(echo ${newfile} |sed -e 's/$/.delta/')" ;
+    newfiler="$(echo ${newfile} |sed -e 's/$/.rst/')" ;
+
+    
+    if [[ -f ${FILE} ]]; then
+        echo xxxxx 
+        if [[ -f ${destin}/${src}/${newfiled} ]]; then
+            echo modify exists
+
+            echo xxxxxxxxxxxxxxxxxxxxx
+            echo ${newfile2}
+            echo yyy ${destin}${newfile}
+            echo ppppp  cp "${FILE}" "${destin}/${newfile}" ;
+            echo qqqqq  cp "${FILE}" "${destin}/${newfile2}" ;
+            python merge.py -f ${destin}/${src}/${newfile}  -m ${destin}/${src}/${newfiled}  >  ${destin}/${src}/${newfiler}
+            echo gggg cmp --silent ${FILE} ${newfile2}
+        fi
+
+    else
+        echo does not exist
+    fi
+
+
+
+done 
+
+
+

@@ -1,0 +1,4 @@
+<map id="inheritancecb9a81cbb1" name="inheritancecb9a81cbb1">
+<area shape="rect" id="node1" href="#framework.module.nidaq.ScanWaveformTask" target="_top" title="Implements a synchronised PDA signal and encoder waveform task." alt="" coords="125,5,263,31"/>
+<area shape="rect" id="node2" title="Represents a DAQmx Task." alt="" coords="5,5,77,31"/>
+</map>

@@ -1,0 +1,10 @@
+digraph "update_average"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="update_average",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Find AC peak in interpolated data in __ndpa_y, use it as an offset to merge to current average data s..."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ndpa_scan",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa_8h.html#aafa296477a207bc42f6fc57df4aaa517",tooltip="Called after new scan data presented within __ndpa_x0 and __ndpa_y0."];
+}

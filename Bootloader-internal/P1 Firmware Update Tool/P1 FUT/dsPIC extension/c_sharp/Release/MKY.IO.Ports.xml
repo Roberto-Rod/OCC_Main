@@ -1,0 +1,2887 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MKY.IO.Ports</name>
+    </assembly>
+    <members>
+        <member name="T:MKY.IO.Ports.SerialDataReceivedEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialDataReceivedEventArgs.EventType">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialDataReceivedEventArgs.#ctor(System.IO.Ports.SerialData)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialErrorReceivedEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialErrorReceivedEventArgs.EventType">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialErrorReceivedEventArgs.#ctor(System.IO.Ports.SerialError)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPinChangedEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPinChangedEventArgs.EventType">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPinChangedEventArgs.#ctor(MKY.IO.Ports.SerialPinChange)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortChangedAndCancelEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortChangedAndCancelEventArgs.Port">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortChangedAndCancelEventArgs.Cancel">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortChangedAndCancelEventArgs.#ctor(MKY.IO.Ports.SerialPortId)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortInUseLookupEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortInUseLookupEventArgs.InUseLookup">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialDataReceivedEventHandler">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialErrorReceivedEventHandler">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPinChangedEventHandler">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.ISerialPort">
+            <summary>
+            ISerialPort is based on the .NET standard serial port interface and adds some useful
+            properties, events and methods.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.ISerialPort.PortChanged">
+            <summary>
+            Event raised after port changed.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.ISerialPort.PortSettingsChanged">
+            <summary>
+            Event raised after port settings changed.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.ISerialPort.Opening">
+            <summary>
+            Event raised before port is being opened.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.ISerialPort.Opened">
+            <summary>
+            Event raised after port successfully opened.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.ISerialPort.Closing">
+            <summary>
+            Event raised before port is being closed.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.ISerialPort.Closed">
+            <summary>
+            Event raised after port successfully closed.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPort.PortId">
+            <summary>
+            Communications port (e.g. COM1).
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPort.PortSettings">
+            <summary>
+            Communications port settings.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPort.CloseNormally">
+            <summary>
+            Closes the port according to documentation of <see cref="M:MKY.IO.Ports.ISerialPortDotNet.Close"/>.
+            </summary>
+            <remarks>
+            This variant of <see cref="M:MKY.IO.Ports.ISerialPortDotNet.Close"/> shall be used when closing
+            intentionally in a "look-forward" manner. When closing the port after a port related
+            exception has happened, e.g. a <see cref="T:System.IO.IOException"/> after a device got
+            physically disconnected, use <see cref="M:MKY.IO.Ports.ISerialPort.CloseAfterException"/> instead.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPort.CloseAfterException">
+            <summary>
+            Closes the port according to documentation of <see cref="M:MKY.IO.Ports.ISerialPortDotNet.Close"/>.
+            </summary>
+            <remarks>
+            This variant of <see cref="M:MKY.IO.Ports.ISerialPortDotNet.Close"/> shall be used when closing the
+            port after a port related exception has happened, e.g. a <see cref="T:System.IO.IOException"/>
+            after a device got physically disconnected. When closing the port intentionally in a
+            "look-forward" manner, use <see cref="M:MKY.IO.Ports.ISerialPort.CloseNormally"/> instead.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPort.RtsEnable">
+            <summary>
+            Gets or sets a value indicating whether the RTS/RTR (Request To Send/Ready To Receive)
+            control pin is enabled during serial communication.
+            </summary>
+            <remarks>
+            RTS/RTR is also known as RFR (Ready For Receiving).
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPort.ToggleRts">
+            <summary>
+            Toggles the RTS/RTR (Request To Send/Ready To Receive) control pin.
+            </summary>
+            <remarks>
+            RTS/RTR is also known as RFR (Ready For Receiving).
+            </remarks>
+            <returns>
+            The new state of the RTS control pin.
+            </returns>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPort.ToggleDtr">
+            <summary>
+            Toggles the DTR (Data Terminal Ready) control pin.
+            </summary>
+            <returns>
+            The new state of the DTR control pin.
+            </returns>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPort.ControlPins">
+            <summary>
+            Serial port control pins.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPort.ControlPinCount">
+            <summary>
+            Serial port control pin counts.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPort.ResetControlPinCount">
+            <summary>
+            Resets the control pin counts.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPort.IgnoreFramingErrors">
+            <summary>
+            Gets or sets whether framing errors shall be ignored.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPort.InputBreak">
+            <summary>
+            Gets the input break state.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPort.OutputBreak">
+            <summary>
+            Gets or sets the output break state.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPort.ToggleOutputBreak">
+            <summary>
+            Toggles the output break state.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPort.InputBreakCount">
+            <summary>
+            Returns the number of input breaks.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPort.OutputBreakCount">
+            <summary>
+            Returns the number of output breaks.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPort.ResetBreakCount">
+            <summary>
+            Resets the break counts.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPort.WriteByte(System.Byte)">
+            <summary>
+            Writes the specified byte to an output buffer at the specified offset.
+            </summary>
+            <param name="data">The byte to write the output to.</param>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPort.WriteChar(System.Char)">
+            <summary>
+            Writes the specified character to an output buffer at the specified offset.
+            </summary>
+            <param name="data">The byte to write the output to.</param>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPort.Flush">
+            <summary>
+            Waits for unwritten data to be sent.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Ports.ISerialPortDotNet">
+            <summary>
+            ISerialPortDotNet is the interface of <see cref="T:System.IO.Ports.SerialPort"/>.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.ISerialPortDotNet.DataReceived">
+            <summary>
+            Represents the method that will handle the data received event
+            of a <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.ISerialPortDotNet.ErrorReceived">
+            <summary>
+            Represents the method that handles the error event
+            of a <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.ISerialPortDotNet.PinChanged">
+            <summary>
+            Represents the method that will handle the serial pin changed event
+            of a <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </summary>
+            <remarks>
+            Attention: No event is fired if the RTS or DTR line is changed.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.PortName">
+            <summary>
+            Gets or sets the port for communications, including but not limited to
+            all available COM ports.
+            </summary>
+            <value>
+            The communications port. The default is COM1.
+            </value>
+            <exception cref="T:System.ArgumentNullException">
+            The <see cref="P:System.IO.Ports.SerialPort.PortName"/> property was set to <c>null</c>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The <see cref="P:System.IO.Ports.SerialPort.PortName"/> property was set to a value with
+            a length of zero. -or- The <see cref="P:System.IO.Ports.SerialPort.PortName"/> property
+            was set to a value that starts with "\\". -or- The port name was not valid.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is open.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.BaseStream">
+            <summary>
+            Gets the underlying <see cref="T:System.IO.Stream"/> object for
+            a <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the <see cref="M:MKY.IO.Ports.ISerialPortDotNet.Open"/> method
+            has not been called or the <see cref="M:MKY.IO.Ports.ISerialPortDotNet.Close"/> method has been called.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.BaudRate">
+            <summary>
+            Gets or sets the serial baud rate.
+            </summary>
+            <value>
+            The baud rate.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The baud rate specified is less than or equal to zero, or is greater than
+            the maximum allowable baud rate for the device.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.DataBits">
+            <summary>
+            Gets or sets the standard length of data bits per byte.
+            </summary>
+            <value>
+            The data bits length.
+            </value>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state.  - or -An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The data bits value is less than 5 or more than 8.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.Parity">
+            <summary>
+            Gets or sets the parity-checking protocol.
+            </summary>
+            <value>
+            One of the <see cref="T:System.IO.Ports.Parity"/> values that represents
+            the parity-checking protocol. The default is None.
+            </value>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or -An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <see cref="P:System.IO.Ports.SerialPort.Parity"/> value passed is not
+            a valid value in the <see cref="T:System.IO.Ports.Parity"/> enumeration.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.StopBits">
+            <summary>
+            Gets or sets the standard number of stop bits per byte.
+            </summary>
+            <value>
+            One of the <see cref="T:System.IO.Ports.StopBits"/> values.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <see cref="P:System.IO.Ports.SerialPort.StopBits"/> value is not one
+            of the values from the <see cref="T:System.IO.Ports.StopBits"/> enumeration.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.Handshake">
+            <summary>
+            Gets or sets the handshaking protocol for serial port transmission of data.
+            </summary>
+            <value>
+            One of the <see cref="T:System.IO.Ports.Handshake"/> values. The default is None.
+            </value>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the
+            <see cref="M:System.IO.Ports.SerialPort.Open"/> method has not been
+            called or the <see cref="M:System.IO.Ports.SerialPort.Close"/> method
+            has been called.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The value passed is not a valid value in the
+            <see cref="T:System.IO.Ports.Handshake"/> enumeration.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.RtsEnable">
+            <summary>
+            Gets or sets a value indicating whether the Request To Send (RTS) signal
+            is enabled during serial communication.
+            </summary>
+            <value>
+            <c>true</c> to enable Request to Transmit (RTS); otherwise, <c>false</c>.
+            The default is <c>false</c>.
+            </value>
+            <remarks>
+            Attention: No <see cref="E:MKY.IO.Ports.ISerialPortDotNet.PinChanged"/> event is fired.
+            </remarks>
+            <exception cref="T:System.InvalidOperationException">
+            The value of the <see cref="P:System.IO.Ports.SerialPort.RtsEnable"/>
+            property was set or retrieved while the
+            <see cref="P:System.IO.Ports.SerialPort.Handshake"/> property is set to the
+            <see cref="F:System.IO.Ports.Handshake.RequestToSend"/> value or the
+            <see cref="F:System.IO.Ports.Handshake.RequestToSendXOnXOff"/> value.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.CtsHolding">
+            <summary>
+            Gets the state of the Clear-to-Send line.
+            </summary>
+            <value>
+            <c>true</c> if the Clear-to-Send line is detected; otherwise, <c>false</c>.
+            </value>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the
+            <see cref="M:System.IO.Ports.SerialPort.Open"/> method has not been called
+            or the <see cref="M:System.IO.Ports.SerialPort.Close"/> method has been
+            called.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state.  - or - An attempt to set the state of the
+            underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.DtrEnable">
+            <summary>
+            Gets or sets a value that enables the Data Terminal Ready (DTR) signal
+            during serial communication.
+            </summary>
+            <value>
+            <c>true</c> to enable Data Terminal Ready (DTR); otherwise, <c>false</c>.
+            The default is <c>false</c>.
+            </value>
+            <remarks>
+            Attention: No <see cref="E:MKY.IO.Ports.ISerialPortDotNet.PinChanged"/> event is fired.
+            </remarks>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.DsrHolding">
+            <summary>
+            Gets the state of the Data Set Ready (DSR) signal.
+            </summary>
+            <value>
+            <c>true</c> if a Data Set Ready signal has been sent to the port;
+            otherwise, <c>false</c>.
+            </value>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the
+            <see cref="M:System.IO.Ports.SerialPort.Open"/> method has not been called
+            or the <see cref="M:System.IO.Ports.SerialPort.Close"/> method has been
+            called.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state.  - or - An attempt to set the state of the
+            underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.CDHolding">
+            <summary>
+            Gets the state of the Carrier Detect line for the port.
+            </summary>
+            <value>
+            <c>true</c> if the carrier is detected; otherwise, <c>false</c>.
+            </value>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the
+            <see cref="M:System.IO.Ports.SerialPort.Open"/> method has not been called
+            or the <see cref="M:System.IO.Ports.SerialPort.Close"/> method has been
+            called.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state.  - or - An attempt to set the state of the
+            underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.BreakState">
+            <summary>
+            Gets or sets the break signal state.
+            </summary>
+            <value>
+            <c>true</c> if the port is in a break state; otherwise, <c>false</c>.
+            </value>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of the
+            underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the
+            <see cref="M:System.IO.Ports.SerialPort.Open"/> method has not been called
+            or the <see cref="M:System.IO.Ports.SerialPort.Close"/> method has been
+            called.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.NewLine">
+            <summary>
+            Gets or sets the value used to interpret the end of a call to the
+            <see cref="M:System.IO.Ports.SerialPort.ReadLine"/> and
+            <see cref="M:System.IO.Ports.SerialPort.WriteLine(System.String)"/>
+            methods.
+            </summary>
+            <value>
+            A value that represents the end of a line. The default is a line feed,
+            <see cref="P:System.Environment.NewLine"/>.
+            </value>
+            <exception cref="T:System.ArgumentNullException">
+            The <see cref="P:System.IO.Ports.SerialPort.IsOpen"/> value passed is <c>null</c>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The <see cref="P:System.IO.Ports.SerialPort.IsOpen"/> value passed is an
+            empty string ("").
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.Encoding">
+            <summary>
+            Gets or sets the byte encoding for pre- and post-transmission conversion
+            of text.
+            </summary>
+            <value>
+            An <see cref="T:System.Text.Encoding"/> object. The default is
+            <see cref="T:System.Text.ASCIIEncoding"/>.
+            </value>
+            <exception cref="T:System.ArgumentNullException">
+            The <see cref="P:System.IO.Ports.SerialPort.Encoding"/> property was set to <c>null</c>.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The <see cref="P:System.IO.Ports.SerialPort.Encoding"/> property was set to
+            an encoding that is not <see cref="T:System.Text.ASCIIEncoding"/>,
+            <see cref="T:System.Text.UTF8Encoding"/>, <see cref="T:System.Text.UTF32Encoding"/>,
+            <see cref="T:System.Text.UnicodeEncoding"/>, one of the Windows single byte
+            encodings, or one of the Windows double byte encodings.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.DiscardNull">
+            <summary>
+            Gets or sets a value indicating whether null bytes are ignored when
+            transmitted between the port and the receive buffer.
+            </summary>
+            <value>
+            <c>true</c> if null bytes are ignored; otherwise, <c>false</c>.
+            The default is <c>false</c>.
+            </value>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the
+            <see cref="M:System.IO.Ports.SerialPort.Open"/> method has not been
+            called or the <see cref="M:System.IO.Ports.SerialPort.Close"/> method
+            has been called.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.ParityReplace">
+            <summary>
+            Gets or sets the byte that replaces invalid bytes in a data stream when
+            a parity error occurs.
+            </summary>
+            <value>
+            A byte that replaces invalid bytes.
+            </value>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.ReadBufferSize">
+            <summary>
+            Gets or sets the size of the <see cref="T:System.IO.Ports.SerialPort"/>
+            input buffer.
+            </summary>
+            <value>
+            The buffer size. The default value is 4096.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <see cref="P:System.IO.Ports.SerialPort.ReadBufferSize"/> value set is
+            less than or equal to zero.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The <see cref="P:System.IO.Ports.SerialPort.ReadBufferSize"/> property was
+            set to an odd integer value.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The <see cref="P:System.IO.Ports.SerialPort.ReadBufferSize"/> property was
+            set while the stream was open.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.ReadTimeout">
+            <summary>
+            Gets or sets the number of milliseconds before a time-out occurs when a
+            read operation does not finish.
+            </summary>
+            <value>
+            The number of milliseconds before a time-out occurs when a read operation
+            does not finish.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The read time-out value is less than zero and not equal to
+            <see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout"/>.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.ReceivedBytesThreshold">
+            <summary>
+            Gets or sets the number of bytes in the internal input buffer before a
+            <see cref="E:System.IO.Ports.SerialPort.DataReceived"/> event occurs.
+            </summary>
+            <value>
+            The number of bytes in the internal input buffer before a
+            <see cref="E:System.IO.Ports.SerialPort.DataReceived"/> event is fired.
+            The default is 1.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <see cref="P:System.IO.Ports.SerialPort.ReceivedBytesThreshold"/>
+            value is less than or equal to zero.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.WriteBufferSize">
+            <summary>
+            Gets or sets the size of the serial port output buffer.
+            </summary>
+            <value>
+            The size of the output buffer. The default is 2048.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <see cref="P:System.IO.Ports.SerialPort.WriteBufferSize"/> value is
+            less than or equal to zero.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The <see cref="P:System.IO.Ports.SerialPort.WriteBufferSize"/> property
+            was set while the stream was open.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The <see cref="P:System.IO.Ports.SerialPort.WriteBufferSize"/> property
+            was set to an odd integer value.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.WriteTimeout">
+            <summary>
+            Gets or sets the number of milliseconds before a time-out occurs when a
+            write operation does not finish.
+            </summary>
+            <value>
+            The number of milliseconds before a time-out occurs. The default is
+            <see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout"/>.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <see cref="P:System.IO.Ports.SerialPort.WriteTimeout"/> value is less than
+            zero and not equal to <see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout"/>.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.IsOpen">
+            <summary>
+            Gets a value indicating the open or closed status of the
+            <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </summary>
+            <value>
+            <c>true</c> if the serial port is open; otherwise, <c>false</c>.
+            The default is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.BytesToRead">
+            <summary>
+            Gets the number of bytes of data in the receive buffer.
+            </summary>
+            <value>
+            The number of bytes of data in the receive buffer.
+            </value>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the
+            <see cref="M:System.IO.Ports.SerialPort.Open"/> method has not been called
+            or the <see cref="M:System.IO.Ports.SerialPort.Close"/> method has been
+            called.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.ISerialPortDotNet.BytesToWrite">
+            <summary>
+            Gets the number of bytes of data in the send buffer.
+            </summary>
+            <value>
+            The number of bytes of data in the send buffer.
+            </value>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the
+            <see cref="M:System.IO.Ports.SerialPort.Open"/> method has not been called
+            or the <see cref="M:System.IO.Ports.SerialPort.Close"/> method has been
+            called.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.Open">
+            <summary>
+            Opens a new serial port connection.
+            </summary>
+            <exception cref="T:System.UnauthorizedAccessException">
+            Access is denied to the port.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The port name does not begin with "COM". - or - The file type of the port
+            is not supported.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            One or more of the properties for this instance are invalid. For example,
+            the <see cref="P:System.IO.Ports.SerialPort.Parity"/>,
+            <see cref="P:System.IO.Ports.SerialPort.DataBits"/>, or
+            <see cref="P:System.IO.Ports.SerialPort.Handshake"/> properties are not valid
+            values; the <see cref="P:System.IO.Ports.SerialPort.BaudRate"/> is less than or
+            equal to zero; the <see cref="P:System.IO.Ports.SerialPort.ReadTimeout"/> or
+            <see cref="P:System.IO.Ports.SerialPort.WriteTimeout"/> property is less than
+            zero and is not <see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.Close">
+            <summary>
+            Closes the port connection, sets the
+            <see cref="P:System.IO.Ports.SerialPort.IsOpen"/> property to false,
+            and disposes of the internal <see cref="T:System.IO.Stream"/> object.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Reads a number of bytes from the
+            <see cref="T:System.IO.Ports.SerialPort"/> input buffer and writes
+            those bytes into a byte array at the specified offset.
+            </summary>
+            <param name="buffer">The byte array to write the input to.</param>
+            <param name="offset">The offset in the buffer array to begin writing.</param>
+            <param name="count">The number of bytes to read.</param>
+            <returns>The number of bytes read.</returns>
+            <exception cref="T:System.TimeoutException">
+            No bytes were available to read.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            offset plus count is greater than the length of the buffer.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The offset or count parameters are outside a valid region of the
+            buffer being passed. Either offset or count is less than zero.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The buffer passed is <c>null</c>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.Read(System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Reads a number of bytes from the
+            <see cref="T:System.IO.Ports.SerialPort"/> input buffer and writes
+            those bytes into a byte array at a given offset.
+            </summary>
+            <param name="buffer">The character array to write the input to.</param>
+            <param name="offset">The offset in the buffer array to begin writing.</param>
+            <param name="count">The number of bytes to read.</param>
+            <returns>The number of bytes read.</returns>
+            <exception cref="T:System.TimeoutException">
+            No bytes were available to read.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            offset plus count is greater than the length of the buffer. - or -
+            count is 1 and there is a surrogate character in the buffer.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The offset or count parameters are outside a valid region of the buffer
+            being passed. Either offset or count is less than zero.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The buffer passed is <c>null</c>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.ReadByte">
+            <summary>
+            Synchronously reads one byte from the
+            <see cref="T:System.IO.Ports.SerialPort"/> input buffer.
+            </summary>
+            <returns>The byte that was read.</returns>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            - or - No byte was read.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.ReadChar">
+            <summary>
+            Synchronously reads one character from the
+            <see cref="T:System.IO.Ports.SerialPort"/> input buffer.
+            </summary>
+            <returns>The character that was read.</returns>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            - or - No character was available in the allotted time-out period.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.ReadExisting">
+            <summary>
+            Reads all immediately available bytes, based on the encoding,
+            in both the stream and the input buffer of the
+            <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </summary>
+            <returns>
+            The contents of the stream and the input buffer of the
+            <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </returns>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.ReadLine">
+            <summary>
+            Reads up to the <see cref="P:System.IO.Ports.SerialPort.NewLine"/>
+            value in the input buffer.
+            </summary>
+            <returns>
+            The contents of the input buffer up to the
+            <see cref="P:System.IO.Ports.SerialPort.NewLine"/> value.
+            </returns>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            - or - No bytes were read.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.ReadTo(System.String)">
+            <summary>
+            Reads a string up to the specified value in the input buffer.
+            </summary>
+            <param name="value">A value that indicates where the read operation stops.</param>
+            <returns>The contents of the input buffer up to the specified value.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            The value parameter is <c>null</c>.
+            </exception>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The length of the value parameter is 0.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.Write(System.String)">
+            <summary>
+            Writes the parameter string to the output.
+            </summary>
+            <param name="text">The string for output.</param>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            str is <c>null</c>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Writes a specified number of bytes to an output buffer at the
+            specified offset.
+            </summary>
+            <param name="buffer">The byte array to write the output to.</param>
+            <param name="offset">The offset in the buffer array to begin writing.</param>
+            <param name="count">The number of bytes to write.</param>
+            <exception cref="T:System.ArgumentException">
+            offset plus count is greater than the length of the buffer.
+            </exception>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The offset or count parameters are outside a valid region of the
+            buffer being passed. Either offset or count is less than zero.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The buffer passed is <c>null</c>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.Write(System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Writes a specified number of characters to an output buffer at the
+            specified offset.
+            </summary>
+            <param name="buffer">The character array to write the output to.</param>
+            <param name="offset">The offset in the buffer array to begin writing.</param>
+            <param name="count">The number of characters to write.</param>
+            <exception cref="T:System.ArgumentException">
+            offset plus count is greater than the length of the buffer.
+            </exception>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The offset or count parameters are outside a valid region of the
+            buffer being passed. Either offset or count is less than zero.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The buffer passed is <c>null</c>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.WriteLine(System.String)">
+            <summary>
+            Writes the specified string and the
+            <see cref="P:System.IO.Ports.SerialPort.NewLine"/> value to the output buffer.
+            </summary>
+            <param name="text">The string to write to the output buffer.</param>
+            <exception cref="T:System.TimeoutException">
+            The <see cref="M:System.IO.Ports.SerialPort.WriteLine(System.String)"/>
+            method could not write to the stream.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            The str parameter is <c>null</c>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.DiscardInBuffer">
+            <summary>
+            Discards data from the serial driver's receive buffer.
+            </summary>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the
+            <see cref="M:System.IO.Ports.SerialPort.Open"/> method has not been
+            called or the <see cref="M:System.IO.Ports.SerialPort.Close"/> method
+            has been called.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.ISerialPortDotNet.DiscardOutBuffer">
+            <summary>
+            Discards data from the serial driver's transmit buffer.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            The stream is closed. This can occur because the
+            <see cref="M:System.IO.Ports.SerialPort.Open"/> method has not been
+            called or the <see cref="M:System.IO.Ports.SerialPort.Close"/> method
+            has been called.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+        </member>
+        <member name="T:MKY.IO.Ports.EqualsPortName`1">
+            <summary></summary>
+            <typeparam name="T">The applicable type for the predicate.</typeparam>
+        </member>
+        <member name="P:MKY.IO.Ports.EqualsPortName`1.PortId">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.EqualsPortName`1.#ctor(`0)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.EqualsPortName`1.Match">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.EqualsPortCaption`1">
+            <summary></summary>
+            <typeparam name="T">The applicable type for the predicate.</typeparam>
+        </member>
+        <member name="P:MKY.IO.Ports.EqualsPortCaption`1.PortId">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.EqualsPortCaption`1.#ctor(`0)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.EqualsPortCaption`1.Match">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPinChange">
+            <summary>
+            Specifies the type of change that occurred on the MKY.IO.Ports.SerialPort object.
+            </summary>
+            <remarks>
+            This enum adds RTS and DTR pin changes to <see cref="T:System.IO.Ports.SerialPinChange"/>.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPinChange.Rts">
+            <summary>
+            The RTS/RTR (Request To Send/Ready To Receive) signal changed state.
+            This signal is used to indicate whether data can be received over the serial port.
+            </summary>
+            <remarks>
+            RTS/RTR is also known as RFR (Ready For Receiving).
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPinChange.Cts">
+            <summary>
+            The CTS (Clear To Send) signal changed state.
+            This signal is used to indicate whether data can be sent over the serial port.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPinChange.Dtr">
+            <summary>
+            The DTR (Data Terminal Ready) signal changed state.
+            This signal is used to indicate whether this serial port host is ready to operate.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPinChange.Dsr">
+            <summary>
+            The DSR (Data Set Ready) signal changed state.
+            This signal is used to indicate whether the device on the serial port is ready to operate.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPinChange.Dcd">
+            <summary>
+            The DCD (Data Carrier Detect) signal changed state.
+            This signal is used to indicate whether a modem is connected to a working phone line and a data carrier signal is detected.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPinChange.InputBreak">
+            <summary>
+            A break was detected on input.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPinChange.OutputBreak">
+            <summary>
+            A break was set on output.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPinChange.Ring">
+            <summary>
+            A ring indicator was detected.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortControlPins">
+            <summary>
+            Serial port control pins.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortControlPins.Rts">
+            <summary>
+            RTS/RTR (Request To Send/Ready To Receive) control line.
+            </summary>
+            <remarks>
+            RTS/RTR is also known as RFR (Ready For Receiving).
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortControlPins.Cts">
+            <summary>
+            CTS (Clear To Send) control line.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortControlPins.Dtr">
+            <summary>
+            DTR (Data Terminal Ready) control line.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortControlPins.Dsr">
+            <summary>
+            DSR (Data Set Ready) control line.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortControlPins.Dcd">
+            <summary>
+            DCD (Data Carrier Detect) control line.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPins.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPins.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPins.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPins.Equals(MKY.IO.Ports.SerialPortControlPins)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPins.op_Equality(MKY.IO.Ports.SerialPortControlPins,MKY.IO.Ports.SerialPortControlPins)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPins.op_Inequality(MKY.IO.Ports.SerialPortControlPins,MKY.IO.Ports.SerialPortControlPins)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortControlPinCount">
+            <summary>
+            Serial port control pin count.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortControlPinCount.RtsDisableCount">
+            <summary>
+            RTS/RTR (Request To Send/Ready To Receive) control line.
+            </summary>
+            <remarks>
+            RTS/RTR is also known as RFR (Ready For Receiving).
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortControlPinCount.CtsDisableCount">
+            <summary>
+            CTS (Clear To Send) control line.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortControlPinCount.DtrDisableCount">
+            <summary>
+            DTR (Data Terminal Ready) control line.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortControlPinCount.DsrDisableCount">
+            <summary>
+            DSR (Data Set Ready) control line.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortControlPinCount.DcdCount">
+            <summary>
+            DCD (Data Carrier Detect) control line.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPinCount.Reset">
+            <summary>
+            Resets the control pin counts.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPinCount.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPinCount.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPinCount.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPinCount.Equals(MKY.IO.Ports.SerialPortControlPinCount)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPinCount.op_Equality(MKY.IO.Ports.SerialPortControlPinCount,MKY.IO.Ports.SerialPortControlPinCount)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortControlPinCount.op_Inequality(MKY.IO.Ports.SerialPortControlPinCount,MKY.IO.Ports.SerialPortControlPinCount)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortEx">
+            <summary>
+            Serial port component based on <see cref="T:System.IO.Ports.SerialPort"/>.
+            </summary>
+            <remarks>
+            There are several issues with <see cref="T:System.IO.Ports.SerialPort"/>:
+            <list type="bullet">
+            <item><description>IOException issue</description></item>
+            <item><description>ObjectDisposedException issue</description></item>
+            <item><description>UnauthorizedAccessException and deadlock issue</description></item>
+            </list>
+            See ".\!-Doc\*.txt" for details.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortEx.WriteBufferSizeDefault">
+            <summary>
+            The hard-coded default value of <see cref="P:System.IO.Ports.SerialPort.WriteBufferSize"/>.
+            </summary>
+            <remarks>
+            Value cannot be retrieved from <see cref="T:System.IO.Ports.SerialPort"/>.
+            Value is hard-coded, there is no need to create an object and retrieve the value.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortEx.ReadBufferSizeDefault">
+            <summary>
+            The hard-coded default value of <see cref="P:System.IO.Ports.SerialPort.ReadBufferSize"/>.
+            </summary>
+            <remarks>
+            Value cannot be retrieved from <see cref="T:System.IO.Ports.SerialPort"/>.
+            Value is hard-coded, there is no need to create an object and retrieve the value.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortEx.PortNameDefault">
+            <remarks>Must be constant (and not a readonly) to be usable as attribute argument.</remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortEx.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortEx.baseStreamReferenceForCloseSafely">
+            <remarks>
+            Required for patches to the 'ObjectDisposedException' issue described in <see cref="M:MKY.IO.Ports.SerialPortEx.Close"/>.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortEx.disposableState">
+            <summary>
+            A value which indicates the disposable state.
+            <list type="bullet">
+            <item><description>0 indicates undisposed.</description></item>
+            <item><description>1 indicates disposal is ongoing or has completed.</description></item>
+            </list>
+            </summary>
+            <remarks>
+            <c>int</c> rather than <c>bool</c> is required for thread-safe operations.
+            </remarks>
+        </member>
+        <member name="E:MKY.IO.Ports.SerialPortEx.DataReceived">
+            <summary>
+            Represents the method that will handle the data received event
+            of a <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.SerialPortEx.ErrorReceived">
+            <summary>
+            Represents the method that handles the error event
+            of a <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.SerialPortEx.PinChanged">
+            <summary>
+            Represents the method that will handle the serial pin changed event
+            of a <see cref="T:System.IO.Ports.SerialPort"/> object.
+            </summary>
+            <remarks>
+            Attention: No event is fired if the RTS or DTR line is changed.
+            </remarks>
+        </member>
+        <member name="E:MKY.IO.Ports.SerialPortEx.PortChanged">
+            <summary>
+            Event raised after port changed.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.SerialPortEx.PortSettingsChanged">
+            <summary>
+            Event raised after port settings changed.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.SerialPortEx.Opening">
+            <summary>
+            Event raised before connection is being opened.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.SerialPortEx.Opened">
+            <summary>
+            Event raised after connection successfully opened.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.SerialPortEx.Closing">
+            <summary>
+            Event raised before connection is being closed.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.SerialPortEx.Closed">
+            <summary>
+            Event raised after connection successfully closed.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MKY.IO.Ports.SerialPortEx"/> class.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MKY.IO.Ports.SerialPortEx"/> class using the specified
+            <see cref="T:System.ComponentModel.IContainer"/> object.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MKY.IO.Ports.SerialPortEx"/> class using the specified
+            port name.
+            </summary>
+            <param name="portName">
+            The port to use (for example, COM1).
+            </param>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.IsUndisposed">
+            <summary>
+            Gets a value indicating whether disposal of object is neither ongoing nor has completed.
+            </summary>
+            <remarks>
+            See remarks at <see cref="P:MKY.DisposableBase.IsUndisposed"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing or releasing resources.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.AssertUndisposed">
+            <summary>
+            Asserts that disposal of object is neither ongoing nor has already completed.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.PortName">
+            <summary>
+            Gets or sets the port for communications, including but not limited to all available COM ports.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.PortId">
+            <summary>
+            Gets or sets the port for communications, including but not limited to all available COM ports.
+            </summary>
+            <exception cref="T:System.InvalidOperationException"> if ID is attempted to be changed while the port is open.</exception>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.BaudRate">
+            <summary>
+            Gets or sets the serial baud rate.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.DataBits">
+            <summary>
+            Gets or sets the standard length of data bits per byte.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.Parity">
+            <summary>
+            Gets or sets the parity-checking protocol.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.StopBits">
+            <summary>
+            Gets or sets the standard number of stop bits per byte.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.Handshake">
+            <summary>
+            Gets or sets the handshaking protocol for serial port transmission of data.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.PortSettings">
+            <summary>
+            Communications port settings.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.RtsEnable">
+            <summary>
+            Gets or sets a value indicating whether the RTS/RTR (Request To Send/Ready To Receive)
+            control pin is enabled during serial communication.
+            </summary>
+            <remarks>
+            RTS/RTR is also known as RFR (Ready For Receiving).
+            </remarks>
+            <remarks>
+            Attention:
+            Different than <see cref="P:System.IO.Ports.SerialPort.RtsEnable"/> this
+            property fires an <see cref="E:MKY.IO.Ports.SerialPortEx.PinChanged"/> event if the value changes.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.ToggleRts">
+            <summary>
+            Toggles the RTS/RTR (Request To Send/Ready To Receive) control pin.
+            </summary>
+            <remarks>
+            RTS/RTR is also known as RFR (Ready For Receiving).
+            </remarks>
+            <returns>
+            The new state of the RTS control pin.
+            </returns>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.DtrEnable">
+            <summary>
+            Gets or sets a value that enables the Data Terminal Ready (DTR) signal
+            during serial communication.
+            </summary>
+            <remarks>
+            Attention: Different than <see cref="P:System.IO.Ports.SerialPort.DtrEnable"/>
+            this property fires an <see cref="E:MKY.IO.Ports.SerialPortEx.PinChanged"/> event if the value changes.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.ToggleDtr">
+            <summary>
+            Toggles the DTR (Data Terminal Ready) control pin.
+            </summary>
+            <returns>
+            The new state of the DTR control pin.
+            </returns>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.ControlPins">
+            <summary>
+            Serial port control pins.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.ControlPinCount">
+            <summary>
+            Serial port control pin counts.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.ResetControlPinCount">
+            <summary>
+            Resets the control pin counts.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.IgnoreFramingErrors">
+            <summary>
+            Gets or sets whether framing errors shall be ignored.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.InputBreak">
+            <summary>
+            Gets the input break state.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.OutputBreak">
+            <summary>
+            Gets or sets the output break state.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.ToggleOutputBreak">
+            <summary>
+            Toggles the output break state.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.InputBreakCount">
+            <summary>
+            Returns the number of input breaks.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortEx.OutputBreakCount">
+            <summary>
+            Returns the number of output breaks.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.ResetBreakCount">
+            <summary>
+            Resets the break counts.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.GetPortNames">
+            <summary>
+            Wraps <see cref="M:System.IO.Ports.SerialPort.GetPortNames"/> because
+            that method may throw under conditions it shouldn't.
+            </summary>
+            <remarks>
+            If the registry contains stale or otherwise incorrect data then
+            <see cref="M:System.IO.Ports.SerialPort.GetPortNames"/> will return incorrect data.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.Open">
+            <summary>
+            Opens a new serial port connection.
+            </summary>
+            <exception cref="T:System.UnauthorizedAccessException">
+            Access is denied to the port.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            The port name does not begin with "COM". - or - The file type of the port
+            is not supported.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            The port is in an invalid state. - or - An attempt to set the state of
+            the underlying port failed. For example, the parameters passed from this
+            <see cref="T:System.IO.Ports.SerialPort"/> object were invalid.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            One or more of the properties for this instance are invalid. For example,
+            the <see cref="P:System.IO.Ports.SerialPort.Parity"/>,
+            <see cref="P:System.IO.Ports.SerialPort.DataBits"/>, or
+            <see cref="P:System.IO.Ports.SerialPort.Handshake"/> properties are not valid
+            values; the <see cref="P:System.IO.Ports.SerialPort.BaudRate"/> is less than or
+            equal to zero; the <see cref="P:System.IO.Ports.SerialPort.ReadTimeout"/> or
+            <see cref="P:System.IO.Ports.SerialPort.WriteTimeout"/> property is less than
+            zero and is not <see cref="F:System.IO.Ports.SerialPort.InfiniteTimeout"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.Flush">
+            <summary>
+            Waits for unwritten data to be sent.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.Close">
+            <summary>
+            Closes the port connection, sets the
+            <see cref="P:System.IO.Ports.SerialPort.IsOpen"/> property to false,
+            and disposes of the internal <see cref="T:System.IO.Stream"/> object.
+            </summary>
+            <remarks>
+            Immediately closes the connection. Call <see cref="M:MKY.IO.Ports.SerialPortEx.Flush"/> prior to this
+            method to make sure unwritten data is sent.
+            </remarks>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.CloseAfterException">
+            <summary>
+            Closes the port according to documentation of <see cref="M:MKY.IO.Ports.SerialPortEx.Close"/>.
+            </summary>
+            <remarks>
+            This variant of <see cref="M:MKY.IO.Ports.SerialPortEx.Close"/> shall be used when closing the port after a port
+            related exception has happened, e.g. a <see cref="T:System.IO.IOException"/> after a
+            device got physically disconnected. When closing the port intentionally in a
+            "look-forward" manner, use <see cref="M:MKY.IO.Ports.SerialPortEx.CloseNormally"/> instead.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.CloseNormally">
+            <summary>
+            Closes the port according to documentation of <see cref="M:MKY.IO.Ports.SerialPortEx.Close"/>.
+            </summary>
+            <remarks>
+            This variant of <see cref="M:MKY.IO.Ports.SerialPortEx.Close"/> shall be used when closing intentionally in a
+            "look-forward" manner. When closing the port after a port related exception has
+            happened, e.g. a <see cref="T:System.IO.IOException"/> after a device got physically
+            disconnected, use <see cref="M:MKY.IO.Ports.SerialPortEx.CloseAfterException"/> instead.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.TryToApplyEventLoopHandlerPatchAndCloseBaseStreamSafely(System.IO.Stream)">
+             <summary>
+             Safely disposes of the underlying stream even if a USB serial interface was physically
+             removed from the system in a reliable manner based on https://pastebin.com/KmKEVzR8.
+             </summary>
+             <remarks>
+             The <see cref="T:System.IO.Ports.SerialPort"/> class has 3 different problems in disposal
+             in case of a USB serial device that is physically removed:
+            
+             1. The eventLoopRunner is asked to stop and <see cref="P:System.IO.Ports.SerialPort.IsOpen"/>
+             returns false. Upon disposal this property is checked and closing  the internal serial
+             stream is skipped, thus keeping the original handle open infinitely (until the finalizer
+             runs which leads to the next problem).
+            
+             The solution for this one is to manually close the internal serial stream. We can get
+             its reference by <see cref="P:System.IO.Ports.SerialPort.BaseStream" /> before the
+             exception has happened or by reflection and getting the "internalSerialStream" field.
+            
+             2. Closing the internal serial stream throws an exception and closes the internal handle
+             without waiting for its eventLoopRunner thread to finish, causing an uncatchable
+             ObjectDisposedException from it later on when the finalizer runs (which oddly avoids
+             throwing the exception but still fails to wait for the eventLoopRunner).
+            
+             The solution is to manually ask the event loop runner thread to shutdown
+             (via reflection) and waiting for it before closing the internal serial stream.
+            
+             3. Since Dispose throws exceptions, the finalizer is not suppressed.
+            
+             The solution is to suppress their finalizers at the beginning.
+             </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.CloseBaseStreamSafely(System.IO.Stream)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.TryToShutdownBaseStreamEventLoopHandler(System.IO.Stream)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.WriteByte(System.Byte)">
+            <summary>
+            Writes the specified byte to an output buffer at the specified offset.
+            </summary>
+            <param name="data">The byte to write the output to.</param>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.WriteChar(System.Char)">
+            <summary>
+            Writes the specified character to an output buffer at the specified offset.
+            </summary>
+            <param name="data">The byte to write the output to.</param>
+            <exception cref="T:System.TimeoutException">
+            The operation did not complete before the time-out period ended.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            The specified port is not open.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.OnPortChanged(System.EventArgs)">
+            <summary>
+            Invokes "PortChanged" event.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.OnPortSettingsChanged(System.EventArgs)">
+            <summary>
+            Invokes "PortSettingsChanged" event.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.OnOpening(System.EventArgs)">
+            <summary>
+            Invokes "Opening" event.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.OnOpened(System.EventArgs)">
+            <summary>
+            Invokes "Opened" event.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.OnClosing(System.EventArgs)">
+            <summary>
+            Invokes "Closing" event.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.OnClosed(System.EventArgs)">
+            <summary>
+            Invokes "Closed" event.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.OnDataReceived(MKY.IO.Ports.SerialDataReceivedEventArgs)">
+            <summary>
+            Invokes "DataReceived" event.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.OnErrorReceived(MKY.IO.Ports.SerialErrorReceivedEventArgs)">
+            <summary>
+            Invokes "ErrorReceived" event.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.OnPinChanged(MKY.IO.Ports.SerialPinChangedEventArgs)">
+            <summary>
+            Invokes "PinChanged" event.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.ToPortName">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.DebugOpenClose(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortEx.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortEx.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortId">
+            <remarks>
+            \remind (2019-11-10 / MKY)
+            Instances of this container class shall be treated as immutable objects. However, it is not
+            possible to assign <see cref="T:System.ComponentModel.ImmutableObjectAttribute"/>/<see cref="T:MKY.Contracts.ImmutableContractAttribute"/>
+            because XML default serialization requires public setters. Split into mutable settings tuple
+            and immutable runtime container could be done.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.StandardPortNamePrefix">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.FirstStandardPortNumber">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.LastStandardPortNumber">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.StandardPortCount">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.FirstTypicalStandardPortNumber">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.LastTypicalStandardPortNumber">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.TypicalStandardPortCount">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.FirstStandardPortName">
+            <summary>
+            First standard port name as string.
+            </summary>
+            <remarks>
+            Can be used as default string on attributes such as <see cref="T:System.ComponentModel.DefaultValueAttribute"/>,
+            must therefore be a constant (and not a readonly).
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.InUseTextDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.SeparatorDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.StandardPortNameRegex">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.StandardPortNameWithParenthesesRegex">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.StandardPortNameOnlyRegex">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.UserPortNameRegex">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.CaptionMCT">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.CaptionFTDI">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortId.CaptionStartProlific">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortId.FirstStandardPort">
+            <summary>
+            First standard port.
+            </summary>
+            <remarks>
+            This property can be used as default port. Using <see cref="P:MKY.IO.Ports.SerialPortId.FirstAvailablePort"/>
+            below is way worse performing since it needs to search for available ports. Searching
+            for available ports takes quite some time, especially if checking whether the ports
+            are in use.
+            </remarks>
+            <remarks>
+            Must be implemented as property (instead of a readonly) since <see cref="T:MKY.IO.Ports.SerialPortId"/>
+            is a mutable reference type. Defining a readonly would correctly result in FxCop
+            message CA2104 "DoNotDeclareReadOnlyMutableReferenceTypes" (Microsoft.Security).
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortId.FirstAvailablePort">
+            <summary>
+            Returns the first port available, usually "COM1".
+            Returns <c>null</c> if no ports are available.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.#ctor">
+            <remarks>
+            \remind (2019-11-10 / MKY)
+            Parameter-less constructor is required for XML default serialization. Could be removed
+            after having split into mutable settings tuple and immutable runtime container.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.#ctor(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.#ctor(MKY.IO.Ports.SerialPortId)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortId.Name">
+            <summary>
+            Port name, e.g. "COM1".
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortId.StandardPortNumber">
+            <summary>
+            Port number, e.g. 1 of "COM1".
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="value"/> is not a standard port number.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortId.IsStandardPort">
+            <summary>
+            Returns whether this port ID is a standard port COM1 to COM65536.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortId.Caption">
+            <summary>
+            Port caption, e.g. "Serial On USB Port" of "COM1 - Serial On USB Port".
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortId.HasCaptionFromSystem">
+            <summary>
+            Indicates whether port has retrieved caption from system.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortId.IsInUse">
+            <summary>
+            Indicates whether port is currently in use.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortId.InUseText">
+            <summary>
+            The text which is shown when port is currently in use, e.g. "(in use)" of "COM1 - (in use)".
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortId.Separator">
+            <summary>
+            The separator, e.g. " - " of "COM1 - Serial On USB Port".
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.GetCaptionFromSystem">
+            <summary>
+            Queries WMI (Windows Management Instrumentation) trying to retrieve the caption
+            that is associated with the serial port.
+            </summary>
+            <remarks>
+            Query is never done automatically because it takes quite some time.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.SetCaptionFromSystem(System.String)">
+            <summary>
+            Set the caption which was retrieved from the system.
+            </summary>
+            <remarks>
+            Can be used to set the descriptions of multiple ID with a single call to
+            <see cref="M:MKY.IO.Ports.SerialPortSearcher.GetCaptionsFromSystem"/>. A single call is much
+            faster than calling <see cref="M:MKY.IO.Ports.SerialPortSearcher.GetCaptionsFromSystem"/> for
+            each ID.
+            </remarks>
+            <param name="caption">The caption to set.</param>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Corresponds to calling <see cref="M:MKY.IO.Ports.SerialPortId.ToString(System.Boolean,System.Boolean)"/> with
+            <code>appendCaption: true</code> and <code>appendInUseText: true</code>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.ToNameAndCaptionString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Corresponds to calling <see cref="M:MKY.IO.Ports.SerialPortId.ToString(System.Boolean,System.Boolean)"/> with
+            <code>appendCaption: true</code> and <code>appendInUseText: false</code>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.ToString(System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.Equals(MKY.IO.Ports.SerialPortId)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.EqualsName(System.String)">
+            <summary>
+            Determines whether this instance's and the specified object's <see cref="P:MKY.IO.Ports.SerialPortId.Name"/> have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.EqualsCaption(System.String)">
+            <summary>
+            Determines whether this instance's and the specified object's <see cref="P:MKY.IO.Ports.SerialPortId.Caption"/> have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.op_Equality(MKY.IO.Ports.SerialPortId,MKY.IO.Ports.SerialPortId)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.op_Inequality(MKY.IO.Ports.SerialPortId,MKY.IO.Ports.SerialPortId)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.Parse(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for the first integer number and returns the corresponding port ID.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.TryParse(System.String,MKY.IO.Ports.SerialPortId@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for the first integer number and returns the corresponding port ID.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.ParseStandardPortName(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for the first integer number and returns the corresponding port.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.TryParseStandardPortName(System.String,MKY.IO.Ports.SerialPortId@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for the first integer number and returns the corresponding port.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.TryFrom(System.Int32,MKY.IO.Ports.SerialPortId@)">
+            <summary>
+            Tries to create a <see cref="T:MKY.IO.Ports.SerialPortId"/> object from the given port number.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.IsStandardPortNumber(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.IsTypicalStandardPortNumber(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.StandardPortNumberToString(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.CompareTo(System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.Compare(System.Object,System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.op_LessThan(MKY.IO.Ports.SerialPortId,MKY.IO.Ports.SerialPortId)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.op_GreaterThan(MKY.IO.Ports.SerialPortId,MKY.IO.Ports.SerialPortId)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.op_LessThanOrEqual(MKY.IO.Ports.SerialPortId,MKY.IO.Ports.SerialPortId)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.op_GreaterThanOrEqual(MKY.IO.Ports.SerialPortId,MKY.IO.Ports.SerialPortId)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.op_Implicit(MKY.IO.Ports.SerialPortId)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.op_Implicit(System.String)~MKY.IO.Ports.SerialPortId">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.op_Implicit(MKY.IO.Ports.SerialPortId)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortId.op_Implicit(System.Int32)~MKY.IO.Ports.SerialPortId">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortIdConverter">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortIdConverter.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortIdConverter.GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Indicates this converter provides a list of standard values.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortIdConverter.GetStandardValues(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Returns a StandardValuesCollection of standard value objects.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortIdConverter.GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Indicates list of standard values is exclusive.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortIdConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortIdConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortIdConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortIdConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortIdConverter.IsValid(System.ComponentModel.ITypeDescriptorContext,System.Object)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortCollection">
+            <summary>
+            List containing serial port IDs.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Ports.SerialPortCollection.InUseLookupRequest">
+            <summary>
+            Occurs when the collection requests the 'InUseText' for the given port.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortCollection.eventHelper">
+            <summary>
+            A dedicated event helper to allow ignoring the 'ThreadAbortException' when cancelling.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortCollection.ActivePortInUseInfo">
+            <summary>
+            The port that is currently in use, e.g. "(in use by this serial port)" of "COM1 - (in use by this serial port)".
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortCollection.OtherAppInUseText">
+            <summary>
+            The text which is shown when port is currently in use, e.g. "(in use by other app)" of "COM1 - (in use by other app)".
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.#ctor(System.Collections.Generic.IEnumerable{MKY.IO.Ports.SerialPortId})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.FillWithTypicalStandardPorts">
+            <summary>
+            Fills list with all ports from <see cref="F:MKY.IO.Ports.SerialPortId.FirstTypicalStandardPortNumber"/> to
+            <see cref="F:MKY.IO.Ports.SerialPortId.LastTypicalStandardPortNumber"/>.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.FillWithAvailablePorts(System.Boolean)">
+            <summary>
+            Fills list with all ports from <see cref="M:System.IO.Ports.SerialPort.GetPortNames"/>.
+            </summary>
+            <param name="retrieveCaptions">
+            On request, this method queries the port captions from the system.
+            Attention, this may take quite some time, depending on the available ports.
+            Therefore, the default value is <c>false</c>.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.IsAvailable(System.String)">
+            <summary>
+            Returns whether the given port name is available according to <see cref="M:System.IO.Ports.SerialPort.GetPortNames"/>.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.CacheContains(System.String)">
+            <summary>
+            Returns whether the given port name is contained in the static cache.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.RetrieveCaptions(System.Boolean)">
+            <summary>
+            Queries WMI (Windows Management Instrumentation) trying to retrieve to caption
+            that is associated with the serial port.
+            </summary>
+            <remarks>
+            Attention, this may take quite some time, depending on the available ports.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.RetrieveOtherPortInUseLookup">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.DetectPortsThatAreInUse(System.EventHandler{MKY.IO.Ports.SerialPortChangedAndCancelEventArgs})">
+            <summary>
+            Checks all ports whether they are currently in use and marks them.
+            </summary>
+            <remarks>
+            In .NET, no class provides a method to retrieve whether a port is currently in use or
+            not. Therefore, this method actively tries to open every port! This may take quite some
+            time, depending on the available ports.
+            </remarks>
+            <param name="portChangedCallback">
+            Callback delegate, can be used to get an event each time a new port is being tried to
+            be opened. Set the <see cref="P:MKY.IO.Ports.SerialPortChangedAndCancelEventArgs.Cancel"/> property
+            to <c>true</c> to cancel port scanning.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.DetectWhetherPortIsInUse(MKY.IO.Ports.SerialPortId)">
+            <summary>
+            Checks the port whether it is currently in use and marks it.
+            </summary>
+            <remarks>
+            In .NET, no class provides a method to retrieve whether a port is currently in use or
+            not. Therefore, this method actively tries to open every port! This may take quite some
+            time, depending on the available ports.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.DetectWhetherPortIsInUse(MKY.IO.Ports.SerialPortId,System.Collections.Generic.List{MKY.IO.Ports.InUseInfo})">
+            <summary>
+            Detects whether the port is in use.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.DetectWhetherPortIsInUse(MKY.IO.Ports.SerialPortId,System.Boolean,MKY.IO.Ports.InUseInfo,System.Boolean,System.Collections.Generic.List{MKY.IO.Ports.InUseInfo},System.String)">
+            <summary>
+            Detects whether the port is in use and marks the port ID accordingly.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.ComposeInUseText(System.Boolean,MKY.IO.Ports.InUseInfo,System.Collections.Generic.List{MKY.IO.Ports.InUseInfo},System.String)">
+            <summary>
+            Composes the 'InUse' text.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.NotifyThreadAbortWillHappen">
+            <summary>
+            Notifies the worker that a thread abort is about to happen soon.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.OnInUseLookupRequest">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.DebugVerbose(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.DebugVerbose(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.DebugVerboseIndent(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.DebugVerboseUnindent(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortCollection.DebugVerboseUnindent(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortSearcher">
+            <summary>
+            Provides methods to search for serial ports.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSearcher.GetCaptionsFromSystem">
+            <summary>
+            Queries WMI (Windows Management Instrumentation) trying to retrieve the captions that is associated with the serial ports.
+            </summary>
+            <remarks>
+            Query is never done automatically because it takes quite some time.
+            </remarks>
+            <remarks>
+            WMI calls the captions 'descriptions'. But from a user's point of view these are rather captions.
+            </remarks>
+            <remarks>
+            If there is a need to manually browse through the WMI entries, use a tool like the "WMI Explorer".
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortSettings">
+            <summary>
+            Serial port settings.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortSettings.BaudRateDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortSettings.DataBitsDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortSettings.ParityDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortSettings.StopBitsDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.SerialPortSettings.HandshakeDefault">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.#ctor(System.Int32,MKY.IO.Ports.DataBits,System.IO.Ports.Parity,System.IO.Ports.StopBits,System.IO.Ports.Handshake)">
+            <summary>
+            Creates new port settings with specified arguments.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.#ctor(MKY.IO.Ports.SerialPortSettings)">
+            <summary>
+            Creates new port settings from <paramref name="rhs"/>.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortSettings.BaudRate">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortSettings.DataBits">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortSettings.Parity">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortSettings.StopBits">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortSettings.Handshake">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortSettings.PacketSize">
+            <summary>
+            Returns bits size of an interface packet according to the current
+            interface settings (StartBit + DataBits + StopBits).
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Ports.SerialPortSettings.PacketDuration">
+            <summary>
+            Returns duration of an interface packet according to the current
+            interface settings (PacketSize * (1 / BaudRate)) in milliseconds.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.ToShortString">
+            <summary>
+            Returns port settings as a single string. The string is limited to the basic settings.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.Equals(MKY.IO.Ports.SerialPortSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.op_Equality(MKY.IO.Ports.SerialPortSettings,MKY.IO.Ports.SerialPortSettings)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.op_Inequality(MKY.IO.Ports.SerialPortSettings,MKY.IO.Ports.SerialPortSettings)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.Parse(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for serial port settings and returns a corresponding settings object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.TryParse(System.String,MKY.IO.Ports.SerialPortSettings@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for serial port settings and returns a corresponding settings object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.op_Implicit(MKY.IO.Ports.SerialPortSettings)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettings.op_Implicit(System.String)~MKY.IO.Ports.SerialPortSettings">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.SerialPortSettingsConverter">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettingsConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettingsConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettingsConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.SerialPortSettingsConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.InUseInfo">
+            <remarks>
+            <c>class</c> instead of <c>struct</c> to allow parameterless constructor, i.e. initializing
+            <see cref="P:MKY.IO.Ports.InUseInfo.UseId"/> and <see cref="P:MKY.IO.Ports.InUseInfo.PortName"/> to other value than 0 and "".
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.InUseInfo.ActivePortInUseTextDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Ports.InUseInfo.OtherAppInUseTextDefault">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Ports.InUseInfo.UseId">
+            <summary>A unique ID of the item/client that uses the stated serial port.</summary>
+        </member>
+        <member name="P:MKY.IO.Ports.InUseInfo.PortName">
+            <summary>The name of the stated serial port.</summary>
+        </member>
+        <member name="P:MKY.IO.Ports.InUseInfo.IsOpen">
+            <summary>Indicates whether the serial port is open.</summary>
+        </member>
+        <member name="P:MKY.IO.Ports.InUseInfo.InUseText">
+            <summary>Contains the in use statement text.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.InUseInfo.#ctor(System.Int32,System.String,System.Boolean,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.InUseInfo.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.InUseInfo.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.InUseInfo.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.InUseInfo.Equals(MKY.IO.Ports.InUseInfo)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.InUseInfo.op_Equality(MKY.IO.Ports.InUseInfo,MKY.IO.Ports.InUseInfo)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.InUseInfo.op_Inequality(MKY.IO.Ports.InUseInfo,MKY.IO.Ports.InUseInfo)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Ports.BaudRate">
+            <remarks>Using "Baud" prefix in order to be CLS-compliant.</remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.BaudRate.Minimum">
+            <summary>Theoretical minimum is 1.</summary>
+        </member>
+        <member name="F:MKY.IO.Ports.BaudRate.Maximum">
+            <summary>Theoretical maximum is <see cref="F:System.Int32.MaxValue"/>.</summary>
+        </member>
+        <member name="T:MKY.IO.Ports.BaudRateEx">
+            <summary>
+            Extended enum BaudRateEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.BaudRateEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Ports.BaudRate.Baud9600"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Ports.BaudRateEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.#ctor(MKY.IO.Ports.BaudRate)">
+            <remarks>
+            Do not use with <see cref="F:MKY.IO.Ports.BaudRate.Explicit"/> because that selection requires
+            a baud rate value. Use <see cref="M:MKY.IO.Ports.BaudRateEx.#ctor(System.Int32)"/> instead.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="baudRate"/> is <see cref="F:MKY.IO.Ports.BaudRate.Explicit"/>. Use <see cref="M:MKY.IO.Ports.BaudRateEx.#ctor(System.Int32)"/> instead.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.#ctor(System.Int32)">
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="baudRate"/> is no potentially valid baud rate value.
+            </exception>
+        </member>
+        <member name="P:MKY.IO.Ports.BaudRateEx.IsExplicit">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.Equals(MKY.IO.Ports.BaudRateEx)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.op_Equality(MKY.IO.Ports.BaudRateEx,MKY.IO.Ports.BaudRateEx)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.op_Inequality(MKY.IO.Ports.BaudRateEx,MKY.IO.Ports.BaudRateEx)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.TryParse(System.String,MKY.IO.Ports.BaudRateEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.TryParse(System.String,MKY.IO.Ports.BaudRate@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.TryFrom(System.Int32,MKY.IO.Ports.BaudRateEx@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.TryFrom(System.Int32,MKY.IO.Ports.BaudRate@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.IsPotentiallyValid(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.op_Implicit(MKY.IO.Ports.BaudRateEx)~MKY.IO.Ports.BaudRate">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.op_Explicit(MKY.IO.Ports.BaudRate)~MKY.IO.Ports.BaudRateEx">
+            <remarks>
+            Explicit because cast doesn't work for <see cref="F:MKY.IO.Ports.BaudRate.Explicit"/>.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="baudRate"/> is <see cref="F:MKY.IO.Ports.BaudRate.Explicit"/>.
+            </exception>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.op_Implicit(MKY.IO.Ports.BaudRateEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.op_Implicit(System.Int32)~MKY.IO.Ports.BaudRateEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.op_Implicit(MKY.IO.Ports.BaudRateEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.BaudRateEx.op_Implicit(System.String)~MKY.IO.Ports.BaudRateEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.DataBits">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.DataBitsEx">
+            <summary>
+            Extended enum DataBitsEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.DataBitsEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Ports.DataBits.Eight"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Ports.DataBitsEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.#ctor(MKY.IO.Ports.DataBits)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.TryParse(System.String,MKY.IO.Ports.DataBitsEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.TryParse(System.String,MKY.IO.Ports.DataBits@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.TryFrom(System.Int32,MKY.IO.Ports.DataBitsEx@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.TryFrom(System.Int32,MKY.IO.Ports.DataBits@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.IsDefined(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.op_Implicit(MKY.IO.Ports.DataBitsEx)~MKY.IO.Ports.DataBits">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.op_Implicit(MKY.IO.Ports.DataBits)~MKY.IO.Ports.DataBitsEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.op_Implicit(MKY.IO.Ports.DataBitsEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.op_Implicit(System.Int32)~MKY.IO.Ports.DataBitsEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.op_Implicit(MKY.IO.Ports.DataBitsEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.DataBitsEx.op_Implicit(System.String)~MKY.IO.Ports.DataBitsEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.HandshakeEx">
+             <summary>
+             Extended enum HandshakeEx.
+             </summary>
+             <remarks>
+             I think flow control would be the better term, no clue why .NET uses handshake.
+            
+             This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+             Use the underlying enum for serialization, or alternatively, a string representation.
+             </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.HandshakeEx.Default">
+            <summary>Default is <see cref="F:System.IO.Ports.Handshake.None"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Ports.HandshakeEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.#ctor(System.IO.Ports.Handshake)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.ToShortString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.TryParse(System.String,MKY.IO.Ports.HandshakeEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.TryParse(System.String,System.IO.Ports.Handshake@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.op_Implicit(MKY.IO.Ports.HandshakeEx)~System.IO.Ports.Handshake">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.op_Implicit(System.IO.Ports.Handshake)~MKY.IO.Ports.HandshakeEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.op_Implicit(MKY.IO.Ports.HandshakeEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.op_Implicit(System.Int32)~MKY.IO.Ports.HandshakeEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.op_Implicit(MKY.IO.Ports.HandshakeEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.HandshakeEx.op_Implicit(System.String)~MKY.IO.Ports.HandshakeEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.ParityEx">
+            <summary>
+            Extended enum ParityEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.ParityEx.Default">
+            <summary>Default is <see cref="F:System.IO.Ports.Parity.None"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Ports.ParityEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.#ctor(System.IO.Ports.Parity)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.ToShortString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.TryParse(System.String,MKY.IO.Ports.ParityEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.TryParse(System.String,System.IO.Ports.Parity@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.TryFrom(System.Int32,MKY.IO.Ports.ParityEx@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.TryFrom(System.Int32,System.IO.Ports.Parity@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.IsDefined(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.op_Implicit(MKY.IO.Ports.ParityEx)~System.IO.Ports.Parity">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.op_Implicit(System.IO.Ports.Parity)~MKY.IO.Ports.ParityEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.op_Implicit(MKY.IO.Ports.ParityEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.op_Implicit(System.Int32)~MKY.IO.Ports.ParityEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.op_Implicit(MKY.IO.Ports.ParityEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.ParityEx.op_Implicit(System.String)~MKY.IO.Ports.ParityEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Ports.StopBitsEx">
+            <summary>
+            Extended enum StopBitsEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Ports.StopBitsEx.Default">
+            <summary>Default is <see cref="F:System.IO.Ports.StopBits.One"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Ports.StopBitsEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.#ctor(System.IO.Ports.StopBits)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.TryParse(System.String,MKY.IO.Ports.StopBitsEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.TryParse(System.String,System.IO.Ports.StopBits@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.TryFrom(System.Double,MKY.IO.Ports.StopBitsEx@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.TryFrom(System.Double,System.IO.Ports.StopBits@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.IsDefined(System.Double)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.op_Implicit(MKY.IO.Ports.StopBitsEx)~System.IO.Ports.StopBits">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.op_Implicit(System.IO.Ports.StopBits)~MKY.IO.Ports.StopBitsEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.op_Implicit(MKY.IO.Ports.StopBitsEx)~System.Double">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.op_Implicit(System.Double)~MKY.IO.Ports.StopBitsEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.op_Implicit(MKY.IO.Ports.StopBitsEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Ports.StopBitsEx.op_Implicit(System.String)~MKY.IO.Ports.StopBitsEx">
+            <summary></summary>
+        </member>
+    </members>
+</doc>

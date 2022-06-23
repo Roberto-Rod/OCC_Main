@@ -1,0 +1,38 @@
+---
+:source:
+  :path: test-m-npda-bulk
+  :file: test_m_npda_049.c
+:successes:
+- :test: test_npda_RT_2020_08_12_02_33_58_15_300_Raw_cal_02
+  :line: 112
+  :message: ''
+  :unity_test_time: 0
+- :test: test_npda_RT_2020_08_14_03_22_47_5_100_Raw_cal_02
+  :line: 151
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 2
+  :passed: 2
+  :failed: 0
+  :ignored: 0
+:stdout:
+- Running test...
+- Converting ELF to HEX...
+- Programming device - platform MINGW32...
+- Connecting serial port at COM5...
+- Programming device - platform MINGW32...
+- Waiting for output...
+- Test output -----
+- 'TEST FILE: test_m_npda.c: Data mem usage: 409724b. Heap size: 512b. Stack size:
+  114008b of which 161b are used. TEST FILE: test_m_npda.c: Data mem usage: 409724b.
+  Heap size: 512b. Stack size: 114008b of which 161b are used. NPDA iret=0; TEST:
+  run_npda: Execution time: 166601us, Max stack usage: 10948bytes, iret: 0 vs 0, Thickness:
+  536.4172 vs 536.4172, Precision: 3.873829 vs 3.87382, Blocks: 10 vs 10'
+- 'NPDA iret=700; TEST: run_npda: Execution time: 171632us, Max stack usage: 10948bytes,
+  iret: 12 vs 12, Thickness: 548.4166 vs 548.4166, Precision: 9.366719 vs 9.36673,
+  Blocks: 10 vs 10'
+- "-----------------"
+:time: 62.67036129999906

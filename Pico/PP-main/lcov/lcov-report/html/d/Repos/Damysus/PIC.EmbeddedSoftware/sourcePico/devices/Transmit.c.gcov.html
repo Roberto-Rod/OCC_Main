@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov-sanitised.info - /d/Repos/Damysus/PIC.EmbeddedSoftware/sourcePico/devices/Transmit.c</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="title">LCOV - code coverage report</td></tr>
+        <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+        <tr>
+          <td width="100%">
+            <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../index.html">top level</a> - <a href="index.html">d/Repos/Damysus/PIC.EmbeddedSoftware/sourcePico/devices</a> - Transmit.c<span style="font-size: 80%;"> (source / <a href="Transmit.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov-sanitised.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-01-05 09:25:44</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+              <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+      </table>
+
+      <table cellpadding=0 cellspacing=0 border=0>
+        <tr>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*****************************************************************************</a>
+<span class="lineNum">       2 </span>            :  *   File        : Transmit.c
+<span class="lineNum">       3 </span>            :  *
+<span class="lineNum">       4 </span>            :  *   Description : Source Code to transmit data over the serial port (EUSART). TX only.
+<span class="lineNum">       5 </span>            :  *
+<span class="lineNum">       6 </span>            :  *****************************************************************************/
+<span class="lineNum">       7 </span>            : /* ***************************************************************************
+<span class="lineNum">       8 </span>            :  * This file is copyrighted by and the property of Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">       9 </span>            :  * It contains confidential and proprietary information. It must not be copied
+<span class="lineNum">      10 </span>            :  * (in whole or in part) or otherwise disclosed without prior written consent 
+<span class="lineNum">      11 </span>            :  * of the company. Any copies of this file (in whole or in part), made by any
+<span class="lineNum">      12 </span>            :  * method must also include a copy of this legend. 
+<span class="lineNum">      13 </span>            :  * 
+<span class="lineNum">      14 </span>            :  * (c) 2018, 2019 Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">      15 </span>            :  * 
+<span class="lineNum">      16 </span>            :  *************************************************************************** */
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : #include &quot;Transmit.h&quot;
+<span class="lineNum">      19 </span>            : #include &quot;eusart.h&quot;
+<span class="lineNum">      20 </span>            : #include &quot;Assert.h&quot;
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : /****************************************************************************
+<span class="lineNum">      23 </span>            : Function Name  :  TX_Init
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : Parameters     :  None
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">      28 </span>            : 
+<a name="29"><span class="lineNum">      29 </span>            : Description    :  Initialise the TX serial port transmission (abstraction function)</a>
+<span class="lineNum">      30 </span>            : *****************************************************************************/
+<span class="lineNum">      31 </span><span class="lineCov">          4 : void TX_Init(void)</span>
+<span class="lineNum">      32 </span>            : {
+<span class="lineNum">      33 </span><span class="lineCov">          4 :   EUSART_Initialize();</span>
+<span class="lineNum">      34 </span><span class="lineCov">          4 : }</span>
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : /****************************************************************************
+<span class="lineNum">      37 </span>            : Function Name  :  TX_Write
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            : Parameters     :  data     : pointer to data to write to the TX pin
+<span class="lineNum">      40 </span>            :                   numBytes : number of bytes to write to the TX pin
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            : Return Value   :  EC_OK_E or error code
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : Description    :  Writes stuff out the TX serial port
+<a name="45"><span class="lineNum">      45 </span>            : *****************************************************************************/</a>
+<span class="lineNum">      46 </span>            : /*lint -e{613} Suppress: Possible use of null pointer 'data' in left argument to operator '['. */
+<span class="lineNum">      47 </span><span class="lineCov">          4 : ErrorCode_t TX_Write(const uint8_t *data, uint8_t numBytes)</span>
+<span class="lineNum">      48 </span>            : {
+<span class="lineNum">      49 </span><span class="lineCov">          4 :   ASSERT(data != NULL);</span>
+<span class="lineNum">      50 </span><span class="lineCov">          3 :   ASSERT(numBytes &gt; 0);</span>
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineCov">         10 :   for (uint8_t loopVar = 0; loopVar &lt; numBytes; loopVar++)</span>
+<span class="lineNum">      53 </span>            :   {
+<span class="lineNum">      54 </span><span class="lineCov">          8 :     EUSART_Write(data[loopVar]);</span>
+<span class="lineNum">      55 </span>            :   }
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span><span class="lineCov">          2 :   return EC_OK_E; //dummy function just for compilation purposes</span>
+<span class="lineNum">      58 </span>            : }
+    </pre>
+          </td>
+        </tr>
+      </table>
+      <br>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+      </table>
+      <br>
+
+</body>
+</html>

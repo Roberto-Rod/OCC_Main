@@ -1,0 +1,1 @@
+This repository contains the SW development for the Pico Onboard project

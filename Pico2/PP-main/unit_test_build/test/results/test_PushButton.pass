@@ -1,0 +1,38 @@
+---
+:source:
+  :path: test/unit_test/devices
+  :file: test_PushButton.c
+:successes:
+- :test: test_IsPressedReadRA5
+  :line: 30
+  :message: ''
+- :test: test_HasDepressedForDurationIncrementWhenButtonIsDepressed
+  :line: 39
+  :message: ''
+- :test: test_DepressedCountIsResetWhenButtonIsReleased
+  :line: 47
+  :message: ''
+- :test: test_HasDepressedForDuration
+  :line: 61
+  :message: ''
+- :test: test_PushButtonStuckDoesNotRegisterAsLongPress
+  :line: 91
+  :message: ''
+- :test: test_IfPushButtonIsNotReleaseAfterInitNotPressEventIsRegistered
+  :line: 121
+  :message: ''
+- :test: test_PressEventStartsWithReleaseState
+  :line: 134
+  :message: ''
+- :test: test_ShortPressRequiresMoreThanTwoTicks
+  :line: 154
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 8
+  :passed: 8
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

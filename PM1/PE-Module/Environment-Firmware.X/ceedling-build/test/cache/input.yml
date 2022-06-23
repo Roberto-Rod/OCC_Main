@@ -1,0 +1,225 @@
+---
+:project:
+  :use_exceptions: false
+  :use_mocks: true
+  :compile_threads: 1
+  :test_threads: 1
+  :use_test_preprocessor: false
+  :use_deep_dependencies: false
+  :generate_deep_dependencies: true
+  :test_file_prefix: test_
+  :options_paths:
+  - "./Environment-Firmware.X/ceedling-config"
+  :release_build: false
+  :build_root: "./Environment-Firmware.X/ceedling-build"
+  :use_preprocessor_directives: false
+  :use_auxiliary_dependencies: true
+  :which_ceedling: vendor/ceedling
+  :ceedling_version: 0.30.0
+  :default_tasks:
+  - test:all
+:release_build:
+  :use_assembly: false
+  :artifacts: []
+:paths:
+  :test:
+  - "+:Environment-Firmware.X/test/**"
+  - "-:Environment-Firmware.X/test/support"
+  - "-:Environment-Firmware.X/test/sim-test"
+  - "-:Environment-Firmware.X/test/hw-test"
+  :source:
+  - Environment-Firmware.X
+  - Environment-Firmware.X/mcc_generated_files/**
+  :support:
+  - Environment-Firmware.X/test/support
+  :include:
+  - Environment-Firmware.X/test/support
+  - vendor/ceedling/vendor/unity/src
+  :libraries: []
+  :test_toolchain_include: []
+  :release_toolchain_include: []
+:files:
+  :test: []
+  :source: []
+  :assembly: []
+  :support: []
+  :include: []
+:environment:
+- :rake_columns: '120'
+- :path: C:\Program Files\Microchip\xc16\v1.60/bin;C:\Program Files\OpenJDK\jdk-8.0.262.10-hotspot\bin;C:\Program
+    Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program
+    Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA
+    NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files (x86)\IVI
+    Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program
+    Files (x86)\IVI Foundation\IVI\bin;C:\Program Files\IVI Foundation\IVI\bin;C:\Program
+    Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files (x86)\Pico Technology\PicoScope6\;C:\Program
+    Files\MATLAB\R2021b\bin;C:\Program Files (x86)\dotnet\;C:\Program Files\MATLAB\MATLAB
+    Runtime\v910\runtime\win64;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program
+    Files\Microchip\xc16\v1.60\bin;C:\Program Files\Microchip\xc32\v2.50\bin;C:\Program
+    Files\Git\cmd;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program
+    Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\IVI\bin;C:\Program
+    Files\IVI Foundation\IVI\bin;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program
+    Files (x86)\Pico Technology\PicoScope6\;C:\Program Files\MATLAB\R2021b\bin;C:\Program
+    Files (x86)\Microsoft Visual Studio\Shared\Python39_64\;C:\Ruby27-x64\bin;C:\Windows\system32;C:\Windows;C:\Users\RobertoRodrigues\AppData\Local\Programs\Microsoft
+    VS Code;C:\MinGW\bin;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python39_64\Scripts;C:\Users\RobertoRodrigues\AppData\Local\Programs\Microsoft
+    VS Code\bin;C:\python\WPy64-3880\python-3.8.8.amd64;
+- :logfile: "./Environment-Firmware.X/ceedling-build/logs/logfile.log"
+:defines:
+  :test:
+  - &1
+    - __PIC24FJ64GA702__
+    - UNITY_INT_WIDTH=16
+    - UNITY_INCLUDE_CONFIG_H
+    - CMOCK_MEM_INDEX_TYPE=size_t
+    - CMOCK_MEM_PTR_AS_INT=uint16_t
+    - CMOCK_MEM_ALIGN=1
+    - CMOCK_MEM_STATIC
+    - CMOCK_MEM_SIZE=16
+  - TEST
+  :test_preprocess:
+  - *1
+  - TEST
+  :release: []
+  :release_preprocess: []
+  :use_test_definition: false
+  :common:
+  - __PIC24FJ64GA702__
+  - UNITY_INT_WIDTH=16
+  - UNITY_INCLUDE_CONFIG_H
+  - CMOCK_MEM_INDEX_TYPE=size_t
+  - CMOCK_MEM_PTR_AS_INT=uint16_t
+  - CMOCK_MEM_ALIGN=1
+  - CMOCK_MEM_STATIC
+  - CMOCK_MEM_SIZE=16
+:libraries:
+  :flag: "-l${1}"
+  :path_flag: "-L ${1}"
+  :test: []
+  :test_preprocess: []
+  :release: []
+  :release_preprocess: []
+  :system: []
+  :placement: :end
+:flags: {}
+:extension:
+  :header: ".h"
+  :source: ".c"
+  :assembly: ".s"
+  :object: ".o"
+  :libraries:
+  - ".a"
+  - ".so"
+  :executable: ".elf"
+  :map: ".map"
+  :list: ".lst"
+  :testpass: ".pass"
+  :testfail: ".fail"
+  :dependencies: ".d"
+  :souce: ".c"
+:unity:
+  :vendor_path: C:/Repos/PM1/PE-Module/vendor/ceedling/vendor
+  :defines: []
+:cmock:
+  :vendor_path: C:/Repos/PM1/PE-Module/vendor/ceedling/vendor
+  :defines: []
+  :includes: []
+  :enforce_strict_ordering: true
+  :mock_path: "./Environment-Firmware.X/test/support"
+  :plugins:
+  - :ignore
+  - :callback
+  :mock_prefix: stub_
+  :when_no_prototypes: :warn
+  :treat_as:
+    uint8: HEX8
+    uint16: HEX16
+    uint32: UINT32
+    int8: INT8
+    bool: UINT8
+  :verbosity: 3
+  :unity_helper: false
+:cexception:
+  :vendor_path: C:/Repos/PM1/PE-Module/vendor/ceedling/vendor
+  :defines: []
+:test_runner:
+  :includes: []
+  :file_suffix: _runner
+:tools:
+  :test_compiler:
+    :executable: xc16-gcc
+    :arguments:
+    - "${1}"
+    - -o "${2}"
+    - "-c"
+    - "-mcpu=24FJ64GA702"
+    - "-MP"
+    - "-MMD"
+    - -MF "${2}".d
+    - "-mno-eds-warn"
+    - "-g"
+    - "-omf=elf"
+    - "-DXPRJ_default=default"
+    - "-legacy-libc"
+    - "-O0"
+    - "-msmart-io=1"
+    - "-Wall"
+    - "-msfr-warn=off"
+    - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+    - "-D$": COLLECTION_DEFINES_TEST_AND_VENDOR
+    - "-mdfp=#{['22'].pack('H*')}#{ENV['MPLAB_PATH']}/packs/Microchip/PIC24F-GA-GB_DFP/1.4.141/xc16#{['22'].pack('H*')}"
+    :name: test_compiler
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+  :test_linker:
+    :executable: xc16-gcc
+    :arguments:
+    - -o "./Environment-Firmware.X/ceedling-build/test/test-build.elf"
+    - "${1}"
+    - "-mcpu=24FJ64GA702"
+    - "-omf=elf"
+    - "-DXPRJ_default=default"
+    - "-legacy-libc"
+    - -Wl,--local-stack,,--defsym=__MPLAB_BUILD=1,,--script=p24FJ64GA702.gld,--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="./Environment-Firmware.X/ceedling-build/test/test-output.map",--report-mem,--memorysummary,"./Environment-Firmware.X/ceedling-build/test/test-memoryfile.xml"
+    - "-mdfp=#{['22'].pack('H*')}#{ENV['MPLAB_PATH']}/packs/Microchip/PIC24F-GA-GB_DFP/1.4.141/xc16#{['22'].pack('H*')}"
+    :name: test_linker
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+  :test_fixture:
+    :executable: ruby
+    :name: Microchip test fixture
+    :stderr_redirect: :win
+    :arguments:
+    - Environment-Firmware.X/test/hw-test/hw_test_fixture.rb
+    :background_exec: :none
+    :optional: false
+:test_compiler:
+  :arguments: []
+:test_linker:
+  :arguments: []
+:test_fixture:
+  :arguments: []
+  :link_objects: []
+:test_includes_preprocessor:
+  :arguments: []
+:test_file_preprocessor:
+  :arguments: []
+:test_dependencies_generator:
+  :arguments: []
+:release_compiler:
+  :arguments: []
+:release_linker:
+  :arguments: []
+:release_assembler:
+  :arguments: []
+:release_dependencies_generator:
+  :arguments: []
+:plugins:
+  :load_paths:
+  - vendor/ceedling/plugins
+  - vendor/ceedling/lib/../plugins
+  :enabled:
+  - stdout_pretty_tests_report
+  :display_raw_test_results: false
+  :stdout_pretty_tests_report_path: vendor/ceedling/plugins/stdout_pretty_tests_report

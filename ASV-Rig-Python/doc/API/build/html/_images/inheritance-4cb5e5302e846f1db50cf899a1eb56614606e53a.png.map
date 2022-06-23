@@ -1,0 +1,4 @@
+<map id="inheritance64102f31b9" name="inheritance64102f31b9">
+<area shape="rect" id="node1" href="#framework.device.ni6363.DigitalOutputWaveformTask" target="_top" title="A task to write a digital waveform output to the specified lines." alt="" coords="125,5,308,31"/>
+<area shape="rect" id="node2" title="Represents a DAQmx Task." alt="" coords="5,5,77,31"/>
+</map>

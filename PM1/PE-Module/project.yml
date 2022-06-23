@@ -1,0 +1,203 @@
+---
+
+# Notes:
+# This configuration is for running tests on PIC24FJ64GA702.
+# For detailed help see: https://github.com/ThrowTheSwitch/Ceedling/blob/master/docs/CeedlingPacket.md
+
+:project:
+  :build_root: ./Environment-Firmware.X/ceedling-build # Required. Build directory for Ceedling
+ #:build_root: is set to ceedling-build as this is characteristic. The folder was removed from git staging area in .gitignore.
+  :use_exceptions: FALSE # Configures the build environment to make use of CException. Default: TRUE
+ #:use_exceptions: this is not essential for tesing and Harmony has its own exceptions.c, therefore to avoid potential clashes this was turned off.
+  :use_mocks: TRUE # Configures the build environment to make use of CMock. Default: TRUE
+ #:use_mocks: was configured to use mocks, as this is useful in simulating interfaces between different modules.
+  :use_test_preprocessor: FALSE # This option allows Ceedling to work with test files that contain conditional compilation statements (e.g. #ifdef) and header files you wish to mock that contain conditional preprocessor statements and/or macros. Default: FALSE
+ #:use_test_preprocessor: was configured to be off, as this step is not included in normal build of the project.
+  :use_preprocessor_directives: FALSE # After standard preprocessing when use_test_preprocessor is used macros are fully expanded to C code. Some features, for example TEST_CASE() or TEST_RANGE() from Unity require not-fully preprocessed file to be detected by Ceedling. To do this gcc directives-only option is used to expand only conditional compilation statements, handle directives, but do not expand macros preprocessor and leave the other content of file untouched. Default: FALSE
+ #:use_preprocessor_directives: this has no effect when use_test_preprocessor is not used.
+  :use_deep_dependencies: FALSE # The base rules and tasks that Ceedling creates using Rake capture most of the dependencies within a standard project (e.g. when the source file accompanying a test file changes, the corresponding test fixture executable will be rebuilt when tests are re-run). However, deep dependencies cannot be captured this way. If a typedef or macro changes in a header file three levels of #include statements deep, this option allows the appropriate incremental build actions to occur for both test execution and release builds. Default: FALSE
+ #:use_deep_dependencies: standard dependencies are sufficient. Deep dependencies require C preprocessor (additional build step), which is not included in the standard build. Clean and re-run of the project is recommended for each test run.
+  :generate_deep_dependencies: TRUE #When use_deep_dependencies is set to TRUE, Ceedling will run a separate build step to generate the deep dependencies. If you are using gcc as your primary compiler, or another compiler that can generate makefile rules as a side effect of compilation, then you can set this to FALSE to avoid the extra build step but still use the deep dependencies data when deciding which source files to rebuild. Default: TRUE
+ #:generate_deep_dependencies: this has no effect when use_test_preprocessor is not used.
+  :test_file_prefix: test_ #Ceedling collects test files by convention from within the test file search paths. The convention includes a unique name prefix and a file extension matching that of source files. Default: test_
+ #:test_file_prefix: is set to test_ as this is characteristic and makes test files easily identifiable.
+  :options_paths:
+    - ./Environment-Firmware.X/ceedling-config  #Just as you may have various build configurations for your source codebase, you may need variations of your project configuration. Default: []
+  :use_auxiliary_dependencies: TRUE #Uses auxillary dependencies. Default: TRUE
+ #:use_auxiliary_dependencies: is set to TRUE to allow Ceedling use auxillary dependencies.
+  :release_build: FALSE #When enabled, a release Rake task is exposed. This configuration option requires a corresponding release compiler and linker to be defined (gcc is used as the default). Default: FALSE
+ #:release_build: is set to FALSE, as Ceedling will be used only for testing, not for final build.
+  :which_ceedling: vendor/ceedling #Ceedling location
+ #:which_ceedling: Ceedling is referred to here locally, as this will ensure consistency across users.
+  :ceedling_version: 0.30.0 #Ceedling version
+ #:ceedling_version: this is the version used.
+  :default_tasks: #Default task
+    - test:all
+ #:default_tasks: this means that just running command 'ceedling', will actually involve 'ceedling test:all'.
+
+:paths: #Tells Ceedling where to look for various items/files.
+  :test:
+    - +:Environment-Firmware.X/test/**
+    - -:Environment-Firmware.X/test/support
+    - -:Environment-Firmware.X/test/sim-test
+    - -:Environment-Firmware.X/test/hw-test
+ #:test: This means that Ceedling shall look for test files inside ./test directory (incl. subdirectories), except ./test/support ./test/sim-test and ./test/hw-test
+  :source:
+    - Environment-Firmware.X
+    - Environment-Firmware.X/mcc_generated_files/**
+ #:source: This means that Ceedling shall look for source files inside ./src ./src/config/PIC32MZ2048EFH100/ (incl. subdirectories) and ./src/packs/PIC32MZ2048EFH100_DFP
+  :support:
+    - Environment-Firmware.X/test/support
+ #:suport: This means that any support files are contained in ./test/support. Ceedling compiles support automatically.
+  :libraries: []
+ #:libraries: This means that there are no paths for additional libraries.
+  :include:
+    - Environment-Firmware.X/test/support
+    - vendor/ceedling/vendor/unity/src
+ #:include: This means that any includes shall be looked for in ./test/support and ./vendor/ceedling/vendor/unity/src
+
+:environment:
+  - :path:
+    - "#{ENV['XC16_PATH']}/bin"
+    - "#{ENV['PATH']}"
+  - :logfile: ./Environment-Firmware.X/ceedling-build/logs/logfile.log
+
+:extension:
+  :header: .h # Header file extension. Default: .h
+  :souce: .c # Source code extension. Default: .c
+  :assembly: .s # Assembly file extension. Default: .s
+  :object: .o # Object file extension. Default: .o
+  :executable: .elf # Executable file extension. Default: .exe (Windows) or .out (Linux)
+  :testpass: .pass # Pass test results file extension. Default: .pass
+  :testfail: .fail # Fail test results file extension. Default: .fail
+  :dependencies: .d # Dependencies file extension. Default: .d
+
+:defines:
+  :common: &common_defines
+    - __PIC24FJ64GA702__ # This is the PIC that we are using, this allows loading appropriate definitions from xc.h
+    - UNITY_INT_WIDTH=16
+    - UNITY_INCLUDE_CONFIG_H
+    - CMOCK_MEM_INDEX_TYPE=size_t
+    - CMOCK_MEM_PTR_AS_INT=uint16_t
+    - CMOCK_MEM_ALIGN=1 #1^2 = 2 byte alignment, with 16-bit PICs, memory has 2 byte alignment
+    - CMOCK_MEM_STATIC
+    - CMOCK_MEM_SIZE=16
+  :test:
+    - *common_defines
+    - TEST
+ #:test: during test build, run compiler with the common_defines and -D TEST
+  :test_preprocess:
+    - *common_defines
+    - TEST
+ #:test: during test build, run preprocessor with the common_defines and -D TEST
+
+:libraries:
+# These libraries are automatically injected into the build process. Those specified as
+# common will be used in all types of builds. Otherwise, libraries can be injected in just
+# tests or releases. These options are MERGED with the options in supplemental yaml files.
+  :test: [] # Library files that should be injected into your tests when linking occurs. These can be specified as either relative or absolute paths. These files MUST exist when the test attempts to build.
+  :release: [] # Library files that should be injected into your release when linking occurs. These can be specified as either relative or absolute paths. These files MUST exist when the release attempts to build UNLESS you are using the subprojects plugin. In that case, it will attempt to build that library for you as a dynamic dependency.
+  :system: [] # These libraries are assumed to be in the tool path somewhere and shouldn't need to be specified. The libraries added here will be injected into releases and tests. For example if you specify -lm you can include the math library. The -l portion is only necessary if the :flag prefix below doesn't specify it already for you other libraries. For example, you might list 'm' to grab the math library
+  :flag: "-l${1}" # This is the method of adding an argument for each library. For example, gcc really likes it when you specify “-l${1}”
+  :path_flag: "-L ${1}" # This is the method of adding an path argument for each library path. For example, gcc really likes it when you specify “-L "${1}"”
+  :placement: :end # Place the libraries at the end.
+ #:libraries: essentially the above settings imply that there are no additional libraries.
+
+:cmock:
+  :enforce_strict_ordering: TRUE # Tests fail if expected call order is not same as source order. Default: TRUE
+ #:enforce_strict_ordering: this is used, as enforces strict level of testing.
+  :mock_path: ./Environment-Firmware.X/test/support #Path for generated mocks. Default: /tests/mocks
+ #:mock_path: this is defined as ./test/support, as a natural place for mocks.
+  :defines: [] # List of conditional compilation symbols used to configure CMock's compiled features. See CMock documentation to understand available options.
+ #:defines: there are no additional defines for CMock.
+ #:verbosity: #If not set, defaults to Ceedling's verbosity level. Run 'ceedling verbosity[4] test:all' to see full output from Ceedling
+  :plugins:
+    - :ignore
+    - :callback
+ #:plugins: CMock will autogenerate ignore mock functions and callback mock functions. See https://github.com/ThrowTheSwitch/CMock/blob/master/docs/CMock_Summary.md documentation for more detail.
+  :mock_prefix: stub_ #Prefix for stubs and mocks
+ #:mock_prefix: the stub_ prefix is selected as natural for a mock. 
+  :when_no_prototypes: :warn
+ #:when_no_prototypes: CMock will warn if no function prototypes are identified. 
+  :treat_as:
+    uint8:    HEX8
+    uint16:   HEX16
+    uint32:   UINT32
+    int8:     INT8
+    bool:     UINT8
+ #:treat_as: plaform-specific settings. 
+
+#:cexception: #configure symbols used to modify CException's compiled features
+#  :defines: #List of conditional compilation symbols used to configure CException's features in its source and header files. See CException documentation to understand available options. Default: [].
+
+#:unity: #Configure symbols used to modify Unity's compiled features
+#  :defines: #List of conditional compilation symbols used to configure Unity's features in its source and header files. See Unity documentation to understand available options. Default: [].
+
+
+# Add -gcov to the plugins list to make sure of the gcov plugin
+# You will need to have gcov and gcovr both installed to make it work.
+# For more information on these options, see docs in plugins/gcov
+#:gcov:
+#  :reports:
+#    - HtmlDetailed
+#  :gcovr:
+#    :html_medium_threshold: 75
+#    :html_high_threshold: 90
+# Plugins are disabled at this moment.
+
+
+:tools:
+  :test_compiler:
+    :executable: xc16-gcc
+    :arguments:
+      - "${1}"
+      - -o "${2}"
+      - -c
+      - -mcpu=24FJ64GA702
+      - -MP
+      - -MMD
+      - -MF "${2}".d
+      - -mno-eds-warn
+      - -g
+      - -omf=elf
+      - -DXPRJ_default=default
+      - -legacy-libc
+      - -O0
+      - -msmart-io=1
+      - -Wall
+      - -msfr-warn=off 
+      - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+      - -D$: COLLECTION_DEFINES_TEST_AND_VENDOR
+      - "-mdfp=#{['22'].pack('H*')}#{ENV['MPLAB_PATH']}/packs/Microchip/PIC24F-GA-GB_DFP/1.4.141/xc16#{['22'].pack('H*')}"
+ #:test_compiler: flags identical to those in the actual project build
+  :test_linker:
+    :executable: xc16-gcc
+    :arguments:
+      - -o "./Environment-Firmware.X/ceedling-build/test/test-build.elf"
+      - ${1}
+      - -mcpu=24FJ64GA702
+      - -omf=elf
+      - -DXPRJ_default=default
+      - -legacy-libc
+      - -Wl,--local-stack,,--defsym=__MPLAB_BUILD=1,,--script=p24FJ64GA702.gld,--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,-Map="./Environment-Firmware.X/ceedling-build/test/test-output.map",--report-mem,--memorysummary,"./Environment-Firmware.X/ceedling-build/test/test-memoryfile.xml"
+      - "-mdfp=#{['22'].pack('H*')}#{ENV['MPLAB_PATH']}/packs/Microchip/PIC24F-GA-GB_DFP/1.4.141/xc16#{['22'].pack('H*')}"
+ #:test_linker: flags identical to those in the actual project build
+  :test_fixture:
+    :executable: ruby
+   #:executable: the fixture is written in ruby, so use ruby to run it
+    :name: "Microchip test fixture"
+   #:name: name of the fixture
+    :stderr_redirect: :win
+   #:stderr_redirect: inform Ceedling what model of $stderr capture to use
+    :arguments: []
+ #:test_fixture: this test fixture is used to run the test in simulator or in hardware. Use 'options:sim' or 'options:hw' to select whether the .elf file shall be ran on hardware or on simulator.
+
+:plugins:
+  :load_paths:
+    - vendor/ceedling/plugins
+  :enabled:
+    - stdout_pretty_tests_report # This plugin provides a simple test summary at the end of the tests.
+#    - module_generator
+#    - raw_output_report
+
+...

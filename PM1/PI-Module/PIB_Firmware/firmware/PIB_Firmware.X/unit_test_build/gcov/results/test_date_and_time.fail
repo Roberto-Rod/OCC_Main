@@ -1,0 +1,45 @@
+---
+:source:
+  :path: test/unit_test/date_and_time
+  :file: test_date_and_time.c
+:successes:
+- :test: test_isLeapYear_Returns_True_When_YR_2004
+  :line: 75
+  :message: ''
+- :test: test_isLeapYear_Returns_True_When_YR_2000
+  :line: 82
+  :message: ''
+- :test: test_isLeapYear_Returns_False_When_YR_1999
+  :line: 87
+  :message: ''
+- :test: test_isLeapYear_Returns_False_When_YR_1009
+  :line: 92
+  :message: ''
+- :test: test_getNumberOfDaysInMonth_Returns_31_When_May_2022
+  :line: 112
+  :message: ''
+- :test: test_getNumberOfDaysInMonth_Returns_30_When_June_2022
+  :line: 126
+  :message: ''
+- :test: test_getNumberOfDaysInMonth_Returns_28_When_February_2022
+  :line: 140
+  :message: ''
+- :test: test_getNumberOfDaysInMonth_Returns_29_When_February_2004
+  :line: 154
+  :message: ''
+- :test: test_getNumberOfDaysInMonth_Returns_29_When_February_2000
+  :line: 168
+  :message: ''
+:failures:
+- :test: test_dayOfTheWeek_Returns_Monday
+  :line: 107
+  :message: Incorrect result, should return Monday.
+:ignores: []
+:counts:
+  :total: 10
+  :passed: 9
+  :failed: 1
+  :ignored: 0
+:stdout:
+- "dayOfTheWeek returned: \x03"
+- ''

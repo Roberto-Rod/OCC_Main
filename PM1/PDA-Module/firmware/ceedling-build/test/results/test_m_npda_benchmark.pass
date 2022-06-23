@@ -1,0 +1,30 @@
+---
+:source:
+  :path: test
+  :file: test_m_npda_benchmark.c
+:successes:
+- :test: test_run_npda
+  :line: 226
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 1
+  :failed: 0
+  :ignored: 0
+:stdout:
+- Running test...
+- Converting ELF to HEX...
+- Programming device - platform MINGW32...
+- Connecting serial port at COM5...
+- Programming device - platform MINGW32...
+- Waiting for output...
+- Test output -----
+- 'TEST FILE: test_m_npda_benchmark.c: Data mem usage: 227524b. Heap size: 512b. Stack
+  size: 296208b of which 161b are used. TEST FILE: test_m_npda_benchmark.c: Data mem
+  usage: 227524b. Heap size: 512b. Stack size: 296208b of which 161b are used. TEST:
+  run_npda: Execution time: 198197us. Max stack usage: 796bytes.'
+- "-----------------"
+:time: 55.53197939999518

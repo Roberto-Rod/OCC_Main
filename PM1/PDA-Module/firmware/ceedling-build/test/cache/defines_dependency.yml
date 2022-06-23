@@ -1,0 +1,42 @@
+---
+test/support/stack_monitoring.c:
+- &1
+  - __PIC32MZ2048EFH100__
+  - UNITY_INT_WIDTH=32
+  - UNITY_INCLUDE_CONFIG_H
+  - CMOCK_MEM_INDEX_TYPE=size_t
+  - CMOCK_MEM_PTR_AS_INT=uint32_t
+  - CMOCK_MEM_ALIGN=2
+  - CMOCK_MEM_STATIC
+  - CMOCK_MEM_SIZE=512
+- TEST
+src/npda.c:
+- *1
+- TEST
+src/npda_tools.c:
+- *1
+- TEST
+src/npda_benchmark.c:
+- &2
+  - __PIC32MZ2048EFH100__
+  - UNITY_INT_WIDTH=32
+  - UNITY_INCLUDE_CONFIG_H
+  - CMOCK_MEM_INDEX_TYPE=size_t
+  - CMOCK_MEM_PTR_AS_INT=uint32_t
+  - CMOCK_MEM_ALIGN=2
+  - CMOCK_MEM_STATIC
+  - CMOCK_MEM_SIZE=512
+- TEST
+src/npda_tools_benchmark.c:
+- *2
+- TEST
+src/maths_library.c:
+- - __PIC32MZ2048EFH100__
+  - UNITY_INT_WIDTH=32
+  - UNITY_INCLUDE_CONFIG_H
+  - CMOCK_MEM_INDEX_TYPE=size_t
+  - CMOCK_MEM_PTR_AS_INT=uint32_t
+  - CMOCK_MEM_ALIGN=2
+  - CMOCK_MEM_STATIC
+  - CMOCK_MEM_SIZE=512
+- TEST

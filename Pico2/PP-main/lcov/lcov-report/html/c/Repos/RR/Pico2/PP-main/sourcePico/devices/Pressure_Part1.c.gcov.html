@@ -1,0 +1,360 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov-sanitised.info - /c/Repos/RR/Pico2/PP-main/sourcePico/devices/Pressure_Part1.c</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="title">LCOV - code coverage report</td></tr>
+        <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+        <tr>
+          <td width="100%">
+            <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">c/Repos/RR/Pico2/PP-main/sourcePico/devices</a> - Pressure_Part1.c<span style="font-size: 80%;"> (source / <a href="Pressure_Part1.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov-sanitised.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">46</td>
+            <td class="headerCovTableEntry">61</td>
+            <td class="headerCovTableEntryMed">75.4 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-06-21 16:29:00</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntry">10</td>
+            <td class="headerCovTableEntryLo">70.0 %</td>
+          </tr>
+              <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+      </table>
+
+      <table cellpadding=0 cellspacing=0 border=0>
+        <tr>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*****************************************************************************</a>
+<span class="lineNum">       2 </span>            :  *   File        : Pressure_Part1.c
+<span class="lineNum">       3 </span>            :  *
+<span class="lineNum">       4 </span>            :  *   Description : Source for implementation of pressure measurements
+<span class="lineNum">       5 </span>            :  *
+<span class="lineNum">       6 </span>            :  *****************************************************************************/
+<span class="lineNum">       7 </span>            : /* ***************************************************************************
+<span class="lineNum">       8 </span>            :  * This file is copyrighted by and the property of Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">       9 </span>            :  * It contains confidential and proprietary information. It must not be copied
+<span class="lineNum">      10 </span>            :  * (in whole or in part) or otherwise disclosed without prior written consent 
+<span class="lineNum">      11 </span>            :  * of the company. Any copies of this file (in whole or in part), made by any
+<span class="lineNum">      12 </span>            :  * method must also include a copy of this legend. 
+<span class="lineNum">      13 </span>            :  * 
+<span class="lineNum">      14 </span>            :  * (c) 2018, 2019, 2020 Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">      15 </span>            :  * 
+<span class="lineNum">      16 </span>            :  *************************************************************************** */
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : #include &lt;limits.h&gt;
+<span class="lineNum">      19 </span>            : #include &quot;Pressure_Part1.h&quot;
+<span class="lineNum">      20 </span>            : #include &quot;Pressure_Part2.h&quot;
+<span class="lineNum">      21 </span>            : #include &quot;Pressure_Part3.h&quot;
+<span class="lineNum">      22 </span>            : #include &quot;Pressure_Part4.h&quot;
+<span class="lineNum">      23 </span>            : #include &quot;PowerControl.h&quot;
+<span class="lineNum">      24 </span>            : #include &quot;Timer.h&quot;
+<span class="lineNum">      25 </span>            : #include &quot;DutyCycle.h&quot;
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span>            : static uint32_t InitialExtPress = 0; // External pressure on initial pump down
+<span class="lineNum">      28 </span>            : static uint8_t TargetPumpDownVaccumDebounceCount = 0;
+<span class="lineNum">      29 </span>            : static uint16_t TargetTherapyDeliveryVacuumOffset = 0; 
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            : /****************************************************************************
+<span class="lineNum">      32 </span>            : Function Name  :  InitPumpDownVacuum
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : Parameters     :  None
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : Return Value   :  None
+<span class="lineNum">      37 </span>            : 
+<a name="38"><span class="lineNum">      38 </span>            : Description    :  Initialise the pressure variables for Pump Down state</a>
+<span class="lineNum">      39 </span>            : *****************************************************************************/
+<span class="lineNum">      40 </span><span class="lineCov">          5 : void InitPumpDownVacuum (void)</span>
+<span class="lineNum">      41 </span>            : {
+<span class="lineNum">      42 </span><span class="lineCov">          5 :   InitialExtPress = 0;</span>
+<span class="lineNum">      43 </span><span class="lineCov">          5 :   TargetPumpDownVaccumDebounceCount = 0;</span>
+<span class="lineNum">      44 </span><span class="lineCov">          5 : }</span>
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : /****************************************************************************
+<span class="lineNum">      47 </span>            : Function Name  :  InitTherapyDeliveryVacuum
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : Parameters     :  None
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : Return Value   :  None
+<span class="lineNum">      52 </span>            : 
+<a name="53"><span class="lineNum">      53 </span>            : Description    :  Initialise the pressure variables for Therapy Delivery state</a>
+<span class="lineNum">      54 </span>            : *****************************************************************************/
+<span class="lineNum">      55 </span><span class="lineNoCov">          0 : void InitTherapyDeliveryVacuum(void)</span>
+<span class="lineNum">      56 </span>            : {
+<span class="lineNum">      57 </span><span class="lineNoCov">          0 :   TargetTherapyDeliveryVacuumOffset = 0;</span>
+<span class="lineNum">      58 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : /****************************************************************************
+<span class="lineNum">      61 </span>            : Function Name  :  GetVacuum
+<span class="lineNum">      62 </span>            : 
+<span class="lineNum">      63 </span>            : Parameters     :  uint16_t* pInternal - Pointer to the internal pressure 
+<span class="lineNum">      64 </span>            :                   uint16_t* pExternal - Pointer to the external pressure  
+<span class="lineNum">      65 </span>            :                   uint16_t* pDiff - Pointer to the difference between the pressures
+<span class="lineNum">      66 </span>            : 
+<span class="lineNum">      67 </span>            : Return Value   :  EC_OK_E if the pressures are read OK and the temperatures are below
+<span class="lineNum">      68 </span>            :                   the thresholds, or errors otherwise.
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            : Description    :  Reads the external and internal pressure sensors and
+<a name="71"><span class="lineNum">      71 </span>            :                   calculate their difference</a>
+<span class="lineNum">      72 </span>            : *****************************************************************************/
+<span class="lineNum">      73 </span><span class="lineCov">         17 : ErrorCode_t GetVacuum(uint16_t* pInternal,uint16_t* pExternal, uint16_t* pDiff)</span>
+<span class="lineNum">      74 </span>            : {
+<span class="lineNum">      75 </span><span class="lineCov">         17 :   ErrorCode_t result = EC_OK_E;</span>
+<span class="lineNum">      76 </span>            :   
+<span class="lineNum">      77 </span><span class="lineCov">         17 :   if  ((NULL == pInternal ) || (NULL == pExternal ) ||  (NULL == pDiff))</span>
+<span class="lineNum">      78 </span>            :   {
+<span class="lineNum">      79 </span><span class="lineCov">          1 :     result = EC_INVALID_INPUT_PARAMETER_E;</span>
+<span class="lineNum">      80 </span>            :   }
+<span class="lineNum">      81 </span>            :   
+<span class="lineNum">      82 </span><span class="lineCov">         17 :   if(EC_OK_E == result)</span>
+<span class="lineNum">      83 </span>            :   {
+<span class="lineNum">      84 </span><span class="lineCov">         16 :     MP_EnableExternalPeripheralsSupply();</span>
+<span class="lineNum">      85 </span>            : 
+<span class="lineNum">      86 </span>            :     // this needs replacing with a better check
+<span class="lineNum">      87 </span><span class="lineCov">         16 :     PM_Delay((uint32_t) 8);</span>
+<span class="lineNum">      88 </span>            :     
+<span class="lineNum">      89 </span>            :     // Initialise pressure sensors
+<span class="lineNum">      90 </span><span class="lineCov">         16 :     result = PM_InitSensors();</span>
+<span class="lineNum">      91 </span>            :   }
+<span class="lineNum">      92 </span>            :   
+<span class="lineNum">      93 </span>            :   // Start pressure capture
+<span class="lineNum">      94 </span><span class="lineCov">         17 :   if(EC_OK_E == result)</span>
+<span class="lineNum">      95 </span>            :   {
+<span class="lineNum">      96 </span><span class="lineCov">         14 :     result = PM_StartSensors();</span>
+<span class="lineNum">      97 </span>            :   }
+<span class="lineNum">      98 </span>            :   
+<span class="lineNum">      99 </span><span class="lineCov">         17 :   if(EC_OK_E == result)</span>
+<span class="lineNum">     100 </span>            :   {
+<span class="lineNum">     101 </span><span class="lineCov">         12 :     PM_Delay((uint32_t) TWENTY_MILLISECONDS_DELAY);</span>
+<span class="lineNum">     102 </span>            :     
+<span class="lineNum">     103 </span><span class="lineCov">         12 :     uint8_t retry_count = GET_VACUUM_MAX_RETRIES;</span>
+<span class="lineNum">     104 </span><span class="lineCov">         12 :     result = EC_EXT_PRESSURE_SENSOR_READ_FAILED_E;</span>
+<span class="lineNum">     105 </span><span class="lineCov">        330 :     while(0 != retry_count)</span>
+<span class="lineNum">     106 </span>            :     {
+<span class="lineNum">     107 </span><span class="lineCov">        306 :       result = TryToGetSingleVacuumMeasurement(pInternal, pExternal, pDiff);</span>
+<span class="lineNum">     108 </span>            :       
+<span class="lineNum">     109 </span><span class="lineCov">        306 :       if ((EC_INT_PRESSURE_SENSOR_NOT_READY_E == result) ||</span>
+<span class="lineNum">     110 </span>            :           (EC_EXT_PRESSURE_SENSOR_NOT_READY_E == result))
+<span class="lineNum">     111 </span>            :       {
+<span class="lineNum">     112 </span><span class="lineCov">        297 :         retry_count--;</span>
+<span class="lineNum">     113 </span>            :         //ONE_MILLISECOND_DELAY
+<span class="lineNum">     114 </span><span class="lineCov">        297 :         PM_Delay((uint32_t) 5);</span>
+<span class="lineNum">     115 </span>            :       }
+<span class="lineNum">     116 </span>            :       else
+<span class="lineNum">     117 </span>            :       {        
+<span class="lineNum">     118 </span><span class="lineCov">          9 :         retry_count = 0;</span>
+<span class="lineNum">     119 </span>            :       }     
+<span class="lineNum">     120 </span>            :     }
+<span class="lineNum">     121 </span>            :   }
+<span class="lineNum">     122 </span>            :   
+<span class="lineNum">     123 </span><span class="lineCov">         17 :   MP_DisableExternalPeripheralsSupply();</span>
+<span class="lineNum">     124 </span>            :   
+<span class="lineNum">     125 </span><span class="lineCov">         17 :   return result;</span>
+<span class="lineNum">     126 </span>            : }
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            : /****************************************************************************
+<span class="lineNum">     129 </span>            : Function Name  :  isTargetPumpDownVacuumAchieved
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            : Parameters     :  uint16_t Vacuum - vacuum to compare against target
+<span class="lineNum">     132 </span>            : 
+<span class="lineNum">     133 </span>            : Return Value   :  TRUE if Vacuum is at target for number of consecutive times,
+<span class="lineNum">     134 </span>            :                   FALSE otherwise
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span>            : Description    :  Compares the input Vacuum against the nominal vacuum target
+<span class="lineNum">     137 </span>            :                   plus its current offset when in Pump Down state. This has to
+<span class="lineNum">     138 </span>            :                   be met a number of consecutive times to return TRUE
+<span class="lineNum">     139 </span>            :                   (Note that the function does not increment debounce counter
+<a name="140"><span class="lineNum">     140 </span>            :                   above 255 which is an unlikely event)</a>
+<span class="lineNum">     141 </span>            : *****************************************************************************/
+<span class="lineNum">     142 </span><span class="lineCov">        260 : bool_t  isTargetPumpDownVacuumAchieved(uint16_t Vacuum)</span>
+<span class="lineNum">     143 </span>            : {
+<span class="lineNum">     144 </span>            :   bool_t result;
+<span class="lineNum">     145 </span>            :   
+<span class="lineNum">     146 </span><span class="lineCov">        260 :   if (PUMP_DOWN_TARGET_VACUUM &lt; Vacuum)</span>
+<span class="lineNum">     147 </span>            :   {
+<span class="lineNum">     148 </span><span class="lineCov">        257 :     if (TargetPumpDownVaccumDebounceCount &lt; UCHAR_MAX)</span>
+<span class="lineNum">     149 </span>            :     {
+<span class="lineNum">     150 </span><span class="lineCov">        256 :       TargetPumpDownVaccumDebounceCount++; // increment count</span>
+<span class="lineNum">     151 </span>            :     }
+<span class="lineNum">     152 </span>            :     else
+<span class="lineNum">     153 </span>            :     {
+<span class="lineNum">     154 </span><span class="lineCov">          1 :       TargetPumpDownVaccumDebounceCount = UCHAR_MAX; // set to maximum value</span>
+<span class="lineNum">     155 </span>            :     }
+<span class="lineNum">     156 </span>            :   }
+<span class="lineNum">     157 </span>            :   else
+<span class="lineNum">     158 </span>            :   {
+<span class="lineNum">     159 </span><span class="lineCov">          3 :     TargetPumpDownVaccumDebounceCount = 0;</span>
+<span class="lineNum">     160 </span>            :   }
+<span class="lineNum">     161 </span>            :   
+<span class="lineNum">     162 </span><span class="lineCov">        260 :   result = (bool_t) ((PUMP_DOWN_DEBOUNCE_VACUUM_MAX &lt;= TargetPumpDownVaccumDebounceCount) ? TRUE:FALSE);</span>
+<span class="lineNum">     163 </span>            :   
+<span class="lineNum">     164 </span><span class="lineCov">        260 :   return result;</span>
+<span class="lineNum">     165 </span>            : }
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span>            : /****************************************************************************
+<span class="lineNum">     168 </span>            : Function Name  :  GetTargetPumpDownVaccumDebounceCount
+<span class="lineNum">     169 </span>            : 
+<span class="lineNum">     170 </span>            : Parameters     :  None
+<span class="lineNum">     171 </span>            : 
+<span class="lineNum">     172 </span>            : Return Value   :  uint32_t - value for initial ext pressure
+<span class="lineNum">     173 </span>            : 
+<a name="174"><span class="lineNum">     174 </span>            : Description    :  Gets initial ext pressure sensor reading </a>
+<span class="lineNum">     175 </span>            : *****************************************************************************/
+<span class="lineNum">     176 </span><span class="lineCov">          6 : uint32_t GetInitialExternalPressure(void)</span>
+<span class="lineNum">     177 </span>            : {
+<span class="lineNum">     178 </span><span class="lineCov">          6 :     return(InitialExtPress);</span>
+<span class="lineNum">     179 </span>            : }
+<span class="lineNum">     180 </span>            : 
+<span class="lineNum">     181 </span>            : /****************************************************************************
+<span class="lineNum">     182 </span>            : Function Name  :  SetInitialExternalPressure
+<span class="lineNum">     183 </span>            : 
+<span class="lineNum">     184 </span>            : Parameters     :  uint32_t PressureValue - value to set initial ext pressure to
+<span class="lineNum">     185 </span>            : 
+<span class="lineNum">     186 </span>            : Return Value   :  None
+<span class="lineNum">     187 </span>            : 
+<a name="188"><span class="lineNum">     188 </span>            : Description    :  Sets initial ext pressure sensor reading </a>
+<span class="lineNum">     189 </span>            : *****************************************************************************/
+<span class="lineNum">     190 </span><span class="lineCov">          2 : void SetInitialExternalPressure(uint32_t PressureValue)</span>
+<span class="lineNum">     191 </span>            : {
+<span class="lineNum">     192 </span><span class="lineCov">          2 :     InitialExtPress = PressureValue;</span>
+<span class="lineNum">     193 </span><span class="lineCov">          2 : }</span>
+<span class="lineNum">     194 </span>            : 
+<span class="lineNum">     195 </span>            : /****************************************************************************
+<span class="lineNum">     196 </span>            : Function Name  :  GetTargetPumpDownVaccumDebounceCount
+<span class="lineNum">     197 </span>            : 
+<span class="lineNum">     198 </span>            : Parameters     :  None
+<span class="lineNum">     199 </span>            : 
+<span class="lineNum">     200 </span>            : Return Value   :  Current number of consecutive Vacuum readings above target
+<span class="lineNum">     201 </span>            : 
+<span class="lineNum">     202 </span>            : Description    :  Returns current number of consecutive Vacuum readings above
+<a name="203"><span class="lineNum">     203 </span>            :                   target </a>
+<span class="lineNum">     204 </span>            : *****************************************************************************/
+<span class="lineNum">     205 </span><span class="lineCov">          5 : uint32_t GetTargetPumpDownVaccumDebounceCount(void)</span>
+<span class="lineNum">     206 </span>            : {
+<span class="lineNum">     207 </span><span class="lineCov">          5 :     return(TargetPumpDownVaccumDebounceCount);</span>
+<span class="lineNum">     208 </span>            : }
+<span class="lineNum">     209 </span>            : 
+<span class="lineNum">     210 </span>            : /****************************************************************************
+<span class="lineNum">     211 </span>            : Function Name  :  TherapyDeliveryTargetVacuumUpdate
+<span class="lineNum">     212 </span>            : 
+<span class="lineNum">     213 </span>            : Parameters     :  None
+<span class="lineNum">     214 </span>            : 
+<span class="lineNum">     215 </span>            : Return Value   :  None
+<span class="lineNum">     216 </span>            : 
+<span class="lineNum">     217 </span>            : Description    :  Adjusts the Off set for the Target Vacuum (currently in
+<span class="lineNum">     218 </span>            :                   function of the Pump On duty cycle over a set period period)
+<a name="219"><span class="lineNum">     219 </span>            :                   This is done only if the battery is not depleting.</a>
+<span class="lineNum">     220 </span>            : *****************************************************************************/
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 : void TherapyDeliveryTargetVacuumUpdate(void)</span>
+<span class="lineNum">     222 </span>            : {
+<span class="lineNum">     223 </span><span class="lineNoCov">          0 :   uint8_t dutyCycle = DCVaccumOffsetUpdateGet();</span>
+<span class="lineNum">     224 </span>            :   
+<span class="lineNum">     225 </span>            :   // Update the Vacuum Offset (hence Target Vacuum) only if the battery is not depleting
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 :   if (VBOOST_REF == MP_GetInitBoostDemand())</span>
+<span class="lineNum">     227 </span>            :   {
+<span class="lineNum">     228 </span>            :     // Pumping on too frequently - reduce vacuum offset
+<span class="lineNum">     229 </span><span class="lineNoCov">          0 :     if ((MAINTANENCE_DUTY_CYCLE &lt; dutyCycle)   &amp;&amp;</span>
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 :         (0 &lt; TargetTherapyDeliveryVacuumOffset))</span>
+<span class="lineNum">     231 </span>            :     {
+<span class="lineNum">     232 </span><span class="lineNoCov">          0 :       TargetTherapyDeliveryVacuumOffset--;</span>
+<span class="lineNum">     233 </span>            :     }
+<span class="lineNum">     234 </span>            :     // Pumping on not frequently - increase the vacuum offset
+<span class="lineNum">     235 </span><span class="lineNoCov">          0 :     else if((MAINTANENCE_DUTY_CYCLE &gt; dutyCycle) &amp;&amp;</span>
+<span class="lineNum">     236 </span><span class="lineNoCov">          0 :             (THERAPY_DELIVERY_MAX_PRESSURE_OFFSET &gt; TargetTherapyDeliveryVacuumOffset)) </span>
+<span class="lineNum">     237 </span>            :     {
+<span class="lineNum">     238 </span><span class="lineNoCov">          0 :       TargetTherapyDeliveryVacuumOffset++;</span>
+<span class="lineNum">     239 </span>            :     }
+<span class="lineNum">     240 </span>            :     //                    !!WARNING!!
+<span class="lineNum">     241 </span>            :     // We may need to add a BLOCK detection when the pump is not being
+<span class="lineNum">     242 </span>            :     // activated for too long 
+<span class="lineNum">     243 </span>            :   }
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     245 </span>            : 
+<span class="lineNum">     246 </span>            : 
+<span class="lineNum">     247 </span>            : /****************************************************************************
+<span class="lineNum">     248 </span>            : Function Name  :  isLeakDutyCycleDecteded
+<span class="lineNum">     249 </span>            : 
+<span class="lineNum">     250 </span>            : Parameters     :  None
+<span class="lineNum">     251 </span>            : 
+<span class="lineNum">     252 </span>            : Return Value   :  TRUE if LEAK detected, FALSE otherwise
+<span class="lineNum">     253 </span>            : 
+<span class="lineNum">     254 </span>            : Description    :  Check if a LEAK event has been seen (currently based on a
+<span class="lineNum">     255 </span>            :                   a specific value of the Pump On duty cycle). This is done
+<a name="256"><span class="lineNum">     256 </span>            :                   only if the battery is not depleting)</a>
+<span class="lineNum">     257 </span>            : *****************************************************************************/
+<span class="lineNum">     258 </span><span class="lineCov">          6 : bool_t  isTherapyDeliveryLeakDetected(void)</span>
+<span class="lineNum">     259 </span>            : {
+<span class="lineNum">     260 </span><span class="lineCov">          6 :   bool_t result = FALSE;</span>
+<span class="lineNum">     261 </span>            :   
+<span class="lineNum">     262 </span><span class="lineCov">          6 :   if (VBOOST_REF == MP_GetInitBoostDemand())</span>
+<span class="lineNum">     263 </span>            :   {
+<span class="lineNum">     264 </span><span class="lineCov">          3 :     result = ((bool_t) (LEAK_DUTY_CYCLE &lt; DCLeakGet()));</span>
+<span class="lineNum">     265 </span>            :   }
+<span class="lineNum">     266 </span>            :   
+<span class="lineNum">     267 </span><span class="lineCov">          6 :   return result;</span>
+<span class="lineNum">     268 </span>            : }
+<span class="lineNum">     269 </span>            : 
+<span class="lineNum">     270 </span>            : 
+<span class="lineNum">     271 </span>            : /****************************************************************************
+<span class="lineNum">     272 </span>            : Function Name  :  isTargetTherapyDeliveryVacuumAchieved
+<span class="lineNum">     273 </span>            : 
+<span class="lineNum">     274 </span>            : Parameters     :  uint16_t Vacuum - vacuum to compare against target 
+<span class="lineNum">     275 </span>            : 
+<span class="lineNum">     276 </span>            : Return Value   :  TRUE if Vacuum is at target, FALSE otherwise
+<span class="lineNum">     277 </span>            : 
+<span class="lineNum">     278 </span>            : Description    :  Compares the input Vacuum against the nominal vacuum target
+<a name="279"><span class="lineNum">     279 </span>            :                   plus its current offset when in Therapy Delivery state</a>
+<span class="lineNum">     280 </span>            : *****************************************************************************/
+<span class="lineNum">     281 </span><span class="lineNoCov">          0 : bool_t  isTargetTherapyDeliveryVacuumAchieved(uint16_t Vacuum)</span>
+<span class="lineNum">     282 </span>            : {
+<span class="lineNum">     283 </span><span class="lineNoCov">          0 :   return ((bool_t) ((THERAPY_DELIVERY_TARGET_VACUUM + TargetTherapyDeliveryVacuumOffset)&lt;= Vacuum));</span>
+<span class="lineNum">     284 </span>            : }
+    </pre>
+          </td>
+        </tr>
+      </table>
+      <br>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+      </table>
+      <br>
+
+</body>
+</html>

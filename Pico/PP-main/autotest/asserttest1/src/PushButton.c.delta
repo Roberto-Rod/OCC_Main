@@ -1,0 +1,19 @@
+a24 10
+ 
+// 
+// SCU Auto test functionality 
+//
+static uint16_t auto_testcount = 0; 
+
+void Auto_Button( uint16_t ticks) 
+{   
+    auto_testcount = ticks; // 3;
+}  
+a44 7
+  
+  // SCU 
+  if ( auto_testcount > 0 )
+  {
+      isButtonPressed = TRUE;
+      auto_testcount--;   
+  } 

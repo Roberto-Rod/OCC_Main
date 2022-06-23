@@ -1,0 +1,11 @@
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\bin\Debug Test\NUnitEx.dll
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\bin\Debug Test\NUnitEx.pdb
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\bin\Debug Test\NUnitEx.xml
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\bin\Debug Test\MKY.dll
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\bin\Debug Test\nunit.framework.dll
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\bin\Debug Test\MKY.pdb
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\bin\Debug Test\MKY.xml
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\bin\Debug Test\nunit.framework.xml
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\obj\Debug Test\NUnitEx.dll
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\obj\Debug Test\NUnitEx.pdb
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\NUnit\NUnitEx\obj\Debug Test\NUnitEx.csprojResolveAssemblyReference.cache

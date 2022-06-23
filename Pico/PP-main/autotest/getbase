@@ -1,0 +1,26 @@
+
+destin="./base1"
+
+ff=/usr/bin/find.exe
+
+echo $1
+
+destin=$1
+
+
+echo ${destin}
+src=src
+
+mkdir ${destin}
+mkdir ${destin}/${src}
+
+chmod 777  ${destin}/*
+chmod 777  ${destin}/${src}/*
+
+
+${ff} ../sourcePico -type f -name '*.[h|c]' | while read FILE ; do
+    echo ${FILE} 
+    newfile="$(echo ${FILE} |sed -e 's/.*\///')" ;
+    echo cp to  ${destin}/${newfile}
+    cp "${FILE}" "${destin}/${src}/${newfile}" ;
+done 

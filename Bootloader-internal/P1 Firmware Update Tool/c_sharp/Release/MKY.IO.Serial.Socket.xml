@@ -1,0 +1,2042 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MKY.IO.Serial.Socket</name>
+    </assembly>
+    <members>
+        <member name="T:MKY.IO.Serial.Socket.SocketDataSentEventArgs">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketDataSentEventArgs.#ctor(System.Byte,System.Net.IPEndPoint)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketDataSentEventArgs.#ctor(System.Byte[],System.Net.IPEndPoint)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketDataSentEventArgs.Device">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.SocketDataReceivedEventArgs">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketDataReceivedEventArgs.#ctor(System.Byte,System.Net.IPEndPoint)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketDataReceivedEventArgs.#ctor(System.Byte[],System.Net.IPEndPoint)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketDataReceivedEventArgs.Device">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.SocketBase">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketBase.NextInstanceId">
+            <summary>
+            Gets the next instance identifier.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketBase.Random">
+            <summary>
+            Gets the random.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.ALAZEx">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.ALAZEx.SocketBufferSizeDefault">
+             <remarks>
+             Value by default used by
+             <see cref="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionHost"/>,
+             <see cref="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketClient"/> and
+             <see cref="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketServer"/>.
+            
+             Note that
+             <see cref="P:System.Net.Sockets.Socket.SendBufferSize"/> and
+             <see cref="P:System.Net.Sockets.Socket.ReceiveBufferSize"/>
+             use a default value of 8192.
+             </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.ALAZEx.MessageBufferSizeDefault">
+             <remarks>
+             Value by default used by
+             <see cref="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionHost"/>,
+             <see cref="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketClient"/> and
+             <see cref="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketServer"/>.
+            
+             Note that
+             <see cref="P:System.Net.Sockets.Socket.SendBufferSize"/> and
+             <see cref="P:System.Net.Sockets.Socket.ReceiveBufferSize"/>
+             use a default value of 8192.
+             </remarks>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.TcpAutoSocket">
+            <remarks>
+            This partial class implements the server part of <see cref="T:MKY.IO.Serial.Socket.TcpAutoSocket"/>.
+            </remarks>
+            <remarks>
+            This partial class implements the client part of <see cref="T:MKY.IO.Serial.Socket.TcpAutoSocket"/>.
+            </remarks>
+             <summary>
+             Implements the <see cref="T:MKY.IO.Serial.IIOProvider"/> interface for an automatic TCP/IP client or server.
+             On startup, an AutoSocket tries to connect to a remote server and run as client. If this
+             fails, it tries to run as server. Retry cycles and random wait times ensure proper operation
+             even when multiple AutoSockets try to interconnected to each other.
+             </summary>
+             <remarks>
+             Initially, YAT AutoSockets with the original ALAZ implementation created a deadlock on
+             shutdown when two AutoSockets that were interconnected with each other. The situation:
+            
+             1. The main thread requests stopping all terminals:
+                 => YAT.Model.Workspace.CloseAllTerminals()
+                     => MKY.IO.Serial.TcpAutoSocket.Stop()
+                        => ALAZ.SystemEx.NetEx.SocketsEx.SocketServer.Stop()
+                            => ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnection.Active.get()
+            
+             2. As a result, the first AutoSocket shuts down, but the second changes from 'Accepted' to
+                'Listening' and tries to synchronize from the ALAZ socket event to the main thread:
+                 => ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionHost.FireOnDisconnected()
+                     => MKY.IO.Serial.TcpAutoSocket.OnIOChanged()
+                         => YAT.Model.Terminal.OnIOChanged()
+                             => Deadlock when synchronizing onto main thread!
+            
+             The issue has been solved in <see cref="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnection"/>
+             as well as <see cref="T:MKY.IO.Serial.Socket.TcpClient"/> or <see cref="T:MKY.IO.Serial.Socket.TcpServer"/> by invoking Stop() and Dispose()
+             of socket and connections and thread asynchronously and without firing events. See remarks
+             of these classes for additional information.
+             </remarks>
+             <remarks>
+             This class is implemented using partial classes separating client/server functionality.
+             </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.StopServerSyncAndDisposeSynchronized">
+            <remarks>
+            Opposed to the ALAZ sockets, the MKY sockets stop asynchronously. However, ALAZ sockets
+            sometimes deadlock on Stop(). Therefore, this method waits until the server indeed is
+            stopped and then disposes of it. A time-out in the MKY sockets guarantee stopping.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.StopClientSyncAndDisposeSynchronized">
+            <remarks>
+            Opposed to the ALAZ sockets, the MKY sockets stop asynchronously. However, ALAZ sockets
+            sometimes deadlock on Stop(). Therefore, this method waits until the server indeed is
+            stopped and then disposes of it. A time-out in the MKY sockets guarantee stopping.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.TcpAutoSocket.SocketStopTimeout">
+            <remarks>
+            Using the sum of the underlying sockets for two reasons:
+            <list type="bullet">
+            <item><description>Best guess of the underlying sockets.</description></item>
+            <item><description>For sure larger than the underlying time-out.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.TcpAutoSocket.SocketStopInterval">
+            <remarks>
+            Can be quite short. A longer interval would delay stopping longer than necessary.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.TcpAutoSocket.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpAutoSocket.IOChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpAutoSocket.IOControlChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpAutoSocket.IOWarning">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpAutoSocket.IOError">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpAutoSocket.DataReceived">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpAutoSocket.DataSent">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.#ctor(MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface,System.Int32)">
+            <summary>Creates a TCP/IP AutoSocket.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.#ctor(MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx,System.Int32)">
+            <summary>Creates a TCP/IP AutoSocket.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:MKY.IO.Serial.Socket.TcpAutoSocket.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.RemoteHost">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.RemoteHostEndpointString">
+            <remarks>Convenience method, always returns a valid value, at least "(undefined)".</remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.RemotePort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.LocalInterface">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.LocalPort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsStopped">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsStarted">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsListening">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsConnected">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.ConnectionCount">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsOpen">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsTransmissive">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsSending">
+            <remarks>
+            The value of this property only reflects the state of the send queue.
+            <para>
+            The state of the underlying <see cref="T:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection"/>
+            (i.e. calls to <see cref="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection.BeginSend(System.Byte[])"/>
+            and their callbacks to <see cref="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnSent(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)"/>)
+            is not taken into account because keeping track of ongoing send requests and callbacks is
+            not feasible to implement in a solid way. E.g. incrementing the number of requested bytes
+            and decrementing them in the callback would be susceptible to inconsistencies, e.g. in
+            case of connection state related exceptions.
+            </para><para>
+            Neither is the state of the underlying operating system socket taken into account, as
+            its state cannot be retrieved from within this .NET implementation by common means.
+            </para></remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsClient">
+            <remarks>
+            The <see cref="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsClient"/> and <see cref="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsServer"/> properties only return <c>true</c>
+            if it is defined whether the AutoSocket indeed behaves as client or server. If it is not
+            yet defined, both flags are set <c>false</c>.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsServer">
+            <remarks>
+            The <see cref="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsClient"/> and <see cref="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsServer"/> properties only return <c>true</c>
+            if it is defined whether the AutoSocket indeed behaves as client or server. If it is not
+            yet defined, both flags are set <c>false</c>.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsClientOrServer">
+            <remarks>
+            Convenience property to combine the <see cref="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsClient"/> and <see cref="P:MKY.IO.Serial.Socket.TcpAutoSocket.IsServer"/>
+            properties. It returns <c>true</c> if it is defined whether the AutoSocket indeed is
+            a client or server. If it is not yet defined, it returns <c>false</c>.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpAutoSocket.UnderlyingIOInstance">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.Start">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.Stop">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.Send(System.Byte[])">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.ClearSendBuffer">
+            <summary>
+            Clears the send buffer(s) immediately.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.StopSocketSyncAndDisposeSynchronized">
+            <remarks>
+            See remarks of called methods.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.DisposeSocketSynchronized">
+             <remarks>
+             Opposed to the ALAZ sockets, the MKY sockets do stop on Dispose(), but both is done asynchronously!
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.OnIOChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.OnIOControlChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.OnIOWarning(MKY.IO.Serial.IOWarningEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.OnIOError(MKY.IO.Serial.IOErrorEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.OnDataReceived(MKY.IO.Serial.DataReceivedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.OnDataSent(MKY.IO.Serial.DataSentEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.ToShortEndPointString">
+            <remarks>
+            Named according to .NET <see cref="T:System.Net.IPEndPoint"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.DebugMessage(System.String,System.Object[])">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with the formatted message, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpAutoSocket.DebugState(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.TcpClient">
+            <remarks>
+            This partial class implements the send part of <see cref="T:MKY.IO.Serial.Socket.TcpClient"/>.
+            </remarks>
+             <summary>
+             Implements the <see cref="T:MKY.IO.Serial.IIOProvider"/> interface for a TCP/IP client.
+             </summary>
+             <remarks>
+             In case of YAT with the original ALAZ implementation, TCP/IP clients and servers created a
+             deadlock on shutdown. The situation:
+            
+             1. <see cref="M:MKY.IO.Serial.Socket.TcpClient.Stop"/> is called from a main thread.
+             2. 'ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionHost.StopConnections()' blocks.
+             3. The 'OnDisconnected' event is raised.
+             4. FireOnDisconnected() is blocked when trying to synchronize Invoke() onto the main
+                thread and a deadlock happens.
+            
+             Further down the calling chain, 'BaseSocketConnection.Active.get()' was also blocking.
+            
+             These two issues could be solved by modifying 'BaseSocketConnection.Active.get()' to be
+             non-blocking, by calling Stop() asynchronously and by carefully handle the 'OnDisconnected'
+             and 'OnException' events while stopping.
+            
+             These two issues were also reported back to Andre Luis Azevedo. But unfortunately ALAZ seems
+             to have come to a dead end. An alternative to ALAZ might need to be found in the future.
+            
+             Note that the very same issue existed in <see cref="T:MKY.IO.Serial.Socket.TcpServer"/>.
+            
+             Also note that a very similar issue existed when stopping two <see cref="T:MKY.IO.Serial.Socket.TcpAutoSocket"/>
+             that were interconnected with each other. See remarks of that class for details.
+             </remarks>
+             <remarks>
+             This class is implemented using partial classes separating sending functionality.
+             </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.Send(System.Byte[])">
+            <remarks>
+            If the underlying buffer has space, this method will immediately return; otherwise
+            this method will be blocking until there is space, or the I/O instance is stopped
+            or gets disconnected/closed.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.ClearSendBuffer">
+            <summary>
+            Clears the send buffer(s) immediately.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.SendThread">
+            <summary>
+            Asynchronously manage outgoing send requests to ensure that send events are not
+            invoked on the same thread that triggered the send operation.
+            Also, the mechanism implemented below reduces the amount of events that are propagated
+            to the main application. Small chunks of sent data would generate many events in
+            <see cref="M:MKY.IO.Serial.Socket.TcpClient.Send(System.Byte[])"/>. However, since <see cref="M:MKY.IO.Serial.Socket.TcpClient.OnDataSent(MKY.IO.Serial.DataSentEventArgs)"/> synchronously
+            invokes the event, it will take some time until the send queue is checked again.
+            During this time, no more new events are invoked, instead, outgoing data is buffered.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Serial.Socket.TcpClient.Send(System.Byte[])"/> method above.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DataSentThread">
+            <summary>
+            Asynchronously manage outgoing send requests to ensure that send events are not
+            invoked on the same thread that triggered the send operation.
+            Also, the mechanism implemented below reduces the amount of events that are propagated
+            to the main application. Small chunks of sent data would generate many events in
+            <see cref="M:MKY.IO.Serial.Socket.TcpClient.Send(System.Byte[])"/>. However, since <see cref="M:MKY.IO.Serial.Socket.TcpClient.OnSent(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)"/> synchronously
+            invokes the event, it will take some time until the send queue is checked again.
+            During this time, no more new events are invoked, instead, outgoing data is buffered.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Serial.Socket.TcpClient.Send(System.Byte[])"/> method above.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugThreads(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugSendEnqueue(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugSendDequeue(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugSendBegin(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugDataSentEnqueue(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugDataSentDequeue(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.TcpClient.SocketState.Reset">
+            <summary>
+            The reset state is necessary to differentiate between not yet started or stopped
+            sockets versus started but disconnected sockets.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.TcpClient.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.TcpClient.dataSentQueue">
+            <remarks>
+            Async event handling. The capacity is set large enough to reduce the number of resizing
+            operations while adding items.
+            </remarks>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpClient.IOChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpClient.IOControlChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpClient.IOWarning">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpClient.IOError">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpClient.DataReceived">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpClient.DataSent">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.#ctor(MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface)">
+            <summary>Creates a TCP/IP client.</summary>
+            <remarks>This overload creates a TCP/IP client with <see cref="P:MKY.IO.Serial.Socket.TcpClient.AutoReconnect"/> disabled.</remarks>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.#ctor(MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx)">
+            <summary>Creates a TCP/IP client.</summary>
+            <remarks>This overload creates a TCP/IP client with <see cref="P:MKY.IO.Serial.Socket.TcpClient.AutoReconnect"/> disabled.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.#ctor(System.Int32,MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface)">
+            <summary>Creates a TCP/IP client.</summary>
+            <remarks>This overload creates a TCP/IP client with <see cref="P:MKY.IO.Serial.Socket.TcpClient.AutoReconnect"/> disabled.</remarks>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.#ctor(System.Int32,MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx)">
+            <summary>Creates a TCP/IP client.</summary>
+            <remarks>This overload creates a TCP/IP client with <see cref="P:MKY.IO.Serial.Socket.TcpClient.AutoReconnect"/> disabled.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.#ctor(MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface,MKY.IO.Serial.IntervalSettingTuple)">
+            <summary>Creates a TCP/IP client.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.#ctor(MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx,MKY.IO.Serial.IntervalSettingTuple)">
+            <summary>Creates a TCP/IP client.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.#ctor(System.Int32,MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface,MKY.IO.Serial.IntervalSettingTuple)">
+            <summary>Creates a TCP/IP client.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.#ctor(System.Int32,MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx,MKY.IO.Serial.IntervalSettingTuple)">
+            <summary>Creates a TCP/IP client.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:MKY.IO.Serial.Socket.TcpClient.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.RemoteHost">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.RemoteHostEndpointString">
+            <remarks>Convenience method, always returns a valid value, at least "(undefined)".</remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.RemotePort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.LocalInterface">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.AutoReconnect">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.IsStopped">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.IsStarted">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.IsConnected">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.ConnectionCount">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.IsOpen">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.IsTransmissive">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.IsSending">
+            <remarks>
+            The value of this property only reflects the state of the send queue.
+            <para>
+            The state of the underlying <see cref="T:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection"/>
+            (i.e. calls to <see cref="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection.BeginSend(System.Byte[])"/>
+            and their callbacks to <see cref="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnSent(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)"/>)
+            is not taken into account because keeping track of ongoing send requests and callbacks is
+            not feasible to implement in a solid way. E.g. incrementing the number of requested bytes
+            and decrementing them in the callback would be susceptible to inconsistencies, e.g. in
+            case of connection state related exceptions.
+            </para><para>
+            Neither is the state of the underlying operating system socket taken into account, as
+            its state cannot be retrieved from within this .NET implementation by common means.
+            </para></remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.UnderlyingIOInstance">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.Start">
+            <remarks>
+            The MKY sockets start synchronously, but the underlying ALAZ sockets will start
+            asynchronously. Thus, after return of this method, the underlying ALAZ socket is yet
+            about starting.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.Stop">
+            <remarks>
+            Opposed to the ALAZ sockets, the MKY sockets stop asynchronously, for the reason
+            described in the header of this class. Thus, after return of this method, this
+            socket as well as the underlying ALAZ socket is yet about stopping.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DoDispose">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.TryCreateAndStartSocketAndThreads">
+            <remarks>
+            Note that ALAZ sockets start asynchronously, same as stopping.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.StopAndDisposeSocketAndThreadsAsync(System.Int32,MKY.IO.Serial.Socket.TcpClient.SocketState,System.Boolean)">
+            <remarks>
+            See remarks of the header of this class for details.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnConnected(ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs)">
+            <summary>
+            Event raised when connected.
+            </summary>
+            <param name="e">
+            Information about the connection.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnReceived(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)">
+            <summary>
+            Event raised when data arrives.
+            </summary>
+            <param name="e">
+            Information about the Message.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnSent(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)">
+            <summary>
+            Event raised when data has been sent.
+            </summary>
+            <param name="e">
+            Information about the data that has been sent.
+            <remarks>
+            Note that the original ALAZ implementation always keeps 'e.Buffer' at
+            <c>null</c> whereas the modified version contains a filled data buffer.
+            </remarks>
+            </param>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnDisconnected(ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs)">
+            <summary>
+            Event raised when disconnected.
+            </summary>
+            <param name="e">
+            Information about the connection.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnException(ALAZ.SystemEx.NetEx.SocketsEx.ExceptionEventArgs)">
+             <summary>
+             Event raised when exception occurs.
+             </summary>
+             <remarks>
+             Attention:
+             This event is also raised on reconnect attempts of auto-reconnect!
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+             <param name="e">
+             Information about the exception and connection.
+             </param>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpClient.AutoReconnectIsEnabledAndAllowed">
+            <remarks>
+            There must not be an additional <code>&amp;&amp; !IsOpen</code> check because 'state'
+            will still be 'Connected' when this property gets checked by the callbacks above. And
+            just setting 'state' to 'Disconnected' in the callbacks above makes no sense as it would
+            result in an additional unnecessary state change events.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.StopThreads">
+            <remarks>
+            Using 'Stop' instead of 'Terminate' to emphasize graceful termination, i.e. trying
+            to join first, then abort if not successfully joined.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.SignalSendThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.SignalDataSentThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.StartConnectingTimeout">
+             <remarks>
+             BSc revealed an issue with 'AutoReconnect' (bug #487). Manually closing/opening a
+             connection did work fine. But 'AutoReconnect' only reconnected after approx. 20 s.
+             Wireshark traces revealed the details:
+            
+             1. 500 ms after connection loss, YAT tries to reconnect:
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]>
+             2. For whatever reason, the device acknowledges but at the same time resets the connection:
+                <![CDATA[Server (Device) => RST|ACK => Client (YAT)]]>
+             3. YAT's socket then correctly retransmits the paket:
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]>
+             4. Then, nothing happens for 11 seconds anymore:
+                YAT's socket waits for acknowledge or time-out.
+                The device does nothing anymore.
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]>
+             5. After time-out, YAT tries again:
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]>
+             6. Approx. 12 seconds later, YAT tries again:
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]>
+             7. Then device responses and YAT confirms:
+                <![CDATA[Server (Device) => SYN|ACK => Client (YAT)]]>
+                <![CDATA[Server (Device) <= ACK <= Client (YAT)]]>
+            
+             However, YAT is configured to try every 500 ms again, this does not happen.
+             The timer must check the connection after 500 ms. Now:
+            
+             1. 500 ms after connection loss, YAT tries to reconnect:
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]>
+             2. For whatever reason, the device acknowledges but at the same time resets the connection:
+                <![CDATA[Server (Device) => RST|ACK => Client (YAT)]]>
+             3. YAT's socket then correctly retransmits the paket:
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]> @ port e.g. 54659
+             4. Now, after another 500 ms, YAT checks the state and the connection is not established yet.
+                YAT then closes the already reset socket, i.e. nothing is sent anymore.
+                And tries to reconnect again and again:
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]> @ port e.g. 54660
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]> @ port e.g. 54661
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]> @ port e.g. 54662
+                ...
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]> @ port e.g. 54670
+             5. Finally the device responses and YAT confirms:
+                <![CDATA[Server (Device) => SYN|ACK => Client (YAT)]]>
+                <![CDATA[Server (Device) <= ACK <= Client (YAT)]]>
+            
+             But attention, there are some tricky things here, again revealed by BSc and Wireshark:
+            
+             a) While the above SYN|ACK|SYN|ACK is happening at socket level, this class may not yet
+                have received the 'OnConnected' event callback and therefore closes the socket and
+                tries again:
+                <![CDATA[Server (Device) <= SYN <= Client (YAT)]]>
+                But the device actually has received the subsequent SYN and does response:
+                <![CDATA[Server (Device) => SYN|ACK => Client (YAT)]]>
+                Or the device is limited to a single connection, thus rejects it:
+                <![CDATA[Server (Device) => RST|ACK => Client (YAT)]]>
+                In these cases, this class will receive "stray" 'OnConnected' or 'OnDisconnected'
+                events. This class must be able to deal with such corner-cases.
+             b) As all the above operations are async, there is uncertainty about the moment of the
+                event callbacks.
+            
+             Note that reconnecting is implemented by creating a new socket each time, resulting in
+             using a new backport each time (e.g. 54659, 54660, 54661,...). If this ever becomes an
+             issue, e.g. because a (really simple) server expects the same backport, the behavior
+             could be made configurable, e.g. [use same socket] / [use new socket].
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+             <remarks>
+             Note <see cref="M:ALAZ.SystemEx.NetEx.SocketsEx.ClientSocketConnection.BeginReconnect"/>
+             exists but cannot be configured. Also note the existence of this method indicates there
+             is no such functionality in the underlying <see cref="T:System.Net.Sockets.Socket"/>. No
+             such functionality found by searching MSDN nor Internet.
+             </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnIOChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnIOControlChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnIOWarning(MKY.IO.Serial.IOWarningEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnIOError(MKY.IO.Serial.IOErrorEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnDataReceived(MKY.IO.Serial.DataReceivedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.OnDataSent(MKY.IO.Serial.DataSentEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.ToShortEndPointString">
+            <summary></summary>
+            <remarks>
+            Named according to .NET <see cref="T:System.Net.IPEndPoint"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugMessage(System.String,System.Object[])">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with the formatted message, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugState(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugSocketConnection(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugSocketShutdown(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+            <remarks>
+            Named 'Shutdown' for separating from terms 'Stop' and 'Dispose' as well as compactness.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.DebugAutoReconnect(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpClient.ToDebugString(System.Net.IPEndPoint)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.TcpServer">
+            <remarks>
+            This partial class implements the send part of <see cref="T:MKY.IO.Serial.Socket.TcpServer"/>.
+            </remarks>
+             <summary>
+             Implements the <see cref="T:MKY.IO.Serial.IIOProvider"/> interface for a TCP/IP server.
+             </summary>
+             <remarks>
+             In case of YAT with the original ALAZ implementation, TCP/IP clients and servers created a
+             deadlock on shutdown. The situation:
+            
+             1. <see cref="M:MKY.IO.Serial.Socket.TcpServer.Stop"/> is called from a main thread.
+             2. 'ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionHost.StopConnections()' blocks.
+             3. The 'OnDisconnected' event is raised.
+             4. FireOnDisconnected() is blocked when trying to synchronize Invoke() onto the main
+                thread and a deadlock happens.
+            
+             Further down the calling chain, 'BaseSocketConnection.Active.get()' was also blocking.
+            
+             These two issues could be solved by modifying 'BaseSocketConnection.Active.get()' to be
+             non-blocking, by calling Stop() asynchronously and by carefully handle the 'OnDisconnected'
+             and 'OnException' events while stopping.
+            
+             These two issues were also reported back to Andre Luis Azevedo. But unfortunately ALAZ seems
+             to have come to a dead end. An alternative to ALAZ might need to be found in the future.
+            
+             Note that the very same issue existed in <see cref="T:MKY.IO.Serial.Socket.TcpClient"/>.
+            
+             Also note that a very similar issue existed when stopping two <see cref="T:MKY.IO.Serial.Socket.TcpAutoSocket"/>
+             that were interconnected with each other. See remarks of that class for details.
+             </remarks>
+             <remarks>
+             This class is implemented using partial classes separating sending functionality.
+             </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.Send(System.Byte[])">
+            <remarks>
+            If the underlying buffer has space, this method will immediately return; otherwise
+            this method will be blocking until there is space, or the I/O instance is stopped
+            or gets disconnected/closed.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.ClearSendBuffer">
+            <summary>
+            Clears the send buffer(s) immediately.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.SendThread">
+            <summary>
+            Asynchronously manage outgoing send requests to ensure that send events are not
+            invoked on the same thread that triggered the send operation.
+            Also, the mechanism implemented below reduces the amount of events that are propagated
+            to the main application. Small chunks of sent data would generate many events in
+            <see cref="M:MKY.IO.Serial.Socket.TcpServer.Send(System.Byte[])"/>. However, since <see cref="M:MKY.IO.Serial.Socket.TcpServer.OnDataSent(MKY.IO.Serial.DataSentEventArgs)"/> synchronously
+            invokes the event, it will take some time until the send queue is checked again.
+            During this time, no more new events are invoked, instead, outgoing data is buffered.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Serial.Socket.TcpServer.Send(System.Byte[])"/> method above.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DataSentThread">
+            <summary>
+            Asynchronously manage outgoing send requests to ensure that send events are not
+            invoked on the same thread that triggered the send operation.
+            Also, the mechanism implemented below reduces the amount of events that are propagated
+            to the main application. Small chunks of sent data would generate many events in
+            <see cref="M:MKY.IO.Serial.Socket.TcpServer.Send(System.Byte[])"/>. However, since <see cref="M:MKY.IO.Serial.Socket.TcpServer.OnSent(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)"/> synchronously
+            invokes the event, it will take some time until the send queue is checked again.
+            During this time, no more new events are invoked, instead, outgoing data is buffered.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Serial.Socket.TcpServer.Send(System.Byte[])"/> method above.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugThreads(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugSendEnqueue(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugSendDequeue(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugSendBegin(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugDataSentEnqueue(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugDataSentDequeue(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.TcpServer.SocketState.Reset">
+            <summary>
+            The reset state is necessary to differentiate between not yet started or stopped
+            sockets versus started but disconnected sockets.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.TcpServer.ConnectionAllowanceDefault">
+            <summary>
+            The maximum possible connections are allowed by default.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.TcpServer.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.TcpServer.dataSentQueue">
+            <remarks>
+            Async event handling. The capacity is set large enough to reduce the number of resizing
+            operations while adding items.
+            </remarks>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpServer.IOChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpServer.IOControlChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpServer.IOWarning">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpServer.IOError">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpServer.DataReceived">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.TcpServer.DataSent">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.#ctor(MKY.Net.IPNetworkInterface,System.Int32,System.Int32)">
+            <summary>Creates a TCP/IP server.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.#ctor(MKY.Net.IPNetworkInterfaceEx,System.Int32,System.Int32)">
+            <summary>Creates a TCP/IP server.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.#ctor(System.Int32,MKY.Net.IPNetworkInterface,System.Int32,System.Int32)">
+            <summary>Creates a TCP/IP server.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.#ctor(System.Int32,MKY.Net.IPNetworkInterfaceEx,System.Int32,System.Int32)">
+            <summary>Creates a TCP/IP server.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:MKY.IO.Serial.Socket.TcpServer.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.LocalInterface">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.LocalPort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.ConnectionAllowance">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.IsStopped">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.IsStarted">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.IsListening">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.IsConnected">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.ConnectionCount">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.IsOpen">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.IsTransmissive">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.IsSending">
+            <remarks>
+            The value of this property only reflects the state of the send queue.
+            <para>
+            The state of the underlying <see cref="T:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection"/>
+            (i.e. calls to <see cref="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection.BeginSend(System.Byte[])"/>
+            and their callbacks to <see cref="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnSent(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)"/>)
+            is not taken into account because keeping track of ongoing send requests and callbacks is
+            not feasible to implement in a solid way. E.g. incrementing the number of requested bytes
+            and decrementing them in the callback would be susceptible to inconsistencies, e.g. in
+            case of connection state related exceptions.
+            </para><para>
+            Neither is the state of the underlying operating system socket taken into account, as
+            its state cannot be retrieved from within this .NET implementation by common means.
+            </para></remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.TcpServer.UnderlyingIOInstance">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.Start">
+            <remarks>
+            The MKY sockets start synchronously, but the underlying ALAZ sockets will start
+            asynchronously. Thus, after return of this method, the underlying ALAZ socket is yet
+            about starting.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.Stop">
+            <remarks>
+            Opposed to the ALAZ sockets, the MKY sockets stop asynchronously, for the reason
+            described in the header of this class. Thus, after return of this method, this
+            socket as well as the underlying ALAZ socket is yet about stopping.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DoDispose">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.TryCreateAndStartSocketAndThreads">
+            <remarks>
+            Note that ALAZ sockets start asynchronously, same as stopping.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.StopAndDisposeSocketAndThreadsAsync(System.Int32,MKY.IO.Serial.Socket.TcpServer.SocketState,System.Boolean)">
+            <remarks>
+            See remarks of the header of this class for details.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnConnected(ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs)">
+            <summary>
+            Event raised when connected.
+            </summary>
+            <param name="e">
+            Information about the connection.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnReceived(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)">
+            <summary>
+            Event raised when data arrives.
+            </summary>
+            <param name="e">
+            Information about the Message.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnSent(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)">
+            <summary>
+            Event raised when data has been sent.
+            </summary>
+            <param name="e">
+            Information about the data that has been sent.
+            <remarks>
+            Note that the original ALAZ implementation always keeps 'e.Buffer' at
+            <c>null</c> whereas the modified version contains a filled data buffer.
+            </remarks>
+            </param>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnDisconnected(ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs)">
+            <summary>
+            Event raised when disconnected.
+            </summary>
+            <param name="e">
+            Information about the connection.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnException(ALAZ.SystemEx.NetEx.SocketsEx.ExceptionEventArgs)">
+            <summary>
+            Event raised when exception occurs.
+            </summary>
+            <param name="e">
+            Information about the exception and connection.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.StopThreads">
+            <remarks>
+            Using 'Stop' instead of 'Terminate' to emphasize graceful termination, i.e. trying
+            to join first, then abort if not successfully joined.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.SignalSendThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.SignalDataSentThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnIOChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnIOControlChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnIOWarning(MKY.IO.Serial.IOWarningEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnIOError(MKY.IO.Serial.IOErrorEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnDataReceived(MKY.IO.Serial.DataReceivedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.OnDataSent(MKY.IO.Serial.DataSentEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.ToShortEndPointString">
+            <summary></summary>
+            <remarks>
+            Named according to .NET <see cref="T:System.Net.IPEndPoint"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugMessage(System.String,System.Object[])">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with the formatted message, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugState(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugSocketConnections(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.DebugSocketShutdown(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+            <remarks>
+            Named 'Shutdown' for separating from terms 'Stop' and 'Dispose' as well as compactness.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.TcpServer.ToDebugString(System.Net.IPEndPoint)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.UdpServerSendMode">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.UdpServerSendModeEx">
+            <summary>
+            Extended enum UdpServerSendModeEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.UdpServerSendModeEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Serial.Socket.UdpServerSendMode.MostRecent"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Serial.Socket.UdpServerSendModeEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.#ctor(MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.TryParse(System.String,MKY.IO.Serial.Socket.UdpServerSendModeEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.TryParse(System.String,MKY.IO.Serial.Socket.UdpServerSendMode@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.TryFrom(System.Int32,MKY.IO.Serial.Socket.UdpServerSendModeEx@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.TryFrom(System.Int32,MKY.IO.Serial.Socket.UdpServerSendMode@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.IsValidSendMode(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.op_Implicit(MKY.IO.Serial.Socket.UdpServerSendModeEx)~MKY.IO.Serial.Socket.UdpServerSendMode">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.op_Implicit(MKY.IO.Serial.Socket.UdpServerSendMode)~MKY.IO.Serial.Socket.UdpServerSendModeEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.op_Implicit(MKY.IO.Serial.Socket.UdpServerSendModeEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.op_Implicit(System.Int32)~MKY.IO.Serial.Socket.UdpServerSendModeEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.op_Implicit(MKY.IO.Serial.Socket.UdpServerSendModeEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.op_Implicit(System.String)~MKY.IO.Serial.Socket.UdpServerSendModeEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.UdpSocket">
+            <remarks>
+            This partial class implements the receive part of <see cref="T:MKY.IO.Serial.Socket.UdpSocket"/>.
+            </remarks>
+            <remarks>
+            This partial class implements the send part of <see cref="T:MKY.IO.Serial.Socket.UdpSocket"/>.
+            </remarks>
+            <remarks>
+            This class is implemented using partial classes separating sending/receiving functionality.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.ReceiveThread">
+            <summary>
+            Asynchronously manage incoming events to prevent potential deadlocks if close/dispose
+            was called from a ISynchronizeInvoke target (i.e. a form) on an event thread.
+            Also, the mechanism implemented below reduces the amount of events that are propagated
+            to the main application. Small chunks of received data will generate many events
+            handled by <see cref="M:MKY.IO.Serial.Socket.UdpSocket.ReceiveCallback(System.IAsyncResult)"/>. However, since <see cref="M:MKY.IO.Serial.Socket.UdpSocket.OnDataReceived(MKY.IO.Serial.DataReceivedEventArgs)"/>
+            synchronously invokes the event, it will take some time until the send queue is checked
+            again. During this time, no more new events are invoked, instead, incoming data is
+            buffered.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Serial.Socket.UdpSocket.ReceiveCallback(System.IAsyncResult)"/> event above.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.DebugReceive(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.Send(System.Byte[])">
+            <remarks>
+            If the underlying buffer has space, this method will immediately return; otherwise
+            this method will be blocking until there is space, or the I/O instance is stopped
+            or gets disconnected/closed.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.ClearSendBuffer">
+            <summary>
+            Clears the send buffer(s) immediately.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.SendThread">
+            <summary>
+            Asynchronously manage outgoing send requests to ensure that send events are not
+            invoked on the same thread that triggered the send operation.
+            Also, the mechanism implemented below reduces the amount of events that are propagated
+            to the main application. Small chunks of sent data would generate many events in
+            <see cref="M:MKY.IO.Serial.Socket.UdpSocket.Send(System.Byte[])"/>. However, since <see cref="M:MKY.IO.Serial.Socket.UdpSocket.OnDataSent(MKY.IO.Serial.DataSentEventArgs)"/> synchronously
+            invokes the event, it will take some time until the send queue is checked again.
+            During this time, no more new events are invoked, instead, outgoing data is buffered.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Serial.Socket.UdpSocket.Send(System.Byte[])"/> method above.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.DebugSendEnqueue(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.DebugSendDequeue(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.UdpSocket.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.UdpSocket.receiveQueue">
+            <remarks>
+            Async receiving. The capacity is set large enough to reduce the number of resizing
+            operations while adding items.
+            </remarks>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.UdpSocket.IOChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.UdpSocket.IOControlChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.UdpSocket.IOWarning">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.UdpSocket.IOError">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.UdpSocket.DataReceived">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Socket.UdpSocket.DataSent">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.Net.IPHost,System.Int32)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Client"/>.</summary>
+            <remarks>The local IP network interface is defaulted to <see cref="F:System.Net.IPAddress.Any"/> or <see cref="F:System.Net.IPAddress.IPv6Any"/>.</remarks>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.Net.IPHostEx,System.Int32)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Client"/>.</summary>
+            <remarks>The local IP network interface is defaulted to <see cref="F:System.Net.IPAddress.Any"/> or <see cref="F:System.Net.IPAddress.IPv6Any"/>.</remarks>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.Net.IPHost,System.Int32)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Client"/>.</summary>
+            <remarks>The local IP network interface is defaulted to <see cref="F:System.Net.IPAddress.Any"/> or <see cref="F:System.Net.IPAddress.IPv6Any"/>.</remarks>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.Net.IPHostEx,System.Int32)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Client"/>.</summary>
+            <remarks>The local IP network interface is defaulted to <see cref="F:System.Net.IPAddress.Any"/> or <see cref="F:System.Net.IPAddress.IPv6Any"/>.</remarks>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Client"/>.</summary>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Client"/>.</summary>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Client"/>.</summary>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Client"/>.</summary>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.Net.IPNetworkInterface,System.Int32,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Server"/>.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.Net.IPNetworkInterfaceEx,System.Int32,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Server"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.Net.IPNetworkInterface,System.Int32,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Server"/>.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.Net.IPNetworkInterfaceEx,System.Int32,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Server"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.Net.IPNetworkInterface,System.Int32,MKY.Net.IPFilter,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Server"/>.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localFilter"/> is <see cref="F:MKY.Net.IPFilter.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="localInterface"/> and <paramref name="localFilter"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.Net.IPNetworkInterfaceEx,System.Int32,MKY.Net.IPFilterEx,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Server"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localFilter"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="localInterface"/> and <paramref name="localFilter"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.Net.IPNetworkInterface,System.Int32,MKY.Net.IPFilter,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Server"/>.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localFilter"/> is <see cref="F:MKY.Net.IPFilter.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="localInterface"/> and <paramref name="localFilter"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.Net.IPNetworkInterfaceEx,System.Int32,MKY.Net.IPFilterEx,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.Server"/>.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localFilter"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="localInterface"/> and <paramref name="localFilter"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface,System.Int32)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.PairSocket"/>.</summary>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx,System.Int32)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.PairSocket"/>.</summary>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface,System.Int32)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.PairSocket"/>.</summary>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx,System.Int32)">
+            <summary>Creates a UDP/IP socket of type <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.PairSocket"/>.</summary>
+            <remarks>The local IP address filter is set to the remote IP address.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.IO.Serial.Socket.UdpSocketType,MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface,System.Int32,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of the given type.</summary>
+            <remarks>The local IP address filter is defaulted to <see cref="F:System.Net.IPAddress.Any"/> or <see cref="F:System.Net.IPAddress.IPv6Any"/>.</remarks>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.IO.Serial.Socket.UdpSocketType,MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx,System.Int32,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of the given type.</summary>
+            <remarks>The local IP address filter is defaulted to <see cref="F:System.Net.IPAddress.Any"/> or <see cref="F:System.Net.IPAddress.IPv6Any"/>.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.IO.Serial.Socket.UdpSocketType,MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface,System.Int32,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of the given type.</summary>
+            <remarks>The local IP address filter is defaulted to <see cref="F:System.Net.IPAddress.Any"/> or <see cref="F:System.Net.IPAddress.IPv6Any"/>.</remarks>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.IO.Serial.Socket.UdpSocketType,MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx,System.Int32,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of the given type.</summary>
+            <remarks>The local IP address filter is defaulted to <see cref="F:System.Net.IPAddress.Any"/> or <see cref="F:System.Net.IPAddress.IPv6Any"/>.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.IO.Serial.Socket.UdpSocketType,MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface,System.Int32,MKY.Net.IPFilter,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of the given type.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localFilter"/> is <see cref="F:MKY.Net.IPFilter.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/> or <paramref name="localFilter"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(MKY.IO.Serial.Socket.UdpSocketType,MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx,System.Int32,MKY.Net.IPFilterEx,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of the given type.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localFilter"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/> or <paramref name="localFilter"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.IO.Serial.Socket.UdpSocketType,MKY.Net.IPHost,System.Int32,MKY.Net.IPNetworkInterface,System.Int32,MKY.Net.IPFilter,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of the given type.</summary>
+            <exception cref="T:System.ArgumentException"><paramref name="remoteHost"/> is <see cref="F:MKY.Net.IPHost.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localInterface"/> is <see cref="F:MKY.Net.IPNetworkInterface.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="localFilter"/> is <see cref="F:MKY.Net.IPFilter.Explicit"/>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/> or <paramref name="localFilter"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.#ctor(System.Int32,MKY.IO.Serial.Socket.UdpSocketType,MKY.Net.IPHostEx,System.Int32,MKY.Net.IPNetworkInterfaceEx,System.Int32,MKY.Net.IPFilterEx,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>Creates a UDP/IP socket of the given type.</summary>
+            <exception cref="T:System.ArgumentNullException"><paramref name="remoteHost"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localInterface"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="localFilter"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException">Mismatching <see cref="T:System.Net.Sockets.AddressFamily"/> of <paramref name="remoteHost"/> and <paramref name="localInterface"/> or <paramref name="localFilter"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:MKY.IO.Serial.Socket.UdpSocket.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.SocketType">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.RemoteHost">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.RemoteHostEndpointString">
+            <remarks>Convenience method, always returns a valid value, at least "(undefined)".</remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.RemoteIPAddressIsDefined">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.RemotePort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.RemoteEndPoint">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.LocalInterface">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.LocalPort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.LocalFilter">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.ServerSendMode">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.IsStopped">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.IsStarted">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.IsOpen">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.IsConnected">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.IsTransmissive">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.IsSending">
+            <remarks>
+            The value of this property only reflects the state of the send queue.
+            <para>
+            The state of the underlying <see cref="T:MKY.IO.Serial.Socket.UdpSocket"/> is not taken into account, as there
+            is no feasible to implement this in a solid way.
+            </para><para>
+            Neither is the state of the underlying operating system socket taken into account, as
+            its state cannot be retrieved from within this .NET implementation by common means.
+            </para></remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.UdpSocket.UnderlyingIOInstance">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.Start">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.Stop">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.CreateAndStartSocketAndThreads">
+            <remarks>
+            Not using a separate StartThreads() like implementation of other serial entities as
+            ReceiveThread() is created and started before socket and SendThread(). Implementation of
+            other serial entities could also follow this implementation when there is need to do so.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.SignalSendThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.SignalReceiveThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.OnIOChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.OnIOControlChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.OnIOWarning(MKY.IO.Serial.IOWarningEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.OnIOError(MKY.IO.Serial.IOErrorEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.OnDataReceived(MKY.IO.Serial.DataReceivedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.OnDataSent(MKY.IO.Serial.DataSentEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.ToShortEndPointString">
+            <summary></summary>
+            <remarks>
+            Named according to .NET <see cref="T:System.Net.IPEndPoint"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.DebugMessage(System.String,System.Object[])">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with the formatted message, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.DebugState(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocket.DebugThreads(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.UdpSocketType">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.UdpSocketTypeEx">
+            <summary>
+            Extended enum UdpSocketTypeEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.UdpSocketTypeEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Serial.Socket.UdpSocketType.PairSocket"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Serial.Socket.UdpSocketTypeEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.#ctor(MKY.IO.Serial.Socket.UdpSocketType)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.TryParse(System.String,MKY.IO.Serial.Socket.UdpSocketTypeEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.TryParse(System.String,MKY.IO.Serial.Socket.UdpSocketType@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.op_Implicit(MKY.IO.Serial.Socket.UdpSocketTypeEx)~MKY.IO.Serial.Socket.UdpSocketType">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.op_Implicit(MKY.IO.Serial.Socket.UdpSocketType)~MKY.IO.Serial.Socket.UdpSocketTypeEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.op_Implicit(MKY.IO.Serial.Socket.UdpSocketTypeEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.op_Implicit(System.Int32)~MKY.IO.Serial.Socket.UdpSocketTypeEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.op_Implicit(MKY.IO.Serial.Socket.UdpSocketTypeEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.UdpSocketTypeEx.op_Implicit(System.String)~MKY.IO.Serial.Socket.UdpSocketTypeEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.SocketType">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.SocketTypeEx">
+            <summary>
+            Extended enum SocketTypeEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.SocketTypeEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Serial.Socket.SocketType.TcpAutoSocket"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Serial.Socket.SocketTypeEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.#ctor(MKY.IO.Serial.Socket.SocketType)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketTypeEx.IsTcp">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketTypeEx.IsUdp">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketTypeEx.SupportsBroadcast">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketTypeEx.IsClient">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketTypeEx.IsServer">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.TryParse(System.String,MKY.IO.Serial.Socket.SocketTypeEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.TryParse(System.String,MKY.IO.Serial.Socket.SocketType@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.op_Implicit(MKY.IO.Serial.Socket.SocketTypeEx)~MKY.IO.Serial.Socket.SocketType">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.op_Implicit(MKY.IO.Serial.Socket.SocketType)~MKY.IO.Serial.Socket.SocketTypeEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.op_Implicit(MKY.IO.Serial.Socket.SocketTypeEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.op_Implicit(System.Int32)~MKY.IO.Serial.Socket.SocketTypeEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.op_Implicit(MKY.IO.Serial.Socket.SocketTypeEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.op_Implicit(System.String)~MKY.IO.Serial.Socket.SocketTypeEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.op_Implicit(MKY.IO.Serial.Socket.SocketTypeEx)~MKY.IO.Serial.Socket.UdpSocketType">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketTypeEx.op_Implicit(MKY.IO.Serial.Socket.UdpSocketType)~MKY.IO.Serial.Socket.SocketTypeEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Socket.SocketSettings">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.RemoteHostDefault">
+            <remarks>
+            Must be implemented as property (instead of a readonly) since <see cref="T:MKY.Net.IPHostEx"/>
+            is a mutable reference type. Defining a readonly would correctly result in FxCop
+            message CA2104 "DoNotDeclareReadOnlyMutableReferenceTypes" (Microsoft.Security).
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.LocalInterfaceDefault">
+            <remarks>
+            Must be implemented as property that creates a new object on each call to ensure that
+            there aren't multiple clients referencing (and modifying) the same object.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.LocalFilterDefault">
+            <remarks>
+            Must be implemented as property (instead of a readonly) since <see cref="T:MKY.Net.IPFilterEx"/>
+            is a mutable reference type. Defining a readonly would correctly result in FxCop
+            message CA2104 "DoNotDeclareReadOnlyMutableReferenceTypes" (Microsoft.Security).
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.SocketSettings.RemotePortDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.SocketSettings.LocalPortDefault">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.TcpClientAutoReconnectDefault">
+            <remarks>
+            Must be implemented as property that creates a new object on each call to ensure that
+            there aren't multiple clients referencing (and modifying) the same object.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.SocketSettings.TcpClientAutoReconnectMinInterval">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Socket.SocketSettings.UdpServerSendModeDefault">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.#ctor">
+            <summary>
+            Creates new port settings with defaults.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary>
+            Creates new port settings with defaults.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.#ctor(MKY.IO.Serial.Socket.SocketType)">
+            <summary>
+            Creates new port settings with specified arguments.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.#ctor(MKY.IO.Serial.Socket.SocketType,System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates new port settings with specified arguments.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.#ctor(MKY.IO.Serial.Socket.SocketType,System.String,System.Int32,System.Int32,MKY.Net.IPNetworkInterfaceDescriptorPair)">
+            <summary>
+            Creates new port settings with specified arguments.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.#ctor(MKY.IO.Serial.Socket.SocketType,System.String,System.Int32,System.Int32,MKY.Net.IPNetworkInterfaceDescriptorPair,System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates new port settings with specified arguments.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.#ctor(MKY.IO.Serial.Socket.SocketType,System.String,System.Int32,System.Int32,MKY.Net.IPNetworkInterfaceDescriptorPair,System.String,System.Int32,System.Int32,MKY.IO.Serial.IntervalSettingTuple,MKY.IO.Serial.Socket.UdpServerSendMode)">
+            <summary>
+            Creates new port settings with specified arguments.
+            </summary>
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.#ctor(MKY.IO.Serial.Socket.SocketSettings)">
+            <summary>
+            Creates new port settings from <paramref name="rhs"/>.
+            </summary>
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.Type">
+            <remarks>
+            Named 'Type' even though same as <see cref="T:System.Type"/>. But using this property
+            as <code>Socket.Type</code> is more intuitive than <code>Socket.SocketType</code>.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.RemoteHost">
+            <remarks>
+            This 'EnumEx' cannot be serialized, thus, the helper below is used for serialization.
+            Still, this settings object shall provide an 'EnumEx' for full control of the setting.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.RemoteHost_ForSerialization">
+            <remarks>
+            Must be string because an 'EnumEx' cannot be serialized.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.RemotePort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.RemoteTcpPort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.RemoteUdpPort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.RemoteEndPointString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.LocalInterface">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.LocalFilter">
+            <remarks>
+            This 'EnumEx' cannot be serialized, thus, the helper below is used for serialization.
+            Still, this settings object shall provide an 'EnumEx' for full control of the setting.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.LocalFilter_ForSerialization">
+            <remarks>
+            Must be string because an 'EnumEx' cannot be serialized.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.LocalPort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.LocalTcpPort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.LocalUdpPort">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.TcpClientAutoReconnect">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Socket.SocketSettings.UdpServerSendMode">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.ToShortEndPointString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.Equals(MKY.IO.Serial.Socket.SocketSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.op_Equality(MKY.IO.Serial.Socket.SocketSettings,MKY.IO.Serial.Socket.SocketSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.op_Inequality(MKY.IO.Serial.Socket.SocketSettings,MKY.IO.Serial.Socket.SocketSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.Parse(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for socket settings and returns a corresponding settings object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Socket.SocketSettings.TryParse(System.String,MKY.IO.Serial.Socket.SocketSettings@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for socket settings and returns a corresponding settings object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+    </members>
+</doc>

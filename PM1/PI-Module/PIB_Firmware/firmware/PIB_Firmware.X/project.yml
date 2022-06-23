@@ -1,0 +1,100 @@
+---
+
+# Notes:
+# Sample project C code is not presently written to produce a release artifact.
+# As such, release build options are disabled.
+# This sample, therefore, only demonstrates running a collection of unit tests.
+
+:project:
+  :use_exceptions: FALSE
+  :use_test_preprocessor: TRUE
+#  :use_auxiliary_dependencies: TRUE
+  :use_deep_dependencies: TRUE
+  :build_root: unit_test_build
+  # :release_build: TRUE
+  :test_file_prefix: test_
+
+
+
+:environment: []
+
+:extension:
+  :executable: .out
+
+:paths:
+  :test:
+    # - +:test/unit_test/**
+    - +:test/unit_test/date_and_time
+#    - -:test/support
+  :source:
+    - ./../src/**
+#  :support:
+#    - test/support
+#  :dependencies:
+    #- unit_test_build/test/dependencies
+
+:defines:
+  :common: &common_defines []
+  :test:
+    - *common_defines
+    - UNIT_TEST
+    #- UNITY_EXCLUDE_STDINT_H
+    #- UNITY_INCLUDE_CONFIG_H
+    #- _GCC_WRAP_STDINT_H
+  :test_preprocess:
+    - *common_defines
+    - UNIT_TEST
+
+:cmock:
+  :when_no_prototypes: :warn
+  :enforce_strict_ordering: TRUE
+  :plugins:
+    - :ignore
+    - :callback
+    - :ignore_arg
+    - :return_thru_ptr
+    - :expect_any_args
+    - :array
+  :treat_as:
+    uint8:    HEX8
+    uint16:   HEX16
+    uint32:   UINT32
+    int8:     INT8
+    bool:     UINT8
+
+:tools:
+# Ceedling defaults to using gcc for compiling, linking, etc.
+# As [:tools] is blank, gcc will be used (so long as it's in your system path)
+# See documentation to configure a given toolchain for use
+:tools:
+#  :test_includes_preprocessor:
+#    :executable: gcc
+    #:arguments:
+      #- -std=c99
+:tools:
+  :test_compiler:
+    #:executable: c:\MinGW\bin\gcc.exe
+    :executable: gcc
+    :arguments:
+      - -std=c99
+      - -D$: COLLECTION_DEFINES_TEST_AND_VENDOR
+      - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+      #- -Wall
+      - -g
+      - -c "${1}"
+      - -o "${2}"
+      - -Werror=return-type
+        
+:tools_test_linker:
+  :arguments:
+    - -lm
+
+:plugins:
+  :load_paths:
+    - vendor/ceedling/plugins
+  :enabled:
+    - stdout_pretty_tests_report
+    #- stdout_ide_tests_report
+    - xml_tests_report
+    - gcov
+...

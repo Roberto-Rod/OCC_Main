@@ -1,0 +1,19 @@
+---
+:source:
+  :path: test
+  :file: test_a.c
+:successes:
+- :test: test_a
+  :line: 8
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 1
+  :failed: 0
+  :ignored: 0
+:stdout:
+- Running a()
+:time: 0.11133960000006482

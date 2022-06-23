@@ -1,0 +1,10 @@
+a39 6
+
+
+// SCU 
+uint8_t errorCount = 0;
+void logError ( const uint16_t errorNo );
+
+a89 2
+       logError((8<<9)+errorCount++);   // SCU   
+      

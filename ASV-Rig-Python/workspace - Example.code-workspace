@@ -1,0 +1,14 @@
+{
+	"folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "autoDocstring.docstringFormat": "sphinx",
+        "files.trimTrailingWhitespace": true,
+        "terminal.integrated.env.windows": {
+            "PYTHONPATH": "C:/Users/ASV-rig/Documents/ASV-Rig-Python"
+        }
+    }
+}

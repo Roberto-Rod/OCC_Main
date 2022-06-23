@@ -1,0 +1,54 @@
+function [] = create_test_file_setup( fileID )
+
+    fprintf(fileID,'\n');
+    fprintf(fileID,'/* ************************************************************************** */\n');
+    fprintf(fileID,'/* Section: File Scope or Global Data                                         */\n');
+    fprintf(fileID,'/* ************************************************************************** */\n');
+    fprintf(fileID,'/** This enum variable ensures that the stack_monitoring code has been executed once */\n');
+    fprintf(fileID,'typedef enum {FIRST, CONSECUTIVE} run_time;\n');
+    fprintf(fileID,'/** This variable stores amount of unused stack (in bytes) */\n');
+    fprintf(fileID,'unsigned int unused_stack;\n');
+    fprintf(fileID,'\n');
+    fprintf(fileID,'/* ************************************************************************** */\n');
+    fprintf(fileID,'/* Section: Local Functions                                                   */\n');
+    fprintf(fileID,'/* ************************************************************************** */\n');
+    fprintf(fileID,'\n');
+    fprintf(fileID,'/* ************************************************************************** */\n');
+    fprintf(fileID,'/* Section: Interface Functions                                               */\n');
+    fprintf(fileID,'/* ************************************************************************** */\n');
+    fprintf(fileID,'\n');
+    fprintf(fileID,'/* ************************************************************************** */\n');
+    fprintf(fileID,'/** \n');
+    fprintf(fileID,' * @brief            This function contains code to be executed before unit\n');
+    fprintf(fileID,' *                   tests.\n');
+    fprintf(fileID,' *\n');
+    fprintf(fileID,' * @note             For testing npda.c, memory monitoring is enabled. \n');
+    fprintf(fileID,' */\n');
+    fprintf(fileID,'/* ************************************************************************** */\n');
+    fprintf(fileID,'void setUp(void)\n');
+    fprintf(fileID,'{\n');
+    fprintf(fileID,'    static run_time run_time = FIRST;\n');
+    fprintf(fileID,'    if(run_time == FIRST)\n');
+    fprintf(fileID,'    {\n');
+    fprintf(fileID,'        MEMORY_OBJ mem_state;\n');
+    fprintf(fileID,'        stack_monitoring_init(&mem_state);\n');
+    fprintf(fileID,'        unused_stack = stack_monitoring_measure_unused_stack();\n');
+    fprintf(fileID,'        UnityPrint("TEST FILE: test_m_npda.c: ");\n');
+    fprintf(fileID,'        UnityPrint("Data mem usage: ");\n');
+    fprintf(fileID,'		  UnityPrintNumberUnsigned(mem_state.data_size);\n');
+    fprintf(fileID,'        UnityPrint("b. Heap size: ");\n');
+    fprintf(fileID,'		  UnityPrintNumberUnsigned(mem_state.heap_size);\n');
+    fprintf(fileID,'        UnityPrint("b. Stack size: ");\n');
+    fprintf(fileID,'		  UnityPrintNumberUnsigned(mem_state.stack_size);\n');
+    fprintf(fileID,'        UnityPrint("b of which ");\n');
+    fprintf(fileID,'		  UnityPrintNumberUnsigned(mem_state.stack_size - unused_stack);\n');
+    fprintf(fileID,'        UnityPrint("b are used. ");\n');
+    fprintf(fileID,'		  \n');
+    fprintf(fileID,'        run_time = CONSECUTIVE;\n');
+    fprintf(fileID,'        \n');
+    fprintf(fileID,'    }\n');
+    fprintf(fileID,'\n');
+    fprintf(fileID,'}\n');
+    fprintf(fileID,'\n');
+    
+end

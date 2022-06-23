@@ -1,0 +1,72 @@
+
+Psect Usage Map:
+
+ Psect      | Contents                       | Memory Range  | Size
+------------|--------------------------------|---------------|--------------
+ reset_vec  | Reset vector                   | 0000h - 0001h |    2 words  
+ text2      | Program and library code       | 0002h - 0003h |    2 words  
+ intentry   | Interrupt context entry code   | 0004h - 002Ch |   41 words  
+ end_init   | Initialization code            | 002Dh - 002Eh |    2 words  
+ text32     | Program and library code       | 002Fh - 0419h | 1003 words  
+ text104    | Program and library code       | 041Ah - 06CFh |  694 words  
+ text195    | Program and library code       | 06D0h - 07E4h |  277 words  
+ text27     | Program and library code       | 07E5h - 07FFh |   27 words  
+ text192    | Program and library code       | 0800h - 0800h |    1 word   
+ text11     | Program and library code       | 0801h - 0FFFh | 2047 words  
+ text194    | Program and library code       | 1000h - 1000h |    1 word   
+ text198    | Program and library code       | 1001h - 1002h |    2 words  
+ text13     | Program and library code       | 1003h - 17FFh | 2045 words  
+ text142    | Program and library code       | 19C2h - 19C7h |    6 words  
+ clrtext    | Memory clearing code           | 19C8h - 19CDh |    6 words  
+ inittext   |                                | 19CEh - 19D3h |    6 words  
+ text138    | Program and library code       | 19D4h - 19DCh |    9 words  
+ text137    | Program and library code       | 19DDh - 19E5h |    9 words  
+ text7      | Program and library code       | 19E6h - 19EEh |    9 words  
+ text95     | Program and library code       | 19EFh - 19FCh |   14 words  
+ text15     | Program and library code       | 19FDh - 1A0Eh |   18 words  
+ text92     | Program and library code       | 1A0Fh - 1A22h |   20 words  
+ text43     | Program and library code       | 1A23h - 1A3Ah |   24 words  
+ text180    | Program and library code       | 1A3Bh - 1A55h |   27 words  
+ text190    | Program and library code       | 1A56h - 1A77h |   34 words  
+ text78     | Program and library code       | 1A78h - 1A9Dh |   38 words  
+ idataBANK3 | Bank 3 data (ROM image)        | 1A9Eh - 1AC3h |   38 words  
+ text74     | Program and library code       | 1AC4h - 1AEDh |   42 words  
+ text70     | Program and library code       | 1AEEh - 1B19h |   44 words  
+ text24     | Program and library code       | 1B1Ah - 1B6Dh |   84 words  
+ text44     | Program and library code       | 1B6Eh - 1BCDh |   96 words  
+ text45     | Program and library code       | 1BCEh - 1C39h |  108 words  
+ text185    | Program and library code       | 1C3Ah - 1CA6h |  109 words  
+ text134    | Program and library code       | 1CA7h - 1D47h |  161 words  
+ text6      | Program and library code       | 1D48h - 1DF7h |  176 words  
+ text102    | Program and library code       | 1DF8h - 1EC4h |  205 words  
+ text63     | Program and library code       | 1EC5h - 1FFFh |  315 words  
+            |                                |               |              
+ stringtext | Strings and constant data      | 1800h - 184Fh |   80 words  
+ stringtext | Strings and constant data      | 1850h - 1882h |   51 words  
+ stringtext | Strings and constant data      | 189Bh - 18A8h |   14 words  
+            |                                |               |              
+ swtext3    |                                | 1883h - 189Ah |   24 words  
+ swtext1    |                                | 18A9h - 18B6h |   14 words  
+ swtext2    |                                | 18B7h - 18C2h |   12 words  
+------------|--------------------------------|---------------|--------------
+ cstackCOMM | Stack in common memory         | 0070h - 0078h |    9 bytes  
+ bssCOMMON  | RAM variables in common memory | 0079h - 007Dh |    5 bytes  
+            |                                |               |              
+ cstackBANK | Stack in bank 0                | 0020h - 006Fh |   80 bytes  
+            |                                |               |              
+ bssBANK1   | BSS variables in bank 1        | 00A0h - 00C4h |   37 bytes  
+ cstackBANK | Stack in bank 1                | 00C5h - 00E8h |   36 bytes  
+ dataBANK1  | Data variables in bank 1       | 00E9h - 00EEh |    6 bytes  
+            |                                |               |              
+ bssBANK2   | BSS variables in bank 2        | 0120h - 016Fh |   80 bytes  
+            |                                |               |              
+ bssBANK3   | BSS variables in bank 3        | 01A0h - 01C7h |   40 bytes  
+ dataBANK3  | Data variables in bank 3       | 01C8h - 01EDh |   38 bytes  
+            |                                |               |              
+ bssBANK4   | BSS variables in bank 4        | 0220h - 023Fh |   32 bytes  
+            |                                |               |              
+ abs_s1     | Absolute RAM variables         | 007Eh - 007Fh |    2 bytes  
+------------|--------------------------------|---------------|--------------
+ config     |                                | 8007h - 8008h |    2 words  
+------------|--------------------------------|---------------|--------------
+

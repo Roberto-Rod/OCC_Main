@@ -1,0 +1,58 @@
+Module ID, Module name, SOUP?, Layer (0-application 1-driver 2-Hardware), description (no commas!), files
+PDA-CI-001, Debugging communication module, 0, 1, Provides functionality related to debugging communication., debug.c, debug.h
+PDA-CI-002, Digital to Analog Converter module, 0, 1, Driver-level module providing functionality related to the Digital to Analog Converter AD5667., drv_dac_ad5667r.c, drv_dac_ad5667r.h
+PDA-CI-003, Digital Potentiometer module, 0, 1, Driver-level module porividing functionality related to the Digital Potentiometer AD5247., drv_dpot_ad5247.c, drv_dpot_ad5247.h
+PDA-CI-004, External Analog to Digital Converter module, 0, 1, Driver-level module providing functionality related to the Analogue to Digital Converter LTC2203. Responsible for zero-offset operations, drv_ext_adc.c, drv_ext_adc.h
+PDA-CI-005, I2C module, 0, 1, Provides driver-level functionality related to I2C communication., drv_i2c4.c, drv_i2c4.h
+PDA-CI-006, Laser driver module, 0, 1, Provides driver-level functionality related to turning the laser on and off., drv_laser.c, drv_laser.h
+PDA-CI-007, PDA-LSC communication logic module, 0, 0, Provides state machine for the communication with the LSC PESS., drv_lsc.c, drv_lsc.h
+PDA-CI-008, EEPROM module, 0, 1, Provides driver-level functionality related to EEPROM N95256., drv_N95256.c, drv_N95256.h
+PDA-CI-009, PDA-LSC communication module, 0, 1, Provides driver-level functionality related to the communication with the LSC PESS., dspic_comms.c, dspic_comms.h
+PDA-CI-010, Main application module, 0, 0, Provides main application framework., main.c, pdab.c, pdab.h, pdab_types.h, configuration.h, definitions.h, user.h
+PDA-CI-011, Maths module, 0, 0, Provides mathematical functions., maths_library.c, maths_library.h
+PDA-CI-012, Message exchange module, 0, 0, Provides application-level functionality related to communication with LSC and PI PESS., message_exchange.c, message_exchange.h
+PDA-CI-013, NPDA module, 0, 0, Provides functionality related to NPDA algorithm that calculates corneal thickness from scan data., npda.c, npda.h, npda_tools.c, npda_tools.h
+PDA-CI-014, Scanning logic module, 0, 0, Provides functionality related to logic controlling the scanning process., pdab_scan_functions.c, pdab_scan_functions.h
+PDA-CI-015, USB application-level module, 0, 0, Provides application-level functionality related to USB processing., pdab_usb_functions.c, pdab_usb_functions.h
+PDA-CI-016, PDA-PI communication module, 0, 1, Provides driver-level functionality related to the communication with the PI PESS., pic_comms.c, pic_comms.h
+PDA-CI-017, Scanning module, 0, 1, Provides functionality related to scan processing and scan pre-selection., scan_processing.c, scan_processing.h
+PDA-CI-018, USB module, 1, 1, Provides driver-level functionality related to USB., driver.h, driver_common.h, drv_usb.h, drv_usb_external_dependencies.h, drv_usbhs.h, drv_usbhs_local.h, drv_usbhs_variant_mapping.h, plib_usbhs.h, plib_usbhs_header.h, usbhs_ClockResetControl_Default.h, usbhs_ClockResetControl_Unsupported.h, usbhs_EndpointFIFO_Default.h, usbhs_EndpointFIFO_Unsupported.h, usbhs_EndpointOperations_Default.h, usbhs_EndpointOperations_Unsupported.h, usbhs_EP0Status_Default.h, usbhs_EP0Status_Unsupported.h, usbhs_HighSpeedSupport_Default.h, usbhs_HighSpeedSupport_Unsupported.h, usbhs_Interrupts_Default.h, usbhs_Interrupts_Unsupported.h, usbhs_ModuleControl_Default.h, usbhs_ModuleControl_Unsupported.h, usbhs_registers.h, usbhs_RxEPStatus_Default.h, usbhs_RxEPStatus_Unsupported.h, usbhs_SoftReset_Default.h, usbhs_SoftReset_Unsupported.h, usbhs_TxEPStatus_Default.h, usbhs_TxEPStatus_Unsupported.h, usbhs_USBIDControl_Default.h, usbhs_USBIDControl_Unsupported.h, usbhs_registers.h, usb_device_function_driver.h, usb_device_local.h, usb_device_mapping.h, usb_external_dependencies.h, usb_chapter_9.h, usb_common.h, usb_device.h, usb_host.h, usb_host_client_driver.h, usb_host_hub_interface.h, usb_hub.h, drv_usbhs.c, drv_usbhs_device.c, usb_device.c, usb_device_endpoint_functions.c, usb_device_init_data.c
+PDA-CI-019, System module, 1, 1, Provides functionality related to various system functions including: Dynamic Memory Access/interrupts/system time/stdio., sys_debug.h, sys_dma.c, sys_dma.h, sys_dma_mapping.h,sys_int.c, sys_int.h, sys_int_mapping.h, sys_ports.h, sys_ports_mapping.h, system.h, system_common.h, system_module.h, sys_time.c, sys_time.h, sys_time_definitions.h, sys_time_local.h, toolchain_specifics.h, tasks.c, xc32_monitor.c
+PDA-CI-020, System initialisation module, 1, 0, Provides system initialisation functionality., initialization.c
+PDA-CI-021, Exceptions module, 1, 1, Provides functionality related to exceptions., exceptions.c
+PDA-CI-022, ADC module, 1, 1, Provides functionality related to high speed Analogue to Digital Converter., plib_adchs.c, plib_adchs.h, plib_adchs_common.h
+PDA-CI-023, Clock module, 1, 1, Provides functionality related to clock., plib_clk.c, plib_clk.h
+PDA-CI-024, Comparator module, 1, 1, Provides functionality related to comparator., plib_cmp.c, plib_cmp.h, plib_cvr.c, plib_cvr.h
+PDA-CI-025, DMA module, 1, 1, Provides functionality related to the Dynamic Memory Access., plib_dmac.c, plib_dmac.h
+PDA-CI-026, Interrupt manager module, 1, 1, Provides functionality related to interrupt management., plib_evic.c, plib_evic.h, interrupts.c
+PDA-CI-027, GPIO module, 1, 1, Provides GPIO peripheral functionality., plib_gpio.c, plib_gpio.h
+PDA-CI-028, Parallel port module, 1, 1, Provides functionality related to the parallel port., plib_pmp.c, plib_pmp.h
+PDA-CI-029, Timer module, 1, 1, Provides functionality related to the Timer peripherals., plib_tmr2.c, plib_tmr2.h, plib_tmr3.c, plib_tmr3.h, plib_tmr4.c, plib_tmr4.h, plib_tmr1.c, plib_tmr1.h
+PDA-CI-030, UART module, 1, 1, Provides functionality related to the UART peripherals., plib_uart1.c, plib_uart1.h, plib_uart3.c, plib_uart3.h, plib_uart4.c, plib_uart4.h, plib_uart_common.h
+PDA-CI-031, p32mz1024efh100 library, 1, 1, Generic utility functions for PIC32MZ1024EFH100., p32mz1024efh100.h, device.h
+PDA-CI-032, stdint library, 1, 1, Standard integer types library., stdint.h
+PDA-CI-033, stdbool library, 1, 1, Standard boolean types library., stdbool.h
+PDA-CI-034, xc library, 1, 1, Library providing support for the specific PESS device., xc.h
+PDA-CI-035, string library, 1, 1, Library providing string support functions., string.h
+PDA-CI-036, limits library, 1, 1, Library providing limits for common variable types., limits.h
+PDA-CI-037, stddef library, 1, 1, Library providing standard definitions., stddef.h
+PDA-CI-038, attribs library, 1, 1, Library providing macros for function and variable attributes., attribs.h
+PDA-CI-039, p32xxxx library, 1, 1, Library providing backwards compatibility for __C32_UART macro., p32xxxx.h
+PDA-CI-040, types library, 1, 1, Library providing system type functions., types.h
+PDA-CI-041, math library, 1, 1, Library providing maths functions., math.h
+PDA-CI-042, float library, 1, 1, Library providing characteristics of floating types., float.h
+PDA-CI-043, stdlib library, 1, 1, Standard utility functions library., stdlib.h
+PDA-CI-044, stdarg library, 1, 1, Library providing functionality related to accepting indefinite number of arguments., stdarg.h
+PDA-CI-045, stdio library, 1, 1, Library providing standard I/O support functions., stdio.h
+PDA-CI-046, cp0defs library, 1, 1, Contains register definitions for the CP0 registers., cp0defs.h
+PDA-CI-047, kmem library, 1, 1, Macros for kseg address translation., kmem.h
+PDA-CI-048, assert library, 1, 1, Library providing standard assertions., assert.h
+HW-001, Master clock 25MHz, 0, 2, N/A, PDA-CI-023
+HW-002, ADC LTC2203, 0, 2, N/A, PDA-CI-028
+HW-003, DAC, 0, 2, N/A, PDA-CI-005
+HW-004, PGA & Filter, 0, 2, N/A, PDA-CI-005
+HW-005, Differential Amplifier, 0, 2, N/A, PDA-CI-027
+HW-006, Laser Driver, 0, 2, N/A, PDA-CI-027
+HW-007, PI, 0, 2, N/A, PDA-CI-030
+HW-008, LSC, 0, 2, N/A, PDA-CI-030, PDA-CI-027
+HW-009, USB, 0, 2, N/A, PDA-CI-018

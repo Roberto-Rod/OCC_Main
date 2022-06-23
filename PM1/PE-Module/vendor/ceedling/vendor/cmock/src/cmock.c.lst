@@ -1,0 +1,784 @@
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 1
+
+
+   1              		.file	1 "cmock.c"
+   2              		.section .mdebug.abi32
+   3              		.previous
+   4              		.gnu_attribute 4, 4
+   5              		.globl	CMockStringOutOfMemory
+   6              		.section	.rodata,code
+   7              		.align	2
+   8              	.LC0:
+   9 0000 434D6F63 		.ascii	"CMock has run out of memory. Please allocate more.\000"
+   9      6B206861 
+   9      73207275 
+   9      6E206F75 
+   9      74206F66 
+  10              		.section	.sdata,data
+  11              		.align	2
+  12              		.type	CMockStringOutOfMemory, @object
+  13              		.size	CMockStringOutOfMemory, 4
+  14              	CMockStringOutOfMemory:
+  15 0000 00000000 		.word	.LC0
+  16              		.globl	CMockStringCalledMore
+  17              		.section	.rodata,code
+  18 0033 00       		.align	2
+  19              	.LC1:
+  20 0034 43616C6C 		.ascii	"Called more times than expected.\000"
+  20      6564206D 
+  20      6F726520 
+  20      74696D65 
+  20      73207468 
+  21              		.section	.sdata,data
+  22              		.align	2
+  23              		.type	CMockStringCalledMore, @object
+  24              		.size	CMockStringCalledMore, 4
+  25              	CMockStringCalledMore:
+  26 0004 34000000 		.word	.LC1
+  27              		.globl	CMockStringCalledLess
+  28              		.section	.rodata,code
+  29 0055 000000   		.align	2
+  30              	.LC2:
+  31 0058 43616C6C 		.ascii	"Called fewer times than expected.\000"
+  31      65642066 
+  31      65776572 
+  31      2074696D 
+  31      65732074 
+  32              		.section	.sdata,data
+  33              		.align	2
+  34              		.type	CMockStringCalledLess, @object
+  35              		.size	CMockStringCalledLess, 4
+  36              	CMockStringCalledLess:
+  37 0008 58000000 		.word	.LC2
+  38              		.globl	CMockStringCalledEarly
+  39              		.section	.rodata,code
+  40 007a 0000     		.align	2
+  41              	.LC3:
+  42 007c 43616C6C 		.ascii	"Called earlier than expected.\000"
+  42      65642065 
+  42      61726C69 
+  42      65722074 
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 2
+
+
+  42      68616E20 
+  43              		.section	.sdata,data
+  44              		.align	2
+  45              		.type	CMockStringCalledEarly, @object
+  46              		.size	CMockStringCalledEarly, 4
+  47              	CMockStringCalledEarly:
+  48 000c 7C000000 		.word	.LC3
+  49              		.globl	CMockStringCalledLate
+  50              		.section	.rodata,code
+  51 009a 0000     		.align	2
+  52              	.LC4:
+  53 009c 43616C6C 		.ascii	"Called later than expected.\000"
+  53      6564206C 
+  53      61746572 
+  53      20746861 
+  53      6E206578 
+  54              		.section	.sdata,data
+  55              		.align	2
+  56              		.type	CMockStringCalledLate, @object
+  57              		.size	CMockStringCalledLate, 4
+  58              	CMockStringCalledLate:
+  59 0010 9C000000 		.word	.LC4
+  60              		.globl	CMockStringCallOrder
+  61              		.section	.rodata,code
+  62              		.align	2
+  63              	.LC5:
+  64 00b8 43616C6C 		.ascii	"Called out of order.\000"
+  64      6564206F 
+  64      7574206F 
+  64      66206F72 
+  64      6465722E 
+  65              		.section	.sdata,data
+  66              		.align	2
+  67              		.type	CMockStringCallOrder, @object
+  68              		.size	CMockStringCallOrder, 4
+  69              	CMockStringCallOrder:
+  70 0014 B8000000 		.word	.LC5
+  71              		.globl	CMockStringIgnPreExp
+  72              		.section	.rodata,code
+  73 00cd 000000   		.align	2
+  74              	.LC6:
+  75 00d0 49676E6F 		.ascii	"IgnoreArg called before Expect.\000"
+  75      72654172 
+  75      67206361 
+  75      6C6C6564 
+  75      20626566 
+  76              		.section	.sdata,data
+  77              		.align	2
+  78              		.type	CMockStringIgnPreExp, @object
+  79              		.size	CMockStringIgnPreExp, 4
+  80              	CMockStringIgnPreExp:
+  81 0018 D0000000 		.word	.LC6
+  82              		.globl	CMockStringPtrPreExp
+  83              		.section	.rodata,code
+  84              		.align	2
+  85              	.LC7:
+  86 00f0 52657475 		.ascii	"ReturnThruPtr called before Expect.\000"
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 3
+
+
+  86      726E5468 
+  86      72755074 
+  86      72206361 
+  86      6C6C6564 
+  87              		.section	.sdata,data
+  88              		.align	2
+  89              		.type	CMockStringPtrPreExp, @object
+  90              		.size	CMockStringPtrPreExp, 4
+  91              	CMockStringPtrPreExp:
+  92 001c F0000000 		.word	.LC7
+  93              		.globl	CMockStringPtrIsNULL
+  94              		.section	.rodata,code
+  95              		.align	2
+  96              	.LC8:
+  97 0114 506F696E 		.ascii	"Pointer is NULL.\000"
+  97      74657220 
+  97      6973204E 
+  97      554C4C2E 
+  97      00
+  98              		.section	.sdata,data
+  99              		.align	2
+ 100              		.type	CMockStringPtrIsNULL, @object
+ 101              		.size	CMockStringPtrIsNULL, 4
+ 102              	CMockStringPtrIsNULL:
+ 103 0020 14010000 		.word	.LC8
+ 104              		.globl	CMockStringExpNULL
+ 105              		.section	.rodata,code
+ 106 0125 000000   		.align	2
+ 107              	.LC9:
+ 108 0128 45787065 		.ascii	"Expected NULL.\000"
+ 108      63746564 
+ 108      204E554C 
+ 108      4C2E00
+ 109              		.section	.sdata,data
+ 110              		.align	2
+ 111              		.type	CMockStringExpNULL, @object
+ 112              		.size	CMockStringExpNULL, 4
+ 113              	CMockStringExpNULL:
+ 114 0024 28010000 		.word	.LC9
+ 115              		.globl	CMockStringMismatch
+ 116              		.section	.rodata,code
+ 117 0137 00       		.align	2
+ 118              	.LC10:
+ 119 0138 46756E63 		.ascii	"Function called with unexpected argument value.\000"
+ 119      74696F6E 
+ 119      2063616C 
+ 119      6C656420 
+ 119      77697468 
+ 120              		.section	.sdata,data
+ 121              		.align	2
+ 122              		.type	CMockStringMismatch, @object
+ 123              		.size	CMockStringMismatch, 4
+ 124              	CMockStringMismatch:
+ 125 0028 38010000 		.word	.LC10
+ 126              		.section	.sbss,bss
+ 127              		.align	2
+ 128              		.type	CMock_Guts_Buffer, @object
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 4
+
+
+ 129              		.size	CMock_Guts_Buffer, 2052
+ 130              	CMock_Guts_Buffer:
+ 131 0000 00000000 		.space	2052
+ 131      00000000 
+ 131      00000000 
+ 131      00000000 
+ 131      00000000 
+ 132              		.section	.sdata,data
+ 133              		.align	2
+ 134              		.type	CMock_Guts_BufferSize, @object
+ 135              		.size	CMock_Guts_BufferSize, 4
+ 136              	CMock_Guts_BufferSize:
+ 137 002c 04080000 		.word	2052
+ 138              		.align	2
+ 139              		.type	CMock_Guts_FreePtr, @object
+ 140              		.size	CMock_Guts_FreePtr, 4
+ 141              	CMock_Guts_FreePtr:
+ 142 0030 04000000 		.word	4
+ 143              		.section	.text,code
+ 144              		.align	2
+ 145              		.globl	CMock_Guts_MemNew
+ 146              		.set	nomips16
+ 147              		.set	nomicromips
+ 148              		.ent	CMock_Guts_MemNew
+ 149              		.type	CMock_Guts_MemNew, @function
+ 150              	CMock_Guts_MemNew:
+ 151              		.frame	$fp,16,$31		# vars= 8, regs= 1/0, args= 0, gp= 0
+ 152              		.mask	0x40000000,-4
+ 153              		.fmask	0x00000000,0
+ 154              		.set	noreorder
+ 155              		.set	nomacro
+ 156              	# End mchp_output_function_prologue
+ 157 0000 F0FFBD27 		addiu	$sp,$sp,-16
+ 158 0004 0C00BEAF 		sw	$fp,12($sp)
+ 159 0008 21F0A003 		move	$fp,$sp
+ 160 000c 1000C4AF 		sw	$4,16($fp)
+ 161 0010 1000C28F 		lw	$2,16($fp)
+ 162 0014 04004014 		bne	$2,$0,.L2
+ 163 0018 00000000 		nop
+ 164              	
+ 165 001c 21100000 		move	$2,$0
+ 166 0020 2B000008 		j	.L3
+ 167 0024 00000000 		nop
+ 168              	
+ 169              	.L2:
+ 170 0028 1000C28F 		lw	$2,16($fp)
+ 171 002c 04004224 		addiu	$2,$2,4
+ 172 0030 1000C2AF 		sw	$2,16($fp)
+ 173 0034 1000C28F 		lw	$2,16($fp)
+ 174 0038 03004230 		andi	$2,$2,0x3
+ 175 003c 05004010 		beq	$2,$0,.L4
+ 176 0040 00000000 		nop
+ 177              	
+ 178 0044 1000C28F 		lw	$2,16($fp)
+ 179 0048 03004224 		addiu	$2,$2,3
+ 180 004c 0408027C 		ins	$2,$0,0,2
+ 181 0050 1000C2AF 		sw	$2,16($fp)
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 5
+
+
+ 182              	.L4:
+ 183 0054 2C00838F 		lw	$3,%gp_rel(CMock_Guts_BufferSize)($28)
+ 184 0058 3000828F 		lw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 185 005c 23186200 		subu	$3,$3,$2
+ 186 0060 1000C28F 		lw	$2,16($fp)
+ 187 0064 2B106200 		sltu	$2,$3,$2
+ 188 0068 04004010 		beq	$2,$0,.L5
+ 189 006c 00000000 		nop
+ 190              	
+ 191 0070 21100000 		move	$2,$0
+ 192 0074 2B000008 		j	.L3
+ 193 0078 00000000 		nop
+ 194              	
+ 195              	.L5:
+ 196 007c 3000828F 		lw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 197 0080 04004224 		addiu	$2,$2,4
+ 198 0084 0000C2AF 		sw	$2,0($fp)
+ 199 0088 3000838F 		lw	$3,%gp_rel(CMock_Guts_FreePtr)($28)
+ 200 008c 00008227 		addiu	$2,$28,%gp_rel(CMock_Guts_Buffer)
+ 201 0090 21106200 		addu	$2,$3,$2
+ 202 0094 000040AC 		sw	$0,0($2)
+ 203 0098 3000838F 		lw	$3,%gp_rel(CMock_Guts_FreePtr)($28)
+ 204 009c 1000C28F 		lw	$2,16($fp)
+ 205 00a0 21106200 		addu	$2,$3,$2
+ 206 00a4 300082AF 		sw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 207 00a8 0000C28F 		lw	$2,0($fp)
+ 208              	.L3:
+ 209 00ac 21E8C003 		move	$sp,$fp
+ 210 00b0 0C00BE8F 		lw	$fp,12($sp)
+ 211 00b4 1000BD27 		addiu	$sp,$sp,16
+ 212 00b8 0800E003 		j	$31
+ 213 00bc 00000000 		nop
+ 214              	
+ 215              		.set	macro
+ 216              		.set	reorder
+ 217              	# Begin mchp_output_function_epilogue
+ 218              	# End mchp_output_function_epilogue
+ 219              		.end	CMock_Guts_MemNew
+ 220              		.size	CMock_Guts_MemNew, .-CMock_Guts_MemNew
+ 221              		.align	2
+ 222              		.globl	CMock_Guts_MemChain
+ 223              		.set	nomips16
+ 224              		.set	nomicromips
+ 225              		.ent	CMock_Guts_MemChain
+ 226              		.type	CMock_Guts_MemChain, @function
+ 227              	CMock_Guts_MemChain:
+ 228              		.frame	$fp,24,$31		# vars= 16, regs= 1/0, args= 0, gp= 0
+ 229              		.mask	0x40000000,-4
+ 230              		.fmask	0x00000000,0
+ 231              		.set	noreorder
+ 232              		.set	nomacro
+ 233              	# End mchp_output_function_prologue
+ 234 00c0 E8FFBD27 		addiu	$sp,$sp,-24
+ 235 00c4 1400BEAF 		sw	$fp,20($sp)
+ 236 00c8 21F0A003 		move	$fp,$sp
+ 237 00cc 1800C4AF 		sw	$4,24($fp)
+ 238 00d0 1C00C5AF 		sw	$5,28($fp)
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 6
+
+
+ 239 00d4 1800C28F 		lw	$2,24($fp)
+ 240 00d8 04004014 		bne	$2,$0,.L7
+ 241 00dc 00000000 		nop
+ 242              	
+ 243 00e0 1C00C28F 		lw	$2,28($fp)
+ 244 00e4 7A000008 		j	.L8
+ 245 00e8 00000000 		nop
+ 246              	
+ 247              	.L7:
+ 248 00ec 1800C28F 		lw	$2,24($fp)
+ 249 00f0 0400422C 		sltu	$2,$2,4
+ 250 00f4 06004014 		bne	$2,$0,.L9
+ 251 00f8 00000000 		nop
+ 252              	
+ 253 00fc 3000828F 		lw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 254 0100 1800C38F 		lw	$3,24($fp)
+ 255 0104 2B106200 		sltu	$2,$3,$2
+ 256 0108 04004014 		bne	$2,$0,.L10
+ 257 010c 00000000 		nop
+ 258              	
+ 259              	.L9:
+ 260 0110 21100000 		move	$2,$0
+ 261 0114 7A000008 		j	.L8
+ 262 0118 00000000 		nop
+ 263              	
+ 264              	.L10:
+ 265 011c 1C00C28F 		lw	$2,28($fp)
+ 266 0120 0400422C 		sltu	$2,$2,4
+ 267 0124 06004014 		bne	$2,$0,.L11
+ 268 0128 00000000 		nop
+ 269              	
+ 270 012c 3000828F 		lw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 271 0130 1C00C38F 		lw	$3,28($fp)
+ 272 0134 2B106200 		sltu	$2,$3,$2
+ 273 0138 04004014 		bne	$2,$0,.L12
+ 274 013c 00000000 		nop
+ 275              	
+ 276              	.L11:
+ 277 0140 21100000 		move	$2,$0
+ 278 0144 7A000008 		j	.L8
+ 279 0148 00000000 		nop
+ 280              	
+ 281              	.L12:
+ 282 014c 1800C38F 		lw	$3,24($fp)
+ 283 0150 00008227 		addiu	$2,$28,%gp_rel(CMock_Guts_Buffer)
+ 284 0154 21106200 		addu	$2,$3,$2
+ 285 0158 0400C2AF 		sw	$2,4($fp)
+ 286 015c 1C00C38F 		lw	$3,28($fp)
+ 287 0160 00008227 		addiu	$2,$28,%gp_rel(CMock_Guts_Buffer)
+ 288 0164 21106200 		addu	$2,$3,$2
+ 289 0168 0800C2AF 		sw	$2,8($fp)
+ 290 016c 0400C28F 		lw	$2,4($fp)
+ 291 0170 0000C2AF 		sw	$2,0($fp)
+ 292              	.L15:
+ 293 0174 0000C28F 		lw	$2,0($fp)
+ 294 0178 FCFF4224 		addiu	$2,$2,-4
+ 295 017c 0000428C 		lw	$2,0($2)
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 7
+
+
+ 296 0180 0C00C2AF 		sw	$2,12($fp)
+ 297 0184 3000828F 		lw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 298 0188 0C00C38F 		lw	$3,12($fp)
+ 299 018c 2B106200 		sltu	$2,$3,$2
+ 300 0190 04004014 		bne	$2,$0,.L13
+ 301 0194 00000000 		nop
+ 302              	
+ 303 0198 21100000 		move	$2,$0
+ 304 019c 7A000008 		j	.L8
+ 305 01a0 00000000 		nop
+ 306              	
+ 307              	.L13:
+ 308 01a4 0C00C28F 		lw	$2,12($fp)
+ 309 01a8 05004010 		beq	$2,$0,.L14
+ 310 01ac 00000000 		nop
+ 311              	
+ 312 01b0 0C00C38F 		lw	$3,12($fp)
+ 313 01b4 00008227 		addiu	$2,$28,%gp_rel(CMock_Guts_Buffer)
+ 314 01b8 21106200 		addu	$2,$3,$2
+ 315 01bc 0000C2AF 		sw	$2,0($fp)
+ 316              	.L14:
+ 317 01c0 0C00C28F 		lw	$2,12($fp)
+ 318 01c4 EBFF4014 		bne	$2,$0,.L15
+ 319 01c8 00000000 		nop
+ 320              	
+ 321 01cc 0000C28F 		lw	$2,0($fp)
+ 322 01d0 FCFF4224 		addiu	$2,$2,-4
+ 323 01d4 0800C48F 		lw	$4,8($fp)
+ 324 01d8 00008327 		addiu	$3,$28,%gp_rel(CMock_Guts_Buffer)
+ 325 01dc 23188300 		subu	$3,$4,$3
+ 326 01e0 000043AC 		sw	$3,0($2)
+ 327 01e4 1800C28F 		lw	$2,24($fp)
+ 328              	.L8:
+ 329 01e8 21E8C003 		move	$sp,$fp
+ 330 01ec 1400BE8F 		lw	$fp,20($sp)
+ 331 01f0 1800BD27 		addiu	$sp,$sp,24
+ 332 01f4 0800E003 		j	$31
+ 333 01f8 00000000 		nop
+ 334              	
+ 335              		.set	macro
+ 336              		.set	reorder
+ 337              	# Begin mchp_output_function_epilogue
+ 338              	# End mchp_output_function_epilogue
+ 339              		.end	CMock_Guts_MemChain
+ 340              		.size	CMock_Guts_MemChain, .-CMock_Guts_MemChain
+ 341              		.align	2
+ 342              		.globl	CMock_Guts_MemNext
+ 343              		.set	nomips16
+ 344              		.set	nomicromips
+ 345              		.ent	CMock_Guts_MemNext
+ 346              		.type	CMock_Guts_MemNext, @function
+ 347              	CMock_Guts_MemNext:
+ 348              		.frame	$fp,16,$31		# vars= 8, regs= 1/0, args= 0, gp= 0
+ 349              		.mask	0x40000000,-4
+ 350              		.fmask	0x00000000,0
+ 351              		.set	noreorder
+ 352              		.set	nomacro
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 8
+
+
+ 353              	# End mchp_output_function_prologue
+ 354 01fc F0FFBD27 		addiu	$sp,$sp,-16
+ 355 0200 0C00BEAF 		sw	$fp,12($sp)
+ 356 0204 21F0A003 		move	$fp,$sp
+ 357 0208 1000C4AF 		sw	$4,16($fp)
+ 358 020c 1000C28F 		lw	$2,16($fp)
+ 359 0210 0400422C 		sltu	$2,$2,4
+ 360 0214 06004014 		bne	$2,$0,.L17
+ 361 0218 00000000 		nop
+ 362              	
+ 363 021c 3000828F 		lw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 364 0220 1000C38F 		lw	$3,16($fp)
+ 365 0224 2B106200 		sltu	$2,$3,$2
+ 366 0228 04004014 		bne	$2,$0,.L18
+ 367 022c 00000000 		nop
+ 368              	
+ 369              	.L17:
+ 370 0230 21100000 		move	$2,$0
+ 371 0234 A4000008 		j	.L19
+ 372 0238 00000000 		nop
+ 373              	
+ 374              	.L18:
+ 375 023c 1000C38F 		lw	$3,16($fp)
+ 376 0240 00008227 		addiu	$2,$28,%gp_rel(CMock_Guts_Buffer)
+ 377 0244 21106200 		addu	$2,$3,$2
+ 378 0248 0000C2AF 		sw	$2,0($fp)
+ 379 024c 0000C28F 		lw	$2,0($fp)
+ 380 0250 FCFF4224 		addiu	$2,$2,-4
+ 381 0254 0000428C 		lw	$2,0($2)
+ 382 0258 0400C2AF 		sw	$2,4($fp)
+ 383 025c 0400C28F 		lw	$2,4($fp)
+ 384 0260 0200422C 		sltu	$2,$2,2
+ 385 0264 09004014 		bne	$2,$0,.L20
+ 386 0268 00000000 		nop
+ 387              	
+ 388 026c 3000828F 		lw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 389 0270 0400C38F 		lw	$3,4($fp)
+ 390 0274 2B106200 		sltu	$2,$3,$2
+ 391 0278 04004010 		beq	$2,$0,.L20
+ 392 027c 00000000 		nop
+ 393              	
+ 394 0280 0400C28F 		lw	$2,4($fp)
+ 395 0284 A4000008 		j	.L19
+ 396 0288 00000000 		nop
+ 397              	
+ 398              	.L20:
+ 399 028c 21100000 		move	$2,$0
+ 400              	.L19:
+ 401 0290 21E8C003 		move	$sp,$fp
+ 402 0294 0C00BE8F 		lw	$fp,12($sp)
+ 403 0298 1000BD27 		addiu	$sp,$sp,16
+ 404 029c 0800E003 		j	$31
+ 405 02a0 00000000 		nop
+ 406              	
+ 407              		.set	macro
+ 408              		.set	reorder
+ 409              	# Begin mchp_output_function_epilogue
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 9
+
+
+ 410              	# End mchp_output_function_epilogue
+ 411              		.end	CMock_Guts_MemNext
+ 412              		.size	CMock_Guts_MemNext, .-CMock_Guts_MemNext
+ 413              		.align	2
+ 414              		.globl	CMock_Guts_MemEndOfChain
+ 415              		.set	nomips16
+ 416              		.set	nomicromips
+ 417              		.ent	CMock_Guts_MemEndOfChain
+ 418              		.type	CMock_Guts_MemEndOfChain, @function
+ 419              	CMock_Guts_MemEndOfChain:
+ 420              		.frame	$fp,32,$31		# vars= 8, regs= 2/0, args= 16, gp= 0
+ 421              		.mask	0xc0000000,-4
+ 422              		.fmask	0x00000000,0
+ 423              		.set	noreorder
+ 424              		.set	nomacro
+ 425              	# End mchp_output_function_prologue
+ 426 02a4 E0FFBD27 		addiu	$sp,$sp,-32
+ 427 02a8 1C00BFAF 		sw	$31,28($sp)
+ 428 02ac 1800BEAF 		sw	$fp,24($sp)
+ 429 02b0 21F0A003 		move	$fp,$sp
+ 430 02b4 2000C4AF 		sw	$4,32($fp)
+ 431 02b8 2000C28F 		lw	$2,32($fp)
+ 432 02bc 1000C2AF 		sw	$2,16($fp)
+ 433 02c0 2000C28F 		lw	$2,32($fp)
+ 434 02c4 1400C2AF 		sw	$2,20($fp)
+ 435 02c8 BA000008 		j	.L22
+ 436 02cc 00000000 		nop
+ 437              	
+ 438              	.L23:
+ 439 02d0 1400C28F 		lw	$2,20($fp)
+ 440 02d4 1000C2AF 		sw	$2,16($fp)
+ 441 02d8 1000C48F 		lw	$4,16($fp)
+ 442 02dc 0000000C 		jal	CMock_Guts_MemNext
+ 443 02e0 00000000 		nop
+ 444              	
+ 445 02e4 1400C2AF 		sw	$2,20($fp)
+ 446              	.L22:
+ 447 02e8 1400C28F 		lw	$2,20($fp)
+ 448 02ec F8FF4014 		bne	$2,$0,.L23
+ 449 02f0 00000000 		nop
+ 450              	
+ 451 02f4 1000C28F 		lw	$2,16($fp)
+ 452 02f8 21E8C003 		move	$sp,$fp
+ 453 02fc 1C00BF8F 		lw	$31,28($sp)
+ 454 0300 1800BE8F 		lw	$fp,24($sp)
+ 455 0304 2000BD27 		addiu	$sp,$sp,32
+ 456 0308 0800E003 		j	$31
+ 457 030c 00000000 		nop
+ 458              	
+ 459              		.set	macro
+ 460              		.set	reorder
+ 461              	# Begin mchp_output_function_epilogue
+ 462              	# End mchp_output_function_epilogue
+ 463              		.end	CMock_Guts_MemEndOfChain
+ 464              		.size	CMock_Guts_MemEndOfChain, .-CMock_Guts_MemEndOfChain
+ 465              		.align	2
+ 466              		.globl	CMock_Guts_GetAddressFor
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 10
+
+
+ 467              		.set	nomips16
+ 468              		.set	nomicromips
+ 469              		.ent	CMock_Guts_GetAddressFor
+ 470              		.type	CMock_Guts_GetAddressFor, @function
+ 471              	CMock_Guts_GetAddressFor:
+ 472              		.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 473              		.mask	0x40000000,-4
+ 474              		.fmask	0x00000000,0
+ 475              		.set	noreorder
+ 476              		.set	nomacro
+ 477              	# End mchp_output_function_prologue
+ 478 0310 F8FFBD27 		addiu	$sp,$sp,-8
+ 479 0314 0400BEAF 		sw	$fp,4($sp)
+ 480 0318 21F0A003 		move	$fp,$sp
+ 481 031c 0800C4AF 		sw	$4,8($fp)
+ 482 0320 0800C28F 		lw	$2,8($fp)
+ 483 0324 0400422C 		sltu	$2,$2,4
+ 484 0328 0B004014 		bne	$2,$0,.L26
+ 485 032c 00000000 		nop
+ 486              	
+ 487 0330 3000828F 		lw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 488 0334 0800C38F 		lw	$3,8($fp)
+ 489 0338 2B106200 		sltu	$2,$3,$2
+ 490 033c 06004010 		beq	$2,$0,.L26
+ 491 0340 00000000 		nop
+ 492              	
+ 493 0344 0800C38F 		lw	$3,8($fp)
+ 494 0348 00008227 		addiu	$2,$28,%gp_rel(CMock_Guts_Buffer)
+ 495 034c 21106200 		addu	$2,$3,$2
+ 496 0350 D7000008 		j	.L27
+ 497 0354 00000000 		nop
+ 498              	
+ 499              	.L26:
+ 500 0358 21100000 		move	$2,$0
+ 501              	.L27:
+ 502 035c 21E8C003 		move	$sp,$fp
+ 503 0360 0400BE8F 		lw	$fp,4($sp)
+ 504 0364 0800BD27 		addiu	$sp,$sp,8
+ 505 0368 0800E003 		j	$31
+ 506 036c 00000000 		nop
+ 507              	
+ 508              		.set	macro
+ 509              		.set	reorder
+ 510              	# Begin mchp_output_function_epilogue
+ 511              	# End mchp_output_function_epilogue
+ 512              		.end	CMock_Guts_GetAddressFor
+ 513              		.size	CMock_Guts_GetAddressFor, .-CMock_Guts_GetAddressFor
+ 514              		.align	2
+ 515              		.globl	CMock_Guts_MemBytesCapacity
+ 516              		.set	nomips16
+ 517              		.set	nomicromips
+ 518              		.ent	CMock_Guts_MemBytesCapacity
+ 519              		.type	CMock_Guts_MemBytesCapacity, @function
+ 520              	CMock_Guts_MemBytesCapacity:
+ 521              		.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 522              		.mask	0x40000000,-4
+ 523              		.fmask	0x00000000,0
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 11
+
+
+ 524              		.set	noreorder
+ 525              		.set	nomacro
+ 526              	# End mchp_output_function_prologue
+ 527 0370 F8FFBD27 		addiu	$sp,$sp,-8
+ 528 0374 0400BEAF 		sw	$fp,4($sp)
+ 529 0378 21F0A003 		move	$fp,$sp
+ 530 037c 00080224 		li	$2,2048			# 0x800
+ 531 0380 21E8C003 		move	$sp,$fp
+ 532 0384 0400BE8F 		lw	$fp,4($sp)
+ 533 0388 0800BD27 		addiu	$sp,$sp,8
+ 534 038c 0800E003 		j	$31
+ 535 0390 00000000 		nop
+ 536              	
+ 537              		.set	macro
+ 538              		.set	reorder
+ 539              	# Begin mchp_output_function_epilogue
+ 540              	# End mchp_output_function_epilogue
+ 541              		.end	CMock_Guts_MemBytesCapacity
+ 542              		.size	CMock_Guts_MemBytesCapacity, .-CMock_Guts_MemBytesCapacity
+ 543              		.align	2
+ 544              		.globl	CMock_Guts_MemBytesFree
+ 545              		.set	nomips16
+ 546              		.set	nomicromips
+ 547              		.ent	CMock_Guts_MemBytesFree
+ 548              		.type	CMock_Guts_MemBytesFree, @function
+ 549              	CMock_Guts_MemBytesFree:
+ 550              		.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 551              		.mask	0x40000000,-4
+ 552              		.fmask	0x00000000,0
+ 553              		.set	noreorder
+ 554              		.set	nomacro
+ 555              	# End mchp_output_function_prologue
+ 556 0394 F8FFBD27 		addiu	$sp,$sp,-8
+ 557 0398 0400BEAF 		sw	$fp,4($sp)
+ 558 039c 21F0A003 		move	$fp,$sp
+ 559 03a0 2C00838F 		lw	$3,%gp_rel(CMock_Guts_BufferSize)($28)
+ 560 03a4 3000828F 		lw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 561 03a8 23106200 		subu	$2,$3,$2
+ 562 03ac 21E8C003 		move	$sp,$fp
+ 563 03b0 0400BE8F 		lw	$fp,4($sp)
+ 564 03b4 0800BD27 		addiu	$sp,$sp,8
+ 565 03b8 0800E003 		j	$31
+ 566 03bc 00000000 		nop
+ 567              	
+ 568              		.set	macro
+ 569              		.set	reorder
+ 570              	# Begin mchp_output_function_epilogue
+ 571              	# End mchp_output_function_epilogue
+ 572              		.end	CMock_Guts_MemBytesFree
+ 573              		.size	CMock_Guts_MemBytesFree, .-CMock_Guts_MemBytesFree
+ 574              		.align	2
+ 575              		.globl	CMock_Guts_MemBytesUsed
+ 576              		.set	nomips16
+ 577              		.set	nomicromips
+ 578              		.ent	CMock_Guts_MemBytesUsed
+ 579              		.type	CMock_Guts_MemBytesUsed, @function
+ 580              	CMock_Guts_MemBytesUsed:
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 12
+
+
+ 581              		.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 582              		.mask	0x40000000,-4
+ 583              		.fmask	0x00000000,0
+ 584              		.set	noreorder
+ 585              		.set	nomacro
+ 586              	# End mchp_output_function_prologue
+ 587 03c0 F8FFBD27 		addiu	$sp,$sp,-8
+ 588 03c4 0400BEAF 		sw	$fp,4($sp)
+ 589 03c8 21F0A003 		move	$fp,$sp
+ 590 03cc 3000828F 		lw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 591 03d0 FCFF4224 		addiu	$2,$2,-4
+ 592 03d4 21E8C003 		move	$sp,$fp
+ 593 03d8 0400BE8F 		lw	$fp,4($sp)
+ 594 03dc 0800BD27 		addiu	$sp,$sp,8
+ 595 03e0 0800E003 		j	$31
+ 596 03e4 00000000 		nop
+ 597              	
+ 598              		.set	macro
+ 599              		.set	reorder
+ 600              	# Begin mchp_output_function_epilogue
+ 601              	# End mchp_output_function_epilogue
+ 602              		.end	CMock_Guts_MemBytesUsed
+ 603              		.size	CMock_Guts_MemBytesUsed, .-CMock_Guts_MemBytesUsed
+ 604              		.align	2
+ 605              		.globl	CMock_Guts_MemFreeAll
+ 606              		.set	nomips16
+ 607              		.set	nomicromips
+ 608              		.ent	CMock_Guts_MemFreeAll
+ 609              		.type	CMock_Guts_MemFreeAll, @function
+ 610              	CMock_Guts_MemFreeAll:
+ 611              		.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 612              		.mask	0x40000000,-4
+ 613              		.fmask	0x00000000,0
+ 614              		.set	noreorder
+ 615              		.set	nomacro
+ 616              	# End mchp_output_function_prologue
+ 617 03e8 F8FFBD27 		addiu	$sp,$sp,-8
+ 618 03ec 0400BEAF 		sw	$fp,4($sp)
+ 619 03f0 21F0A003 		move	$fp,$sp
+ 620 03f4 04000224 		li	$2,4			# 0x4
+ 621 03f8 300082AF 		sw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 622 03fc 21E8C003 		move	$sp,$fp
+ 623 0400 0400BE8F 		lw	$fp,4($sp)
+ 624 0404 0800BD27 		addiu	$sp,$sp,8
+ 625 0408 0800E003 		j	$31
+ 626 040c 00000000 		nop
+ 627              	
+ 628              		.set	macro
+ 629              		.set	reorder
+ 630              	# Begin mchp_output_function_epilogue
+ 631              	# End mchp_output_function_epilogue
+ 632              		.end	CMock_Guts_MemFreeAll
+ 633              		.size	CMock_Guts_MemFreeAll, .-CMock_Guts_MemFreeAll
+ 634              		.align	2
+ 635              		.globl	CMock_Guts_MemFreeFinal
+ 636              		.set	nomips16
+ 637              		.set	nomicromips
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 13
+
+
+ 638              		.ent	CMock_Guts_MemFreeFinal
+ 639              		.type	CMock_Guts_MemFreeFinal, @function
+ 640              	CMock_Guts_MemFreeFinal:
+ 641              		.frame	$fp,8,$31		# vars= 0, regs= 1/0, args= 0, gp= 0
+ 642              		.mask	0x40000000,-4
+ 643              		.fmask	0x00000000,0
+ 644              		.set	noreorder
+ 645              		.set	nomacro
+ 646              	# End mchp_output_function_prologue
+ 647 0410 F8FFBD27 		addiu	$sp,$sp,-8
+ 648 0414 0400BEAF 		sw	$fp,4($sp)
+ 649 0418 21F0A003 		move	$fp,$sp
+ 650 041c 04000224 		li	$2,4			# 0x4
+ 651 0420 300082AF 		sw	$2,%gp_rel(CMock_Guts_FreePtr)($28)
+ 652 0424 21E8C003 		move	$sp,$fp
+ 653 0428 0400BE8F 		lw	$fp,4($sp)
+ 654 042c 0800BD27 		addiu	$sp,$sp,8
+ 655 0430 0800E003 		j	$31
+ 656 0434 00000000 		nop
+ 657              	
+ 658              		.set	macro
+ 659              		.set	reorder
+ 660              	# Begin mchp_output_function_epilogue
+ 661              	# End mchp_output_function_epilogue
+ 662              		.end	CMock_Guts_MemFreeFinal
+ 663              		.size	CMock_Guts_MemFreeFinal, .-CMock_Guts_MemFreeFinal
+ 664              		.ident	"GCC: (Microchip Technology) 4.8.3 MPLAB XC32 Compiler v2.50"
+ 665              	# Begin MCHP vector dispatch table
+ 666              	# End MCHP vector dispatch table
+ 667              	# Microchip Technology PIC32 MCU configuration words
+GAS LISTING C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 cmock.c
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:15     .sdata:00000000 CMockStringOutOfMemory
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:26     .sdata:00000004 CMockStringCalledMore
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:37     .sdata:00000008 CMockStringCalledLess
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:48     .sdata:0000000c CMockStringCalledEarly
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:59     .sdata:00000010 CMockStringCalledLate
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:70     .sdata:00000014 CMockStringCallOrder
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:81     .sdata:00000018 CMockStringIgnPreExp
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:92     .sdata:0000001c CMockStringPtrPreExp
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:103    .sdata:00000020 CMockStringPtrIsNULL
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:114    .sdata:00000024 CMockStringExpNULL
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:125    .sdata:00000028 CMockStringMismatch
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:130    .sbss:00000000 CMock_Guts_Buffer
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:137    .sdata:0000002c CMock_Guts_BufferSize
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:142    .sdata:00000030 CMock_Guts_FreePtr
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:150    .text:00000000 CMock_Guts_MemNew
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:227    .text:000000c0 CMock_Guts_MemChain
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:347    .text:000001fc CMock_Guts_MemNext
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:419    .text:000002a4 CMock_Guts_MemEndOfChain
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:471    .text:00000310 CMock_Guts_GetAddressFor
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:520    .text:00000370 CMock_Guts_MemBytesCapacity
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:549    .text:00000394 CMock_Guts_MemBytesFree
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:580    .text:000003c0 CMock_Guts_MemBytesUsed
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:610    .text:000003e8 CMock_Guts_MemFreeAll
+C:\Users\Piotrek\AppData\Local\Temp\ccO46ZMF.s:640    .text:00000410 CMock_Guts_MemFreeFinal
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,69 @@
+a26 17
+
+// SCU print integer
+uint8_t  ascii_buf[7];
+ 
+void convertAscii ( uint16_t val )
+{
+    ascii_buf[5] = 0;
+    for(int i=4;i>=0;i--)
+    {
+       ascii_buf[i]=(val%10)+0x30;
+       val/=10;
+    } 
+    
+    printf (ascii_buf);
+    printf ("\r");   
+}
+
+a62 5
+// SCU 
+uint16_t freeCount = 0;  // Count which indicate the time free 
+bool_t  powerSaving = TRUE;
+uint16_t alternateCount;  // Switch between power saving and not 
+
+a65 3
+    if ( powerSaving )  // SCU to verify power saving off 
+    {
+
+a67 2
+    }
+    
+a68 2
+    
+    freeCount = 0;  
+a70 1
+        freeCount++;
+a72 1
+    
+a73 2
+    printf ("Free count ");
+    convertAscii(freeCount);
+a78 27
+    
+    // SCU print out message if 
+    if ((!powerSaving) && (freeCount < 200))
+    {
+        printf ( "Timer Schedule Fail\r");
+    }
+    else if (( freeCount != 0 ) && ( freeCount < 200 ))
+    {
+        // If it is ever in this range then its a fail 
+        printf ( "Timer Schedule Fail1\r");
+    }
+    
+    alternateCount++;
+    if ( alternateCount > ( 60*10))
+    {
+        powerSaving = !powerSaving;  // switch power saving 
+        if ( powerSaving)
+        {
+            printf ( "Power Saving On\r");
+        }
+        else
+        {
+            printf ( "Power Saving Off\r"); 
+        } 
+        
+        alternateCount = 0;    
+    }

@@ -1,0 +1,33 @@
+
+Memory Class Usage:
+
+Program space:
+    CODE                 used  1B8Eh (  7054) of  2000h words   ( 86.1%)
+    STRCODE              used    49h (    73) of  2000h words   (  0.9%)
+    STRING               used     0h (     0) of  2000h words   (  0.0%)
+    CONST                used    32h (    50) of  2000h words   (  0.6%)
+    ENTRY                used     0h (     0) of  2000h words   (  0.0%)
+
+Data space:
+    COMMON               used     Eh (    14) of    10h bytes   ( 87.5%)
+    BANK0                used    50h (    80) of    50h bytes   (100.0%)
+    BANK1                used    4Fh (    79) of    50h bytes   ( 98.8%)
+    BANK2                used    50h (    80) of    50h bytes   (100.0%)
+    BANK3                used    31h (    49) of    50h bytes   ( 61.3%)
+    BANK4                used    50h (    80) of    50h bytes   (100.0%)
+    BANK5                used     0h (     0) of    50h bytes   (  0.0%)
+    BANK6                used     0h (     0) of    10h bytes   (  0.0%)
+    ABS1                 used     2h (     2) of   200h bytes   (  0.4%)
+
+EEPROM space:
+                         None available
+
+Data stack space:
+    STACK                used     0h (     0) of    60h bytes   (  0.0%)
+
+Configuration bits:
+    CONFIG               used     2h (     2) of     2h words   (100.0%)
+
+ID Location space:
+    IDLOC                used     0h (     0) of     4h bytes   (  0.0%)
+

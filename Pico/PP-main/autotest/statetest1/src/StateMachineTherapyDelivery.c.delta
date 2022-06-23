@@ -1,0 +1,23 @@
+a28 3
+void logError ( const uint16_t errorNo );
+static uint8_t errorCount1 = 0;
+
+a94 2
+void convertA ( uint16_t val );
+
+a145 1
+            printf ( "Err 1\r");
+a149 1
+             printf ( "Err 2\r");
+a175 1
+             printf ( "Err 3\r");
+a190 2
+                 //    DeviceStatus_SetPressureSensorIsReading(FALSE);
+                     printf ( "Err 4\r");
+a214 1
+                 printf ( "Err 5\r");
+a215 4
+            }
+            else    // SCU Log Error 
+            {
+                logError((8<<10)+errorCount1++); 

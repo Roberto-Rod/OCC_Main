@@ -1,0 +1,351 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YAT.Format</name>
+    </assembly>
+    <members>
+        <member name="T:YAT.Format.Settings.FormatSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Format.Settings.FormatSettings.TxColorDefault">
+            <remarks>Color.Blue = 0000FF.</remarks>
+        </member>
+        <member name="F:YAT.Format.Settings.FormatSettings.RxColorDefault">
+            <remarks>Color.Purple = 800080.</remarks>
+        </member>
+        <member name="F:YAT.Format.Settings.FormatSettings.InfoColorDefault">
+            <remarks>Color.Green = 008000.</remarks>
+        </member>
+        <member name="F:YAT.Format.Settings.FormatSettings.IOControlColorDefault">
+            <remarks>Color.Gold = FFD700.</remarks>
+        </member>
+        <member name="F:YAT.Format.Settings.FormatSettings.WarningColorDefault">
+            <remarks>Color.Orange = FFA500.</remarks>
+        </member>
+        <member name="F:YAT.Format.Settings.FormatSettings.ErrorColorDefault">
+            <remarks>Color.OrangeRed = FF4500.</remarks>
+        </member>
+        <member name="F:YAT.Format.Settings.FormatSettings.SeparatorColorDefault">
+            <remarks>Color.Black = 000000.</remarks>
+        </member>
+        <member name="F:YAT.Format.Settings.FormatSettings.BackColorDefault">
+            <remarks><see cref="P:System.Drawing.SystemColors.Window"/>.</remarks>
+        </member>
+        <member name="M:YAT.Format.Settings.FormatSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Settings.FormatSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Settings.FormatSettings.#ctor(YAT.Format.Settings.FormatSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Format.Settings.FormatSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.FontFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.Font">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.FormattingEnabled">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.TxDataFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.TxControlFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.RxDataFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.RxControlFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.TimeStampFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.TimeSpanFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.TimeDeltaFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.TimeDurationFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.DeviceFormat">
+            <remarks>Named "Device" for simplicity even though using "I/O Device" for view.</remarks>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.DirectionFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.LengthFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.IOControlFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.WarningFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.ErrorFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.SeparatorFormat">
+            <remarks>
+            XML tag is "WhiteSpacesFormat" for backward compatibility.
+            May be changed to "SeparatorFormat" once bugs #232 "Issues with TolerantXmlSerializer"
+            and #246 "Issues with AlternateTolerantXmlSerializer" have been fixed.
+            <para>
+            Could be named plural "Separators" as there are multiple types of separators, "Content"
+            and "Info", but this just looks awkward in several locations. And the other formats do
+            not use plural neither.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.BackFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Settings.FormatSettings.BackColor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Settings.FormatSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Format.Settings.FormatSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Format.Settings.FormatSettings.Equals(YAT.Format.Settings.FormatSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Format.Settings.FormatSettings.op_Equality(YAT.Format.Settings.FormatSettings,YAT.Format.Settings.FormatSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Format.Settings.FormatSettings.op_Inequality(YAT.Format.Settings.FormatSettings,YAT.Format.Settings.FormatSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Format.Types.BackFormat">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.BackFormat.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.BackFormat.#ctor(System.Drawing.Color)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.BackFormat.#ctor(YAT.Format.Types.BackFormat)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Types.BackFormat.Color">
+            <remarks>
+            <see cref="P:YAT.Format.Types.BackFormat.Color"/> cannot be serialized, thus, the helper below is used for serialization.
+            </remarks>
+        </member>
+        <member name="P:YAT.Format.Types.BackFormat.Color_ForSerialization">
+            <remarks>
+            Using string because <see cref="P:YAT.Format.Types.BackFormat.Color"/> cannot be serialized.
+            </remarks>
+        </member>
+        <member name="M:YAT.Format.Types.BackFormat.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Format.Types.BackFormat.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Format.Types.BackFormat.Equals(YAT.Format.Types.BackFormat)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Format.Types.BackFormat.op_Equality(YAT.Format.Types.BackFormat,YAT.Format.Types.BackFormat)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Format.Types.BackFormat.op_Inequality(YAT.Format.Types.BackFormat,YAT.Format.Types.BackFormat)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Format.Types.FontFormat">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Format.Types.FontFormat.DirectoryNameDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Format.Types.FontFormat.FileNameDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Format.Types.FontFormat.NameDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Format.Types.FontFormat.SizeDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Format.Types.FontFormat.StyleDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.FontFormat.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.FontFormat.#ctor(System.String,System.Single,System.Drawing.FontStyle)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.FontFormat.#ctor(YAT.Format.Types.FontFormat)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Types.FontFormat.Name">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Types.FontFormat.Size">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Types.FontFormat.Style">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Types.FontFormat.Font">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.FontFormat.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Format.Types.FontFormat.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Format.Types.FontFormat.Equals(YAT.Format.Types.FontFormat)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Format.Types.FontFormat.op_Equality(YAT.Format.Types.FontFormat,YAT.Format.Types.FontFormat)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Format.Types.FontFormat.op_Inequality(YAT.Format.Types.FontFormat,YAT.Format.Types.FontFormat)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Format.Types.TextFormat">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.TextFormat.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.TextFormat.#ctor(System.Drawing.Color,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.TextFormat.#ctor(YAT.Format.Types.TextFormat)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Types.TextFormat.Color">
+            <remarks>
+            <see cref="P:YAT.Format.Types.TextFormat.Color"/> cannot be serialized, thus, the helper below is used for serialization.
+            </remarks>
+        </member>
+        <member name="P:YAT.Format.Types.TextFormat.Color_ForSerialization">
+            <remarks>
+            Using string because <see cref="P:YAT.Format.Types.TextFormat.Color"/> cannot be serialized.
+            </remarks>
+        </member>
+        <member name="P:YAT.Format.Types.TextFormat.FontStyle">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Types.TextFormat.Bold">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Types.TextFormat.Italic">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Types.TextFormat.Underline">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Format.Types.TextFormat.Strikeout">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Format.Types.TextFormat.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Format.Types.TextFormat.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Format.Types.TextFormat.Equals(YAT.Format.Types.TextFormat)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Format.Types.TextFormat.op_Equality(YAT.Format.Types.TextFormat,YAT.Format.Types.TextFormat)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Format.Types.TextFormat.op_Inequality(YAT.Format.Types.TextFormat,YAT.Format.Types.TextFormat)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+    </members>
+</doc>

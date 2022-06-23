@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/Main_Board_Rev_C/production/PIB_Firmware.X.production.elf">                 
+    <memory name="program">                 
+      <units>bytes</units>                 
+      <length>2098304</length>                 
+      <used>493752</used>                     
+      <free>1604552</free>                     
+    </memory>                              
+    <memory name="data">              
+      <units>bytes</units>                 
+      <length>655360</length>                 
+      <used>236524</used>                     
+      <free>418836</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 

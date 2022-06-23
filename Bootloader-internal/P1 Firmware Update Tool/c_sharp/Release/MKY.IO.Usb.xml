@@ -1,0 +1,2919 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MKY.IO.Usb</name>
+    </assembly>
+    <members>
+        <member name="T:MKY.IO.Usb.HidDeviceInfo">
+            <summary>
+            This container class holds information about a USB HID device.
+            </summary>
+            <remarks>
+            The information contained is limited to pieces that are needed to lookup a device.
+            It does not contain the complete set of information given by the HID capabilities.
+            </remarks>
+            <remarks>
+            \remind (2019-11-10 / MKY)
+            Instances of this container class shall be treated as immutable objects. However, it is not
+            possible to assign <see cref="T:System.ComponentModel.ImmutableObjectAttribute"/>/<see cref="T:MKY.Contracts.ImmutableContractAttribute"/>
+            because XML default serialization requires public setters. Split into mutable settings tuple
+            and immutable runtime container could be done.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.FirstUsagePage">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.LastUsagePage">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.FirstUsageId">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.LastUsageId">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.FirstUsagePageString">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.LastUsagePageString">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.FirstUsageIdString">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.LastUsageIdString">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.AnyUsagePage">
+            <summary>Special value to indicate that any usage page shall be accepted.</summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.AnyUsageId">
+            <summary>Special value to indicate that any usage ID shall be accepted.</summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.AnyUsagePageString">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceInfo.AnyUsageIdString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.#ctor">
+            <remarks>
+            \remind (2019-11-10 / MKY)
+            Parameter-less constructor is required for XML default serialization. Could be removed
+            after having split into mutable settings tuple and immutable runtime container.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.#ctor(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is null.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.#ctor(System.Int32,System.Int32,System.String,System.Int32,System.Int32)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.#ctor(System.String,System.Int32,System.Int32,System.String,System.String,System.String,System.Int32,System.Int32)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.Initialize">
+            <remarks>Initialize this info based on defaults only.</remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.Initialize(System.String)">
+            <remarks>Initialize this info based on the available information only.</remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.Initialize(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <remarks>Initialize this info based on the available information only.</remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.Initialize(System.Int32,System.Int32,System.String,System.Int32,System.Int32)">
+            <remarks>Initialize this info based on the available information only.</remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.Initialize(System.String,System.Int32,System.Int32,System.String,System.String,System.String,System.Int32,System.Int32)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.#ctor(MKY.IO.Usb.HidDeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.#ctor(MKY.IO.Usb.DeviceInfo,System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDeviceInfo.UsagePage">
+            <remarks>
+            Term "Usage page" is given by https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf section 3.1 [HID Usage Table Conventions].
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDeviceInfo.UsagePageString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDeviceInfo.UsageId">
+            <remarks>
+            Term "Usage ID" is given by https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf section 3.1 [HID Usage Table Conventions].
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDeviceInfo.UsageIdString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDeviceInfo.UsageString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.IsValidUsagePage(System.Int32)">
+            <summary>
+            Returns whether the given number is a valid usage page.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.IsValidUsagePageOrAny(System.Int32)">
+            <summary>
+            Returns whether the given number is a valid usage page; or <see cref="F:MKY.IO.Usb.HidDeviceInfo.AnyUsagePage"/>.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.IsValidUsageId(System.Int32)">
+            <summary>
+            Returns whether the given number is a valid usage ID.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.IsValidUsageIdOrAny(System.Int32)">
+            <summary>
+            Returns whether the given number is a valid usage ID; or <see cref="F:MKY.IO.Usb.HidDeviceInfo.AnyUsageId"/>.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.ToString(System.Boolean)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.ToString(System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.ToShortString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.ToShortString(System.Boolean)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality,
+            ignoring <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.Equals(MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality,
+            ignoring <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.Equals(System.Int32,System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            Determines whether this instance and the specified properties have value equality,
+            ignoring <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.EqualsUsageOrAny(MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Determines whether this instance and the specified object have value equality
+            in respect to <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/> and <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/>; taking the special
+            values <see cref="F:MKY.IO.Usb.HidDeviceInfo.AnyUsagePage"/> and <see cref="F:MKY.IO.Usb.HidDeviceInfo.AnyUsageId"/> into account.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.EqualsUsageOrAny(System.Int32,System.Int32)">
+            <summary>
+            Determines whether this instance and the specified object have value equality
+            in respect to <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/> and <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/>, taking the special
+            values <see cref="F:MKY.IO.Usb.HidDeviceInfo.AnyUsagePage"/> and <see cref="F:MKY.IO.Usb.HidDeviceInfo.AnyUsageId"/> into account.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.EqualsVidPidUsage(MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Determines whether this instance and the specified object have value equality,
+            ignoring <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/>
+            and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only
+            <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and
+            <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/>, <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.EqualsVidPidUsage(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Determines whether this instance and the specified properties have value equality,
+            ignoring <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/>
+            and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only
+            <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and
+            <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/>, <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.EqualsVidPidSerialUsage(MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/>, and
+            <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/>, <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.EqualsVidPidSerialUsage(System.Int32,System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            Determines whether this instance and the specified properties have value equality.
+            </summary>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/>, and
+            <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/>, <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.op_Equality(MKY.IO.Usb.HidDeviceInfo,MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.op_Inequality(MKY.IO.Usb.HidDeviceInfo,MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.ParseVidPid(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for VID/PID and returns a corresponding device ID object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>
+            and <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.ParseVidPidSerial(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for VID/PID/SNR and returns a corresponding device ID object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.TryParseVidPid(System.String,MKY.IO.Usb.HidDeviceInfo@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for VID/PID and returns a corresponding device ID object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>
+            and <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.TryParseVidPidSerial(System.String,MKY.IO.Usb.HidDeviceInfo@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for VID/PID/SNR and returns a corresponding device ID object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.CompareTo(System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.Compare(System.Object,System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.op_LessThan(MKY.IO.Usb.HidDeviceInfo,MKY.IO.Usb.HidDeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.op_GreaterThan(MKY.IO.Usb.HidDeviceInfo,MKY.IO.Usb.HidDeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.op_LessThanOrEqual(MKY.IO.Usb.HidDeviceInfo,MKY.IO.Usb.HidDeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.op_GreaterThanOrEqual(MKY.IO.Usb.HidDeviceInfo,MKY.IO.Usb.HidDeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.op_Implicit(MKY.IO.Usb.HidDeviceInfo)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceInfo.op_Implicit(System.String)~MKY.IO.Usb.HidDeviceInfo">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.IHidDeviceInfo">
+            <summary>
+            Information about a USB HID device.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IHidDeviceInfo.UsagePage">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IHidDeviceInfo.UsagePageString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IHidDeviceInfo.UsageId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IHidDeviceInfo.UsageIdString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.IHidDeviceInfo.ToString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.IHidDeviceInfo.ToString(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.IHidDeviceInfo.ToString(System.Boolean,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.IHidDeviceInfo.ToShortString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.IHidDeviceInfo.ToLongString">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.EqualsVidPid`1">
+            <summary></summary>
+            <typeparam name="T">The applicable type for the predicate.</typeparam>
+        </member>
+        <member name="P:MKY.IO.Usb.EqualsVidPid`1.DeviceInfo">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.EqualsVidPid`1.#ctor(`0)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.EqualsVidPid`1.Match">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.EqualsVidPidSerial`1">
+            <summary></summary>
+            <typeparam name="T">The applicable type for the predicate.</typeparam>
+        </member>
+        <member name="P:MKY.IO.Usb.EqualsVidPidSerial`1.DeviceInfo">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.EqualsVidPidSerial`1.#ctor(`0)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.EqualsVidPidSerial`1.Match">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.EqualsVidPidUsage`1">
+            <summary></summary>
+            <typeparam name="T">The applicable type for the predicate.</typeparam>
+        </member>
+        <member name="P:MKY.IO.Usb.EqualsVidPidUsage`1.DeviceInfo">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.EqualsVidPidUsage`1.#ctor(`0)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.EqualsVidPidUsage`1.Match">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.EqualsVidPidSerialUsage`1">
+            <summary></summary>
+            <typeparam name="T">The applicable type for the predicate.</typeparam>
+        </member>
+        <member name="P:MKY.IO.Usb.EqualsVidPidSerialUsage`1.DeviceInfo">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.EqualsVidPidSerialUsage`1.#ctor(`0)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.EqualsVidPidSerialUsage`1.Match">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.SerialHidRxFilterUsage">
+            <summary>
+            Serial HID Rx ID setting.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidRxFilterUsage.SeparateRxIdDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidRxFilterUsage.AnyRxIdDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidRxFilterUsage.RxIdDefault">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidRxFilterUsage.SeparateRxId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidRxFilterUsage.AnyRxId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidRxFilterUsage.RxId">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidRxFilterUsage.#ctor(System.Boolean,System.Boolean,System.Byte)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidRxFilterUsage.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidRxFilterUsage.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidRxFilterUsage.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidRxFilterUsage.Equals(MKY.IO.Usb.SerialHidRxFilterUsage)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidRxFilterUsage.op_Equality(MKY.IO.Usb.SerialHidRxFilterUsage,MKY.IO.Usb.SerialHidRxFilterUsage)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidRxFilterUsage.op_Inequality(MKY.IO.Usb.SerialHidRxFilterUsage,MKY.IO.Usb.SerialHidRxFilterUsage)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Usb.SerialHidDeviceSettingsPreset">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx">
+            <summary>
+            Extended enum SerialHidDeviceSettingsPresetEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.UserSummary">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.MT_SerHid_VendorIds">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.MT_SerHid_ReportId">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.Signal11_HidApi_DefaultReportId">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.TI_HidApi_VendorIds">
+            <summary>
+            According to https://www.the-sz.com/products/usbid/index.php.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.TI_HidApi_ReportId">
+            <summary>
+            The TI HID API identifier is specified to 0x3F according to https://www.ti.com/lit/an/slaa453/slaa453.pdf.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Usb.SerialHidDeviceSettingsPreset.YAT"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.#ctor(MKY.IO.Usb.SerialHidDeviceSettingsPreset)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.HasInfoLink">
+            <summary>
+            Returns whether link information is available.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.HasInfoLink(System.String@)">
+            <summary>
+            Returns link information if available.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.HasInfoLink(System.String@,System.String@)">
+            <summary>
+            Returns link information if available.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.TryParse(System.String,MKY.IO.Usb.SerialHidDeviceSettingsPresetEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.TryParse(System.String,MKY.IO.Usb.SerialHidDeviceSettingsPreset@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.TryFrom(MKY.IO.Usb.DeviceInfo,MKY.IO.Usb.SerialHidDeviceSettingsPresetEx@)">
+            <remarks>Returns <c>false</c> and <see cref="F:MKY.IO.Usb.SerialHidDeviceSettingsPreset.None"/> if no matching preset has been found.</remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.TryFrom(MKY.IO.Usb.DeviceInfo,MKY.IO.Usb.SerialHidDeviceSettingsPreset@)">
+            <remarks>Returns <c>false</c> and <see cref="F:MKY.IO.Usb.SerialHidDeviceSettingsPreset.None"/> if no matching preset has been found.</remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.ToReportFormat">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.ToRxFilterUsage">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.TryFromReportFormatAndRxFilterUsage(MKY.IO.Usb.SerialHidReportFormat,MKY.IO.Usb.SerialHidRxFilterUsage,MKY.IO.Usb.SerialHidDeviceSettingsPreset@)">
+            <remarks>Returns <c>false</c> and <see cref="F:MKY.IO.Usb.SerialHidDeviceSettingsPreset.None"/> if no matching preset has been found.</remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.op_Implicit(MKY.IO.Usb.SerialHidDeviceSettingsPresetEx)~MKY.IO.Usb.SerialHidDeviceSettingsPreset">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.op_Implicit(MKY.IO.Usb.SerialHidDeviceSettingsPreset)~MKY.IO.Usb.SerialHidDeviceSettingsPresetEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.op_Implicit(MKY.IO.Usb.SerialHidDeviceSettingsPresetEx)~MKY.IO.Usb.SerialHidReportFormat">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.op_Implicit(MKY.IO.Usb.SerialHidDeviceSettingsPresetEx)~MKY.IO.Usb.SerialHidRxFilterUsage">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.op_Implicit(MKY.IO.Usb.SerialHidDeviceSettingsPresetEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.op_Implicit(System.Int32)~MKY.IO.Usb.SerialHidDeviceSettingsPresetEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.op_Implicit(MKY.IO.Usb.SerialHidDeviceSettingsPresetEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceSettingsPresetEx.op_Implicit(System.String)~MKY.IO.Usb.SerialHidDeviceSettingsPresetEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.SerialHidInputReportContainer">
+            <summary>
+            An HID input report container is a simple wrapper around a byte buffer.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidInputReportContainer.payload">
+             <remarks>
+             "Guidelines for Collections": "Do use byte arrays instead of collections of bytes."
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidInputReportContainer.#ctor(MKY.IO.Usb.SerialHidDevice)">
+            <summary>
+            Creates an input report container.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidInputReportContainer.Id">
+            <summary>
+            The ID of a report. The meaning of the ID is given by the report specification.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidInputReportContainer.Payload">
+            <summary>
+            Returns the payload that was received via the input report.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidInputReportContainer.ProcessReport(MKY.IO.Usb.SerialHidReportFormat,System.Byte[])">
+            <summary>
+            Create the data from a given input report.
+            </summary>
+            <exception cref="T:System.ArgumentException"> if either input report or payload in invalid.</exception>
+        </member>
+        <member name="T:MKY.IO.Usb.SerialHidOutputReportContainer">
+            <summary>
+            An HID output report container puts any amount of data into chunks that match the size of
+            the device's reported output report capabilities.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidOutputReportContainer.#ctor(MKY.IO.Usb.SerialHidDevice)">
+            <summary>
+            Creates an output report container.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidOutputReportContainer.Reports">
+            <summary>
+            Returns the output reports that were created from any amount of data.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidOutputReportContainer.CreateReports(MKY.IO.Usb.SerialHidReportFormat,System.Byte[])">
+            <summary>
+            Create the report(s) from given data. The data is split into chunks that match the
+            size of the device's reported output report capabilities.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Usb.SerialHidDeviceCollection">
+            <summary>
+            List containing USB Ser/HID device information.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceCollection.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceCollection.#ctor(System.Collections.Generic.IEnumerable{MKY.IO.Usb.HidDeviceInfo})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceCollection.FillWithAvailableDevices(System.Boolean)">
+            <summary>
+            Fills list with the available USB Ser/HID devices.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceCollection.DebugVerboseIndent(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDeviceCollection.DebugVerboseUnindent(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Usb.HidDeviceCollection">
+            <summary>
+            List containing USB HID device information.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceCollection.AnyUsagePage">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDeviceCollection.AnyUsageId">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.#ctor(System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.#ctor(System.Collections.Generic.IEnumerable{MKY.IO.Usb.HidDeviceInfo})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.FillWithAvailableDevices(System.Boolean)">
+            <summary>
+            Fills list with the available USB HID devices.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.ContainsVidPidUsage(MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Determines whether an element is in the collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            <c>true</c> if item is found in the collection; otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only
+            <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and
+            <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/>, <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.ContainsVidPidSerialUsage(MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Determines whether an element is in the collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            <c>true</c> if item is found in the collection; otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/>, and
+            <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/>, <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.FindVidPidUsage(MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Searches for an element that matches the <paramref name="item"/>, and returns the
+            first occurrence within the entire collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            The first element that matches the <paramref name="item"/>, if found; otherwise, –1.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only
+            <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and
+            <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/>, <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.FindVidPidSerialUsage(MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Searches for an element that matches the <paramref name="item"/>, and returns the
+            first occurrence within the entire collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            The first element that matches the <paramref name="item"/>, if found; otherwise, –1.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/>, and
+            <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/>, <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.FindIndexVidPidUsage(MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Searches for an element that matches the <paramref name="item"/>, and returns the
+            zero-based index of the first occurrence within the collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            The zero-based index of the first occurrence of an element that matches the
+            <paramref name="item"/>, if found; otherwise, –1.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only
+            <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and
+            <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/>, <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.FindIndexVidPidSerialUsage(MKY.IO.Usb.HidDeviceInfo)">
+            <summary>
+            Searches for an element that matches the <paramref name="item"/>, and returns the
+            zero-based index of the first occurrence within the collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            The zero-based index of the first occurrence of an element that matches the
+            <paramref name="item"/>, if found; otherwise, –1.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/>, and
+            <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsagePage"/>, <see cref="P:MKY.IO.Usb.HidDeviceInfo.UsageId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.DebugVerboseIndent(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDeviceCollection.DebugVerboseUnindent(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Usb.HidDevice">
+            <summary>
+            Extends a USB device with HID capabilities.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.HidDevice.HidGuid">
+            <summary>
+            Returns the GUID associated with USB HID.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.HidDevice.DeviceConnected">
+            <summary>
+            Occurs when an USB device is connected to the computer.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.HidDevice.DeviceDisconnected">
+            <summary>
+            Occurs when an USB device is disconnected from the computer.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.GetDevices(System.Boolean)">
+            <summary>
+            Returns an array of the USB HID devices currently available on the system.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.GetDevices(System.Int32,System.Boolean)">
+            <summary>
+            Returns an array of the USB HID devices of the given usage page currently available
+            on the system.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.GetDevices(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Returns an array of the USB HID devices of the given usage page and usage currently
+            available on the system.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.GetDevicesFromClass(MKY.IO.Usb.DeviceClass,System.Boolean)">
+            <summary>
+            Returns an array of all USB devices of the given class currently available on the system.
+            </summary>
+            <remarks>
+            \todo: This method currently only works for HID devices. Find a HID independent way to retrieve VID/PID.
+            </remarks>
+            <param name="deviceClass">USB device class.</param>
+            <param name="retrieveStringsFromDevice">Enable or disable string retrieval from device.</param>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.GetDevicesFromGuid(System.Guid,System.Boolean,System.Boolean)">
+            <summary>
+            Returns an array of all USB devices of the given class currently available on the system.
+            </summary>
+            <remarks>
+            \todo: This method currently only works for HID devices. Find a HID independent way to retrieve VID/PID.
+            </remarks>
+            <param name="classGuid">GUID of a class of devices.</param>
+            <param name="retrieveStringsFromDevice">Enable or disable string retrieval from device.</param>
+            <param name="ignoreDuplicates">Ignore duplicated entries in WMI.</param>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.TryGetDeviceInfoFromPath(System.String,System.Int32@,System.Int32@,System.String@,System.String@,System.String@,System.Int32@,System.Int32@)">
+            <summary>
+            Tries to return the information of the device with the given path.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.GetDeviceInfoFromVidPidUsage(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns the information of the device with the given VID and PID;
+            or <c>null</c> if no device could be found on the given path.
+            </summary>
+            <remarks>
+            If multiple devices with the same VID and PID are connected to the system, the first device is returned.
+            </remarks>
+            <returns>Retrieved device info; or <c>null</c> if no appropriate device was found.</returns>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.TryGetDeviceInfoFromVidPidUsage(System.Int32,System.Int32,System.Int32,System.Int32,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            Tries to returns the information of the device with the given VID and PID.
+            </summary>
+            <remarks>
+            If multiple devices with the same VID and PID are connected to the system, the first device is returned.
+            </remarks>
+            <param name="vendorId">Given VID.</param>
+            <param name="productId">Given PID.</param>
+            <param name="usagePage">Given usage page.</param>
+            <param name="usageId">Given usage ID.</param>
+            <param name="path">Retrieved system path, or "" if no appropriate device was found.</param>
+            <param name="manufacturer">Retrieved manufacturer, or "" if no appropriate device was found.</param>
+            <param name="product">Retrieved product, or "" if no appropriate device was found.</param>
+            <param name="serial">Retrieved serial string, or "" if no appropriate device was found.</param>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.GetDeviceInfoFromVidPidSerialUsage(System.Int32,System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            Returns the information of the device with the given VID and PID and serial string;
+            or <c>null</c> if no device could be found on the give path.
+            </summary>
+            <returns>Retrieved device info; or <c>null</c> if no appropriate device was found.</returns>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.TryGetDeviceInfoFromVidPidSerialUsage(System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.String@,System.String@,System.String@)">
+            <summary>
+            Tries to return the information of the device with the given VID and PID and serial string.
+            </summary>
+            <param name="vendorId">Given VID.</param>
+            <param name="productId">Given PID.</param>
+            <param name="serial">Given serial string.</param>
+            <param name="usagePage">Given usage page.</param>
+            <param name="usageId">Given usage ID.</param>
+            <param name="path">Retrieved system path, or "" if no appropriate device was found.</param>
+            <param name="manufacturer">Retrieved manufacturer, or "" if no appropriate device was found.</param>
+            <param name="product">Retrieved product, or "" if no appropriate device was found.</param>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.RegisterStaticDeviceNotificationHandler">
+            <summary>
+            This method registers for static device notifications. These notifications will report
+            whenever a device is physically connected or disconnected to the computer. Only one
+            handler for these notifications is needed, therefore, only the first call to this
+            method does have any effect.
+            </summary>
+            <remarks>
+            Attention:
+            This function also exists in the other USB classes.
+            Changes here must be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.UnregisterStaticDeviceNotificationHandler">
+            <remarks>
+            Attention:
+            This function also exists in the other USB classes.
+            Changes here must be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.StaticMessageCallback(System.Windows.Forms.Message@)">
+            <remarks>
+            Attention:
+            This function also exists in the other USB classes.
+            Changes here must be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.#ctor(System.String)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">No device could be created for the given <paramref name="path"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.#ctor(System.Int32,System.Int32,System.String,System.Int32,System.Int32)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.#ctor(MKY.IO.Usb.HidDeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.Initialize(MKY.IO.Usb.DeviceInfo,System.Int32,System.Int32)">
+            <remarks>
+            Constructor must call this method to create <see cref="P:MKY.IO.Usb.HidDevice.Info"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.Reinitialize(MKY.IO.Usb.DeviceInfo)">
+            <summary>
+            Used to reinitialize the device in case of a reconnect.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.TryGetDeviceCapabilities(MKY.IO.Usb.DeviceInfo,MKY.IO.Usb.HidDeviceInfo@)">
+            <summary>
+            Tries to retrieve a structure with information about a device's capabilities.
+            </summary>
+            <remarks>
+            This method shall not be overridden as it accesses private members.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.TryGetDeviceCapabilities(System.String,MKY.Win32.Hid.NativeTypes.HIDP_CAPS@)">
+            <summary>
+            Tries to retrieve a structure with information about a device's capabilities.
+            </summary>
+            <remarks>
+            Private for not having to expose native Win32 types.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.DebugWriteDeviceCapabilities(System.String)">
+            <summary>
+            Gets the device capabilities for diagnostics/debug purposes.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:MKY.IO.Usb.HidDevice.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.Info">
+            <summary>
+            Returns the complete device info. To read a specific device property, use the property
+            members below.
+            </summary>
+            <remarks>
+            The info is always defined, i.e. not <c>null</c>, for an <see cref="T:MKY.IO.Usb.HidDevice"/> object.
+            </remarks>
+            <remarks>
+            \remind (2019-11-10 / MKY)
+            According to the class description, an <see cref="T:MKY.IO.Usb.HidDeviceInfo"/> shall be treated as
+            an immutable object. While not ideal, it is considered acceptable to return such object.
+            Split into mutable settings tuple and immutable runtime container could be done.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.UsagePage">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.UsagePageString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.UsageId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.UsageIdString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.InputReportByteLength">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.OutputReportByteLength">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.FeatureReportByteLength">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.LinkCollectionNodes">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.InputButtonCaps">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.InputValueCaps">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.InputDataIndices">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.OutputButtonCaps">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.OutputValueCaps">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.OutputDataIndices">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.FeatureButtonCaps">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.FeatureValueCaps">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidDevice.FeatureDataIndices">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.Device_DeviceConnected(System.Object,MKY.IO.Usb.DeviceEventArgs)">
+            <remarks>
+            Attention:
+            This function similarly exists in the other USB classes.
+            Changes here may have to be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.Device_DeviceDisconnected(System.Object,MKY.IO.Usb.DeviceEventArgs)">
+            <remarks>
+            Attention:
+            This function similarly exists in the other USB classes.
+            Changes here may have to be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation,
+            which is a string describing the USB device as accurately as possible.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.ToString(System.Boolean)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation,
+            which is a string describing the USB device as accurately as possible.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.ToString(System.Boolean,System.Boolean)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation,
+            which is a string describing the USB device as accurately as possible.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.ToShortString">
+            <summary>
+            Returns a string describing the USB device in a short form.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidDevice.ToLongString">
+            <summary>
+            Returns a string describing the USB device in a long form.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Usb.UsbException">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.UsbException.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.UsbException.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.UsbException.#ctor(System.String,System.Exception)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.UsbException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.NativeMethodCallUsbException">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.NativeMethodCallUsbException.Method">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.NativeMethodCallUsbException.ErrorCode">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.NativeMethodCallUsbException.NativeMessage">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.NativeMethodCallUsbException.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.NativeMethodCallUsbException.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.NativeMethodCallUsbException.#ctor(System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.NativeMethodCallUsbException.#ctor(System.String,System.Exception)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.NativeMethodCallUsbException.#ctor(System.String,System.Exception,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.NativeMethodCallUsbException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.NativeMethodCallUsbException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.NativeMethodCallUsbException.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Usb.DeviceEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DeviceEventArgs.DeviceClass">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DeviceEventArgs.DeviceInfo">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceEventArgs.#ctor(MKY.IO.Usb.DeviceClass,MKY.IO.Usb.DeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.DataEventArgs">
+            <summary>
+            Defines event data of an I/O data transfer. In addition to the serial data itself,
+            it also contains meta information such as a time stamp.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DataEventArgs.Data">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DataEventArgs.TimeStamp">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DataEventArgs.#ctor(System.Byte[])">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DataEventArgs.DataAsPrintableString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DataEventArgs.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DataEventArgs.ToDiagnosticsString(System.String)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Extended <see cref="M:MKY.IO.Usb.DataEventArgs.ToString"/> method which can be used for trace/debug.
+            </remarks>
+            <remarks>
+            Limited to a single line to keep debug output compact, same as <see cref="M:MKY.IO.Usb.DataEventArgs.ToString"/>.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Usb.ErrorEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.ErrorEventArgs.Message">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.ErrorEventArgs.TimeStamp">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.ErrorEventArgs.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.HidReportContainer">
+            <summary>
+            Abstract base for all HID report containers.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidReportContainer.Device">
+            <summary>
+            The device associated with this report.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.HidReportContainer.MaxByteLength">
+            <summary>
+            The maximum byte length of a report. The length is given by the device capabilities.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidReportContainer.#ctor(MKY.IO.Usb.HidDevice,System.Int32)">
+            <summary>
+            Creates a report container and stores the reference to the device in use as well as
+            the maximum length of a report.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Usb.ISerial">
+            <summary>
+            Interface for serial communication, e.g. Ser/CDC (i.e. CDC/ACM) or Ser/HID.
+            </summary>
+            <remarks>
+            This interface is defined similar to <see cref="T:System.IO.Ports.SerialPort"/>,
+            i.e. a  method must be called to send and receive data, and the corresponding
+            events do not contain any data.
+            </remarks>
+        </member>
+        <member name="E:MKY.IO.Usb.ISerial.Opened">
+            <summary>
+            Event raised after port successfully opened.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.ISerial.Closed">
+            <summary>
+            Event raised after port successfully closed.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.ISerial.DataReceived">
+            <summary>
+            Event raised after data has been received from the device.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.ISerial.DataSent">
+            <summary>
+            Event raised after data has completely be sent to the device.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.ISerial.AutoOpen">
+            <summary>
+            Indicates whether the device automatically tries to reconnect.
+            </summary>
+            <returns>
+            <c>true</c> if the device automatically tries to reconnect; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:MKY.IO.Usb.ISerial.IsStarted">
+            <summary>
+            Gets a value indicating whether the device has been started.
+            </summary>
+            <returns>
+            <c>true</c> if the device has been started; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:MKY.IO.Usb.ISerial.IsOpen">
+            <summary>
+            Indicates whether the serial communication port to the device is open.
+            </summary>
+            <returns>
+            <c>true</c> if the serial communication port is open; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:MKY.IO.Usb.ISerial.BytesAvailable">
+            <summary>
+            Gets the amount of data received from the device that is available to read.
+            </summary>
+            <returns>
+            The number of bytes of data received from the device.
+            </returns>
+        </member>
+        <member name="M:MKY.IO.Usb.ISerial.Start">
+            <summary>
+            Starts the device.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.ISerial.Stop">
+            <summary>
+            Stops the device.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.ISerial.Open">
+            <summary>
+            Opens the serial communication port to the device.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.ISerial.Close">
+            <summary>
+            Closes the serial communication port to the device.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.ISerial.Receive(System.Byte[]@)">
+            <summary>
+            Receives data from the device into a receive buffer.
+            </summary>
+            <param name="data">
+            An array of type System.Byte that is the storage location for the received data.
+            </param>
+            <returns>The number of bytes received.</returns>
+        </member>
+        <member name="M:MKY.IO.Usb.ISerial.Send(System.Byte[])">
+            <summary>
+            Sends data to the device.
+            </summary>
+            <param name="data">
+            An array of type System.Byte that contains the data to be sent.
+            </param>
+        </member>
+        <member name="T:MKY.IO.Usb.IDeviceInfo">
+            <summary>
+            Information about a USB device.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IDeviceInfo.VendorId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IDeviceInfo.VendorIdString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IDeviceInfo.ProductId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IDeviceInfo.ProductIdString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IDeviceInfo.Manufacturer">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IDeviceInfo.Product">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IDeviceInfo.Serial">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.IDeviceInfo.ToString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.IDeviceInfo.ToString(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.IDeviceInfo.ToShortString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.IDeviceInfo.ToLongString">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.Device">
+            <summary>
+            Encapsulates functions and properties that are common to all USB devices.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.Device.DeviceConnected">
+            <summary>
+            Occurs when an USB device is connected to the computer.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.Device.DeviceDisconnected">
+            <summary>
+            Occurs when an USB device is disconnected from the computer.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.GetGuidFromDeviceClass(MKY.IO.Usb.DeviceClass)">
+            <summary>
+            Returns the GUID for the given device class.
+            </summary>
+            <param name="deviceClass">USB device class.</param>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.GetDevices(System.Boolean)">
+            <summary>
+            Returns an array of all USB devices of the given class currently available on the system.
+            </summary>
+            <remarks>
+            \todo: This method currently only works for HID devices. Find a HID independent way to retrieve VID/PID.
+            </remarks>
+            <param name="retrieveStringsFromDevice">Enable or disable string retrieval from device.</param>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.GetDevicesFromClass(MKY.IO.Usb.DeviceClass,System.Boolean)">
+            <summary>
+            Returns an array of all USB devices of the given class currently available on the system.
+            </summary>
+            <remarks>
+            \todo: This method currently only works for HID devices. Find a HID independent way to retrieve VID/PID.
+            </remarks>
+            <param name="deviceClass">USB device class.</param>
+            <param name="retrieveStringsFromDevice">Enable or disable string retrieval from device.</param>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.GetDevicesFromGuid(System.Guid,System.Boolean,System.Boolean)">
+            <summary>
+            Returns an array of all USB devices of the given class currently available on the system.
+            </summary>
+            <remarks>
+            \todo: This method currently only works for HID devices. Find a HID independent way to retrieve VID/PID.
+            </remarks>
+            <param name="classGuid">GUID of a class of devices.</param>
+            <param name="retrieveStringsFromDevice">Enable or disable string retrieval from device.</param>
+            <param name="ignoreDuplicates">Ignore duplicated entries in WMI.</param>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.TryGetVidPidFromPath(System.String,System.Int32@,System.Int32@)">
+            <summary>
+            Tries to return VID and PID of a given path.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.TryGetStringsFromPath(System.String,System.String@,System.String@,System.String@)">
+            <summary>
+            Tries to return manufacturer, product and serial strings of a given path.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.GetStringsFromHandle(Microsoft.Win32.SafeHandles.SafeFileHandle,System.String@,System.String@,System.String@)">
+            <remarks>
+            A device may not define any or some strings (e.g. no serial string).
+            Therefore, simply try to retrieve the strings in best-effort manner; otherwise, return "".
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.GetDeviceInfoFromPath(System.String,System.Boolean)">
+            <summary>
+            Returns the information of the device with the given path;
+            or <c>null</c> if no device could be found on the given path.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.TryGetDeviceInfoFromPath(System.String,System.Int32@,System.Int32@)">
+            <summary>
+            Tries to return the information of the device with the given path.
+            </summary>
+            <remarks>
+            \todo: This method currently only works for HID devices. Find a HID independent way to retrieve VID/PID.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.TryGetDeviceInfoFromPath(System.String,System.Int32@,System.Int32@,System.String@,System.String@,System.String@)">
+            <summary>
+            Tries to return the information of the device with the given path.
+            </summary>
+            <remarks>
+            \todo: This method currently only works for HID devices. Find a HID independent way to retrieve VID/PID.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.TryGetDeviceInfoFromPath(System.String,System.Boolean,System.Int32@,System.Int32@,System.String@,System.String@,System.String@)">
+            <summary>
+            Tries to return the information of the device with the given path.
+            </summary>
+            <remarks>
+            \todo: This method currently only works for HID devices. Find a HID independent way to retrieve VID/PID.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.GetDeviceInfoFromVidPid(System.Int32,System.Int32)">
+            <summary>
+            Returns the information of the device with the given VID and PID;
+            or <c>null</c> if no device could be found on the given path.
+            </summary>
+            <remarks>
+            If multiple devices with the same VID and PID are connected to the system, the first device is returned.
+            </remarks>
+            <returns>Retrieved device info; or <c>null</c> if no appropriate device was found.</returns>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.TryGetDeviceInfoFromVidPid(System.Int32,System.Int32,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            Tries to return the information of the device with the given VID and PID.
+            </summary>
+            <remarks>
+            If multiple devices with the same VID and PID are connected to the system, the first device is returned.
+            </remarks>
+            <param name="vendorId">Given VID.</param>
+            <param name="productId">Given PID.</param>
+            <param name="path">Retrieved system path, or "" if no appropriate device was found.</param>
+            <param name="manufacturer">Retrieved manufacturer, or "" if no appropriate device was found.</param>
+            <param name="product">Retrieved product, or "" if no appropriate device was found.</param>
+            <param name="serial">Retrieved serial string, or "" if no appropriate device was found.</param>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.GetDeviceInfoFromVidPidSerial(System.Int32,System.Int32,System.String)">
+            <summary>
+            Returns the information of the device with the given VID and PID and serial string;
+            or <c>null</c> if no device could be found on the give path.
+            </summary>
+            <returns>Retrieved device info; or <c>null</c> if no appropriate device was found.</returns>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.TryGetDeviceInfoFromVidPidSerial(System.Int32,System.Int32,System.String,System.String@,System.String@,System.String@)">
+            <summary>
+            Tries to return the information of the device with the given VID and PID and serial string.
+            </summary>
+            <param name="vendorId">Given VID.</param>
+            <param name="productId">Given PID.</param>
+            <param name="serial">Given serial string.</param>
+            <param name="path">Retrieved system path, or "" if no appropriate device was found.</param>
+            <param name="manufacturer">Retrieved manufacturer, or "" if no appropriate device was found.</param>
+            <param name="product">Retrieved product, or "" if no appropriate device was found.</param>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.RegisterStaticDeviceNotificationHandler(System.Guid)">
+             <summary>
+             This method registers for static device notifications. These notifications will report
+             whenever a device is physically connected or disconnected to the computer. Only one
+             handler for these notifications is needed, therefore, only the first call to this
+             method does have any effect.
+             </summary>
+             <remarks>
+             \todo: Don't know the GUID for any USB device class. So only HID devices are detected.
+            
+             Attention:
+             This function also exists in the other USB classes.
+             Changes here must be applied there too.
+             </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.UnregisterStaticDeviceNotificationHandler">
+            <remarks>
+            Attention:
+            This function also exists in the other USB classes.
+            Changes here must be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.StaticMessageCallback(System.Windows.Forms.Message@)">
+            <remarks>
+            Attention:
+            This function also exists in the other USB classes.
+            Changes here must be applied there too.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.Device.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.Device.Connected">
+            <summary>
+            Event raised after the device has been connected or reconnected.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.Device.Disconnected">
+            <summary>
+            Event raised after the device has been disconnected.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.Device.IOError">
+            <summary>
+            Event raised after an I/O error has occurred.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.#ctor(System.Guid,System.String)">
+            <remarks>
+            <paramref name="path"/> must be valid; otherwise, an exception is thrown.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="path"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">No device could be created for the given <paramref name="path"/>.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.#ctor(System.Guid,System.String,System.Int32,System.Int32)">
+            <remarks>
+            If <paramref name="path"/> is valid, <see cref="P:MKY.IO.Usb.Device.Info"/> is created from it; otherwise,
+            <see cref="P:MKY.IO.Usb.Device.Info"/> is created from <paramref name="vendorId"/> and <paramref name="productId"/>.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.#ctor(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+            <remarks>
+            If <paramref name="path"/> is valid, <see cref="P:MKY.IO.Usb.Device.Info"/> is created from it; otherwise,
+            <see cref="P:MKY.IO.Usb.Device.Info"/> is created from <paramref name="vendorId"/>, <paramref name="productId"/> and <paramref name="serial"/>.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.#ctor(System.Guid,MKY.IO.Usb.DeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.Initialize">
+            <remarks>
+            Constructor creates <see cref="P:MKY.IO.Usb.Device.Info"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.Reinitialize(MKY.IO.Usb.DeviceInfo)">
+            <summary>
+            Used to reinitialize the device in case of a reconnect.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.Reinitialize">
+            <summary>
+            Used to reinitialize the device in case of a reconnect.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:MKY.IO.Usb.Device.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:MKY.IO.Usb.Device.Info">
+            <summary>
+            Returns the complete device info. To read a specific device property, use the property
+            members below.
+            </summary>
+            <remarks>
+            The info is always defined, i.e. not <c>null</c>, for a <see cref="T:MKY.IO.Usb.Device"/> object.
+            </remarks>
+            <remarks>
+            \remind (2019-11-10 / MKY)
+            According to the class description, a <see cref="T:MKY.IO.Usb.DeviceInfo"/> shall be treated as an
+            an immutable object. While not ideal, it is considered acceptable to return such object.
+            Split into mutable settings tuple and immutable runtime container could be done.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Usb.Device.Path">
+             <remarks>
+             Example path:
+             <![CDATA[
+             "\\\\?\\hid#vid_0eb8&pid_2303#8&26d7e5e6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}"
+             ]]>
+            
+             Only VID/PID is contained as string, not the serial.
+             </remarks>
+        </member>
+        <member name="P:MKY.IO.Usb.Device.VendorId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.Device.VendorIdString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.Device.ProductId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.Device.ProductIdString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.Device.Manufacturer">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.Device.Product">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.Device.Serial">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.Device.IsConnected">
+            <summary>
+            Indicates whether the device is physically connected to the computer, i.e. the USB cable
+            is connected to both computer and device.
+            </summary>
+            <remarks>
+            The Win32 API 'RegisterDeviceNotification' raises 'Connected' or 'Disconnected' events
+            in case a device is attached or removed from the computer. The <see cref="P:MKY.IO.Usb.Device.IsConnected"/>
+            property relates to the state of these events.
+            </remarks>
+            <returns>
+            <c>true</c> if the device is connected to the computer; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.Device_DeviceConnected(System.Object,MKY.IO.Usb.DeviceEventArgs)">
+            <remarks>
+            Attention:
+            This function similarly exists in the other USB classes.
+            Changes here may have to be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.Device_DeviceDisconnected(System.Object,MKY.IO.Usb.DeviceEventArgs)">
+            <remarks>
+            Attention:
+            This function similarly exists in the other USB classes.
+            Changes here may have to be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.OnConnected(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.OnDisconnected(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.OnIOError(MKY.IO.Usb.ErrorEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation,
+            which is a string describing the USB device as accurately as possible.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.ToString(System.Boolean)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation,
+            which is a string describing the USB device as accurately as possible.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.ToShortString">
+            <summary>
+            Returns a string describing the USB device in a short form.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.Device.ToLongString">
+            <summary>
+            Returns a string describing the USB device in a long form.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Usb.DeviceClass">
+            <summary>
+            USB device classes as defined by the USB standard.
+            See http://www.usb.org/developers/defined_class/ for latest list.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Usb.DescriptorType">
+            <summary>
+            Descriptor types.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Usb.DescriptorTypeSize">
+            <summary>
+            Descriptor sizes per descriptor type.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Usb.StringDescriptorIndex">
+            <summary>
+            String descriptor types.
+            </summary>
+            <remarks>
+            Replication of private enum 'Win32.Hid.StringDescriptorIndex' for less coupling to Win32.Hid assembly.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Usb.HidUsagePage">
+            <summary>
+            The USB usage page as described in http://www.usb.org/developers/devclass_docs/Hut1_12v2.pdf.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Usb.HidUsagePageEx">
+            <summary>
+            Extended enum HidUsagePageEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.HidUsagePageEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Usb.HidUsagePage.Undefined"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Usb.HidUsagePageEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.#ctor(MKY.IO.Usb.HidUsagePage)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.TryParse(System.String,MKY.IO.Usb.HidUsagePageEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.TryParse(System.String,MKY.IO.Usb.HidUsagePage@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.op_Implicit(MKY.IO.Usb.HidUsagePageEx)~MKY.IO.Usb.HidUsagePage">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.op_Implicit(MKY.IO.Usb.HidUsagePage)~MKY.IO.Usb.HidUsagePageEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.op_Implicit(MKY.IO.Usb.HidUsagePageEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.op_Implicit(System.Int32)~MKY.IO.Usb.HidUsagePageEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.op_Implicit(MKY.IO.Usb.HidUsagePageEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsagePageEx.op_Implicit(System.String)~MKY.IO.Usb.HidUsagePageEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.HidUsageId">
+            <summary>
+            The USB HID usage as described in http://www.usb.org/developers/devclass_docs/Hut1_12v2.pdf.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Usb.HidUsageIdEx">
+            <summary>
+            Extended enum HidUsageEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.HidUsageIdEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Usb.HidUsageId.Undefined"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Usb.HidUsageIdEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.#ctor(MKY.IO.Usb.HidUsageId)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.TryParse(System.String,MKY.IO.Usb.HidUsageIdEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.TryParse(System.String,MKY.IO.Usb.HidUsageId@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.op_Implicit(MKY.IO.Usb.HidUsageIdEx)~MKY.IO.Usb.HidUsageId">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.op_Implicit(MKY.IO.Usb.HidUsageId)~MKY.IO.Usb.HidUsageIdEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.op_Implicit(MKY.IO.Usb.HidUsageIdEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.op_Implicit(System.Int32)~MKY.IO.Usb.HidUsageIdEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.op_Implicit(MKY.IO.Usb.HidUsageIdEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.HidUsageIdEx.op_Implicit(System.String)~MKY.IO.Usb.HidUsageIdEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.SerialHidDevice">
+            <summary>
+            Extends a USB device with serial HID capabilities.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDevice.MatchSerialDefault">
+            <summary>
+            By default, the USB device serial string must match the connected device.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDevice.PresetDefault">
+            <remarks>
+            None shall be the preset, the report format and filter usage defaults still result in
+            the <see cref="F:MKY.IO.Usb.SerialHidDeviceSettingsPreset.Common"/> default.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDevice.ReportFormatDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDevice.RxFilterUsageDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDevice.AutoOpenDefault">
+            <summary>
+            By default, the USB device is automatically opened as soon as it gets connected to the
+            computer, given this device object is up and running.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDevice.IncludeNonPayloadDataDefault">
+            <summary>
+            By default, the USB device hides non-payload data such as the report ID, the optional
+            payload length, the optional terminating zero or the filler bytes.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.SerialHidDevice.DeviceConnected">
+            <summary>
+            Occurs when an USB device is connected to the computer.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.SerialHidDevice.DeviceDisconnected">
+            <summary>
+            Occurs when an USB device is disconnected from the computer.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.GetDevices(System.Boolean)">
+            <summary>
+            Returns an array of all USB HID devices currently available on the system.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.RegisterStaticDeviceNotificationHandler">
+            <summary>
+            This method registers for static device notifications. These notifications will report
+            whenever a device is physically connected or disconnected to the computer. Only one
+            handler for these notifications is needed, therefore, only the first call to this
+            method does have any effect.
+            </summary>
+            <remarks>
+            Attention:
+            This function also exists in the other USB classes.
+            Changes here must be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.UnregisterStaticDeviceNotificationHandler">
+            <remarks>
+            Attention:
+            This function also exists in the other USB classes.
+            Changes here must be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.StaticMessageCallback(System.Windows.Forms.Message@)">
+            <remarks>
+            Attention:
+            This function also exists in the other USB classes.
+            Changes here must be applied there too.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDevice.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDevice.stream">
+            <remarks>
+            It's just a single stream object, but it contains the basically independent input and
+            output streams.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidDevice.receiveQueue">
+            <remarks>
+            Async receiving. The capacity is set large enough to reduce the number of resizing
+            operations while adding items.
+            </remarks>
+        </member>
+        <member name="E:MKY.IO.Usb.SerialHidDevice.Opened">
+            <summary>
+            Event raised after port successfully opened.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.SerialHidDevice.Closed">
+            <summary>
+            Event raised after port successfully closed.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.SerialHidDevice.DataReceived">
+            <summary>
+            Event raised after data has been received from the device.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.SerialHidDevice.DataSent">
+            <summary>
+            Event raised after data has completely be sent to the device.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.#ctor(System.Int32,System.Int32,System.String,System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.#ctor(MKY.IO.Usb.HidDeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Initialize">
+            <remarks>
+            Base constructor creates device info and therefore also sets system path.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:MKY.IO.Usb.SerialHidDevice.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidDevice.MatchSerial">
+            <summary>
+            Indicates whether the configured USB serial string must match the current device.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidDevice.ReportFormat">
+            <summary>
+            Indicates the HID report format of the current device.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidDevice.ActiveReportId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidDevice.RxFilterUsage">
+            <summary>
+            Indicates how the ID is used while receiving.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidDevice.AutoOpen">
+            <summary>
+            Indicates whether the device automatically tries to open.
+            </summary>
+            <returns>
+            <c>true</c> if the device automatically tries to open; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidDevice.IncludeNonPayloadData">
+            <summary>
+            Indicates whether the device hides non-payload data.
+            </summary>
+            <returns>
+            <c>true</c> if the device hides non-payload data; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidDevice.IsStarted">
+            <summary>
+            Gets a value indicating whether the device has been started.
+            </summary>
+            <returns>
+            <c>true</c> if the device has been started; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidDevice.IsOpen">
+            <summary>
+            Indicates whether the serial communication port to the device is open.
+            </summary>
+            <returns>
+            <c>true</c> if the serial communication port is open; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidDevice.BytesAvailable">
+            <summary>
+            Gets the amount of data received from the device that is available to read.
+            </summary>
+            <returns>
+            The number of bytes of data received from the device.
+            </returns>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Start">
+            <summary>
+            Starts the device.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Stop">
+            <summary>
+            Stops the device.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Open">
+            <summary>
+            Opens the serial communication to the device.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Close">
+            <summary>
+            Closes the serial communication to the device.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Receive(System.Byte[]@)">
+            <summary>
+            Receives data from the device into a receive buffer.
+            </summary>
+            <param name="data">
+            An array of type <see cref="T:System.Byte"/> that is the storage location for the received data.
+            </param>
+            <returns>The number of bytes received.</returns>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Send(System.Byte)">
+            <summary>
+            Sends data to the device.
+            </summary>
+            <param name="data">
+            An item of type <see cref="T:System.Byte"/> that contains the data to be sent.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Send(System.Byte[])">
+            <summary>
+            Sends data to the device.
+            </summary>
+            <param name="data">
+            An array of type <see cref="T:System.Byte"/> that contains the data to be sent.
+            </param>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.SignalReceiveThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.StopReceiveThread">
+            <remarks>
+            Using 'Stop' instead of 'Terminate' to emphasize graceful termination, i.e. trying
+            to join first, then abort if not successfully joined.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.CreateStream">
+            <remarks>
+            Currently, this implementation is fixed to true Ser/HID devices. Attempted to create a
+            <see cref="M:MKY.Win32.Hid.CreateSharedReadHandle(System.String,Microsoft.Win32.SafeHandles.SafeFileHandle@)"/> to check whether accessing a true HID
+            device (e.g. a mouse) would also work on 2018-02-23. It doesn't, both calls (read/write
+            as well as read-only) result in "API call returned code '5' meaning 'access denied'".
+            Looks like the HID driver enforces exclusive device access.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.ReceiveThread">
+            <summary>
+            Asynchronously manage incoming events to prevent potential deadlocks if close/dispose
+            was called from a ISynchronizeInvoke target (i.e. a form) on an event thread.
+            Also, the mechanism implemented below reduces the amount of events that are propagated
+            to the main application. Small chunks of received data will generate many events
+            handled by <see cref="M:MKY.IO.Usb.SerialHidDevice.AsyncReadCompleted(System.IAsyncResult)"/>. However, since <see cref="M:MKY.IO.Usb.SerialHidDevice.OnDataReceived(System.EventArgs)"/>
+            synchronously invokes the event, it will take some time until the send queue is checked
+            again. During this time, no more new events are invoked, instead, incoming data is
+            buffered.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Usb.SerialHidDevice.AsyncReadCompleted(System.IAsyncResult)"/> event above, or by XOn/XOff while
+            sending.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.CalculateTotalReportByteLength(System.Byte[])">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Device_DeviceConnected(System.Object,MKY.IO.Usb.DeviceEventArgs)">
+            <remarks>
+            Attention:
+            This function similarly exists in the other USB classes.
+            Changes here may have to be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.Device_DeviceDisconnected(System.Object,MKY.IO.Usb.DeviceEventArgs)">
+            <remarks>
+            Attention:
+            This function similarly exists in the other USB classes.
+            Changes here may have to be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.OnConnected(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.OnDisconnected(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.OnIOError(MKY.IO.Usb.ErrorEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.OnOpened(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.OnClosed(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.OnDataReceived(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.OnDataSent(MKY.IO.Usb.DataEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.DebugMessage(System.String,System.Object[])">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with the formatted message, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.DebugState(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidDevice.DebugThread(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Usb.IDevice">
+            <summary>
+            Interface for USB devices.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.IDevice.Connected">
+            <summary>
+            Event raised after the device has been connected or reconnected.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.IDevice.Disconnected">
+            <summary>
+            Event raised after the device has been disconnected.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Usb.IDevice.IOError">
+            <summary>
+            Event raised after an I/O error has occurred.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.IDevice.IsConnected">
+            <summary>
+            Indicates whether the device is connected to the computer.
+            </summary>
+            <returns>
+            <c>true</c> if the device is connected to the computer; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:MKY.IO.Usb.DeviceCollection`1">
+            <summary>
+            Base of list for containing USB device information.
+            </summary>
+            <typeparam name="T">The type of the items in the collection.</typeparam>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.#ctor(MKY.IO.Usb.DeviceClass)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.FillWithAvailableDevices(System.Boolean)">
+            <summary>
+            Fills list with the available USB devices.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.ContainsVidPid(`0)">
+            <summary>
+            Determines whether an element is in the collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            <c>true</c> if item is found in the collection; otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>
+            and <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.ContainsVidPidSerial(`0)">
+            <summary>
+            Determines whether an element is in the collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            <c>true</c> if item is found in the collection; otherwise, <c>false</c>.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.FindVidPid(`0)">
+            <summary>
+            Searches for an element that matches the <paramref name="item"/>, and returns the
+            first occurrence within the entire collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            The first element that matches the <paramref name="item"/>, if found; otherwise, –1.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>
+            and <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.FindVidPidSerial(`0)">
+            <summary>
+            Searches for an element that matches the <paramref name="item"/>, and returns the
+            first occurrence within the entire collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            The first element that matches the <paramref name="item"/>, if found; otherwise, –1.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.FindIndexVidPid(`0)">
+            <summary>
+            Searches for an element that matches the <paramref name="item"/>, and returns the
+            zero-based index of the first occurrence within the collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            The zero-based index of the first occurrence of an element that matches the
+            <paramref name="item"/>, if found; otherwise, –1.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>
+            and <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.FindIndexVidPidSerial(`0)">
+            <summary>
+            Searches for an element that matches the <paramref name="item"/>, and returns the
+            zero-based index of the first occurrence within the collection.
+            </summary>
+            <param name="item">
+            The object to locate in the collection. The value can be null for reference types.
+            </param>
+            <returns>
+            The zero-based index of the first occurrence of an element that matches the
+            <paramref name="item"/>, if found; otherwise, –1.
+            </returns>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.DebugVerboseIndent(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection`1.DebugVerboseUnindent(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Usb.DeviceCollection">
+            <summary>
+            List containing USB device information.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection.#ctor(MKY.IO.Usb.DeviceClass)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceCollection.#ctor(System.Collections.Generic.IEnumerable{MKY.IO.Usb.DeviceInfo})">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.DeviceInfo">
+            <summary>
+            This container class holds information about a USB device.
+            </summary>
+            <remarks>
+            The information contained is limited to pieces that are needed to lookup a device.
+            </remarks>
+            <remarks>
+            \remind (2019-11-10 / MKY)
+            Instances of this container class shall be treated as immutable objects. However, it is not
+            possible to assign <see cref="T:System.ComponentModel.ImmutableObjectAttribute"/>/<see cref="T:MKY.Contracts.ImmutableContractAttribute"/>
+            because XML default serialization requires public setters. Split into mutable settings tuple
+            and immutable runtime container could be done.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.FirstVendorId">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.LastVendorId">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.FirstProductId">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.LastProductId">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.FirstVendorIdString">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.LastVendorIdString">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.FirstProductIdString">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.LastProductIdString">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.VendorIdDefault">
+            <remarks>Named [Item]Default to ease lookup.</remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.ProductIdDefault">
+            <remarks>Named [Item]Default to ease lookup.</remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.VendorIdRegex">
+            <remarks><![CDATA["VID:0ABC / PID:1234"]]></remarks>
+            <remarks><![CDATA["VID:0ABC / PID:1234 / SNR:XYZ"]]></remarks>
+            <remarks><![CDATA["vid_0ABC & pid_1234"]]></remarks>
+            <remarks><![CDATA["vid_0ABC & pid_1234 & snr_xyz"]]></remarks>
+            <remarks><![CDATA["Company (VID:0ABC) Product (PID:1234)"]]></remarks>
+            <remarks><![CDATA["Company (VID:0ABC) Product (PID:1234) XYZ"]]></remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.ProductIdRegex">
+            <remarks><![CDATA["VID:0ABC / PID:1234"]]></remarks>
+            <remarks><![CDATA["VID:0ABC / PID:1234 / SNR:XYZ"]]></remarks>
+            <remarks><![CDATA["vid_0ABC & pid_1234"]]></remarks>
+            <remarks><![CDATA["vid_0ABC & pid_1234 & snr_xyz"]]></remarks>
+            <remarks><![CDATA["Company (VID:0ABC) Product (PID:1234)"]]></remarks>
+            <remarks><![CDATA["Company (VID:0ABC) Product (PID:1234) XYZ"]]></remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.SerialRegexTag">
+            <remarks><![CDATA["VID:0ABC / PID:1234 / SNR:XYZ"]]></remarks>
+            <remarks><![CDATA["vid_0ABC & pid_1234 & snr_xyz"]]></remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.SerialRegexRemainder">
+            <remarks><![CDATA["Company (VID:0ABC) Product (PID:1234) XYZ"]]></remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.SerialDefault">
+            <remarks>Named [Item]Default to ease lookup.</remarks>
+        </member>
+        <member name="F:MKY.IO.Usb.DeviceInfo.DefaultSeparator">
+            <remarks>Not named [Item]Default since there is not (yet) a 'Separator' item.</remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.#ctor">
+            <remarks>
+            \remind (2019-11-10 / MKY)
+            Parameter-less constructor is required for XML default serialization. Could be removed
+            after having split into mutable settings tuple and immutable runtime container.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.#ctor(System.Int32,System.Int32)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.#ctor(System.Int32,System.Int32,System.String)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.#ctor(System.String,System.Int32,System.Int32)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.#ctor(System.String,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.Initialize">
+            <remarks>Initialize this info based on defaults only.</remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.Initialize(System.String)">
+            <remarks>Initialize this info based on the available information only.</remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.Initialize(System.Int32,System.Int32)">
+            <remarks>Initialize this info based on the available information only.</remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.Initialize(System.Int32,System.Int32,System.String)">
+            <remarks>Initialize this info based on the available information only.</remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.Initialize(System.String,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <exception cref="T:System.ArgumentOutOfRangeException"> if a value is invalid.</exception>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.#ctor(MKY.IO.Usb.DeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DeviceInfo.Path">
+            <remarks>
+            Example path:
+            <![CDATA[
+            "\\\\?\\hid#vid_0eb8&pid_2303#8&26d7e5e6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}"
+            ]]>
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Usb.DeviceInfo.VendorId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DeviceInfo.VendorIdString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DeviceInfo.ProductId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DeviceInfo.ProductIdString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DeviceInfo.Manufacturer">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DeviceInfo.Product">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.DeviceInfo.Serial">
+            <remarks>
+            The USB standard uses the term "SerialNumber" which not really makes sense as the value
+            can contain characters as well.
+            </remarks>
+            <remarks>
+            The USB standard does not seem to specify any restriction on the serial number string.
+            Thus, it may be any UTF-16 encoded string.
+            </remarks>
+            <remarks>
+            Microsoft further restricts the serial string as documented in <a href="https://msdn.microsoft.com/en-us/library/windows/hardware/dn423379%28v=vs.85%29.aspx#usbsn"/>:
+            "Plug and Play requires that every byte in a USB serial number be valid. If a single
+             byte is invalid, Windows discards the serial number and treats the device as if it
+             had no serial number. The following byte values are invalid for USB serial numbers:
+             - Values less than 0x20.
+             - Values greater than 0x7F.
+             - 0x2C (comma)."
+            Note that 0x7F (delete) doesn't make much sense either...
+            </remarks>
+            <remarks>
+            Keeping "SerialNumber" for the XML element for backward-compatibility to older versions.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.IsValidVendorId(System.Int32)">
+            <summary>
+            Returns whether the given number is a valid vendor ID.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.IsValidProductId(System.Int32)">
+            <summary>
+            Returns whether the given number is a valid product ID.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.TryValidate">
+            <summary>
+            Queries the USB device for user readable strings like vendor or product name.
+            </summary>
+            <remarks>
+            Query is never done automatically because it takes quite some time.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.ToString(System.Boolean)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.ToShortString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.ToLongString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality,
+            ignoring <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.Equals(MKY.IO.Usb.DeviceInfo)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality,
+            ignoring <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.Equals(System.Int32,System.Int32,System.String)">
+            <summary>
+            Determines whether this instance and the specified properties have value equality,
+            ignoring <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+            <remarks>
+            The serial string is compared case-insensitive, same behavior as Windows.
+            </remarks>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.EqualsVidPid(MKY.IO.Usb.DeviceInfo)">
+            <summary>
+            Determines whether this instance and the specified object have value equality,
+            ignoring <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/> and
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.EqualsVidPid(System.Int32,System.Int32)">
+            <summary>
+            Determines whether this instance and the specified properties have value equality,
+            ignoring <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/>, <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/> and
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.EqualsVidPidSerial(MKY.IO.Usb.DeviceInfo)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.EqualsVidPidSerial(System.Int32,System.Int32,System.String)">
+            <summary>
+            Determines whether this instance and the specified properties have value equality.
+            </summary>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.EqualsVidPidManufacturerProductSerial(MKY.IO.Usb.DeviceInfo)">
+            <summary>
+            Determines whether this instance and the specified object have value equality,
+            including <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.EqualsVidPidManufacturerProductSerial(System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Determines whether this instance and the specified properties have value equality,
+            including <see cref="P:MKY.IO.Usb.DeviceInfo.Manufacturer"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Product"/>.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.op_Equality(MKY.IO.Usb.DeviceInfo,MKY.IO.Usb.DeviceInfo)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.op_Inequality(MKY.IO.Usb.DeviceInfo,MKY.IO.Usb.DeviceInfo)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.Parse(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for VID/PID/SNR and returns a corresponding device ID object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.ParseVidPid(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for VID/PID and returns a corresponding device ID object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>
+            and <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.ParseVidPidSerial(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for VID/PID/SNR and returns a corresponding device ID object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.TryParse(System.String,MKY.IO.Usb.DeviceInfo@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for VID/PID/SNR and returns a corresponding device ID object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.TryParseVidPid(System.String,MKY.IO.Usb.DeviceInfo@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for VID/PID and returns a corresponding device ID object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>
+            and <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.TryParseVidPidSerial(System.String,MKY.IO.Usb.DeviceInfo@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for VID/PID/SNR and returns a corresponding device ID object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+            <remarks>
+            Comprehensibility method, i.e. making obvious that only <see cref="P:MKY.IO.Usb.DeviceInfo.VendorId"/>,
+            <see cref="P:MKY.IO.Usb.DeviceInfo.ProductId"/> and <see cref="P:MKY.IO.Usb.DeviceInfo.Serial"/> are considered.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.TryParseWithOptions(System.String,System.Boolean,MKY.IO.Usb.DeviceInfo@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.CompareTo(System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.Compare(System.Object,System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.op_LessThan(MKY.IO.Usb.DeviceInfo,MKY.IO.Usb.DeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.op_GreaterThan(MKY.IO.Usb.DeviceInfo,MKY.IO.Usb.DeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.op_LessThanOrEqual(MKY.IO.Usb.DeviceInfo,MKY.IO.Usb.DeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.op_GreaterThanOrEqual(MKY.IO.Usb.DeviceInfo,MKY.IO.Usb.DeviceInfo)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.op_Implicit(MKY.IO.Usb.DeviceInfo)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.DeviceInfo.op_Implicit(System.String)~MKY.IO.Usb.DeviceInfo">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Usb.SerialHidReportFormat">
+            <summary>
+            Serial HID report format.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidReportFormat.UseIdDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidReportFormat.IdDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidReportFormat.PrependPayloadByteLengthDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidReportFormat.AppendTerminatingZeroDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Usb.SerialHidReportFormat.FillLastReportDefault">
+             <remarks>
+             It is a requirement for most systems to fill each report to the advertised byte length.
+             Also, Windows HID.dll requires that output reports are always filled!
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidReportFormat.UseId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidReportFormat.Id">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidReportFormat.PrependPayloadByteLength">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidReportFormat.AppendTerminatingZero">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidReportFormat.FillLastReport">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidReportFormat.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates new format with specified arguments.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidReportFormat.#ctor(System.Boolean,System.Byte,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates new format with specified arguments.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Usb.SerialHidReportFormat.HeaderByteLength">
+            <summary>
+            Returns the byte length of the report header, depending on the given settings.
+            </summary>
+            <remarks>
+            The length also indicates the location of the first payload byte.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidReportFormat.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidReportFormat.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidReportFormat.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidReportFormat.Equals(MKY.IO.Usb.SerialHidReportFormat)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidReportFormat.op_Equality(MKY.IO.Usb.SerialHidReportFormat,MKY.IO.Usb.SerialHidReportFormat)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Usb.SerialHidReportFormat.op_Inequality(MKY.IO.Usb.SerialHidReportFormat,MKY.IO.Usb.SerialHidReportFormat)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+    </members>
+</doc>

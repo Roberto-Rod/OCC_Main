@@ -1,0 +1,8 @@
+      1 State,1,PUMP_DOWN,
+     79 State,2,THERAPY_DELIVERY,
+      1 State,4,LEAK,
+      1 Auto Track Fail: State Error 0x0200
+     60 State,4,LEAK,
+      1 State,1,PUMP_DOWN,
+      2 State,3,SHUT_DOWN,
+    116 State,0,SLEEP,

@@ -1,0 +1,1673 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YAT.Application.Base</name>
+    </assembly>
+    <members>
+        <member name="T:YAT.ApplicationEx">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.ApplicationEx.CommonName">
+            <summary>The common name, always "YAT", i.e. not "YAT" *or* "YATConsole".</summary>
+        </member>
+        <member name="F:YAT.ApplicationEx.CommonNameLong">
+            <summary>The long variant of the common name.</summary>
+        </member>
+        <member name="F:YAT.ApplicationEx.ProductNameConstWorkaround">
+            <summary>
+            Constant string to expand the application's product name in places where neither
+            <see cref="F:YAT.ApplicationEx.ProductName"/> nor <see cref="P:System.Windows.Forms.Application.ProductName"/>
+            can be used, e.g. in case of attribute arguments.
+            </summary>
+        </member>
+        <member name="F:YAT.ApplicationEx.ProductName">
+            <summary>The product name.</summary>
+        </member>
+        <member name="F:YAT.ApplicationEx.ProductBuildDesignation">
+            <summary>The build designation.</summary>
+        </member>
+        <member name="F:YAT.ApplicationEx.ProductCaption">
+            <summary>The product caption that combines product name and build designation.</summary>
+        </member>
+        <member name="F:YAT.ApplicationEx.ProductVersion">
+            <summary>The product version.</summary>
+        </member>
+        <member name="P:YAT.ApplicationEx.ProductFullVersionValue">
+            <summary>
+            The product version including <see cref="P:System.Version.Revision"/>.
+            </summary>
+            <remarks>
+            <see cref="F:YAT.ApplicationEx.ProductVersion"/> uses the <see cref="T:System.Reflection.AssemblyInformationalVersionAttribute"/>
+            that hides the <see cref="P:System.Version.Revision"/> part.
+            </remarks>
+        </member>
+        <member name="P:YAT.ApplicationEx.ProductFullVersion">
+            <summary>
+            The product version including <see cref="P:System.Version.Revision"/>.
+            </summary>
+            <remarks>
+            <see cref="F:YAT.ApplicationEx.ProductVersion"/> uses the <see cref="T:System.Reflection.AssemblyInformationalVersionAttribute"/>
+            that hides the <see cref="P:System.Version.Revision"/> part.
+            </remarks>
+            <remarks>
+            Must be 'get' rather than 'readonly' as <see cref="P:YAT.ApplicationEx.ProductFullVersionValue"/> is 'get'.
+            </remarks>
+        </member>
+        <member name="P:YAT.ApplicationEx.ProductRevision">
+            <summary>
+            The <see cref="P:System.Version.Revision"/> part of the product version.
+            </summary>
+            <remarks>
+            Must be 'get' rather than 'readonly' as <see cref="P:YAT.ApplicationEx.ProductFullVersionValue"/> is 'get'.
+            </remarks>
+        </member>
+        <member name="F:YAT.ApplicationEx.ProductVersionStabilityIndication">
+            <summary>The version designation.</summary>          // Leading space for non-empty strings!
+        </member>
+        <member name="F:YAT.ApplicationEx.ProductVersionWithStabilityIndication">
+            <summary>The product version that combines product version and version stability indication.</summary>
+        </member>
+        <member name="F:YAT.ApplicationEx.ProductCaptionAndVersion">
+            <summary>
+            The product caption and version.
+            </summary>
+            <remarks>
+            No longer using "Version" inbetween as many other applications which don't, e.g.
+             > TortoiseSVN 1.9.7, Build 27907
+             > Syncovery 7.68 build 446
+             > FreeFileSync 9.9 [2018-03-09]
+             > Firefox 59.0.2 (64-Bit) + Thunderbird 52.7.0 (32-Bit)
+            Release sections in release notes no longer use "Version" either.
+            </remarks>
+        </member>
+        <member name="P:YAT.ApplicationEx.ProductCaptionAndVersionAndBuild">
+            <summary>
+            The product caption and version including build/revision.
+            </summary>
+            <remarks>
+            Must be 'get' rather than 'readonly' as <see cref="P:YAT.ApplicationEx.ProductRevision"/> is 'get'.
+            </remarks>
+        </member>
+        <member name="F:YAT.ApplicationEx.ProductLogoLineSections">
+            <summary>The complete logo (text line sections) of the product.</summary>
+            <remarks>Same content and structure as header of 'Release Notes'.</remarks>
+        </member>
+        <member name="F:YAT.ApplicationEx.ExecutableDirectoryPath">
+            <summary>
+            Gets the path for the executable file that started the application,
+            not including the name of the file, e.g. "C:\Program Files\YAT".
+            </summary>
+            <remarks>
+            The value of this property equals <see cref="P:System.Windows.Forms.Application.StartupPath"/>.
+            This dedicated property provides a more accurate name than the original property.
+            </remarks>
+        </member>
+        <member name="F:YAT.ApplicationEx.ExecutableFilePath">
+            <summary>
+            Gets the path for the executable file that started the application,
+            including the name of the file, e.g. "C:\Program Files\YAT\YAT.exe".
+            </summary>
+            <remarks>
+            The value of this property equals <see cref="P:System.Windows.Forms.Application.ExecutablePath"/>.
+            This dedicated property provides a more accurate name than the original property.
+            </remarks>
+        </member>
+        <member name="F:YAT.ApplicationEx.ExecutableFileNameWithoutExtension">
+            <summary>
+            Gets the name of the executable file, without its extension, e.g. "YAT".
+            </summary>
+        </member>
+        <member name="M:YAT.ApplicationEx.ResolveExecutableRelativePath(System.String,System.String)">
+            <summary>
+            Gets the absolute path of the given file, relative to and dependent on the path of the
+            executable file, e.g. "C:\Program Files\YAT\YAT Release Notes.txt" or for development
+            "D:\Workspaces\YAT\Trunk\YAT\YAT\bin\Debug\..\..\..\!-Doc.User\YAT Release Notes.txt".
+            </summary>
+            <remarks>
+            This method assumes "Debug" and "Release" as the paths during development and is
+            typically used with the generic 'Any CPU' target. Platform specific 'x64' and 'x86'
+            require handling by the caller of this method.
+            </remarks>
+        </member>
+        <member name="F:YAT.ApplicationEx.PrerequisiteFramework">
+            <summary>The .NET Framework prerequisite.</summary>
+        </member>
+        <member name="F:YAT.ApplicationEx.PrerequisiteWindows">
+            <summary>The Windows operating system prerequisite.</summary>
+        </member>
+        <member name="F:YAT.ApplicationEx.PrerequisiteLinux">
+            <summary>The Linux operating system prerequisite.</summary>
+        </member>
+        <member name="T:YAT.Application.CommandLineMessageHelper">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.CommandLineMessageHelper.GetVersion">
+            <remarks>
+            Does not include a trailing empty line.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.CommandLineMessageHelper.GetVersionAndLogo">
+            <remarks>
+            Does not include a trailing empty line.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.CommandLineMessageHelper.GetVersionAndLogoAndHelpAndReturn(System.Func{System.Int32,System.String})">
+            <remarks>
+            Does not include a trailing empty line.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.CommandLineMessageHelper.WriteVersionOnly(System.IO.TextWriter)">
+            <remarks>
+            Just the version number, neither caption nor build nor trailing empty line.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.CommandLineMessageHelper.WriteVersionAndLogo(System.IO.TextWriter,System.Int32)">
+            <remarks>
+            Appends a trailing empty line.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.CommandLineMessageHelper.WriteVersionAndLogoAndHelpAndReturn(System.IO.TextWriter,System.Int32,System.Func{System.Int32,System.String})">
+            <remarks>
+            Appends a trailing empty line.
+            </remarks>
+        </member>
+        <member name="T:YAT.Application.Settings.AutoActionSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoActionSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoActionSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoActionSettings.#ctor(YAT.Application.Settings.AutoActionSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoActionSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoActionSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoActionSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoActionSettings.Equals(YAT.Application.Settings.AutoActionSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoActionSettings.op_Equality(YAT.Application.Settings.AutoActionSettings,YAT.Application.Settings.AutoActionSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoActionSettings.op_Inequality(YAT.Application.Settings.AutoActionSettings,YAT.Application.Settings.AutoActionSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.AutoResponseSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoResponseSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoResponseSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoResponseSettings.#ctor(YAT.Application.Settings.AutoResponseSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoResponseSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.AutoResponseSettings.RecentExplicitResponses">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoResponseSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoResponseSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoResponseSettings.Equals(YAT.Application.Settings.AutoResponseSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoResponseSettings.op_Equality(YAT.Application.Settings.AutoResponseSettings,YAT.Application.Settings.AutoResponseSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoResponseSettings.op_Inequality(YAT.Application.Settings.AutoResponseSettings,YAT.Application.Settings.AutoResponseSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.AutoTriggerSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.AutoTriggerSettings.MaxRecents">
+            <remarks>
+            Using 8 same as <see cref="F:YAT.Application.Settings.RecentFileSettings.MaxFilePaths"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoTriggerSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoTriggerSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoTriggerSettings.#ctor(YAT.Application.Settings.AutoTriggerSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoTriggerSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.AutoTriggerSettings.RecentExplicitTriggers">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoTriggerSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoTriggerSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoTriggerSettings.Equals(YAT.Application.Settings.AutoTriggerSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoTriggerSettings.op_Equality(YAT.Application.Settings.AutoTriggerSettings,YAT.Application.Settings.AutoTriggerSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoTriggerSettings.op_Inequality(YAT.Application.Settings.AutoTriggerSettings,YAT.Application.Settings.AutoTriggerSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.AutoWorkspaceSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoWorkspaceSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoWorkspaceSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoWorkspaceSettings.#ctor(YAT.Application.Settings.AutoWorkspaceSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoWorkspaceSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.AutoWorkspaceSettings.FilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoWorkspaceSettings.ResetFilePath">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.AutoWorkspaceSettings.AutoSaved">
+            <summary>
+            Auto save means that the settings have been saved at an automatically chosen location,
+            without telling the user anything about it.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoWorkspaceSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoWorkspaceSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoWorkspaceSettings.Equals(YAT.Application.Settings.AutoWorkspaceSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoWorkspaceSettings.op_Equality(YAT.Application.Settings.AutoWorkspaceSettings,YAT.Application.Settings.AutoWorkspaceSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.AutoWorkspaceSettings.op_Inequality(YAT.Application.Settings.AutoWorkspaceSettings,YAT.Application.Settings.AutoWorkspaceSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.ColorSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.ColorSettings.CustomColorsMaxCount">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.#ctor(YAT.Application.Settings.ColorSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.ColorSettings.CustomColors">
+            <remarks>
+            Using string because...
+            ...<see cref="T:System.Drawing.Color"/> does not implement <see cref="T:System.IEquatable`1"/> that is needed for a recent item collection, and because...
+            ...<see cref="T:System.Drawing.Color"/> cannot be serialized.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.CustomColorsToWin32">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.UpdateCustomColorsFromWin32(System.Int32[])">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.Equals(YAT.Application.Settings.ColorSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.op_Equality(YAT.Application.Settings.ColorSettings,YAT.Application.Settings.ColorSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ColorSettings.op_Inequality(YAT.Application.Settings.ColorSettings,YAT.Application.Settings.ColorSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.ExtensionSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.ExtensionSettings.TextSendFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.ExtensionSettings.BinarySendFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.ExtensionSettings.ControlLogFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.ExtensionSettings.RawLogFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.ExtensionSettings.NeatLogFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.ExtensionSettings.MonitorFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.ExtensionSettings.PlotFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ExtensionSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ExtensionSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ExtensionSettings.#ctor(YAT.Application.Settings.ExtensionSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.ExtensionSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.ExtensionSettings.TextSendFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.ExtensionSettings.BinarySendFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.ExtensionSettings.ControlLogFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.ExtensionSettings.RawLogFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.ExtensionSettings.NeatLogFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.ExtensionSettings.MonitorFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.ExtensionSettings.PlotFiles">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ExtensionSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.ExtensionSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ExtensionSettings.Equals(YAT.Application.Settings.ExtensionSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.ExtensionSettings.op_Equality(YAT.Application.Settings.ExtensionSettings,YAT.Application.Settings.ExtensionSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ExtensionSettings.op_Inequality(YAT.Application.Settings.ExtensionSettings,YAT.Application.Settings.ExtensionSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.FindSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FindSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FindSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FindSettings.#ctor(YAT.Application.Settings.FindSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.FindSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.FindSettings.ActivePattern">
+            <remarks>
+            Using "Pattern" instead of "TextOrPattern" for simplicity.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.FindSettings.RecentPatterns">
+            <remarks>
+            Using "Pattern" instead of "TextOrPattern" for simplicity.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.FindSettings.Options">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FindSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.FindSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FindSettings.Equals(YAT.Application.Settings.FindSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.FindSettings.op_Equality(YAT.Application.Settings.FindSettings,YAT.Application.Settings.FindSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FindSettings.op_Inequality(YAT.Application.Settings.FindSettings,YAT.Application.Settings.FindSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.FontSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.FontSettings.CheckAvailabilityDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.FontSettings.CheckTerminalDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.FontSettings.ShowMonospaceOnlyDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FontSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FontSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FontSettings.#ctor(YAT.Application.Settings.FontSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.FontSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.FontSettings.CheckAvailability">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.FontSettings.CheckTerminal">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.FontSettings.ShowMonospacedOnly">
+            <remarks>
+            See <see cref="M:MKY.Drawing.FontEx.IsMonospaced(System.String)"/> for background on using term "monospaced".
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.FontSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.FontSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FontSettings.Equals(YAT.Application.Settings.FontSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.FontSettings.op_Equality(YAT.Application.Settings.FontSettings,YAT.Application.Settings.FontSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.FontSettings.op_Inequality(YAT.Application.Settings.FontSettings,YAT.Application.Settings.FontSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.GeneralSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.GeneralSettings.AutoSaveRoot">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.GeneralSettings.AutoSaveTerminalFileNamePrefix">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.GeneralSettings.AutoSaveWorkspaceFileNamePrefix">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.GeneralSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.GeneralSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.GeneralSettings.#ctor(YAT.Application.Settings.GeneralSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.GeneralSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.GeneralSettings.AutoOpenWorkspace">
+            <summary>
+            Auto open of workspace means that the previously open workspace will automatically be
+            opened when starting the application.
+            </summary>
+        </member>
+        <member name="P:YAT.Application.Settings.GeneralSettings.AutoSaveWorkspace">
+            <summary>
+            Auto save of workspace means that the workspace and terminal settings are tried to be
+            automatically saved, either at an automatically chosen location, or at the current file
+            location.
+            </summary>
+        </member>
+        <member name="P:YAT.Application.Settings.GeneralSettings.UseRelativePaths">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.GeneralSettings.NotifyNonAvailableIO">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.GeneralSettings.RetrieveSerialPortCaptions">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.GeneralSettings.DetectSerialPortsInUse">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.GeneralSettings.AskForAlternateSerialPort">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.GeneralSettings.AskForAlternateNetworkInterface">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.GeneralSettings.MatchUsbSerial">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.GeneralSettings.AskForAlternateUsbDevice">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.GeneralSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.GeneralSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.GeneralSettings.Equals(YAT.Application.Settings.GeneralSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.GeneralSettings.op_Equality(YAT.Application.Settings.GeneralSettings,YAT.Application.Settings.GeneralSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.GeneralSettings.op_Inequality(YAT.Application.Settings.GeneralSettings,YAT.Application.Settings.GeneralSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.MainWindowSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.MainWindowSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.MainWindowSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.MainWindowSettings.#ctor(YAT.Application.Settings.MainWindowSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.MainWindowSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.MainWindowSettings.StartPosition">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.MainWindowSettings.AlwaysOnTop">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.MainWindowSettings.ShowTerminalInfo">
+            <remarks>
+            Using term "Info" since the info contains name and IDs.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.MainWindowSettings.ShowTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.MainWindowSettings.ShowChrono">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.MainWindowSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.MainWindowSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.MainWindowSettings.Equals(YAT.Application.Settings.MainWindowSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.MainWindowSettings.op_Equality(YAT.Application.Settings.MainWindowSettings,YAT.Application.Settings.MainWindowSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.MainWindowSettings.op_Inequality(YAT.Application.Settings.MainWindowSettings,YAT.Application.Settings.MainWindowSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.PathSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.PathSettings.MainFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.PathSettings.CommandFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.PathSettings.SendFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.PathSettings.LogFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.PathSettings.MonitorFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.PathSettings.PlotFilesDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PathSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PathSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PathSettings.#ctor(YAT.Application.Settings.PathSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.PathSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.PathSettings.MainFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.PathSettings.CommandFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.PathSettings.SendFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.PathSettings.LogFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.PathSettings.MonitorFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.PathSettings.PlotFiles">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PathSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.PathSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PathSettings.Equals(YAT.Application.Settings.PathSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.PathSettings.op_Equality(YAT.Application.Settings.PathSettings,YAT.Application.Settings.PathSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PathSettings.op_Inequality(YAT.Application.Settings.PathSettings,YAT.Application.Settings.PathSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.PlotSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotSettings.#ctor(YAT.Application.Settings.PlotSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.PlotSettings.ShowLegend">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotSettings.Equals(YAT.Application.Settings.PlotSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotSettings.op_Equality(YAT.Application.Settings.PlotSettings,YAT.Application.Settings.PlotSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotSettings.op_Inequality(YAT.Application.Settings.PlotSettings,YAT.Application.Settings.PlotSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.PlotWindowSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotWindowSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotWindowSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotWindowSettings.#ctor(YAT.Application.Settings.PlotWindowSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotWindowSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.PlotWindowSettings.StartPosition">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.PlotWindowSettings.AlwaysOnTop">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotWindowSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotWindowSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotWindowSettings.Equals(YAT.Application.Settings.PlotWindowSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotWindowSettings.op_Equality(YAT.Application.Settings.PlotWindowSettings,YAT.Application.Settings.PlotWindowSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.PlotWindowSettings.op_Inequality(YAT.Application.Settings.PlotWindowSettings,YAT.Application.Settings.PlotWindowSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.RecentFileSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Application.Settings.RecentFileSettings.MaxFilePaths">
+            <remarks>
+            Limited to 8 for...
+            <list type="bullet">
+            <item><description>...allowing keyboard shortcuts 1..8 in the menu.</description></item>
+            <item><description>..."nice" looking menu numbering (10 would "spoil" the list).</description></item>
+            </list>
+            Limitation in other applications:
+            <list type="bullet">
+            <item><description>Visual Studio = 10.</description></item>
+            <item><description>Notepad++ = 10.</description></item>
+            <item><description>Programmer's Notepad = 15.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.RecentFileSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.RecentFileSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.RecentFileSettings.#ctor(YAT.Application.Settings.RecentFileSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.RecentFileSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.RecentFileSettings.FilePaths">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.RecentFileSettings.FilePathsCapacity">
+            <remarks>
+            This property allows standard XML serialization which is not provided for
+            generic collection <see cref="T:RecentItemCollection`1"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.RecentFileSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.RecentFileSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.RecentFileSettings.Equals(YAT.Application.Settings.RecentFileSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.RecentFileSettings.op_Equality(YAT.Application.Settings.RecentFileSettings,YAT.Application.Settings.RecentFileSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.RecentFileSettings.op_Inequality(YAT.Application.Settings.RecentFileSettings,YAT.Application.Settings.RecentFileSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.SocketSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.SocketSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.SocketSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.SocketSettings.#ctor(YAT.Application.Settings.SocketSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.SocketSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.SocketSettings.RecentRemoteHosts">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.SocketSettings.RecentLocalFilters">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.SocketSettings.RecentPorts">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.SocketSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.SocketSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.SocketSettings.Equals(YAT.Application.Settings.SocketSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.SocketSettings.op_Equality(YAT.Application.Settings.SocketSettings,YAT.Application.Settings.SocketSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.SocketSettings.op_Inequality(YAT.Application.Settings.SocketSettings,YAT.Application.Settings.SocketSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.ViewSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ViewSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ViewSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ViewSettings.#ctor(YAT.Application.Settings.ViewSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.ViewSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.ViewSettings.FindIsVisible">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.ViewSettings.AutoActionIsVisible">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.ViewSettings.AutoResponseIsVisible">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ViewSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.ViewSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ViewSettings.Equals(YAT.Application.Settings.ViewSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.ViewSettings.op_Equality(YAT.Application.Settings.ViewSettings,YAT.Application.Settings.ViewSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.ViewSettings.op_Inequality(YAT.Application.Settings.ViewSettings,YAT.Application.Settings.ViewSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Settings.WindowSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.WindowSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.WindowSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.WindowSettings.#ctor(YAT.Application.Settings.WindowSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.WindowSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Settings.WindowSettings.State">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.WindowSettings.Location">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Settings.WindowSettings.Size">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Settings.WindowSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.WindowSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.WindowSettings.Equals(YAT.Application.Settings.WindowSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Settings.WindowSettings.op_Equality(YAT.Application.Settings.WindowSettings,YAT.Application.Settings.WindowSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Settings.WindowSettings.op_Inequality(YAT.Application.Settings.WindowSettings,YAT.Application.Settings.WindowSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Types.FindOptions">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Types.FindOptions.CaseSensitive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Types.FindOptions.WholeWord">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Types.FindOptions.EnableRegex">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Types.FindOptions.#ctor(System.Boolean,System.Boolean,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Types.FindOptions.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Types.FindOptions.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Types.FindOptions.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Types.FindOptions.Equals(YAT.Application.Types.FindOptions)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Types.FindOptions.op_Equality(YAT.Application.Types.FindOptions,YAT.Application.Types.FindOptions)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Types.FindOptions.op_Inequality(YAT.Application.Types.FindOptions,YAT.Application.Types.FindOptions)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Application.Utilities.ExtensionHelper">
+            <summary>
+            Defines extension filters for open/save dialogs.
+            </summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.TerminalExtension">
+            <summary>
+            Allows to alter the file extension used for terminal files,
+            e.g. ".ab1" instead of ".yat".
+            </summary>
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsTerminalFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsTerminalExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsTerminalFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsTerminalFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.TerminalFilesFilter">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.TerminalFilesFilterDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.WorkspaceExtension">
+            <summary>
+            Allows to alter the file extension used for workspace files,
+            e.g. ".ab2" instead of ".yaw".
+            </summary>
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsWorkspaceFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsWorkspaceExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsWorkspaceFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsWorkspaceFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.WorkspaceFilesFilter">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.WorkspaceFilesFilterDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.TerminalOrWorkspaceFilesFilter">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.TerminalOrWorkspaceFilesFilterDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandExtension">
+            <summary>
+            Allows to alter the file extension used for command files,
+            e.g. ".ab3" instead of ".yac".
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsCommandExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsCommandFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsCommandFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandFilesFilter">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandFilesFilterDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandPageExtension">
+            <summary>
+            Allows to alter the file extension used for command page files,
+            e.g. ".ab4" instead of ".yacp".
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsCommandPageFileExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsCommandPageFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsCommandPageFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandPageFilesFilter">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandPageFilesFilterDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandPagesExtension">
+            <summary>
+            Allows to alter the file extension used for command pages files,
+            e.g. ".ab5" instead of ".yacps".
+            </summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsCommandPagesExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsCommandPagesFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsCommandPagesFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandPagesFilesFilter">
+            <remarks>
+            Prepended "Multiple" to clearly distinguish from single command page.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandPagesFilesFilterDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandPageOrPagesFilesFilter">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandPageOrPagesFilesFilterDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandPageOrPagesOrTerminalFilesFilter">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.CommandPageOrPagesOrTerminalFilesFilterDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsTextExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsTextFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsTextFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsBinaryExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsBinaryFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsBinaryFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsRtfExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsRtfFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsRtfFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsXmlExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsXmlFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsXmlFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsFileTypeThatCanOnlyBeOpenedWhenCompleted(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.TextFilesFilter">
+            <remarks>
+            Applies to [Send File] as well as [Monitor > Save].
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.TextFilesFilterHelper(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.TextSendExtensionDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.ControlLogExtensions">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.ControlLogExtensionDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.NeatLogExtensions">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.NeatLogExtensionDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.BinarySendFilesFilter">
+            <remarks>
+            Only applies to [Send File], i.e. does contain text file extensions.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.BinarySendFilesFilterHelper(System.String)">
+            <remarks>
+            Only applies to [Send File], i.e. does contain text file extensions.
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.BinarySendExtensionDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.RawLogExtensions">
+            <remarks>
+            Only applies to log files, i.e. does not contain text file extensions (which are also sendable by binary terminals).
+            </remarks>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.RawLogExtensionDefault">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.MonitorExtensionDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsImageExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsImageFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsImageExtension(System.String,System.Drawing.Imaging.ImageFormat@)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsImageFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsImageFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsImageFile(System.String,System.Drawing.Imaging.ImageFormat@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsSvgExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsSvgFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsSvgFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsPdfExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsPdfFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsPdfFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.PlotFilesFilter">
+            <remarks>
+            Applies to [Plot > Save].
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.PlotFilesFilterHelper(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.PlotExtensionDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsExecutableExtension(System.String)">
+            <remarks>
+            Intentionally replicating term "Extension" for better distinction with <see cref="M:YAT.Application.Utilities.ExtensionHelper.IsExecutableFile(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Application.Utilities.ExtensionHelper.IsExecutableFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Application.Utilities.ExtensionHelper.AllFilesFilter">
+            <summary></summary>
+        </member>
+    </members>
+</doc>

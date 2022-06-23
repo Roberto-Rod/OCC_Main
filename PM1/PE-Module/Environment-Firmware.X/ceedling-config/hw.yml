@@ -1,0 +1,14 @@
+---
+
+# Notes:
+# This configuration is for running test fixture running tests in hardware.
+# For detailed help see: https://github.com/ThrowTheSwitch/Ceedling/blob/master/docs/CeedlingPacket.md
+
+:tools:
+  :test_fixture:
+    :arguments:
+      - Environment-Firmware.X/test/hw-test/hw_test_fixture.rb # This option runs tests in hardware.
+ #:test_fixture: this test fixture is used to run the test in hardware
+
+
+...

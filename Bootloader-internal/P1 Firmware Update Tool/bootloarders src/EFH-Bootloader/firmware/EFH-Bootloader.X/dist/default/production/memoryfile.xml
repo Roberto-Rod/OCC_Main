@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/default/production/EFH-Bootloader.X.production.elf">                 
+    <memory name="program">                 
+      <units>bytes</units>                 
+      <length>46208</length>                 
+      <used>36980</used>                     
+      <free>9228</free>                     
+    </memory>                              
+    <memory name="data">              
+      <units>bytes</units>                 
+      <length>524272</length>                 
+      <used>1384</used>                     
+      <free>522888</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 

@@ -1,0 +1,20 @@
+---
+:source:
+  :path: test/acceptance_test
+  :file: test_HET_33.c
+:successes:
+- :test: test_TestEEPROMWriteAndReadHappyCase
+  :line: 138
+  :message: ''
+- :test: test_TestEEPROMWriteAndReadWithIncorrectBytesRead
+  :line: 247
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 2
+  :passed: 2
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

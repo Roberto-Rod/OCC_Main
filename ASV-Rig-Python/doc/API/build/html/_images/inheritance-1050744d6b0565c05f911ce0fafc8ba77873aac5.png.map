@@ -1,0 +1,5 @@
+<map id="inheritancea01546c129" name="inheritancea01546c129">
+<area shape="rect" id="node1" href="framework.device.ni6363.html#framework.device.ni6363.DigitalOutputWaveformTask" target="_top" title="A task to write a digital waveform output to the specified lines." alt="" coords="125,5,308,31"/>
+<area shape="rect" id="node3" href="#framework.module.nidaq.EncoderWaveformTask" target="_top" title="Implements a streamed encoder waveform task." alt="" coords="356,5,511,31"/>
+<area shape="rect" id="node2" title="Represents a DAQmx Task." alt="" coords="5,5,77,31"/>
+</map>

@@ -1,0 +1,37 @@
+---
+:source:
+  :path: test/unit_test/managers
+  :file: test_StateMachineIdle.c
+:successes:
+- :test: test_OnInitClearSystemTimerReferenceReturnOk
+  :line: 54
+  :message: ''
+- :test: test_IdleCheckStateReturnsInvalidParameter
+  :line: 59
+  :message: ''
+- :test: test_OnEntryInitialiseUIAndPowerSettingAndWhenSwitchIsNotPressedGoToIdle
+  :line: 65
+  :message: ''
+- :test: test_IdleStateRunsWhenSwitchIsPressedNotLongEnoughToSwitchOnAndStayInIdle
+  :line: 88
+  :message: ''
+- :test: test_IdleStateRunsWhenSwitchIsPressedLongEnoughToGoIntoPumpDown
+  :line: 107
+  :message: ''
+- :test: test_OnRunIfPushButtonIsNotPressedDisablePeripheral
+  :line: 121
+  :message: ''
+- :test: test_IfTimerExpireGoToIPDEvenIfNoButtonIsPressed
+  :line: 133
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 7
+  :passed: 7
+  :failed: 0
+  :ignored: 0
+:stdout:
+- 'Assert raised at sourcePico/managers/StateMachineIdle.c[59] on test: newState !=
+  NULL'
+- ''

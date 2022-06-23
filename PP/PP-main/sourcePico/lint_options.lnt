@@ -1,0 +1,177 @@
+/*****************************************************************************
+ *   File        : lint_options.lnt
+ *
+ *   Description : PC-lint project options.
+ *
+ *****************************************************************************/
+/* ***************************************************************************
+ * This file is copyrighted by and the property of Smith & Nephew Medical Ltd.
+ * It contains confidential and proprietary information. It must not be copied
+ * (in whole or in part) or otherwise disclosed without prior written consent 
+ * of the company. Any copies of this file (in whole or in part), made by any
+ * method must also include a copy of this legend. 
+ * 
+ * (c) 2018, 2019 Smith & Nephew Medical Ltd.
+ * 
+ *************************************************************************** */
+
+//-----------------------------------------------------------------------------
+// Lint options common to Microchip XC8 Builds
+//-----------------------------------------------------------------------------
+
+-i"C:\lint"
+lnt\co-xc8.lnt
+lnt\co-cci.lnt
+
+//-----------------------------------------------------------------------------
+// Microchip XC8 Compiler options
+//-----------------------------------------------------------------------------
+
+-A(C99)           				// Strict ANSI checking C 99.
+
++libclass(ansi,foreign)  		// Treat foreign headers (i.e. anything on include list) are library headers.
+
+// Library Folders
++libdir("C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\")
++libdir("C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\")
++libdir("C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\legacy\")
+
++libh(pic16lf1509.inc)  		// treat the 'pic16lf1509.inc' header file as a library header.
++libh(pic16lf1509.h)			// treat the 'pic16lf1509.h' header file as a library header.
+
+// Overrides the +libclass option specified earlier.
+-libdir(../application/)			// Local header includes are not library headers.
+-libdir(../common/)     			// Local header includes are not library headers.
+-libdir(../devices/)    			// Local header includes are not library headers.
+-libdir(../managers/)				// Local header includes are not library headers.
+-libdir(../mcc_generated_files/)	// Local header includes are not library headers.
+
+//-----------------------------------------------------------------------------
+// Microchip XC8 Compiler options for Library files
+//-----------------------------------------------------------------------------
+
+// The folowing suppress issues raised by the Microchip XC8 Compiler for the PIC16LF1509.
+// Specifically the library file 'pic16lf1509.h'.
+
+-elib(10)		// suppress "Expecting String -- String is the expected token." in library.
+                // The expected token could not be found. This is commonly given when certain reserved words are not recognized.
+                // I.e. XC8 compiler macro definitions for pic16lf1509 MCU.
+-elib(14)       // suppress "Symbol 'Symbol' previously defined (Location) in library.
+-elib(19)       // suppress "Useless Declaration" in library.
+-elib(24)       // suppress "Expected an expression, found 'String' - An operator was found at the start of an expression but it was not a unary operator." in library.
+-elib(26)       // suppress "Expected an expression, found 'String' - An expression was not found where one was expected." in library.
+-elib(30)       // suppress "Expected a constant - A constant was expected but not obtained." in library.
+				// This could be following a case keyword, an array dimension, bit field length, enumeration value, #if expression, etc.
+-elib(36)       // suppress "Redefining the storage class of symbol 'Symbol' conflicts with Location - An object's storage class is being changed.
+-elib(123)      // suppress "Macro 'Symbol' defined with arguments at Location this is just a warning" in library.
+				// Specifically for C99: avoids issue 123 - Macro 'Symbol' defined with arguments at Location this is just a warning
+-elib(537)      // Repeated include file 'FileName' - The file whose inclusion within a module is being requested has already been included in this compilation.
+				// i.e. Ignore multiple include header files.
+-elib(677)      // sizeof used within preprocessor statement - Allow use of 'sizeof' within preprocessor macros in library header files.
+-elib(1076)     // anonymous union assumed to be 'static'.
+
+
+//-----------------------------------------------------------------------------
+// General Options
+//-----------------------------------------------------------------------------
+
+-vm				// Turn verbose mode off.
++fpn			// All pointer parameters are assumed to be possibly NULL.
+-fce			// Do not continue if #error pragma encountered.
++fim			// Multiple include directories allowed.
++w3				// Set the warnig level to 3 - Report Error, Warning and Information mesages.
+
+// Manage preprocessor "inline" keyword.
++pragma(inline, macro)			
+-d"pragma_inline(x)=inline"
+
+// allow ASSERT(.....);
++rw(ASSERT)
++rw(_to_semi)
+-dASSERT=_to_semi
+
+
+//-----------------------------------------------------------------------------
+// Force specific error/warning/information messages OFF
+//-----------------------------------------------------------------------------
+ 
+-e322   // Unable to open include file 'filename' - (Note: Error message 7 will kick in but processing will continue).
+-e534   // Ignoring return values 
+-e537   // Repeated include file warning 
+-e641   // Converting enum to int message
+-e679   // Suspicious Truncation in arithmetic expression combining with pointer
+-e714   // Symbol 'Symbol' (Location) not referenced - named external variable or external function was defined but not referenced.
+-e717   // do ... while(0) - Whereas this represents a constant in a context expecting a Boolean, this construct is probably
+		// a deliberate attempt on the part of the programmer to encapsulate a sequence of statements into a single statement, 
+		// and so it is given a separate error message.
+		// This is suppressed for the project since the MCC 'pin_manager.h' uses this kind of statement for Bit Manipulation and
+		// we wish to minimize changes to the MCC files.
+-e730   // Boolean arguments to functions 
+-e731   // Boolean argument to equal/not equal - Allow Booleans to be compared against true/false.
+-e755   // Global macro 'Symbol' (Location) not referenced - A 'global' macro is one defined in a header file.
+-e756   // Global typedef 'Symbol' (Location) not referenced - This message is given for a 'typedef' symbol declared in a non-library header file.
+-e757   // Global declarator 'Symbol' (Location) not referenced - This message is given for objects that have been declared in non-library header files
+		// and that have not been used in any module comprising the program being checked.
+-e759   // Header declaration for symbol 'Symbol' (Location) could be moved from header to module.
+-e765   // External 'Symbol' (Location) could be made static - i.e. an external symbol was referenced in only one module.
+-e769   // Global enumeration constant 'Symbol' (Location) not referenced - A member (name provided as Symbol) of an enum appeared in a non-library header file
+		// but was not used in any module comprising the program.
+-e778   // Constant expression evaluates to 0 in operation: ’String’ - A constant expression involving addition, subtraction,
+		// multiplication, shifting, or negation resulted in a 0.
+-e788   // enum constant 'Symbol' not used within defaulted switch - Note: This message is also specified in file "co-xc8.lnt").
+-e793   // ANSI limit of 31 significant characters in an external identifier
+-e830   // Location cited in prior message - convey in 'canonical' form the location information embedded within some other message.
+-e831   // Reference cited in prior message - convey in 'canonical' form the location information embedded within some other message.
+-e1784	// extern "C" in "C++" code
+-emacro(413,offsetof)	// Likely use of null pointer - offsetof deliberately uses a null pointer.
+
+//-----------------------------------------------------------------------------
+// Microchip XC8 Compiler Asserts Relacement
+//-----------------------------------------------------------------------------
+
+// The XC8 "Assert.h" is replaced with an Application specific version "Assert.h".
+// This can cause (766) - Include of header file ’FileName’ not used in module ’FileName’Information messages.
+// The following is used to suppress these (766) messages for the XC8 "Assert.h" file below. 
+// "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\Assert.h" file.
+
+-efile(766, "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\Assert.h")
+
+//-----------------------------------------------------------------------------
+// Force specific error/warning/information messages ON 
+//-----------------------------------------------------------------------------
+
++e50	// Attempted to take the address of a non-lvalue - Unary & operator requires an lvalue.
+		// (i.e. a value suitable for placement on the left hand side of an assignment operator).
++e54	// Division by constant value zero (0).
++e514	// Unusual use of boolean operator.
++e530	// 'symbol' (location) not initialised - An auto variable was used before it was initialized.
++e550	// Symbol 'Symbol' (Location) not accessed - This means that the value of a variable was never used.
++e574	// Signed-unsigned mix with relational operator.
++e602	// Comment within a comment.
++e605	// Increased pointer capability (Context).
++e644	// Variable 'Symbol' (Location) may not have been initialized - An auto variable was not necessarily assigned a value before use.
+
+// The following are included since a HEAP is used. 
++e613  // Null pointer check: Possible use of null pointer 'Symbol' in [left/right] argument to operator 'String' Reference
++e668  // Null pointer check: Possibly passing a null pointer to function 'Symbol', Context Reference
++e794  // Null pointer check: Conceivable use of null pointer 'Symbol' in [left/right] argument to operator 'String’ Reference 
+
++e616  // control flows into case/default.
+-append(616, (Bitwise Coding Standards, 3.11.5 [All] If a case limb deliberately drops through to a subsequent case, then there must be an explicit comment to explain the logic.))
+
+// Message Format
+// Use defaults except those options enabled below. 
+
+-h1         // only one line per message 
+-width(0,4) // no line break 
+// specify the following line if you want row and column information in message.
+// Note that this overrides the default and removes hyperlinks to the source of error.
+-format=\q%f\q,%l,%c,%t,%n,\q%m\q 
+-"format_specific=\n--- During Specific Walk:\n%{---  File %f line %l: %i\n%}"
+
+
+
+
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------

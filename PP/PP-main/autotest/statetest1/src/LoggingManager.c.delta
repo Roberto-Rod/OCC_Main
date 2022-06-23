@@ -1,0 +1,21 @@
+a24 1
+/*
+a25 2
+*/
+#define LOGGING_DELAY_ONE_MINUTE_TICKS    (10u) //60 * 10  Log every second for testing
+a29 1
+static bool_t  logPumpDownEvent = FALSE; 
+a47 5
+        if (DeviceStatus_GetState() == PUMP_DOWN_E)
+        {
+           logPumpDownEvent = TRUE;
+        } 
+        
+a66 7
+                
+                // Log a PUMP DOWN as a sync identifier 
+                if (logPumpDownEvent)
+                {
+                    logPumpDownEvent = FALSE;
+                    PerformanceLogger_SetStatus((uint8_t) PUMP_DOWN_E);
+                }

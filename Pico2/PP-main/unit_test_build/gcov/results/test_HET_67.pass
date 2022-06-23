@@ -1,0 +1,17 @@
+---
+:source:
+  :path: test/acceptance_test
+  :file: test_HET_67.c
+:successes:
+- :test: test_SwitchTheDeviceOffWithLongButtonPressStartedInLeakErrorConditionAndDetectedInTherapyDelivery
+  :line: 77
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 1
+  :passed: 1
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

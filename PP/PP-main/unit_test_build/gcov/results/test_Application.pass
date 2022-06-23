@@ -1,0 +1,29 @@
+---
+:source:
+  :path: test/unit_test/application
+  :file: test_Application.c
+:successes:
+- :test: test_ApplicationInitInitialiseManagers
+  :line: 68
+  :message: ''
+- :test: test_ApplicationSleepGoesToSleepWhenNotAtPOSTStateAndRelaxationOscillatorIsUsed
+  :line: 85
+  :message: ''
+- :test: test_ApplicationDoesNotGoToSleepWhenAtPOSTStateAndRelaxationOscillatorIsUsed
+  :line: 112
+  :message: ''
+- :test: test_RunDoesNotTickControllerWhenTimerFlagIsNotSet
+  :line: 119
+  :message: ''
+- :test: test_RunTicksControllersAndState
+  :line: 133
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 5
+  :passed: 5
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

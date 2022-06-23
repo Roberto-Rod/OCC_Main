@@ -1,0 +1,201 @@
+a26 180
+#define UART_DOWNLOAD 11
+//#define NORMAL   2
+//#define POST_TEST 1
+
+#ifdef NORMAL 
+ErrorCode_t TX_Write1(uint8_t *data, uint8_t numBytes)
+{
+    
+   return EC_OK_E; //dummy function just for compilation purposes  
+    
+}
+#endif 
+
+
+#ifdef POST_TEST 
+ErrorCode_t TX_Write1(uint8_t *data, uint8_t numBytes)
+{
+    
+    uint8_t  message[7];
+     ErrorCode_t result = EC_OK_E;
+     
+     uint16_t value = 0;
+     
+     value = (data[1]<<8)+data[2];
+     
+ convertA( value, &message[2] );
+  //send message on the TX
+  message[0] = data[0] +'0';
+  message[1] ='-';
+  //message[1] = 0;
+  //message[2] = 0;
+  //message[3] = (uint8_t) (message[0] ^ message[1] ^ message[2]);
+
+  result = TX_Write(message, 7); 
+    
+    return EC_OK_E; //dummy function just for compilation purposes 
+}
+#endif 
+
+
+
+#ifdef UART_DOWNLOAD
+
+
+uint8_t  buf1[8];
+
+#define SIZEB 6 
+void convertA ( uint32_t val );
+ 
+void convertA ( uint32_t val )
+{
+    for ( int i = 0; i< SIZEB ; i++) 
+    {
+        buf1[i] = '0'; 
+    }
+    
+    int offset = SIZEB -1;
+    while ( val > 0 )
+    {
+        buf1[offset] =  ( val % 10 ) +'0'; 
+        val = val / 10; 
+        offset--; 
+    }
+    
+    int zeros = 0;
+    for ( int i = 0; i < SIZEB; i++ )
+    {
+        if ( buf1[i] == '0' )
+        {
+            zeros++;
+        }  
+        else
+        {
+            break;
+        }
+    }
+    
+    if ( zeros == SIZEB )
+    {
+        zeros--;
+    }
+    
+    if ( zeros > 0)
+    {
+        int end = 0;
+        for ( int i = 0; i < SIZEB - zeros; i++ )
+        { 
+           buf1[i] = buf1[i+zeros] ;
+           end++;
+        }  
+        buf1[end] = 0;
+    }
+    else
+    {
+       buf1[SIZEB] = 0;
+    }
+    
+    
+    printf ( buf1 ); printf ("\r"); 
+}
+
+ 
+void  Watchdog_Clear();
+void testx( void)
+{
+    uint8_t  message[7];
+     uint8_t  dataBuffer[17];
+      ErrorCode_t result = EC_OK_E;
+      
+      uint32_t addressCounter = 0;
+      uint8_t blankcount = 0;
+      uint32_t totalblanks = 0;
+      
+      MP_EnableExternalPeripheralsSupply();
+      PM_Delay(8);
+      
+      while ( addressCounter < 256000ul )
+      {
+      result = I2E_Read(addressCounter, dataBuffer, 16);
+      addressCounter += 16;
+      
+      // cAheck for all 0xFF and if so then send as count 
+      blankcount = 0;
+      for ( uint8_t x = 0; x < 16; x++ ) 
+      {
+          if ( dataBuffer[x] == 0xFF )
+          {
+             blankcount++; 
+          }       
+      }
+      
+      if ( blankcount == 16  )
+      {
+          totalblanks += blankcount;
+           Watchdog_Clear();
+      }
+      else 
+      {
+          if ( totalblanks != 0 )
+          {
+               convertA(totalblanks + 1000); 
+               totalblanks = 0;
+          }
+      }
+      
+      static int cc = 0;
+      
+      if ( blankcount != 16 )
+      {
+          for ( uint8_t x = 0; x < 16; x++ )
+          {
+              convertA( dataBuffer[x]);
+             // convertA( cc++);
+              Watchdog_Clear();
+          }    
+      }
+      
+    }
+      
+      if (totalblanks != 0  )
+      {  
+       convertA(totalblanks + 1000 );  
+        printf ("End\r");
+      }
+      
+      
+      // just wait here, the jobs down 
+      /*
+      while ( 1==1)
+      {
+         Watchdog_Clear();  
+      }
+      */
+}
+
+#endif 
+
+
+
+
+a42 17
+
+#ifdef UART_DOWNLOAD      
+     
+    printf ("Test\r");
+    
+    testx ();
+   int x = 0;  
+   if ( x == 1)
+#endif 
+  
+#ifdef   POST_TEST
+       
+      int x = 1;  
+   if ( x == 1)
+#endif
+
+/*
+a44 1
+*/

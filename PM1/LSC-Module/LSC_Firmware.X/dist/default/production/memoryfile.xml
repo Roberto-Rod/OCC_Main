@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/production/LSC_Firmware.X.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>16384</length>
+      <used>7438</used>
+      <free>8946</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>134016</length>
+      <used>62787</used>
+      <free>71229</free>
+    </memory>
+  </executable>
+</project>

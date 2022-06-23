@@ -1,0 +1,29 @@
+---
+:source:
+  :path: test/unit_test/managers
+  :file: test_StateMachine.c
+:successes:
+- :test: test_OnInitReturnIdleState
+  :line: 78
+  :message: ''
+- :test: test_RunInIdleStateWithNoButtonPresses
+  :line: 87
+  :message: ''
+- :test: test_RunInIdleStateWithError
+  :line: 110
+  :message: ''
+- :test: test_RunInIdleStateAndGoToPumpDownStateAndTherapyDelivery
+  :line: 131
+  :message: ''
+- :test: test_RunInPumpDownStateReturningUnknownStateAndGoToFaultState
+  :line: 165
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 5
+  :passed: 5
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

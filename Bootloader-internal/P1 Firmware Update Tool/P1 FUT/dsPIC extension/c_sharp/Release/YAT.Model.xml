@@ -1,0 +1,3440 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YAT.Model</name>
+    </assembly>
+    <members>
+        <member name="T:YAT.Model.AutoActionPlotModel">
+            <summary>
+            Defines the plot model.
+            </summary>
+            <remarks>
+            Separated from plot view for...
+            <list type="bullet">
+            <item><description>...better decoupling updating the model (thread pool thread) and updating the view (main thread).</description></item>
+            <item><description>...better decoupling model and view implementation (MVVM).</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.AutoActionPlotModel.Action">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.AutoActionPlotModel.Histogram">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.AutoActionPlotModel.IsActive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.AutoActionPlotModel.OxyModel">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.Suspend">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.Resume">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.AddItem(YAT.Model.AutoActionPlotItem,System.Drawing.Color,System.Drawing.Color)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.Clear">
+            <summary>
+            Clears all data in the plot and resets the axes.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.Reset">
+            <summary>
+            Completely resets the plot, i.e. clears all data and removes all axes.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.ClearOrReset(System.Boolean)">
+            <remarks>
+            Common implementation for <see cref="M:YAT.Model.AutoActionPlotModel.Clear"/> and <see cref="M:YAT.Model.AutoActionPlotModel.Reset"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.AddItemToPlotCountRate(YAT.Model.AutoActionPlotItem,System.Drawing.Color,System.Drawing.Color,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.AddItemToLineChartIndex(YAT.Model.AutoActionPlotItem,System.Drawing.Color)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.AddItemToLineChartTime(YAT.Model.AutoActionPlotItem,System.Drawing.Color)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.AddItemToLineChartTimeStamp(YAT.Model.AutoActionPlotItem,System.Drawing.Color)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.AddItemToScatterPlot(YAT.Model.AutoActionPlotItem,System.Drawing.Color)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.AddItemToHistogram(YAT.Model.AutoActionPlotItem,System.Drawing.Color,System.Windows.Forms.Orientation)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.FormatAxisValueUnderride(System.Double,OxyPlot.Axes.Axis,System.Globalization.CultureInfo)">
+            <remarks>
+            This method partly replicates <see cref="M:OxyPlot.Axes.Axis.FormatValueOverride(System.Double)"/>
+            because it is not available on an <see cref="T:OxyPlot.Axes.CategoryAxis"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotModel.Invalidate(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.OxyPlotEx">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.OxyPlotEx.ConvertTo(System.Drawing.Color)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.AutoActionPlotItem">
+            <summary>
+            Defines an item to plot.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.AutoActionPlotItem.Action">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.AutoActionPlotItem.XValue">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.AutoActionPlotItem.YValues">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.AutoActionPlotItem.#ctor(YAT.Model.Types.AutoAction,System.Tuple{System.String,System.Double},System.Tuple{System.String,System.Double}[])">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.AutoResponseReplaceEvaluator">
+            <summary>
+            A <see cref="T:System.Text.RegularExpressions.MatchEvaluator"/> that "knows" the trigger captures.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.AutoResponseReplaceEvaluator.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:YAT.Model.AutoResponseReplaceEvaluator"/> class.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.AutoResponseReplaceEvaluator.Evaluate(System.Text.RegularExpressions.Match)">
+            <summary>
+            Evaluates the specified match.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.CommandLineArgs">
+            <remarks>
+            Values in descriptions of the arguments must be given as string instead of referencing their
+            respective code items because attribute arguments must be constant.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.RequestedFilePath">
+            <remarks>
+            Values in descriptions correspond to <see cref="P:YAT.Application.Utilities.ExtensionHelper.WorkspaceExtension"/>
+            and <see cref="P:YAT.Application.Utilities.ExtensionHelper.TerminalExtension"/>
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.MostRecentIsRequested">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.MostRecentFilePath">
+            <remarks>Internal use, not part of the visible args.</remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.NewIsRequested">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.TerminalType">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.IOType">
+            <remarks>
+            This option also supports 'PortType' with 'pt' short name for backward compatibility.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.SerialPort">
+            <remarks>
+            Values in descriptions correspond to <see cref="F:MKY.IO.Ports.SerialPortId.FirstStandardPortNumber"/>
+            and <see cref="F:MKY.IO.Ports.SerialPortId.LastStandardPortNumber"/>
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.BaudRate">
+            <remarks>
+            Values in descriptions correspond to <see cref="M:MKY.IO.Ports.BaudRateEx.GetItems"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.DataBits">
+            <remarks>
+            Values in descriptions correspond to <see cref="M:MKY.IO.Ports.DataBitsEx.GetItems"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.Parity">
+            <remarks>
+            Values in descriptions correspond to <see cref="M:MKY.IO.Ports.ParityEx.GetItems"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.StopBits">
+            <remarks>
+            Values in descriptions correspond to <see cref="M:MKY.IO.Ports.StopBitsEx.GetItems"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.FlowControl">
+            <remarks>
+            Values in descriptions correspond to <see cref="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.GetItems"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.SerialPortAliveMonitor">
+            <remarks>
+            Values in descriptions correspond to <see cref="P:MKY.IO.Serial.SerialPort.SerialPortSettings.AliveMonitorDefault"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.SerialPortAutoReopen">
+            <remarks>
+            Values in descriptions correspond to <see cref="P:MKY.IO.Serial.SerialPort.SerialPortSettings.AutoReopenDefault"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.RemoteHost">
+            <remarks>
+            Values in descriptions correspond to <see cref="M:MKY.Net.IPHostEx.GetItems(System.Boolean)"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.RemotePort">
+            <remarks>
+            Values in descriptions correspond to <see cref="F:MKY.IO.Serial.Socket.SocketSettings.RemotePortDefault"/>,
+            <see cref="F:System.Net.IPEndPoint.MinPort"/> and <see cref="F:System.Net.IPEndPoint.MaxPort"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.LocalInterface">
+            <remarks>
+            Values in descriptions correspond to <see cref="M:MKY.Net.IPNetworkInterfaceEx.GetItems"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.LocalFilter">
+            <remarks>
+            Values in descriptions correspond to <see cref="M:MKY.Net.IPFilterEx.GetItems"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.LocalPort">
+            <remarks>
+            Values in descriptions correspond to <see cref="F:MKY.IO.Serial.Socket.SocketSettings.RemotePortDefault"/>,
+            <see cref="F:System.Net.IPEndPoint.MinPort"/> and <see cref="F:System.Net.IPEndPoint.MaxPort"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.TcpAutoReconnect">
+            <remarks>
+            Values in descriptions correspond to <see cref="P:MKY.IO.Serial.Socket.SocketSettings.TcpClientAutoReconnectDefault"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.UdpServerSendMode">
+            <remarks>
+            Values in descriptions correspond to <see cref="M:MKY.IO.Serial.Socket.UdpServerSendModeEx.GetItems"/>
+            and <see cref="F:MKY.IO.Serial.Socket.SocketSettings.UdpServerSendModeDefault"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.VendorId">
+            <remarks>
+            Values in descriptions correspond to <see cref="F:MKY.IO.Usb.DeviceInfo.FirstVendorIdString"/>
+            and <see cref="F:MKY.IO.Usb.DeviceInfo.LastVendorIdString"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.ProductId">
+            <remarks>
+            Values in descriptions correspond to <see cref="F:MKY.IO.Usb.DeviceInfo.FirstProductIdString"/>
+            and <see cref="F:MKY.IO.Usb.DeviceInfo.LastProductIdString"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.SerialString">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.UsagePage">
+            <remarks>
+            Values in descriptions correspond to <see cref="F:MKY.IO.Usb.HidDeviceInfo.FirstUsagePageString"/>,
+            <see cref="F:MKY.IO.Usb.HidDeviceInfo.LastUsagePageString"/> and <see cref="F:MKY.IO.Usb.HidDeviceInfo.AnyUsagePageString"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.UsageId">
+            <remarks>
+            Values in descriptions correspond to <see cref="F:MKY.IO.Usb.HidDeviceInfo.FirstUsageIdString"/>,
+            <see cref="F:MKY.IO.Usb.HidDeviceInfo.LastUsageIdString"/> and <see cref="F:MKY.IO.Usb.HidDeviceInfo.AnyUsageIdString"/>.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.FormatPreset">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.NoUsbAutoOpen">
+            <remarks>
+            Name is intentionally written 'USB' instead of 'Usb' for better readability.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.StartTerminal">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.KeepTerminalStopped">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.LogOn">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.KeepLogOff">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.TileHorizontal">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.TileVertical">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.RequestedDynamicTerminalId">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.RequestedFixedTerminalId">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.RequestedTransmitText">
+            <remarks>
+            Using term 'Transmit' to indicate potential 'intelligence' to send and wait for receiving a response.
+            Using term 'Transmit' to prevent short name conflict with "st" = Start Terminal.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.RequestedTransmitFilePath">
+            <remarks>
+            Using term 'Transmit' to indicate potential 'intelligence' to send and wait for receiving a response.
+            Using term 'Transmit' to prevent short name conflict of "tt" with "st" = Start Terminal.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.OperationDelay">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.ExitDelay">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.KeepOpen">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.KeepOpenOnNonSuccess">
+            <remarks>
+            Named 'NonSuccess' in code, as this related to everything but <see cref="F:YAT.Model.MainResult.Success"/>.
+            But primary user name shall be 'Error', as that is more intuitive, especially for non-script users.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.Empty">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.CommandLineArgs.NonInteractive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.CommandLineArgs.ErrorHasBeenHandled">
+            <summary>
+            Indicates whether, e.g. in case of invalid args, the error has already been handled,
+            e.g. an error message has been shown.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.CommandLineArgs.#ctor(System.String[])">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.CommandLineArgs.Validate">
+            <summary>
+            Processes the command line options and validates them.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.CommandLineArgs.GetHelpText(System.Int32)">
+            <summary>
+            Gets the help text.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.CommandLineArgs.NewIsRequestedImplicitly(YAT.Domain.IOType@)">
+            <summary>
+            Returns whether a new terminal is implicitly requested, opposed to an explicit request
+            using <see cref="F:YAT.Model.CommandLineArgs.NewIsRequested"/>.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.CommandLineArgs.Interactive">
+            <summary>
+            Returns whether user or other interaction shall be permitted.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.MainResult">
+            <summary>
+            Enumeration of all the main result return codes.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.CheckResult">
+            <summary>
+            Enumeration of the I/O availability check results.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.ExitMode">
+            <summary>
+            Enumeration of the applications, exit mode.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.SavedEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.SavedEventArgs.FilePath">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.SavedEventArgs.IsAutoSave">
+            <summary>
+            Auto save means that the settings have been saved at an automatically chosen location,
+            without telling the user anything about it.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.SavedEventArgs.#ctor(System.String,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.TerminalEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.TerminalEventArgs.Terminal">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.TerminalEventArgs.SequentialId">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.TerminalEventArgs.DynamicId">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.TerminalEventArgs.FixedId">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.TerminalEventArgs.#ctor(YAT.Model.Terminal,System.Int32,System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.ClosedEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.ClosedEventArgs.IsParentClose">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.ClosedEventArgs.#ctor(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.MessageInputEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.MessageInputEventArgs.Text">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.MessageInputEventArgs.Caption">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.MessageInputEventArgs.Buttons">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.MessageInputEventArgs.Icon">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.MessageInputEventArgs.DefaultButton">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.MessageInputEventArgs.Result">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.MessageInputEventArgs.#ctor(System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.ExtendedMessageInputEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.ExtendedMessageInputEventArgs.Links">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.ExtendedMessageInputEventArgs.CheckText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.ExtendedMessageInputEventArgs.CheckValue">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.ExtendedMessageInputEventArgs.#ctor(System.String,System.Collections.Generic.ICollection{System.Windows.Forms.LinkLabel.Link},System.String,System.String,System.Boolean,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.DialogEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.DialogEventArgs.Result">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.DialogEventArgs.#ctor">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.FilePathDialogEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.FilePathDialogEventArgs.FilePathOld">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.FilePathDialogEventArgs.FilePathNew">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.FilePathDialogEventArgs.Result">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.FilePathDialogEventArgs.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Override">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Override.StartTerminal">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Override.KeepTerminalStopped">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Override.LogOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Override.KeepLogOff">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Override.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Override.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Override.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Override.Equals(YAT.Model.Override)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Override.op_Equality(YAT.Model.Override,YAT.Model.Override)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Override.op_Inequality(YAT.Model.Override,YAT.Model.Override)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.MainLaunchArgs">
+            <remarks>
+            Using term "launch" rather than "start" for distinction with "start/stop" I/O.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.WorkspaceSettingsHandler">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.TerminalSettingsHandler">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.Override">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.TileHorizontal">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.TileVertical">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.RequestedDynamicTerminalId">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.RequestedFixedTerminalId">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.RequestedTransmitText">
+            <remarks>Using term "Transmit" to indicate potential "intelligence" to send + receive/verify the data.</remarks>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.RequestedTransmitFilePath">
+            <remarks>Using term "Transmit" to indicate potential "intelligence" to send + receive/verify the data.</remarks>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.PerformOperationOnRequestedTerminal">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.OperationDelay">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.ExitDelay">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.ShowNewTerminalDialog">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.KeepOpen">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.KeepOpenOnNonSuccess">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.MainLaunchArgs.NonInteractive">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.MainLaunchArgs.ToWorkspaceLaunchArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.MainLaunchArgs.Interactive">
+            <summary>
+            Returns whether user or other interaction shall be permitted.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.MainLaunchArgs.IsAutoRun">
+            <summary>
+            Returns whether the application has been launched to perform an automatic run,
+            i.e. an automatic operation or a script run.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.MainLaunchArgs.IsAutoExit">
+            <summary>
+            Returns whether the application will automatically exit, e.g. after an automatic run.
+            </summary>
+            <remarks>
+            Same as <see cref="P:YAT.Model.MainLaunchArgs.IsAutoRun"/> (yet), no need for separate handling (yet).
+            </remarks>
+        </member>
+        <member name="T:YAT.Model.WorkspaceLaunchArgs">
+            <remarks>
+            Using term "launch" rather than "start" for distinction with "start/stop" I/O.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.WorkspaceLaunchArgs.Override">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.WorkspaceLaunchArgs.KeepOpen">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.WorkspaceLaunchArgs.KeepOpenOnNonSuccess">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.WorkspaceLaunchArgs.NonInteractive">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.WorkspaceLaunchArgs.ToTerminalLaunchArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.WorkspaceLaunchArgs.Interactive">
+            <summary>
+            Returns whether user or other interaction shall be permitted.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.TerminalLaunchArgs">
+            <remarks>
+            Using term "launch" rather than "start" for distinction with "start/stop" I/O.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalLaunchArgs.NonInteractive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.TerminalLaunchArgs.Interactive">
+            <summary>
+            Returns whether user or other interaction shall be permitted.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Main">
+            <summary>
+            Provides the YAT application model which can handle workspaces (.yaw) and terminals (.yat).
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Main.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="E:YAT.Model.Main.WorkspaceOpened">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Main.WorkspaceSaved">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Main.WorkspaceClosed">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Main.FixedStatusTextRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Main.TimedStatusTextRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Main.MessageInputRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Main.ExtendedMessageInputRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Main.CursorRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Main.Launched">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Main.Exited">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.#ctor(YAT.Model.CommandLineArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.Model.Main.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:YAT.Model.Main.CommandLineArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Main.LaunchArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Main.Guid">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Main.IndicatedName">
+            <summary>
+            The indicated name, i.e. <see cref="F:YAT.ApplicationEx.ProductName"/>.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Main.Caption">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Main.Workspace">
+            <summary>
+            Returns workspace within main; or <c>null</c> if no workspace is active.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Main.Result">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.ResetCommandLineArgs">
+            <summary>
+            This method is used to reset the command line arguments to launch with default values.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Main.PrepareLaunch_ForTestOnly">
+            <summary>
+            This method is used to test the command line argument processing.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Main.Launch">
+            <summary>
+            If a file was requested by command line argument, this method tries to open the
+            requested file.
+            Else, this method tries to open the most recent workspace of the current user.
+            If still unsuccessful, a new workspace is created.
+            </summary>
+            <remarks>
+            Using term "launch" rather than "start" for distinction with "start/stop" I/O.
+            </remarks>
+            <returns>
+            Returns <c>true</c> if either operation succeeded; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:YAT.Model.Main.ProcessCommandLineArgsIntoLaunchRequests">
+            <summary>
+            Process the command line arguments according to their priority and translate them into
+            launch requests.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Main.ProcessCommandLineArgsIntoExistingTerminalSettings(YAT.Domain.Settings.TerminalSettings)">
+            <summary>
+            This method takes existing terminal settings and modifies/overrides those settings that
+            are given by the given command line args.
+            </summary>
+            <remarks>
+            Unfortunately, 'normal' terminal settings and new terminal settings are defined rather
+            differently. Therefore, this implementation looks a bit weird.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Main.ProcessCommandLineArgsIntoExistingNewTerminalSettings(YAT.Model.Settings.NewTerminalSettings)">
+            <summary>
+            This method takes existing terminal settings and modifies/overrides those settings that
+            are given by the given command line args.
+            </summary>
+            <remarks>
+            Unfortunately, 'normal' terminal settings and new terminal settings are defined rather
+            differently. Therefore, this implementation looks a bit weird.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Main.CheckFontAvailabilityAndPotentiallyCancelLaunch(System.Boolean@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.CleanupLocalUserDirectory">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OpenFromFile(System.String)">
+            <summary>
+            Opens the workspace or terminal file given.
+            </summary>
+            <param name="filePath">Workspace or terminal file.</param>
+            <returns><c>true</c> if successfully opened the workspace or terminal; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:YAT.Model.Main.SetRecent(System.String)">
+            <summary>
+            Update recent entry.
+            </summary>
+            <param name="recentFile">Recent file.</param>
+        </member>
+        <member name="M:YAT.Model.Main.OpenRecent(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.ClearRecents">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.Exit_ForTestOnly">
+            <summary>
+            So far, testing solely deals with <see cref="F:YAT.Model.ExitMode.Manual"/>, i.e. what a user would
+            be doing. Thus, providing this method for simplicity and obviousness.
+            </summary>
+            <remarks>
+            Note that it is not possible to mark a void-method with [Conditional("TEST")].
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Main.Exit(YAT.Model.ExitMode)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.Exit(YAT.Model.ExitMode,System.Boolean@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.workspace_Closed(System.Object,YAT.Model.ClosedEventArgs)">
+            <remarks>
+            See remarks of <see cref="M:YAT.Model.Workspace.CloseWithOptions(System.Boolean,YAT.Model.ExitMode)"/> for details on why this handler
+            needs to treat the event differently in case of a parent (i.e. main) close.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Main.CreateNewWorkspace">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OpenWorkspaceFromFile(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OpenWorkspaceFromFile(System.String,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OpenWorkspaceFromSettings(MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.WorkspaceSettingsRoot})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.CloseWorkspace">
+            <summary>
+            Closes the active workspace.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Main.CheckWorkspaceFile(System.String)">
+            <summary>
+            Check whether workspace is already open.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Main.OpenWorkspaceFile(System.String,System.String@,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.WorkspaceSettingsRoot}@,System.Exception@)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="filePath"/> is null.</exception>
+        </member>
+        <member name="M:YAT.Model.Main.OpenWorkspaceFile(System.String,System.String@,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.WorkspaceSettingsRoot}@,System.Guid@,System.Exception@)">
+            <exception cref="T:System.ArgumentNullException"><paramref name="filePath"/> is null.</exception>
+        </member>
+        <member name="M:YAT.Model.Main.CreateNewTerminalFromSettings(MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OpenTerminalFromSettings(MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OpenTerminalFile(System.String,System.String@,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot}@,System.Exception@)">
+            <remarks>Needed for opening command line requested terminal files without yet creating a workspace.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="terminalFilePath"/> is null.</exception>
+        </member>
+        <member name="M:YAT.Model.Main.OpenTerminalFile(System.String,System.String,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot}@,System.Exception@)">
+            <remarks>Needed for opening command line requested terminal files without yet creating a workspace.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="terminalFilePath"/> is null.</exception>
+        </member>
+        <member name="M:YAT.Model.Main.OpenTerminalFile(System.String,System.String,System.String@,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot}@,System.Exception@)">
+            <remarks>Needed for opening command line requested terminal files without yet creating a workspace.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="terminalFilePath"/> is null.</exception>
+        </member>
+        <member name="M:YAT.Model.Main.OnWorkspaceOpened(YAT.Model.Workspace)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Main.OnWorkspaceSaved(YAT.Model.Workspace)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Main.OnWorkspaceClosed(YAT.Model.ClosedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OnFixedStatusTextRequest(System.String)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Main.OnTimedStatusTextRequest(System.String)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Main.OnMessageInputRequest(System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OnExtendedMessageInputRequest(System.String,System.String,System.String,System.Boolean@,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OnExtendedMessageInputRequest(System.String,System.Collections.Generic.ICollection{System.Windows.Forms.LinkLabel.Link},System.String,System.String,System.Boolean@,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OnCursorRequest(System.Windows.Forms.Cursor)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Main.OnCursorReset">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OnLaunched">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Main.OnExited(YAT.Model.MainResult)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Main.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Main.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="T:YAT.Model.BytesLinesTuple">
+            <remarks>
+            Could further be split into a Tx and Rx struct containing bytes/lines. But not worth so far.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.BytesLinesTuple.TxBytes">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.BytesLinesTuple.TxLines">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.BytesLinesTuple.RxBytes">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.BytesLinesTuple.RxLines">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.BytesLinesTuple.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.BytesLinesTuple.Reset">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.BytesLinesTuple.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.BytesLinesTuple.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.BytesLinesTuple.Equals(YAT.Model.BytesLinesTuple)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.BytesLinesTuple.op_Equality(YAT.Model.BytesLinesTuple,YAT.Model.BytesLinesTuple)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.BytesLinesTuple.op_Inequality(YAT.Model.BytesLinesTuple,YAT.Model.BytesLinesTuple)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.CountsRatesTuple">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.CountsRatesTuple.Counts">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.CountsRatesTuple.Rates">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.CountsRatesTuple.#ctor(YAT.Model.BytesLinesTuple,YAT.Model.BytesLinesTuple)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.CountsRatesTuple.Reset">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.CountsRatesTuple.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.CountsRatesTuple.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.CountsRatesTuple.Equals(YAT.Model.CountsRatesTuple)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.CountsRatesTuple.op_Equality(YAT.Model.CountsRatesTuple,YAT.Model.CountsRatesTuple)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.CountsRatesTuple.op_Inequality(YAT.Model.CountsRatesTuple,YAT.Model.CountsRatesTuple)">
+            <summary>
+            Determines whether the two specified objects have inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Terminal">
+            <remarks>
+            This partial class implements the send part of <see cref="T:YAT.Model.Terminal"/>.
+            </remarks>
+            <remarks>
+            \remind (2020-09-16 / MKY while integrating YAT 2.4.0 into Albatros)
+            Could alternatively be partialized into 'N/A'/.Outgoing/.Incoming.
+            </remarks>
+            <remarks>
+            This partial class implements the automatic response part of <see cref="T:YAT.Model.Terminal"/>.
+            </remarks>
+            <remarks>
+            This partial class implements the automatic common part of <see cref="T:YAT.Model.Terminal"/>.
+            </remarks>
+            <remarks>
+            This partial class implements the automatic action part of <see cref="T:YAT.Model.Terminal"/>.
+            </remarks>
+            <summary>
+            Terminals (.yat) of the YAT application model.
+            </summary>
+            <remarks>
+            This class is implemented using partial classes separating send and automatic functionality.
+            Using partial classes to ease diffing code of the separated functionality.
+            </remarks>
+            <remarks>
+            \remind (2020-09-16 / MKY while integrating YAT 2.4.0 into Albatros)
+            Could alternatively be partialized into 'N/A'/.Outgoing/.Incoming.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.SendSyncObj">
+            <summary>
+            Synchronization object for sending.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendCommand(YAT.Model.Types.Command)">
+            <summary>
+            Sends given command.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendText">
+            <summary>
+            Sends text command given by terminal settings.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendTextWithoutEol">
+            <summary>
+            Sends text command given by terminal settings.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendPartialTextEol">
+            <summary>
+            Sends partial text EOL.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendText(System.String,System.Boolean)">
+            <summary>
+            Sends given text.
+            </summary>
+            <param name="text">Text to be sent.</param>
+            <param name="addToRecents">Determines whether the command is added to <see cref="P:YAT.Model.Settings.SendTextSettings.RecentCommands"/>.</param>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendText(YAT.Model.Types.Command,System.Boolean)">
+            <summary>
+            Sends given text command.
+            </summary>
+            <param name="command">Text command to be sent.</param>
+            <param name="addToRecents">Determines whether the command is added to <see cref="P:YAT.Model.Settings.SendTextSettings.RecentCommands"/>.</param>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendTextWithoutEol(YAT.Model.Types.Command)">
+            <summary>
+            Sends given text command.
+            </summary>
+            <param name="command">Text command to be sent.</param>
+        </member>
+        <member name="M:YAT.Model.Terminal.DoSendText(YAT.Model.Types.Command,System.Boolean)">
+            <remarks>
+            Separate 'DoSend...()' method for obvious handling of 'UseExplicitDefaultRadix'.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.DoSendTextWithoutEol(YAT.Model.Types.Command)">
+            <remarks>
+            Separate 'DoSend...()' method for obvious handling of 'UseExplicitDefaultRadix'.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.CloneIntoRecentTextCommandsAsNeeded(YAT.Model.Types.Command)">
+            <remarks>
+            Includes compiled partial text.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendFile">
+            <summary>
+            Sends file given by terminal settings.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendFile(System.String,System.Boolean)">
+            <summary>
+            Sends given file.
+            </summary>
+            <param name="filePath">File to be sent.</param>
+            <param name="addToRecents">Determines whether the command is added to <see cref="P:YAT.Model.Settings.SendTextSettings.RecentCommands"/>.</param>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendFile(YAT.Model.Types.Command,System.Boolean)">
+            <summary>
+            Sends given file.
+            </summary>
+            <param name="command">File to be sent.</param>
+            <param name="addToRecents">Determines whether the command is added to <see cref="P:YAT.Model.Settings.SendTextSettings.RecentCommands"/>.</param>
+        </member>
+        <member name="M:YAT.Model.Terminal.DoSendFile(YAT.Model.Types.Command,System.Boolean)">
+            <remarks>
+            Separate 'DoSend...()' method for obvious handling of 'UseExplicitDefaultRadix'.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.CloneIntoRecentFileCommands(YAT.Model.Types.Command)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendPredefined(System.Int32,System.Int32)">
+            <summary>
+            Send requested predefined command.
+            </summary>
+            <param name="pageId">Page 1..max.</param>
+            <param name="commandId">Command 1..max.</param>
+        </member>
+        <member name="M:YAT.Model.Terminal.CopyPredefined(System.Int32,System.Int32)">
+            <summary>
+            Copy the requested predefined command, not taking copy predefined settings
+            <see cref="P:YAT.Domain.Settings.SendSettings.CopyPredefined"/> into account.
+            </summary>
+            <param name="pageId">Page 1..max.</param>
+            <param name="commandId">Command 1..max.</param>
+        </member>
+        <member name="M:YAT.Model.Terminal.Break">
+            <summary>
+            Breaks all currently ongoing operations in the terminal.
+            </summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.AutoResponseCountChanged_Promptly">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.UpdateAutoResponse">
+            <summary>
+            Updates the automatic response helper.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.EvaluateAutoResponseFromElements(YAT.Domain.RepositoryType,YAT.Domain.DisplayElementCollection)">
+            <summary>
+            Evaluates the automatic response.
+            </summary>
+            <remarks>
+            Automatic responses always are non-reloadable.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.EvaluateAutoResponseFromElements(YAT.Domain.RepositoryType,YAT.Domain.DisplayElementCollection,System.Collections.Generic.List{System.Tuple{System.Byte[],System.String,System.Text.RegularExpressions.MatchCollection}}@)">
+            <summary>
+            Evaluates the automatic response.
+            </summary>
+            <remarks>
+            Automatic responses always are non-reloadable.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.EvaluateAutoResponseFromLines(YAT.Domain.RepositoryType,YAT.Domain.DisplayLineCollection)">
+            <summary>
+            Evaluates the automatic response.
+            </summary>
+            <remarks>
+            Automatic responses always are non-reloadable.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.EvaluateAutoResponseFromLines(YAT.Domain.RepositoryType,YAT.Domain.DisplayLineCollection,System.Collections.Generic.List{System.Tuple{System.Byte[],System.String,System.Text.RegularExpressions.MatchCollection}}@)">
+            <summary>
+            Evaluates the automatic response.
+            </summary>
+            <remarks>
+            Automatic responses always are non-reloadable.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.EnqueueAutoResponses(System.Collections.Generic.List{System.Tuple{System.Byte[],System.String,System.Text.RegularExpressions.MatchCollection}})">
+            <summary>
+            Enqueues the automatic responses for invocation on other than the receive thread.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.EnqueueAutoResponse(System.Byte[],System.String,System.Text.RegularExpressions.MatchCollection)">
+            <summary>
+            Enqueues the automatic response for invocation on other than the receive thread.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.AutoResponseThread">
+            <summary>
+            Asynchronously invoke the automatic responses on other than the receive thread.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:YAT.Model.Terminal.EnqueueAutoResponse(System.Byte[],System.String,System.Text.RegularExpressions.MatchCollection)"/> above.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendAutoResponse(System.Byte[],System.String,System.Text.RegularExpressions.MatchCollection)">
+            <summary>
+            Sends the automatic response.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SendAutoResponseTrigger(System.Byte[],System.String)">
+            <summary>
+            Sends the automatic response trigger.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ToSequenceWithTxEol(System.Byte[])">
+            <summary>
+            Helper method to get the byte sequence including EOL.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ToOriginWithoutRxEol(YAT.Domain.DisplayLine)">
+            <summary>
+            Helper method to get the byte sequence from a display line.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.AutoResponseCount">
+            <summary>
+            Gets the automatic response count.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ResetAutoResponseCount">
+            <summary>
+            Resets the automatic response count.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.DeactivateAutoResponse">
+            <summary>
+            Deactivates the automatic response.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.StopAutoResponseThread">
+            <remarks>
+            Using 'Stop' instead of 'Terminate' to emphasize graceful termination, i.e. trying
+            to join first, then abort if not successfully joined.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.SignalAutoResponseThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnAutoResponseCountChanged_Promptly(MKY.EventArgs{System.Int32})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.DebugAutoResponseTrigger(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.TryParseCommand(YAT.Model.Types.Command,System.Byte[]@)">
+            <summary>
+            Tries to parse the given command into the corresponding byte sequence, taking the current settings into account.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.AutoActionPlotModel">
+            <remarks>Public getter for simplicity (update of corresponding view).</remarks>
+            <remarks><see cref="P:YAT.Model.Terminal.AutoActionPlotModelSyncObj"/> must be locked when accessing this property!</remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.AutoActionPlotModelSyncObj">
+            <remarks>Public getter for simplicity (update of corresponding view).</remarks>
+            <remarks>Required for locking when accessing <see cref="P:YAT.Model.Terminal.AutoActionPlotModel"/>!</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.AutoActionPlotRequest_Promptly">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.AutoActionCountChanged_Promptly">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.UpdateAutoAction">
+            <summary>
+            Updates the automatic action helper.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.EvaluateAutoActionFromElements(YAT.Domain.RepositoryType,YAT.Domain.DisplayElementCollection,YAT.Model.CountsRatesTuple,System.Boolean)">
+            <summary>
+            Evaluates the automatic action.
+            </summary>
+            <remarks>
+            Automatic actions from elements always are non-reloadable.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.EvaluateAutoActionFromElements(YAT.Domain.RepositoryType,YAT.Domain.DisplayElementCollection,YAT.Model.CountsRatesTuple,System.Boolean,System.Collections.Generic.List{System.Tuple{System.DateTime,System.String,System.Text.RegularExpressions.MatchCollection,YAT.Model.CountsRatesTuple}}@)">
+            <summary>
+            Evaluates the automatic action.
+            </summary>
+            <remarks>
+            Automatic actions from elements always are non-reloadable.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.EvaluateAutoActionOtherThanFilterOrSuppressFromLines(YAT.Domain.RepositoryType,YAT.Domain.DisplayLineCollection,YAT.Model.CountsRatesTuple,System.Boolean)">
+            <summary>
+            Evaluates the automatic actions other than <see cref="F:YAT.Model.Types.AutoAction.Filter"/> and <see cref="F:YAT.Model.Types.AutoAction.Suppress"/>.
+            </summary>
+            <remarks>
+            Automatic actions from lines may be reloadable.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.EvaluateAutoActionOtherThanFilterOrSuppressFromLines(YAT.Domain.RepositoryType,YAT.Domain.DisplayLineCollection,YAT.Model.CountsRatesTuple,System.Boolean,System.Collections.Generic.List{System.Tuple{System.DateTime,System.String,System.Text.RegularExpressions.MatchCollection,YAT.Model.CountsRatesTuple}}@)">
+            <summary>
+            Evaluates the automatic actions other than <see cref="F:YAT.Model.Types.AutoAction.Filter"/> and <see cref="F:YAT.Model.Types.AutoAction.Suppress"/>.
+            </summary>
+            <remarks>
+            Automatic actions from lines may be reloadable.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.ProcessAutoActionFilterAndSuppressFromLines(YAT.Domain.RepositoryType,YAT.Domain.DisplayLineCollection)">
+            <summary>
+            Processes <see cref="F:YAT.Model.Types.AutoAction.Filter"/> and <see cref="F:YAT.Model.Types.AutoAction.Suppress"/>.
+            </summary>
+            <remarks>
+            Automatic actions <see cref="F:YAT.Model.Types.AutoAction.Filter"/> and <see cref="F:YAT.Model.Types.AutoAction.Suppress"/>
+            are never processed from elements.
+            </remarks>
+            <remarks>
+            <paramref name="lines"/> will be recreated. This is preferred over suppressing hidden
+            lines at the monitors because other terminal clients would also have to suppress them.
+            Also, suppressing here reduces the amount of data being forwarded to the monitors.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.EvaluateAndEnqueueAutoActionClearRepositoriesOnSubsequentRx">
+            <summary>
+            Evaluates <see cref="F:YAT.Model.Types.AutoAction.ClearRepositoriesOnSubsequentRx"/> and enqueues it for invocation.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.EnqueueAutoActions(System.Collections.Generic.List{System.Tuple{System.DateTime,System.String,System.Text.RegularExpressions.MatchCollection,YAT.Model.CountsRatesTuple}})">
+            <summary>
+            Enqueues the automatic actions for invocation on other than the receive thread.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.EnqueueAutoAction(System.DateTime,System.String,System.Text.RegularExpressions.MatchCollection,YAT.Model.CountsRatesTuple)">
+            <summary>
+            Enqueues the automatic action for invocation on other than the receive thread.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.EnqueueAutoAction(YAT.Model.Types.AutoAction,System.DateTime,System.String,System.Text.RegularExpressions.MatchCollection,YAT.Model.CountsRatesTuple)">
+            <summary>
+            Enqueues the automatic action for invocation on other than the receive thread.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.AutoActionThread">
+            <summary>
+            Asynchronously invoke the automatic actions on other than the receive thread.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:YAT.Model.Terminal.EnqueueAutoAction(YAT.Model.Types.AutoAction,System.DateTime,System.String,System.Text.RegularExpressions.MatchCollection,YAT.Model.CountsRatesTuple)"/> above.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.PerformAutoAction(YAT.Model.Types.AutoAction,System.DateTime,System.String,System.Text.RegularExpressions.MatchCollection,YAT.Model.CountsRatesTuple)">
+            <summary>
+            Performs the automatic action.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.HasActionToInvoke(YAT.Model.Types.AutoAction)">
+            <summary>
+            Determines whether the given action has a true action to invoke.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RequestAutoActionMessage(System.DateTime,System.String,System.Int32)">
+            <summary>
+            Notifies the user about the action.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RequestAutoActionPlot(YAT.Model.Types.AutoAction,System.DateTime,System.Text.RegularExpressions.MatchCollection,YAT.Model.CountsRatesTuple)">
+            <summary>
+            Requests the desired chart/plot.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.TryCreateAutoActionPlotItem(YAT.Model.Types.AutoAction,System.DateTime,System.Text.RegularExpressions.MatchCollection,YAT.Model.CountsRatesTuple,YAT.Model.AutoActionPlotItem@,System.String@)">
+            <summary>
+            Requests the desired chart/plot.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.CreateCountRatePlotItem(YAT.Model.Types.AutoAction,System.DateTime,YAT.Model.CountsRatesTuple,YAT.Model.AutoActionPlotItem@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.CreateYPlotItem(YAT.Model.Types.AutoAction,System.Text.RegularExpressions.MatchCollection,YAT.Model.AutoActionPlotItem@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.CreateXYPlotItem(YAT.Model.Types.AutoAction,System.Text.RegularExpressions.MatchCollection,YAT.Model.AutoActionPlotItem@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.TryCreateTimeXYPlotItem(YAT.Model.Types.AutoAction,System.Text.RegularExpressions.MatchCollection,YAT.Model.AutoActionPlotItem@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.CreateTimeStampXYPlotItem(YAT.Model.Types.AutoAction,System.DateTime,System.Text.RegularExpressions.MatchCollection,YAT.Model.AutoActionPlotItem@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.TryConvertToPlotTime(System.String,System.Tuple{System.String,System.Double}@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ConvertToPlotValues(System.String[])">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.AutoActionCount">
+            <summary>
+            Gets the automatic action count.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ResetAutoActionCount">
+            <summary>
+            Resets the automatic action count.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SuspendAutoAction">
+            <summary>
+            Suspends the automatic action.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ResumeAutoAction">
+            <summary>
+            Suspends the automatic action.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.DeactivateAutoAction">
+            <summary>
+            Deactivates the automatic action.
+            </summary>
+            <remarks>
+            Includes <see cref="M:YAT.Model.Terminal.ResetAutoActionCount"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.StopAutoActionThread">
+            <remarks>
+            Using 'Stop' instead of 'Terminate' to emphasize graceful termination, i.e. trying
+            to join first, then abort if not successfully joined.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.SignalAutoActionThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnAutoActionPlotRequest_Promptly(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnAutoActionCountChanged_Promptly(MKY.EventArgs{System.Int32})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.DebugAutoActionTrigger(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.Terminal.SequentialIdCounterDefault">
+            <summary>
+            Static counter to number terminals. Counter is incremented before first use, first
+            terminal therefore is "Terminal1".
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ResetSequentialIdCounter">
+            <remarks>
+            Needed to test the ID feature of terminals and workspace.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.DoNotDetachSettingsBecauseTheyAreRequiredForVerification_ForTestOnly">
+             <summary>
+             Workaround to the following issue:
+            
+             A test (e.g. 'FileHandlingTest') needs to verify the settings files after calling
+             <see cref="M:YAT.Model.Main.Exit_ForTestOnly"/>. But at that moment, the settings have already
+             been disposed of and can no longer be accessed.
+             The first approach was to disable disposal in <see cref="M:YAT.Model.Terminal.Close"/>. But that leads to
+             remaining resources, resulting in significant slow-down when exiting NUnit.
+             The second approach was to retrieve the required information *before* exiting, i.e.
+             calling <see cref="M:YAT.Model.Main.Exit_ForTestOnly"/>. But that doesn't work at all, since
+             auto-save paths are only evaluated *at* <see cref="M:YAT.Model.Main.Exit_ForTestOnly"/>.
+            
+             This workaround is considered the best option to solve this issue.
+             </summary>
+             <remarks>
+             Note that it is not possible to mark a property with [Conditional("TEST")].
+             </remarks>
+        </member>
+        <member name="F:YAT.Model.Terminal.eventHelper">
+             <summary>
+             A dedicated event helper to allow discarding exceptions when object got disposed.
+             </summary>
+             <remarks> \remind (2019-08-22 / MKY)
+            
+             Explicitly setting <see cref="F:MKY.EventHelper.ExceptionHandlingMode.DiscardDisposedTarget"/>
+             to handle/workaround a) the issue described in <see cref="T:MKY.Time.Chronometer"/> as well as
+             to handle/workaround b) the issue described in <see cref="T:YAT.Domain.RawTerminal"/>.
+            
+             Issue a)
+             --------
+             Note that <see cref="F:MKY.EventHelper.ExceptionHandlingMode.DiscardDisposedTarget"/> only
+             is a must here, <see cref="F:MKY.EventHelper.ExceptionHandlingMode.DiscardDisposedTarget"/>
+             in <see cref="T:MKY.Time.Chronometer"/> as well as <see cref="T:MKY.Time.RateProvider"/> do not
+             handle/workaround the issue, since the disposed target is encountered here. Still,
+             since all three objects are involved, decided to keep the handling/workaround in all
+             three locations.
+            
+             Issue b)
+             --------
+             Note that <see cref="F:MKY.EventHelper.ExceptionHandlingMode.DiscardDisposedTarget"/> only
+             is a must here, <see cref="F:MKY.EventHelper.ExceptionHandlingMode.DiscardDisposedTarget"/>
+             in <see cref="T:YAT.Domain.Terminal"/> as well as <see cref="T:YAT.Domain.RawTerminal"/> do not
+             handle/workaround the issue, since the disposed target is encountered here. Still,
+             since all three objects are involved, decided to keep the handling/workaround in all
+             three locations.
+            
+             Thus, to reproduce the issue, simply disable the handling/workaround by replacing the
+             line further below. Then:
+              1. Start a new terminal as <see cref="F:YAT.Domain.IOType.TcpServer"/>.
+              2. Start a new terminal as <see cref="F:YAT.Domain.IOType.TcpClient"/>.
+              3. [File > Close All Terminals]
+             With handling/workaround, debug output will show the issue, but execution will not get
+             halted by the debugger. Without handling/workaround, the exception will get handled by
+             the debugger.
+            
+             Note that the issue only happens in case both server and client are in the same instance
+             of YAT! Also note that the issue will not happen on [File > Exit]! The latter does have
+             a slightly different calling sequence, e.g. workspace is saved before terminals are
+             closed, but the root cause that makes this differences is not (yet) understood!
+            
+             Temporarily disabling this handling/workaround can be useful for debugging, i.e. to
+             continue program execution even in case of exceptions and let the debugger handle it.
+             </remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.IOChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.IOControlChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.IOConnectTimeChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.IOCountChanged_Promptly">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.IORateChanged_Promptly">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.IORateChanged_Decimated">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.IOError">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.IsSendingChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.IsSendingForSomeTimeChanged">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.DisplayElementsTxAdded">
+            <remarks>Also see <see cref="E:YAT.Domain.Terminal.DisplayElementsTxAdded"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.DisplayElementsBidirAdded">
+            <remarks>Also see <see cref="E:YAT.Domain.Terminal.DisplayElementsBidirAdded"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.DisplayElementsRxAdded">
+            <remarks>Also see <see cref="E:YAT.Domain.Terminal.DisplayElementsRxAdded"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.CurrentDisplayLineTxReplaced">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.CurrentDisplayLineTxReplaced"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.CurrentDisplayLineBidirReplaced">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.CurrentDisplayLineBidirReplaced"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.CurrentDisplayLineRxReplaced">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.CurrentDisplayLineRxReplaced"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.CurrentDisplayLineTxCleared">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.CurrentDisplayLineTxCleared"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.CurrentDisplayLineBidirCleared">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.CurrentDisplayLineBidirCleared"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.CurrentDisplayLineRxCleared">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.CurrentDisplayLineRxCleared"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.DisplayLinesTxAdded">
+            <remarks>Also see <see cref="E:YAT.Domain.Terminal.DisplayLinesTxAdded"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.DisplayLinesBidirAdded">
+            <remarks>Also see <see cref="E:YAT.Domain.Terminal.DisplayLinesBidirAdded"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.DisplayLinesRxAdded">
+            <remarks>Also see <see cref="E:YAT.Domain.Terminal.DisplayLinesRxAdded"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.RepositoryTxCleared">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.RepositoryTxCleared"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.RepositoryBidirCleared">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.RepositoryBidirCleared"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.RepositoryRxCleared">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.RepositoryRxCleared"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.RepositoryTxReloaded">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.RepositoryTxReloaded"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.RepositoryBidirReloaded">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.RepositoryBidirReloaded"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.RepositoryRxReloaded">
+            <remarks>See <see cref="E:YAT.Domain.Terminal.RepositoryRxReloaded"/>.</remarks>
+        </member>
+        <member name="E:YAT.Model.Terminal.FixedStatusTextRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.TimedStatusTextRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.ResetStatusTextRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.CursorRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.MessageInputRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.ExtendedMessageInputRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.FontDialogRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.SaveAsFileDialogRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.SaveCommandPageAsFileDialogRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.OpenCommandPageFileDialogRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.Saved">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.Closed">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Terminal.ExitRequest">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.#ctor(YAT.Settings.Model.TerminalSettingsRoot)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.#ctor(MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.#ctor(YAT.Model.TerminalLaunchArgs,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.#ctor(YAT.Model.TerminalLaunchArgs,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot},System.Guid)">
+            <remarks>See <see cref="F:System.Guid.Empty"/> cannot be used as default argument as it is read-only.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.Model.Terminal.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:YAT.Model.Terminal.LaunchArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.Guid">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SequentialId">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SequentialName">
+            <summary>
+            The name incrementally assigned terminal name 'Terminal1', 'Terminal2',...
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.UserFileName">
+            <summary>
+            The file name if the user has saved the terminal; otherwise, <see cref="F:System.String.Empty"/>.
+            </summary>
+            <remarks>
+            Cached from <see cref="P:YAT.Model.Terminal.SettingsFilePath"/> for...
+            ...limiting to user files (i.e. not 'AutoSaved').
+            ...having to compose the name only once.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.UserName">
+            <summary>
+            The optional user defined terminal name; otherwise, <see cref="F:System.String.Empty"/>.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IndicatedName">
+            <summary>
+            The indicated name, i.e. either the <see cref="P:YAT.Model.Terminal.UserName"/>, <see cref="P:YAT.Model.Terminal.UserFileName"/>
+            or <see cref="P:YAT.Model.Terminal.SequentialName"/>.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.Caption">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ComposeCaption(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IOType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IsStopped">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IsStarted">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IsOpen">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IsConnected">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IsTransmissive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IsReadyToSend">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IsReadyToSendForSomeTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IsSending">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IsSendingForSomeTime">
+            <remarks>
+            Opposed to <see cref="P:YAT.Model.Terminal.IsSending"/>, this property only becomes <c>true</c> when
+            sending has been ongoing for more than <see cref="F:YAT.Domain.Utilities.ForSomeTimeEventHelper.Threshold"/>,
+            or is about to be ongoing for more than <see cref="F:YAT.Domain.Utilities.ForSomeTimeEventHelper.Threshold"/>.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.LastReceivedChunkTimeStamp">
+            <remarks>
+            Opposed to <see cref="P:YAT.Model.Terminal.IsSending"/>, where the amount of data expected for sending is
+            known by the caller, there is no information on the availability and amout of data
+            for receiving, nor any way to determine whether data may be coming in soon. Thus, an
+            "IsReceiving" property makes little sense. Instead, this time stamp may be used to
+            determine for how long the I/O instance has not been receiving data anymore, and can
+            combine this time stamp with a time-out.
+            <para>
+            <see cref="F:System.DateTime.MinValue"/> is returned if no underlying terminal is available.
+            </para></remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.LogIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.AllLogsAreOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.LogFileExists">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.ShortIOString">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.UnderlyingIOProvider">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.UnderlyingIOInstance">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.UnderlyingDomain_ForTestOnly">
+            <remarks>Only to be used for testing.</remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.IOStatusText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.IOSerialPortName">
+            <summary>
+            Returns the name of the serial COM port for <see cref="F:YAT.Domain.IOType.SerialPort"/>,
+            <c>null</c> for all other terminal types.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.Launch">
+            <summary>
+            Launches the terminal, i.e. starts log and opens I/O.
+            </summary>
+            <remarks>
+            Using term "launch" rather than "start" for distinction with "start/stop" I/O.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.Terminal.settingsRoot_Changed_sendImmediatelyOld">
+            <remarks>
+            Required to solve the issue described in bug #223 "Settings events should state the exact settings diff".
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.SettingsFilePath">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SettingsFileExists">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SettingsFileIsReadOnly">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SettingsFileIsWritable">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SettingsFileHasAlreadyBeenNormallySaved">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SettingsFileNoLongerExists">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SettingsRoot">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.AutoIsActive">
+            <summary>
+            Gets a value indicating whether one or more automatic items are active.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.HasLinkedSettings">
+            <summary>
+            Gets a value indicating whether this instance has linked settings.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.NotifyAutoIsReady">
+             <summary>
+             Notifies this instance that startup by the parent has completed.
+             </summary>
+             <remarks>
+             \remind (2019-12-02 / MKY)
+            
+             Background:
+              1. The workspace will create this terminal.
+              2. The constructor of this terminal will call CreateAuto[Action|Response]Helper() but
+                 linked settings are not available yet.
+                  => TryGetActiveAutoActionTrigger() will fail in case of linked commands.
+              3. The workspace will also called TryLoadLinkedSettings().
+                  => TryGetActiveAutoActionTrigger() will succeed.
+            
+             Not the perfect solution, but good enough for the moment.
+             </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.ApplyTerminalSettings(YAT.Settings.Model.TerminalExplicitSettings)">
+            <summary>
+            Applies new terminal settings.
+            </summary>
+            <remarks>
+            Using <see cref="T:YAT.Settings.Model.TerminalExplicitSettings"/> instead of simply using
+            <see cref="T:YAT.Domain.Settings.TerminalSettings"/> for two reasons:
+            <list type="bullet">
+            <item><description>Handling of <see cref="P:YAT.Settings.Model.TerminalExplicitSettings.UserName"/>.</description></item>
+            <item><description>Prepared for future migration to tree view dialog containing all settings.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.ApplyLogSettings(YAT.Log.Settings.LogSettings)">
+            <summary>
+            Applies new log settings.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.Save">
+            <summary>
+            Saves terminal to file, prompts for file if it doesn't exist yet.
+            </summary>
+            <remarks>
+            Not named "Try" same as all other "main" methods.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.SaveWithOptionsWithoutUserInteraction(System.Boolean,System.Boolean)">
+            <summary>
+            Silently tries to save terminal to file, i.e. without any user interaction.
+            </summary>
+            <remarks>
+            Not named "Try" same as all other "main" methods.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.SaveWithOptions(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            This method implements the logic that is needed when saving, opposed to the method
+            <see cref="M:YAT.Model.Terminal.SaveToFile(System.Boolean,System.Boolean,System.String)"/> which just performs the actual save, i.e. file handling.
+            </summary>
+            <param name="isWorkspaceClose">Indicates that workspace closes.</param>
+            <param name="autoSaveIsAllowed">
+            Auto save means that the settings have been saved at an automatically chosen location,
+            without telling the user anything about it.
+            </param>
+            <param name="userInteractionIsAllowed">Indicates whether user interaction is allowed.</param>
+            <param name="saveEvenIfNotChanged">Indicates whether save must happen even if not changed.</param>
+            <param name="canBeCanceled">Indicates whether save can be canceled.</param>
+            <param name="isCanceled">Indicates whether save has been canceled.</param>
+        </member>
+        <member name="M:YAT.Model.Terminal.EvaluateWhetherAutoSaveIsAllowedIndeed(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ThereIsNoReasonToSave(System.Boolean,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ComposeAbsoluteAutoSaveFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RequestNormalSaveAsFromUser(System.Boolean,System.Boolean,System.Boolean@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RequestRestrictedSaveAsFromUser(System.Boolean,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RequestRestrictedSaveCommandPageFromUser(System.String,System.String@,System.Boolean@,System.Boolean@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RequestRestrictedOpenCommandPageFromUser(System.String,System.Boolean,System.String@,System.Boolean@,System.Boolean@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SaveAs(System.String)">
+            <summary>
+            Saves terminal to given file, prompts for file as needed.
+            </summary>
+            <remarks>
+            Not named "Try" same as all other "main" methods.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="filePath"/> is null.
+            </exception>
+        </member>
+        <member name="M:YAT.Model.Terminal.SaveAsWithoutUserInteraction(System.String)">
+            <summary>
+            Silently tries to save terminal to given file, i.e. without any user interaction.
+            </summary>
+            <remarks>
+            Not named "Try" same as all other "main" methods.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="filePath"/> is null.
+            </exception>
+        </member>
+        <member name="M:YAT.Model.Terminal.SaveAsWithOptions(System.String,System.Boolean)">
+            <summary>
+            This method implements the logic that is needed when saving, opposed to the method
+            <see cref="M:YAT.Model.Terminal.SaveToFile(System.Boolean,System.Boolean,System.String)"/> which just performs the actual save, i.e. file handling.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="filePath"/> is null.
+            </exception>
+        </member>
+        <member name="M:YAT.Model.Terminal.SaveToFile(System.Boolean,System.Boolean,System.String)">
+            <param name="isAutoSave">
+            Auto save means that the settings have been saved at an automatically chosen location,
+            without telling the user anything about it.
+            </param>
+            <param name="userInteractionIsAllowed">Indicates whether user interaction is allowed.</param>
+            <param name="autoSaveFilePathToDelete">
+            The path to the former auto saved file, it will be deleted if the file can successfully
+            be stored in the new location.
+            </param>
+        </member>
+        <member name="M:YAT.Model.Terminal.TrySaveLinkedSettings(System.Boolean,System.Boolean,System.Boolean@)">
+            <remarks>
+            Linked predefined commands pages shall be saved before the terminal itself is for two reasons:
+             > Changing links or even unlinking must happen prior to saving the terminal itself.
+             > Symmetricity with loading, where the terminal itself has to be loaded first.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.TrySaveLinkedCommandPageWithOptions(YAT.Model.Types.PredefinedCommandPage,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.CommandPageSettingsRoot},System.Boolean,System.Boolean@,System.Boolean@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.TryLoadLinkedPredefinedCommandPageWithOptions(YAT.Model.Types.PredefinedCommandPage,System.Boolean,System.Boolean,System.Boolean,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.CommandPageSettingsRoot}@,System.Boolean@,System.Boolean@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.TryLoadLinkedSettings(System.Boolean,System.Boolean,System.Boolean@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.Close">
+             <summary>
+             Closes the terminal, prompts if needed if settings have changed.
+             </summary>
+             <remarks>
+             In case of a workspace close, <see cref="M:YAT.Model.Terminal.CloseWithOptions(System.Boolean,System.Boolean,System.Boolean,System.Boolean)"/> further below must be
+             called with the first argument set to <c>true</c>.
+            
+             In case of intended close of one or all terminals, the user intentionally wants to close
+             the terminal(s), thus, this method will not try to auto save.
+             </remarks>
+             <remarks>
+             Not named "Try" same as all other "main" methods.
+             </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.CloseWithOptionsWithoutSave(System.Boolean)">
+            <summary>
+            Silently tries to save terminal to file, i.e. without any user interaction.
+            </summary>
+            <remarks>
+            Not named "Try" same as all other "main" methods.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.CloseWithOptions(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+             <summary>
+             Closes the terminal and tries to auto save if desired.
+             </summary>
+             <remarks>
+             Attention:
+             This method is needed for MDI applications. In case of MDI parent/application closing,
+             Close() of the terminal is called before Close() of the workspace. Without taking care
+             of this, the workspace would be saved after the terminal has already been closed, i.e.
+             removed from the workspace. Therefore, the terminal has to signal such cases to the
+             workspace.
+            
+             Cases (similar to cases in Model.Workspace):
+             - Workspace close
+               - auto,   no file,       auto save    => auto save, if it fails => nothing  : (w1a)
+               - auto,   no file,       no auto save => nothing                            : (w1b)
+               - auto,   existing file, auto save    => auto save, if it fails => delete   : (w2a)
+               - auto,   existing file, no auto save => delete                             : (w2b)
+               - normal, no file                     => N/A (normal files have been saved) : (w3)
+               - normal, no file anymore             => question                           :  --
+               - normal, existing file, auto save    => auto save, if it fails => question : (w4a)
+               - normal, existing file, no auto save => question                           : (w4b)
+             - Terminal close
+               - auto,   no file                     => nothing                            : (t1)
+               - auto,   existing file               => delete                             : (t2)
+               - normal, no file                     => N/A (normal files have been saved) : (t3)
+               - normal, no file anymore             => question                           :  --
+               - normal, existing file, auto save    => auto save, if it fails => question : (t4a)
+               - normal, existing file, no auto save => question                           : (t4b)
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+             <remarks>
+             Not named "Try" same as all other "main" methods.
+             </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.SetRecent(System.String)">
+            <summary>
+            Update recent entry.
+            </summary>
+            <param name="recentFile">Recent file.</param>
+        </member>
+        <member name="M:YAT.Model.Terminal.IOStatusToDisplayLine(System.DateTime)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.IOControlToDisplayLine(System.DateTime,YAT.Domain.IOControlEventArgs,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.IOErrorToDisplayLine(System.DateTime,YAT.Domain.IOErrorEventArgs,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Terminal.terminal_IOChanged_hasBeenConnected">
+            <summary>
+            Local field to maintain connection state in order to be able to detect a change of the
+            connection state.
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Terminal.TimedStatusTextRequestTickInterval">
+            <remarks>
+            Interval can be quite long, because...
+            ...first request will be done immediately.
+            ...timed requests will be shown for 2 seconds.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_RawChunkSent(System.Object,MKY.EventArgs{YAT.Domain.RawChunk})">
+            <remarks>
+            \remind (2017-08-27 / MKY) (bug #383 freeze while receiving a lot of fast data)
+            In case of a lot of fast data, this event is raised very often. This handler itself
+            raises up to three events, thus leading to a sequence of events. If these events need
+            to be synchronized onto the main thread, this likely results in poor performance. This
+            situation is anticipated in two ways:
+             > The <see cref="E:YAT.Model.Terminal.TimedStatusTextRequest"/> will only be raised
+               each <see cref="F:YAT.Model.Terminal.TimedStatusTextRequestTickInterval"/> milliseconds.
+             > The <see cref="E:YAT.Model.Terminal.IOCountChanged_Promptly"/> and <see cref="E:YAT.Model.Terminal.IORateChanged_Promptly"/> events
+               will not be used by the view. Instead, the values will synchronously be retrieved when
+               processing the <see cref="E:YAT.Model.Terminal.DisplayElementsTxAdded"/>, <see cref="E:YAT.Model.Terminal.DisplayElementsRxAdded"/>,
+               <see cref="E:YAT.Model.Terminal.CurrentDisplayLineTxReplaced"/>, <see cref="E:YAT.Model.Terminal.CurrentDisplayLineRxReplaced"/>,
+               <see cref="E:YAT.Model.Terminal.CurrentDisplayLineTxCleared"/>, <see cref="E:YAT.Model.Terminal.CurrentDisplayLineRxCleared"/>,
+               <see cref="E:YAT.Model.Terminal.DisplayLinesTxAdded"/> and <see cref="E:YAT.Model.Terminal.DisplayLinesRxAdded"/> events.
+               In addition, the <see cref="E:YAT.Model.Terminal.IORateChanged_Decimated"/> event is used to get
+               notified on updates after transmission.
+            </remarks>
+            <remarks>
+            This event is raised when a chunk is sent by the <see cref="P:YAT.Model.Terminal.UnderlyingIOProvider"/>.
+            The event is not raised on reloading, reloading is done by the <see cref="T:YAT.Domain.Terminal"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_RawChunkReceived(System.Object,MKY.EventArgs{YAT.Domain.RawChunk})">
+            <remarks>
+            \remind (2017-08-27 / MKY) (bug #383 freeze while receiving a lot of fast data)
+            In case of a lot of fast data, this event is raised very often. This handler itself
+            raises up to three events, thus leading to a sequence of events. If these events need
+            to be synchronized onto the main thread, this likely results in poor performance. This
+            situation is anticipated in two ways:
+             > The <see cref="E:YAT.Model.Terminal.TimedStatusTextRequest"/> will only be raised
+               each <see cref="F:YAT.Model.Terminal.TimedStatusTextRequestTickInterval"/> milliseconds.
+             > The <see cref="E:YAT.Model.Terminal.IOCountChanged_Promptly"/> and <see cref="E:YAT.Model.Terminal.IORateChanged_Promptly"/> events
+               will not be used by the view. Instead, the values will synchronously be retrieved when
+               processing the <see cref="E:YAT.Model.Terminal.DisplayElementsTxAdded"/>, <see cref="E:YAT.Model.Terminal.DisplayElementsRxAdded"/>,
+               <see cref="E:YAT.Model.Terminal.CurrentDisplayLineTxReplaced"/>, <see cref="E:YAT.Model.Terminal.CurrentDisplayLineRxReplaced"/>,
+               <see cref="E:YAT.Model.Terminal.CurrentDisplayLineTxCleared"/>, <see cref="E:YAT.Model.Terminal.CurrentDisplayLineRxCleared"/>,
+               <see cref="E:YAT.Model.Terminal.DisplayLinesTxAdded"/> and <see cref="E:YAT.Model.Terminal.DisplayLinesRxAdded"/> events.
+               In addition, the <see cref="E:YAT.Model.Terminal.IORateChanged_Decimated"/> event is used to get
+               notified on updates after transmission.
+            </remarks>
+            <remarks>
+            This event is raised when a chunk is received by the <see cref="P:YAT.Model.Terminal.UnderlyingIOProvider"/>.
+            The event is not raised on reloading, reloading is done by the <see cref="T:YAT.Domain.Terminal"/>.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.AutoTriggerIsActiveButLimitedToLine">
+            <summary>
+            "Normally", the display is updated by the "DisplayElements[Tx|Bidir|Rx]Added" events,
+            except for those cases where processing is limited to "DisplayLines[Bidir|Rx][Added|Reloaded]":
+            <list type="bullet">
+            <item><description>AutoAction: Filter/Suppress.</description></item>
+            <item><description>AutoAction: Text based triggers.</description></item>
+            <item><description>AutoResponse: Text based triggers.</description></item>
+            </list>
+            Not the perfect solution, but considered good enough, although it doesn't fully work when both
+            automatic action and response are active. But then highlighting becomes limited anyway...
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.AutoActionIsActiveAndToBeEvaluatedFromElements">
+            <summary>
+            "Normally", the display is updated by the "DisplayElements[Tx|Bidir|Rx]Added" events,
+            except for those cases where processing is limited to "DisplayLines[Bidir|Rx][Added|Reloaded]":
+            <list type="bullet">
+            <item><description>AutoAction: Filter/Suppress.</description></item>
+            <item><description>AutoAction: Text based triggers.</description></item>
+            <item><description>AutoResponse: Text based triggers.</description></item>
+            </list>
+            Not the perfect solution, but considered good enough, although it doesn't fully work when both
+            automatic action and response are active. But then highlighting becomes limited anyway...
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.AutoResponseIsActiveAndToBeEvaluatedFromElements">
+            <summary>
+            "Normally", the display is updated by the "DisplayElements[Tx|Bidir|Rx]Added" events,
+            except for those cases where processing is limited to "DisplayLines[Bidir|Rx][Added|Reloaded]":
+            <list type="bullet">
+            <item><description>AutoAction: Filter/Suppress.</description></item>
+            <item><description>AutoAction: Text based triggers.</description></item>
+            <item><description>AutoResponse: Text based triggers.</description></item>
+            </list>
+            Not the perfect solution, but considered good enough, although it doesn't fully work when both
+            automatic action and response are active. But then highlighting becomes limited anyway...
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_DisplayElementsTxAdded(System.Object,YAT.Domain.DisplayElementsEventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_DisplayElementsBidirAdded(System.Object,YAT.Domain.DisplayElementsEventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_DisplayElementsRxAdded(System.Object,YAT.Domain.DisplayElementsEventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_CurrentDisplayLineTxReplaced(System.Object,YAT.Domain.DisplayElementsEventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_CurrentDisplayLineBidirReplaced(System.Object,YAT.Domain.DisplayElementsEventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_CurrentDisplayLineRxReplaced(System.Object,YAT.Domain.DisplayElementsEventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_CurrentDisplayLineTxCleared(System.Object,System.EventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_CurrentDisplayLineBidirCleared(System.Object,System.EventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_CurrentDisplayLineRxCleared(System.Object,System.EventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_DisplayLinesTxAdded(System.Object,YAT.Domain.DisplayLinesEventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_DisplayLinesBidirAdded(System.Object,YAT.Domain.DisplayLinesEventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_DisplayLinesRxAdded(System.Object,YAT.Domain.DisplayLinesEventArgs)">
+            <remarks>This 'normal' event is not raised during reloading, 'Repository[Rx|Bidir|Tx]Reloaded' event will be raised after completion.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_RepositoryTxReloaded(System.Object,YAT.Domain.DisplayLinesEventArgs)">
+            <remarks>Separated from <see cref="M:YAT.Model.Terminal.terminal_DisplayLinesTxAdded(System.Object,YAT.Domain.DisplayLinesEventArgs)"/> for not processing count/rate/log... on reload again.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_RepositoryBidirReloaded(System.Object,YAT.Domain.DisplayLinesEventArgs)">
+            <remarks>Separated from <see cref="M:YAT.Model.Terminal.terminal_DisplayLinesBidirAdded(System.Object,YAT.Domain.DisplayLinesEventArgs)"/> for not processing count/rate/log... on reload again.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.terminal_RepositoryRxReloaded(System.Object,YAT.Domain.DisplayLinesEventArgs)">
+            <remarks>Separated from <see cref="M:YAT.Model.Terminal.terminal_DisplayLinesRxAdded(System.Object,YAT.Domain.DisplayLinesEventArgs)"/> for not processing count/rate/log... on reload again.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.CheckFontAndPotentiallyChangeFont(System.Boolean@,System.Drawing.Font,System.Drawing.Font@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.CheckIOAvailability">
+            <summary>
+            Checks the terminal's I/O port availability. If I/O port is not available, and settings
+            allow so, user is asked whether to change to a different I/O port.
+            </summary>
+            <remarks>
+            Note that only the availability of the I/O port is checked, not whether the port is
+            already in use, because that may take quite some time and thus unnecessarily delay the
+            open/check/start sequence.
+            </remarks>
+            <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.Start">
+            <summary>
+            Starts the terminal.
+            </summary>
+            <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.Start(System.String@)">
+            <summary>
+            Starts the terminal.
+            </summary>
+            <param name="messageOnFailure">Message used for scripting.</param>
+            <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.Start(System.Boolean)">
+            <summary>
+            Starts the terminal.
+            </summary>
+            <param name="saveStatus">Flag indicating whether status of terminal shall be saved.</param>
+            <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.Start(System.Boolean,System.String@)">
+            <summary>
+            Starts the terminal.
+            </summary>
+            <param name="saveStatus">Flag indicating whether status of terminal shall be saved.</param>
+            <param name="messageOnFailure">Message used for scripting.</param>
+            <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.MakeStartHint(System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.MakeExceptionHint(System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.Stop">
+            <summary>
+            Stops the terminal.
+            </summary>
+            <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.Stop(System.String@)">
+            <summary>
+            Stops the terminal.
+            </summary>
+            <param name="messageOnFailure">Message used for scripting.</param>
+            <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.Stop(System.Boolean)">
+            <summary>
+            Stops the terminal.
+            </summary>
+            <param name="saveStatus">Flag indicating whether status of terminal shall be saved.</param>
+            <returns><c>true</c> if successful, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.Stop(System.Boolean,System.String@)">
+            <summary>
+            Stops the terminal.
+            </summary>
+            <param name="saveStatus">Flag indicating whether status of terminal shall be saved.</param>
+            <param name="messageOnFailure">Message used for scripting.</param>
+            <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.ClearRepository(YAT.Domain.RepositoryType)">
+            <summary>
+            Clears given repository.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ClearRepositories">
+            <summary>
+            Clears all repositories.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RefreshRepositories">
+            <summary>
+            Forces complete refresh of repositories.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RefreshRepository(YAT.Domain.RepositoryType)">
+            <summary>
+            Forces complete refresh of given repository.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RepositoryToDisplayElements(YAT.Domain.RepositoryType)">
+            <summary>
+            Returns contents of desired repository.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RepositoryToDisplayLines(YAT.Domain.RepositoryType)">
+            <summary>
+            Returns contents of desired repository.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.LastDisplayLineAuxiliary(YAT.Domain.RepositoryType)">
+            <summary>
+            Returns the last display line of desired repository for auxiliary purposes (e.g. automated testing).
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ClearLastDisplayLineAuxiliary(YAT.Domain.RepositoryType)">
+            <summary>
+            Clears the last display line of desired repository for auxiliary purposes (e.g. automated testing).
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RepositoryToExtendedDiagnosticsString(YAT.Domain.RepositoryType)">
+            <summary>
+            Returns contents of desired repository as string.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.Format(System.Byte[])">
+            <summary>
+            Formats the given data into a string, same as done by the monitor view.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            <see cref="P:YAT.Domain.Settings.DisplaySettings.TxRadix"/> and <see cref="P:YAT.Domain.Settings.DisplaySettings.RxRadix"/> have different values.
+            </exception>
+        </member>
+        <member name="M:YAT.Model.Terminal.Format(System.Byte[],YAT.Domain.IODirection)">
+            <summary>
+            Formats the given data into a string, same as done by the monitor view.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.Format(System.Byte[],YAT.Domain.Radix)">
+            <summary>
+            Formats the given data into a string, same as done by the monitor view.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RemoveFraming(System.Byte[])">
+            <summary>
+            Removes the framing from the given data.
+            </summary>
+            <remarks>
+            For text terminals, framing is typically defined by EOL.
+            For binary terminals, framing is optionally defined by sequence before/after.
+            </remarks>
+            <exception cref="T:System.InvalidOperationException">
+            The Tx and Rx sequence(s) have different values.
+            </exception>
+        </member>
+        <member name="M:YAT.Model.Terminal.RemoveFraming(System.Byte[],YAT.Domain.IODirection)">
+            <summary>
+            Removes the framing from the given data.
+            </summary>
+            <remarks>
+            For text terminals, framing is typically defined by EOL.
+            For binary terminals, framing is optionally defined by sequence before/after.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.ActiveConnectTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.TotalConnectTime">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.GetConnectTime(System.TimeSpan@,System.TimeSpan@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ResetConnectTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.TxByteCount">
+            <remarks>
+            The value corresponds to the byte count of the raw terminal repository. The count of the
+            formatted terminal repository slightly lags behind. <see cref="M:YAT.Model.Terminal.GetRepositoryByteCount(YAT.Domain.RepositoryType)"/>
+            may be used to retrieve the formatted terminal byte count.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.RxByteCount">
+            <remarks>
+            The value corresponds to the byte count of the raw terminal repository. The count of the
+            formatted terminal repository slightly lags behind. <see cref="M:YAT.Model.Terminal.GetRepositoryByteCount(YAT.Domain.RepositoryType)"/>
+            may be used to retrieve the formatted terminal byte count.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.TxLineCount">
+            <remarks>
+            The value corresponds to the completed line count of the formatted terminal repository.
+            <see cref="M:YAT.Model.Terminal.GetRepositoryLineCount(YAT.Domain.RepositoryType)"/> may be used to include incomplete line count.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.RxLineCount">
+            <remarks>
+            The value corresponds to the completed line count of the formatted terminal repository.
+            <see cref="M:YAT.Model.Terminal.GetRepositoryLineCount(YAT.Domain.RepositoryType)"/> may be used to include incomplete line count.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.TxByteRate">
+            <summary>
+            The send rate in bytes per second.
+            </summary>
+            <remarks>
+            The value corresponds to the rate of the raw terminal repository.
+            The rate of the formatted terminal repository slightly lags behind.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.RxByteRate">
+            <summary>
+            The receive rate in bytes per second.
+            </summary>
+            <remarks>
+            The value corresponds to the rate of the raw terminal repository.
+            The rate of the formatted terminal repository slightly lags behind.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.TxLineRate">
+            <summary>
+            The send rate in lines per second.
+            </summary>
+            <remarks>
+            The value corresponds to the completed line count of the formatted terminal repository.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.RxLineRate">
+            <summary>
+            The receive rate in lines per second.
+            </summary>
+            <remarks>
+            The value corresponds to the completed line count of the formatted terminal repository.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.DataStatus">
+            <remarks>
+            See remarks of <see cref="P:YAT.Model.Terminal.TxByteCount"/> and <see cref="P:YAT.Model.Terminal.TxLineCount"/>, <see cref="P:YAT.Model.Terminal.RxByteCount"/> and <see cref="P:YAT.Model.Terminal.RxLineCount"/>,
+            <see cref="P:YAT.Model.Terminal.TxByteRate"/> and <see cref="P:YAT.Model.Terminal.TxLineRate"/>, <see cref="P:YAT.Model.Terminal.RxByteRate"/> and <see cref="P:YAT.Model.Terminal.RxLineRate"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.ResetCountAndRate">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.GetRepositoryByteCount(YAT.Domain.RepositoryType)">
+            <remarks>
+            The value corresponds to the byte count of the formatted terminal repository.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.GetRepositoryLineCount(YAT.Domain.RepositoryType)">
+            <remarks>
+            The value corresponds to the line count of the formatted terminal repository.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Terminal.SerialPortControlPins">
+            <summary>
+            Serial port control pins.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SerialPortControlPinCount">
+            <summary>
+            Serial port control pin counts.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SentXOnCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.SentXOffCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.ReceivedXOnCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.ReceivedXOffCount">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ResetFlowControlCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.InputBreakCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Terminal.OutputBreakCount">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ResetBreakCount">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.RequestToggleRts">
+            <summary>
+            Toggles RTS control pin if current flow control settings allow this.
+            </summary>
+            <returns>
+            <c>true</c> if the request has been executed; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.RequestToggleDtr">
+            <summary>
+            Toggles DTR control pin if current flow control settings allow this.
+            </summary>
+            <returns>
+            <c>true</c> if the request has been executed; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.RequestToggleInputXOnXOff">
+            <summary>
+            Toggles the input XOn/XOff state if current flow control settings allow this.
+            </summary>
+            <returns>
+            <c>true</c> if the request has been executed; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.RequestToggleOutputBreak">
+            <summary>
+            Toggles the output break state if current port settings allow this.
+            </summary>
+            <returns>
+            <c>true</c> if the request has been executed; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:YAT.Model.Terminal.SwitchLogOn">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ClearLog">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.SwitchLogOff">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ToggleLogOnOrOff">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OpenLogFile">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OpenLogDirectory">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnIOChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnIOControlChanged(YAT.Domain.IOControlEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnIOConnectTimeChanged(MKY.TimeSpanEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnIOCountChanged_Promptly(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnIORateChanged_Promptly(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnIORateChanged_Decimated(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnIOError(YAT.Domain.IOErrorEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnIsSendingChanged(MKY.EventArgs{System.Boolean})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnIsSendingForSomeTimeChanged(MKY.EventArgs{System.Boolean})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnDisplayElementsTxAdded(YAT.Domain.DisplayElementsEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnDisplayElementsBidirAdded(YAT.Domain.DisplayElementsEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnDisplayElementsRxAdded(YAT.Domain.DisplayElementsEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnCurrentDisplayLineTxReplaced(YAT.Domain.DisplayElementsEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnCurrentDisplayLineBidirReplaced(YAT.Domain.DisplayElementsEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnCurrentDisplayLineRxReplaced(YAT.Domain.DisplayElementsEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnCurrentDisplayLineTxCleared(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnCurrentDisplayLineBidirCleared(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnCurrentDisplayLineRxCleared(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnDisplayLinesTxAdded(YAT.Domain.DisplayLinesEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnDisplayLinesBidirAdded(YAT.Domain.DisplayLinesEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnDisplayLinesRxAdded(YAT.Domain.DisplayLinesEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnRepositoryTxCleared(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnRepositoryBidirCleared(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnRepositoryRxCleared(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnRepositoryTxReloaded(YAT.Domain.DisplayLinesEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnRepositoryBidirReloaded(YAT.Domain.DisplayLinesEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnRepositoryRxReloaded(YAT.Domain.DisplayLinesEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnFixedStatusTextRequest(System.String)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnTimedStatusTextRequest(System.String)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnResetStatusTextRequest">
+            <remarks>Not using event args parameter for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnCursorRequest(System.Windows.Forms.Cursor)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnCursorReset">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnMessageInputRequest(System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnExtendedMessageInputRequest(System.String,System.String,System.String,System.Boolean@,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnExtendedMessageInputRequest(System.String,System.Collections.Generic.ICollection{System.Windows.Forms.LinkLabel.Link},System.String,System.String,System.Boolean@,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnFontDialogRequest">
+            <summary>
+            Requests to show the 'Font' dialog to let the user chose a file path.
+            If confirmed, the terminal's font will have been changed.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnSaveAsFileDialogRequest">
+            <summary>
+            Requests to show the 'SaveAs' dialog to let the user chose a file path.
+            If confirmed, the file will be saved to that path.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnSaveCommandPageAsFileDialogRequest(System.String)">
+            <summary>
+            Requests to show the 'SaveAs' dialog to let the user chose a file path.
+            If confirmed, the file will be saved to that path.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnOpenCommandPageFileDialogRequest(System.String)">
+            <summary>
+            Requests to show the 'Open' dialog to let the user chose a file path.
+            If confirmed, the file will be saved to that path.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnSaved(YAT.Model.SavedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnClosed(YAT.Model.ClosedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.OnExitRequest(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Terminal.DebugMessage(System.String,System.Object[])">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with the formatted message, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Terminal.DebugThreads(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:YAT.Model.TerminalIds">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.FirstIndex">
+            <remarks>
+            "Normal" indices are 0 based.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.InvalidIndex">
+            <remarks>
+            "Normal" indices are 0 based.
+            Index -1 means "invalid".
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.FirstDynamicId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.ActiveDynamicId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            ID 0 refers to the active terminal, i.e. the 'default' terminal.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.InvalidDynamicId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            ID -1 means 'invalid', i.e. no terminal.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.FirstSequentialId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.ActiveSequentialId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            ID 0 refers to the active terminal, i.e. the 'default' terminal.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.InvalidSequentialId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            ID -1 means 'invalid', i.e. no terminal.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.FirstFixedId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.ActiveFixedId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            ID 0 refers to the active terminal, i.e. the 'default' terminal.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.TerminalIds.InvalidFixedId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            ID -1 means 'invalid', i.e. no terminal.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.TerminalIds.IndexToDynamicId(System.Int32)">
+            <summary>
+            Returns the dynamic ID of the given index.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.TerminalIds.DynamicIdToIndex(System.Int32)">
+            <summary>
+            Returns the index of the given dynamic ID.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Utilities.AutoTriggerHelper">
+            <remarks>
+            The automatic response feature is intentionally implemented using a byte sequence (and not
+            e.g. a regular expression). Rationale:
+            <list type="bullet">
+            <item><description>I/O is a byte stream.</description></item>
+            <item><description>Works for text as well as binary terminals.</description></item>
+            <item><description>Regular expressions only make sense for text.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Utilities.AutoTriggerHelper.ByteSequence">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Utilities.AutoTriggerHelper.TextOrRegexPattern">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Utilities.AutoTriggerHelper.TextOrRegexCaseSensitive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Utilities.AutoTriggerHelper.TextOrRegexWholeWord">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Utilities.AutoTriggerHelper.Regex">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.#ctor(System.Byte[])">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.#ctor(System.String,System.Boolean,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.#ctor(System.String,System.Boolean,System.Boolean,System.Text.RegularExpressions.Regex)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.ResetByteSequence(YAT.Domain.RepositoryType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.EnqueueAndMatchByteSequence(YAT.Domain.RepositoryType,System.Byte)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.ByteSequenceToString">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.TextTriggerSuccess(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.TextTriggerCount(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.TextTriggerCount(System.String,System.Text.RegularExpressions.MatchCollection@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.AutoTriggerHelper.ToDiagnosticsString(System.String)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Extended <see cref="M:YAT.Model.Utilities.AutoTriggerHelper.ToString"/> method which can be used for trace/debug.
+            </remarks>
+            <remarks>
+            Limited to a single line to keep debug output compact, same as <see cref="M:YAT.Model.Utilities.AutoTriggerHelper.ToString"/>.
+            </remarks>
+        </member>
+        <member name="T:YAT.Model.Utilities.IOStatusHelper">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.IOStatusHelper.Compose(YAT.Settings.Model.TerminalSettingsRoot,YAT.Domain.Terminal,System.Boolean,System.Boolean,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Utilities.CaptionHelper">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.CaptionHelper.ComposeMain(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.CaptionHelper.ComposeTerminal(System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.CaptionHelper.ComposeTerminal(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.CaptionHelper.ComposeTerminal(MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot},YAT.Settings.Model.TerminalSettingsRoot,YAT.Domain.Terminal,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Utilities.MessageHelper">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.ComposeMessage(System.String,System.String,System.String,System.String)">
+            <remarks>Provides [str] and [str, str] and [str, str, str] and [str, str, str, str].</remarks>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.ComposeMessage(System.String,System.Exception,System.String,System.String)">
+            <remarks>Provides [str, ex].</remarks>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.ComposeMessage(System.String,System.String,System.Exception,System.String,System.String)">
+            <remarks>Provides [str, str, ex].</remarks>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeCommandLineErrorMessage(System.Collections.Generic.ICollection{System.String},System.Collections.Generic.IReadOnlyList{System.String},System.Text.StringBuilder@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeMissingFontMessage(System.String,System.Exception,System.Text.StringBuilder@,System.Collections.Generic.List{System.Windows.Forms.LinkLabel.Link}@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeFontMonospacedRecommendation">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeFontNotMonospacedMessage(System.String,System.String,System.Text.StringBuilder@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeSerialPortStartHint(System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeSerialPortExceptionHint(System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeIPClientStartHint(System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeIPClientExceptionHint(System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeTcpListenerHint(System.Int32,System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeUdpListenerHint(System.Int32,System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeUsbSerialHidStartHint(System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeUsbSerialHidExceptionHint(System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Utilities.MessageHelper.MakeLogHint(YAT.Log.Provider,System.String@,System.String@)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Workspace">
+            <summary>
+            Workspaces (.yaw) of the YAT application model.
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Workspace.InvalidIndex">
+            <summary>
+            An invalid index is represented by -1.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.DoNotDetachSettingsBecauseTheyAreRequiredForVerification_ForTestOnly">
+             <summary>
+             Workaround to the following issue:
+            
+             A test (e.g. 'FileHandlingTest') needs to verify the settings files after calling
+             <see cref="M:YAT.Model.Main.Exit_ForTestOnly"/>. But at that moment, the settings have already
+             been disposed of and can no longer be accessed.
+             The first approach was to disable disposal in <see cref="M:YAT.Model.Workspace.Close"/>. But that leads to
+             remaining resources, resulting in significant slow-down when exiting NUnit.
+             The second approach was to retrieve the required information *before* exiting, i.e.
+             calling <see cref="M:YAT.Model.Main.Exit_ForTestOnly"/>. But that doesn't work at all, since
+             auto-save paths are only evaluated *at* <see cref="M:YAT.Model.Main.Exit_ForTestOnly"/>.
+            
+             This workaround is considered the best option to solve this issue.
+             </summary>
+             <remarks>
+             Note that it is not possible to mark a property with [Conditional("TEST")].
+             </remarks>
+        </member>
+        <member name="F:YAT.Model.Workspace.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.TerminalAdded">
+            <summary>Event raised when a new terminal was added to the workspace.</summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.TerminalRemoved">
+            <summary>Event raised when a terminal was removed from the workspace.</summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.FixedStatusTextRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.TimedStatusTextRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.CursorRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.MessageInputRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.SaveAsFileDialogRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.SaveCommandPageAsFileDialogRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.OpenCommandPageFileDialogRequest">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.Saved">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.Closed">
+            <summary></summary>
+        </member>
+        <member name="E:YAT.Model.Workspace.ExitRequest">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.#ctor(MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.WorkspaceSettingsRoot})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.#ctor(YAT.Model.WorkspaceLaunchArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.#ctor(YAT.Model.WorkspaceLaunchArgs,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.WorkspaceSettingsRoot},System.Guid)">
+            <remarks><see cref="F:System.Guid.Empty"/> cannot be used as default argument as it is read-only.</remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.Model.Workspace.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:YAT.Model.Workspace.LaunchArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.Guid">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.UserFileName">
+            <summary>
+            The file name if the user has saved the terminal; otherwise, <see cref="F:System.String.Empty"/>.
+            </summary>
+            <remarks>
+            Cached from <see cref="P:YAT.Model.Workspace.SettingsFilePath"/> for...
+            ...limiting to user files (i.e. not 'AutoSaved').
+            ...having to compose the name only once.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Workspace.IndicatedName">
+            <summary>
+            The indicated name, i.e. either the <see cref="P:YAT.Model.Workspace.UserFileName"/> or <see cref="F:System.String.Empty"/>.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.Caption">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.SettingsFilePath">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.SettingsFileExists">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.SettingsFileIsReadOnly">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.SettingsFileIsWritable">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.SettingsFileHasAlreadyBeenNormallySaved">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.SettingsFileNoLongerExists">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.TerminalCount">
+            <summary>
+            Returns number of terminals within workspace.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.Terminals">
+            <summary>
+            Returns an array of all terminals within workspace; or <c>null</c> if there are no terminals.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.ActiveTerminal">
+            <summary>
+            Returns active terminal within workspace; or <c>null</c> if no terminal is active.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.ActiveTerminalSequentialId">
+            <summary>
+            Returns the sequential ID of the active terminal.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.ActiveTerminalDynamicId">
+            <summary>
+            Returns the dynamic ID of the active terminal.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.ActiveTerminalFixedId">
+            <summary>
+            Returns the fixed ID of the active terminal.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.ActiveTerminalInfoText">
+            <summary>
+            Gets a text containing information about the active terminal.
+            </summary>
+            <remarks>
+            Using term "Info" since the info contains name and IDs.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Workspace.SettingsHaveChanged">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Workspace.SettingsRoot">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.TryAutoSaveIfAlreadyAutoSaved">
+            <summary>
+            Tries to performs auto save.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.Save">
+            <summary>
+            Saves all terminals and workspace to files, prompts for files if they don't exist yet.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.TrySaveWithOptionsWithoutUserInteraction(System.Boolean)">
+            <summary>
+            Silently tries to save terminal to file, i.e. without any user interaction.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.SaveWithOptions(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean@)">
+            <summary>
+            This method implements the logic that is needed when saving, opposed to the method
+            <see cref="M:YAT.Model.Workspace.SaveToFile(System.Boolean,System.String)"/> which just performs the actual save, i.e. file handling.
+            </summary>
+            <param name="autoSaveIsAllowed">
+            Auto save means that the settings have been saved at an automatically chosen location,
+            without telling the user anything about it.
+            </param>
+            <param name="userInteractionIsAllowed">Indicates whether user interaction is allowed.</param>
+            <param name="saveEvenIfNotChanged">Indicates whether save must happen even if not changed.</param>
+            <param name="canBeCanceled">Indicates whether save can be canceled.</param>
+            <param name="isCanceled">Indicates whether save has been canceled.</param>
+        </member>
+        <member name="M:YAT.Model.Workspace.EvaluateWhetherAutoSaveIsAllowedIndeed(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.ThereIsNoReasonToSave(System.Boolean,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.ComposeAbsoluteAutoSaveFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.RequestNormalSaveAsFromUser">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.RequestRestrictedSaveAsFromUser(System.Boolean,System.Boolean@)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.SaveAs(System.String)">
+             <summary>
+             Saves settings to given file, also saves all terminals and prompts for files if they
+             don't exist yet.
+             </summary>
+             <remarks>
+             Note that not only the workspace gets saved, but also the terminals. Consider the
+             default case:
+              1. Application start, default workspace is created.
+              2. Create a terminal.
+              3. Intentionally save the workspace as.
+                  => The user expects to save the terminal as well.
+                  => No saving the terminal would lead to a normal file referring to an auto file!
+            
+             Saying hello to StyleCop ;-.
+             </remarks>
+             <exception cref="T:System.ArgumentNullException">
+             <paramref name="filePath"/> is null.
+             </exception>
+        </member>
+        <member name="M:YAT.Model.Workspace.SaveToFile(System.Boolean,System.String)">
+            <param name="isAutoSave">
+            Auto save means that the settings have been saved at an automatically chosen location,
+            without telling the user anything about it.
+            </param>
+            <param name="autoSaveFilePathToDelete">
+            The path to the former auto saved file, it will be deleted if the file can successfully
+            be stored in the new location.
+            </param>
+        </member>
+        <member name="M:YAT.Model.Workspace.Close">
+            <summary>
+            Closes the workspace and prompts if the settings have changed.
+            </summary>
+            <remarks>
+            In case of a main exit, <see cref="M:YAT.Model.Workspace.CloseWithOptions(System.Boolean,YAT.Model.ExitMode)"/> below must be called
+            with the first argument set to <c>true</c>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.CloseWithOptions(System.Boolean,YAT.Model.ExitMode)">
+             <summary>
+             Closes the workspace and tries to auto save if desired.
+             </summary>
+             <remarks>
+             Attention:
+             This method is needed for MDI applications. In case of MDI parent/application closing,
+             Close() of the workspace is called. Without taking care of this, the workspace would
+             be removed as the active workspace from the local user settings. Therefore, the
+             workspace has to signal such cases to main.
+            
+             Cases (similar to cases in Model.Terminal):
+             - Main exit
+               - auto,   no file,       auto save    => auto save, if it fails => nothing  : (m1a)
+               - auto,   no file,       no auto save => nothing                            : (m1b)
+               - auto,   existing file, auto save    => auto save, if it fails => delete   : (m2a)
+               - auto,   existing file, no auto save => delete                             : (m2b)
+               - normal, no file                     => N/A (normal files have been saved) : (m3)
+               - normal, no file anymore             => question                           :  --
+               - normal, existing file, auto save    => auto save, if it fails => question : (m4a)
+               - normal, existing file, no auto save => question                           : (m4b)
+             - Workspace close
+               - auto,   no file                     => nothing                            : (w1)
+               - auto,   existing file               => delete                             : (w2)
+               - normal, no file                     => N/A (normal files have been saved) : (w3)
+               - normal, no file anymore             => question                           :  --
+               - normal, existing file, auto save    => auto save, if it fails => question : (w4a)
+               - normal, existing file, no auto save => question                           : (w4b)
+            
+             Save and close must be done sequentially:
+             1. Save terminals and workspace.
+             2. Close terminals and workspace, but only if save was successful.
+             </remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.SetRecent(System.String)">
+            <summary>
+            Update recent entry.
+            </summary>
+            <param name="recentFile">Recent file.</param>
+        </member>
+        <member name="M:YAT.Model.Workspace.NotifyLayout(YAT.Model.Types.WorkspaceLayout)">
+            <summary>
+            Notifies the workspace about a change in the layout, so it can keep the setting. But
+            layouting itself is done in the form as the MDI functionality is an integral part of
+            the 'WinForms' environment.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.terminal_Closed(System.Object,YAT.Model.ClosedEventArgs)">
+            <remarks>
+            See remarks of <see cref="M:YAT.Model.Terminal.CloseWithOptions(System.Boolean,System.Boolean,System.Boolean,System.Boolean)"/> for details on why this handler
+            needs to treat the event differently in case of a parent (i.e. workspace) close.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Workspace.TerminalSettingsFilePaths">
+            <summary>
+            Returns settings file paths of the all the terminals in the workspace.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.CreateNewTerminal(MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OpenTerminals">
+            <summary>
+            Opens terminals according to workspace settings and returns number of successfully opened terminals.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OpenTerminals(System.Int32,System.Int32,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot})">
+            <summary>
+            Opens terminals according to workspace settings and returns number of successfully opened terminals.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OpenTerminalFromFile(System.String)">
+            <summary>
+            Opens the terminal file given.
+            </summary>
+            <param name="filePath">Terminal file.</param>
+            <returns><c>true</c> if successfully opened the terminal; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:YAT.Model.Workspace.OpenTerminalFromSettings(MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.LaunchAllTerminals">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.CheckTerminalFiles(System.String)">
+            <summary>
+            Check whether terminal is already contained in workspace.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OpenTerminalFile(System.String,System.String@,MKY.Settings.DocumentSettingsHandler{YAT.Settings.Model.TerminalSettingsRoot}@,System.Exception@)">
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="filePath"/> is null.
+            </exception>
+        </member>
+        <member name="M:YAT.Model.Workspace.ReplaceTerminalInWorkspaceSettings(YAT.Model.Terminal)">
+            <summary>
+            Replaces terminal in workspace settings if the settings have changed.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.GetFixedIdByTerminal(YAT.Model.Terminal)">
+            <summary>
+            Returns the fixed ID of the given terminal.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.GetDynamicIdByTerminal(YAT.Model.Terminal)">
+            <summary>
+            Returns the dynamic ID of the given terminal.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.TryGetTerminalByGuid(System.Guid,YAT.Model.Terminal@)">
+            <summary>
+            Tries to return the terminal with the given GUID.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.TryGetTerminalBySequentialId(System.Int32,YAT.Model.Terminal@)">
+            <summary>
+            Tries to return the terminal with the given sequential ID. The ID corresponds to the
+            number indicated in the terminal name, e.g. "Terminal1" or "Terminal2". The ID starts
+            at 1 and is unique throughout the execution of the program.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.TryGetTerminalByDynamicId(System.Int32,YAT.Model.Terminal@)">
+            <summary>
+            Tries to return the terminal with the given dynamic ID. The dynamic ID represents the
+            order in which the terminals got created. If a terminal gets closed, the dynamic ID of
+            all subsequent terminals is adjusted.
+            </summary>
+            <remarks>
+            The index must be in the range of 1...NumberOfTerminals, or 0 to select the currently
+            active terminal.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.TryGetTerminalByFixedId(System.Int32,YAT.Model.Terminal@)">
+            <summary>
+            Tries to return the terminal with the given fixed ID. The fixed ID represents the order
+            in which the terminals initially got created and doesn't change throughout the execution
+            of the program. If a terminal is closed, the corresponding ID becomes available and will
+            be used for the next terminal that is opened, i.e. a new terminal always gets the lowest
+            available fixed ID.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.SaveAllTerminals">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.SaveAllTerminalsEvenIfNotChanged(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.SaveAllTerminalsNormally(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.SaveAllTerminalsOnClose(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.SaveAllTerminalsWhereFileHasAlreadyBeenNormallySavedOnClose">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.CloseAllTerminals">
+             <remarks>
+             In case of a workspace close, <see cref="M:YAT.Model.Workspace.CloseAllTerminals(System.Boolean,System.Boolean,System.Boolean,System.Boolean)"/>
+             further below must be called with the first argument set to <c>true</c>.
+            
+             In case of intended close of one or all terminals, the user intentionally wants to close
+             the terminal(s), thus, this method will not try to auto save.
+             </remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.CloseAllTerminals(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <remarks>
+            See remarks of <see cref="M:YAT.Model.Terminal.CloseWithOptions(System.Boolean,System.Boolean,System.Boolean,System.Boolean)"/> for details on 'WorkspaceClose'.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.AllClear">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.AllRefresh">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.AllLogOn">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.AllLogOff">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.AllLogClear">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.ActivateTerminal(YAT.Model.Terminal)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.ActivateTerminalBySequentialId(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.DeactivateTerminal(YAT.Model.Terminal)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.SaveActiveTerminal">
+            <remarks>
+            Not named "Try" same as all other "main" methods.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.CloseActiveTerminal">
+            <remarks>
+            Not named "Try" same as all other "main" methods.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.StartActiveTerminal">
+            <remarks>
+            Not named "Try" same as all other "main" methods.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.StopActiveTerminal">
+            <remarks>
+            Not named "Try" same as all other "main" methods.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnTerminalAdded(YAT.Model.TerminalEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnTerminalRemoved(YAT.Model.TerminalEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnFixedStatusTextRequest(System.String)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnTimedStatusTextRequest(System.String)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnCursorRequest(System.Windows.Forms.Cursor)">
+            <remarks>Using item parameter instead of <see cref="T:System.EventArgs"/> for simplicity.</remarks>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnCursorReset">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnMessageInputRequest(System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnSaveAsFileDialogRequest">
+            <summary>
+            Requests to show the 'SaveAs' dialog to let the user chose a file path.
+            If confirmed, the file will be saved to that path.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnSaveCommandPageAsFileDialogRequest(System.String)">
+            <summary>
+            Requests to show the 'SaveAs' dialog to let the user chose a file path.
+            If confirmed, the file will be saved to that path.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnOpenCommandPageFileDialogRequest(System.String)">
+            <summary>
+            Requests to show the 'Open' dialog to let the user chose a file path.
+            If confirmed, the file will be saved to that path.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnSaved(YAT.Model.SavedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnClosed(YAT.Model.ClosedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.OnExitRequest(System.EventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Workspace.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+    </members>
+</doc>

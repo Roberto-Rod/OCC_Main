@@ -1,0 +1,61 @@
+
+
+# Take the current master bracnh source version and update with current delta .... verify it matches restore
+
+destin="./base1"
+
+ff=/usr/bin/find.exe
+
+echo $1
+
+destin=$1
+
+src=src
+
+echo ${destin}
+
+mkdir ${destin}
+
+chmod 777  ${destin}/*
+chmod 777  ${destin}/${src}/*
+
+${ff} ../sourcePico -type f -name '*.[h|c]' | while read FILE ; do
+    echo ${FILE} 
+    newfile="$(echo ${FILE} |sed -e 's/.*\///')" ;
+    newfiled="$(echo ${newfile} |sed -e 's/$/.delta/')" ;
+    newfiler="$(echo ${newfile} |sed -e 's/$/.rst/')" ;
+    newfilet="$(echo ${newfile} |sed -e 's/$/.tmp/')" ;
+
+    
+    if [[ -f ${FILE} ]]; then
+        echo xxxxx 
+        if [[ -f ${destin}/${src}/${newfiled} ]]; then
+            echo modify exists
+
+            echo xxxxxxxxxxxxxxxxxxxxx
+            echo ${newfile2}
+            echo yyy ${destin}${newfile}
+            echo ppppp  cp "${FILE}" "${destin}/${newfile}" ;
+            echo qqqqq  cp "${FILE}" "${destin}/${newfile2}" ;
+            #python merge.py -f ${destin}/${src}/${newfile}  -m ${destin}/${src}/${newfiled}  >  ${destin}/${src}/${newfilet}
+            python merge.py -f ${FILE} -m ${destin}/${src}/${newfiled}  >  ${destin}/${src}/${newfilet}
+            echo gggg cmp --silent ${FILE} ${newfile2}
+            echo cmp --silent ${destin}/${src}/${newfiler} ${destin}/${src}/${newfilet}
+            cmp --silent ${destin}/${src}/${newfiler} ${destin}/${src}/${newfilet}
+            RETVAL=$?
+            if  [ $RETVAL -ne 0 ]; then
+              echo ${FILE} xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx fail 
+            else
+              echo rm -f  ${destin}/${src}/${newfilet}
+            fi
+        fi
+
+    else
+        echo does not exist
+    fi
+
+
+done 
+
+
+

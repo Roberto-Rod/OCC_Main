@@ -1,0 +1,265 @@
+---
+:project:
+  :use_exceptions: false
+  :use_mocks: true
+  :compile_threads: 1
+  :test_threads: 1
+  :use_test_preprocessor: true
+  :use_deep_dependencies: true
+  :test_file_prefix: test_
+  :options_paths: []
+  :release_build: false
+  :build_root: unit_test_build
+:release_build:
+  :use_assembly: false
+  :artifacts: []
+:paths:
+  :test:
+  - "+:test/unit_test/**"
+  - "+:test/acceptance_test/**"
+  :source:
+  - sourcePico/**
+  :support: []
+  :include: []
+  :test_toolchain_include: []
+  :release_toolchain_include: []
+:files:
+  :test: []
+  :source: []
+  :assembly: []
+  :support: []
+  :include: []
+:environment:
+- :rake_columns: '120'
+:defines:
+  :test:
+  - &1 []
+  - UNIT_TEST
+  :test_preprocess:
+  - *1
+  - UNIT_TEST
+  :release: []
+  :release_preprocess: []
+  :common: []
+:flags: {}
+:extension:
+  :header: ".h"
+  :source: ".c"
+  :assembly: ".s"
+  :object: ".o"
+  :executable: ".out"
+  :map: ".map"
+  :list: ".lst"
+  :testpass: ".pass"
+  :testfail: ".fail"
+  :dependencies: ".d"
+:unity:
+  :vendor_path: C:/Repos/RR/Pico2/PP-main/vendor/ceedling/vendor
+  :defines: []
+:cmock:
+  :vendor_path: C:/Repos/RR/Pico2/PP-main/vendor/ceedling/vendor
+  :defines: []
+  :when_no_prototypes: :warn
+  :enforce_strict_ordering: true
+  :plugins:
+  - :ignore
+  - :callback
+  - :ignore_arg
+  - :return_thru_ptr
+  - :expect_any_args
+  - :array
+  :treat_as:
+    uint8: HEX8
+    uint16: HEX16
+    uint32: UINT32
+    int8: INT8
+    bool: UINT8
+  :mock_prefix: Mock
+  :mock_path: unit_test_build/test/mocks
+  :verbosity: 3
+  :unity_helper: false
+:cexception:
+  :vendor_path: C:/Repos/RR/Pico2/PP-main/vendor/ceedling/vendor
+  :defines: []
+:test_runner:
+  :includes: []
+  :file_suffix: _runner
+:tools:
+  :test_compiler:
+    :executable: gcc
+    :arguments:
+    - "-std=c99"
+    - "-D$": COLLECTION_DEFINES_TEST_AND_VENDOR
+    - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+    - "-g"
+    - -c "${1}"
+    - -o "${2}"
+    - "-Werror=return-type"
+    :name: test_compiler
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+  :test_fixture:
+    :executable: "${1}"
+    :name: default_test_fixture
+    :stderr_redirect: :auto
+    :background_exec: :none
+    :optional: false
+    :arguments: []
+  :test_linker:
+    :executable: gcc.exe
+    :name: default_test_linker
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+    :arguments:
+    - '"${1}"'
+    - -o "${2}"
+    - "-lm"
+  :test_file_preprocessor:
+    :executable: gcc.exe
+    :name: default_test_file_preprocessor
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+    :arguments:
+    - "-E"
+    - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+    - -I"$": COLLECTION_PATHS_TEST_TOOLCHAIN_INCLUDE
+    - "-D$": COLLECTION_DEFINES_TEST_AND_VENDOR
+    - "-D$": DEFINES_TEST_PREPROCESS
+    - "-DGNU_COMPILER"
+    - '"${1}"'
+    - -o "${2}"
+  :test_includes_preprocessor:
+    :executable: gcc.exe
+    :name: default_test_includes_preprocessor
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+    :arguments:
+    - "-E"
+    - "-MM"
+    - "-MG"
+    - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+    - -I"$": COLLECTION_PATHS_TEST_TOOLCHAIN_INCLUDE
+    - "-D$": COLLECTION_DEFINES_TEST_AND_VENDOR
+    - "-D$": DEFINES_TEST_PREPROCESS
+    - "-DGNU_COMPILER"
+    - "-w"
+    - '"${1}"'
+  :test_dependencies_generator:
+    :executable: gcc.exe
+    :name: default_test_dependencies_generator
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+    :arguments:
+    - "-E"
+    - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+    - -I"$": COLLECTION_PATHS_TEST_TOOLCHAIN_INCLUDE
+    - "-D$": COLLECTION_DEFINES_TEST_AND_VENDOR
+    - "-D$": DEFINES_TEST_PREPROCESS
+    - "-DGNU_COMPILER"
+    - -MT "${3}"
+    - "-MM"
+    - "-MD"
+    - "-MG"
+    - -MF "${2}"
+    - -c "${1}"
+  :gcov_compiler:
+    :executable: gcc
+    :arguments:
+    - "-g"
+    - "-std=c99"
+    - "-fprofile-arcs"
+    - "-ftest-coverage"
+    - -I"$": COLLECTION_PATHS_TEST_SUPPORT_SOURCE_INCLUDE_VENDOR
+    - -I"$": COLLECTION_PATHS_TEST_TOOLCHAIN_INCLUDE
+    - "-D$": COLLECTION_DEFINES_TEST_AND_VENDOR
+    - "-DGCOV_COMPILER"
+    - -c "${1}"
+    - -o "${2}"
+    :name: gcov_compiler
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+  :gcov_fixture:
+    :executable: "${1}"
+    :name: gcov_fixture
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+  :gcov_linker:
+    :executable: gcc
+    :arguments:
+    - "-fprofile-arcs"
+    - "-ftest-coverage"
+    - "${1}"
+    - "-o ${2}"
+    :name: gcov_linker
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+  :gcov_post_report:
+    :executable: python
+    :optional: true
+    :arguments:
+    - c:\Python27\scripts\gcovr
+    - "--object-directory=build/gcov/out"
+    - "-p"
+    - "-b"
+    - "-e '^vendor.*|^build.*|^unit_test.*|^lib.*'"
+    - "-r ."
+    - "--xml-pretty"
+    - "-o GcovCoverageResults.xml"
+    :name: gcov_post_report
+    :stderr_redirect: :none
+    :background_exec: :none
+  :gcov_report:
+    :executable: gcov
+    :arguments:
+    - "-n"
+    - "-p"
+    - "-b"
+    - -o "$": GCOV_BUILD_OUTPUT_PATH
+    - '"${1}"'
+    :name: gcov_report
+    :stderr_redirect: :none
+    :background_exec: :none
+    :optional: false
+:test_compiler:
+  :arguments: []
+:test_linker:
+  :arguments: []
+:test_fixture:
+  :arguments: []
+  :link_objects: []
+:test_includes_preprocessor:
+  :arguments: []
+:test_file_preprocessor:
+  :arguments: []
+:test_dependencies_generator:
+  :arguments: []
+:release_compiler:
+  :arguments: []
+:release_linker:
+  :arguments: []
+:release_assembler:
+  :arguments: []
+:release_dependencies_generator:
+  :arguments: []
+:plugins:
+  :load_paths:
+  - vendor/ceedling/plugins
+  :enabled:
+  - stdout_pretty_tests_report
+  - xml_tests_report
+  - gcov
+  :display_raw_test_results: false
+  :stdout_pretty_tests_report_path: vendor/ceedling/plugins/stdout_pretty_tests_report/lib
+  :xml_tests_report_path: vendor/ceedling/plugins/xml_tests_report/lib
+  :gcov_path: vendor/ceedling/plugins/gcov/lib
+:tools_test_linker:
+  :arguments:
+  - "-lm"

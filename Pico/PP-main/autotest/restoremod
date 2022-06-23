@@ -1,0 +1,36 @@
+
+# Restore the build file to the sourcePico location 
+
+
+destin=$1
+
+ff=/usr/bin/find.exe
+
+src=src
+
+echo ${destin}
+
+mkdir ${destin}
+
+chmod 777  ${destin}/*
+chmod 777  ${destin}/${src}/*
+
+${ff} ../sourcePico -type f -name '*.[h|c]' | while read FILE ; do
+    echo ${FILE} 
+    newfile="$(echo ${FILE} |sed -e 's/.*\///')" ;
+    newfiler="$(echo ${newfile} |sed -e 's/$/.rst/')" ;
+    echo ${destin}/${newfiler}
+    echo  ${FILE}
+    if [[ -f ${FILE} ]]; then 
+        if [[ -f ${destin}/${src}/${newfiler} ]]; then 
+            echo exists
+            echo gggg cmp --silent ${FILE} ${newfiler}
+            cp ${destin}/${src}/${newfiler}  ${FILE} 
+        fi 
+        
+    else
+        echo does not exist 
+    fi 
+
+    echo xxxxxxxxxxxxxxxxxxxxx
+done 

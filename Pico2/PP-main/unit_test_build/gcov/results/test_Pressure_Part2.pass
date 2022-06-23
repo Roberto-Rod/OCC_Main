@@ -1,0 +1,50 @@
+---
+:source:
+  :path: test/unit_test/devices
+  :file: test_Pressure_Part2.c
+:successes:
+- :test: test_TryToGetSingleDifferentialVacuumMeasurementOkAndCheck
+  :line: 160
+  :message: ''
+- :test: test_TryToGetSingleVacuumInternalMeasurementOkAndCheck
+  :line: 191
+  :message: ''
+- :test: test_TryToGetSingleVacuumExternalMeasurementOkAndCheck
+  :line: 222
+  :message: ''
+- :test: test_TryToGetSingleVacuumMeasurementInvalidInputParameterAndCheck
+  :line: 252
+  :message: ''
+- :test: test_TryToGetSingleVacuumMeasurementExternalSensorNotReadyAndCheck
+  :line: 289
+  :message: ''
+- :test: test_TryToGetSingleVacuumMeasurementInternalSensorNotReadyAndCheck
+  :line: 306
+  :message: ''
+- :test: test_TryToGetSingleVacuumMeasurementBothSensorsNotReadyAndCheck
+  :line: 324
+  :message: ''
+- :test: test_TryToGetSingleVacuumMeasurementFailGettingExtPressureAndCheck
+  :line: 342
+  :message: ''
+- :test: test_TryToGetSingleVacuumMeasurementFailGettingIntPressureAndCheck
+  :line: 361
+  :message: ''
+- :test: test_TryToGetSingleVacuumMeasurementFailToCalculatePressureDiffAndCheck
+  :line: 379
+  :message: ''
+- :test: test_TryToGetSingleVacuumMeasurementFailToCalculatePressureExternalTemperatureThreshholdReached
+  :line: 400
+  :message: ''
+- :test: test_TryToGetSingleVacuumMeasurementFailToCalculatePressureInternalTemperatureThreshholdReached
+  :line: 420
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 12
+  :passed: 12
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

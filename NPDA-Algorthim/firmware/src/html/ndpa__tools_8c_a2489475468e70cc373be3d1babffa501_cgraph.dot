@@ -1,0 +1,22 @@
+digraph "update_average"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="update_average",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Find AC peak in interpolated data in __ndpa_y, use it as an offset to merge to current average data s..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="average_incremental",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa__tools_8c.html#a2fe48571f725e4a9631f68572043a371",tooltip="Adding a new interpolated scan from __ndpa_y to the average vector in __ndpa_avg, adjusting data by o..."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="average_incremental_end",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa__tools_8c.html#a1555987076acc02ecc477e17061bee34",tooltip="Adding a new interpolated scan from __ndpa_y to the average vector in __ndpa_avg, adjusting data by o..."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="find_ac_peak",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa__tools_8c.html#a7cbb18005383696fbac4cdb83050798a",tooltip="Returning a data window (q1, q2) in scany containing the points above half height around the specifie..."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="median",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa__tools_8c.html#a7ffac73dc0966b86fc85f2a717d66e5f",tooltip="Returns the median of the specified vector of size n."];
+  Node5 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="find_ac_quad",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa__tools_8c.html#a44b329e24c875aafe0fa3c70fbfeaebe",tooltip="Fitting a parabola on the half height window points around the AC peak based on the max value."];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="polyfit2",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa__tools_8c.html#a7f9f7ff5e0c61bb020aec9e5cde2aff3",tooltip="Fitting a quadratic polygon to the active member points starting at (__ndpa_x + offset,..."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

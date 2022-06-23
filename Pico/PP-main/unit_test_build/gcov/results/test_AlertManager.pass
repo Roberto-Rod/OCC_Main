@@ -1,0 +1,29 @@
+---
+:source:
+  :path: test/unit_test/managers
+  :file: test_AlertManager.c
+:successes:
+- :test: test_AlertManagerInitialise
+  :line: 143
+  :message: ''
+- :test: test_RunAlertManagerWhenStateMachineInFaultOrUnknownStateAndCheck
+  :line: 165
+  :message: ''
+- :test: test_RunAlertManagerWhenSwitchingBetweenDisplaySequences
+  :line: 280
+  :message: ''
+- :test: test_RunAlertManagerWhenSwitchingToPowerDownSeq
+  :line: 356
+  :message: ''
+- :test: test_RunAlertManagerWhenStateMachineInIdleStateAndCheck
+  :line: 421
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 5
+  :passed: 5
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

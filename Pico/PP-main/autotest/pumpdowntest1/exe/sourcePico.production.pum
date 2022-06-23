@@ -1,0 +1,90 @@
+
+Psect Usage Map:
+
+ Psect      | Contents                       | Memory Range  | Size
+------------|--------------------------------|---------------|--------------
+ reset_vec  | Reset vector                   | 0000h - 0001h |    2 words  
+ text11     | Program and library code       | 0002h - 0003h |    2 words  
+ intentry   | Interrupt context entry code   | 0004h - 002Ch |   41 words  
+ end_init   | Initialization code            | 002Dh - 002Eh |    2 words  
+ text50     | Program and library code       | 002Fh - 0418h | 1002 words  
+ text71     | Program and library code       | 0419h - 0777h |  863 words  
+ text47     | Program and library code       | 0778h - 07FCh |  133 words  
+ text34     | Program and library code       | 07FDh - 07FFh |    3 words  
+ text81     | Program and library code       | 0800h - 0FFFh | 2048 words  
+ text194    | Program and library code       | 1000h - 1000h |    1 word   
+ text30     | Program and library code       | 1001h - 1012h |   18 words  
+ text136    | Program and library code       | 1013h - 10B3h |  161 words  
+ text103    | Program and library code       | 10B4h - 1180h |  205 words  
+ text197    | Program and library code       | 1181h - 1292h |  274 words  
+ text80     | Program and library code       | 1293h - 13D0h |  318 words  
+ text58     | Program and library code       | 13D1h - 151Ah |  330 words  
+ text16     | Program and library code       | 151Bh - 1689h |  367 words  
+ text55     | Program and library code       | 168Ah - 17FFh |  374 words  
+ text196    | Program and library code       | 1AF7h - 1AF7h |    1 word   
+ text200    | Program and library code       | 1AF8h - 1AF9h |    2 words  
+ text153    | Program and library code       | 1AFAh - 1AFCh |    3 words  
+ text105    | Program and library code       | 1AFDh - 1AFFh |    3 words  
+ text36     | Program and library code       | 1B00h - 1B02h |    3 words  
+ text87     | Program and library code       | 1B03h - 1B06h |    4 words  
+ text144    | Program and library code       | 1B07h - 1B0Ch |    6 words  
+ text38     | Program and library code       | 1B0Dh - 1B12h |    6 words  
+ clrtext    | Memory clearing code           | 1B13h - 1B18h |    6 words  
+ inittext   |                                | 1B19h - 1B1Eh |    6 words  
+ text140    | Program and library code       | 1B1Fh - 1B27h |    9 words  
+ text139    | Program and library code       | 1B28h - 1B30h |    9 words  
+ text96     | Program and library code       | 1B31h - 1B3Eh |   14 words  
+ text182    | Program and library code       | 1B3Fh - 1B59h |   27 words  
+ text42     | Program and library code       | 1B5Ah - 1B74h |   27 words  
+ text192    | Program and library code       | 1B75h - 1B96h |   34 words  
+ text108    | Program and library code       | 1B97h - 1BB9h |   35 words  
+ text51     | Program and library code       | 1BBAh - 1BDDh |   36 words  
+ idataBANK3 | Bank 3 data (ROM image)        | 1BDEh - 1C03h |   38 words  
+ text32     | Program and library code       | 1C04h - 1C2Eh |   43 words  
+ text28     | Program and library code       | 1C2Fh - 1C67h |   57 words  
+ idataBANK5 | Bank 5 data (ROM image)        | 1C68h - 1CAFh |   72 words  
+ text39     | Program and library code       | 1CB0h - 1D03h |   84 words  
+ text187    | Program and library code       | 1D04h - 1D6Ah |  103 words  
+ text2      | Program and library code       | 1D6Bh - 1DE5h |  123 words  
+ text5      | Program and library code       | 1DE6h - 1E7Ch |  151 words  
+ text113    | Program and library code       | 1E7Dh - 1F37h |  187 words  
+ text23     | Program and library code       | 1F38h - 1FFFh |  200 words  
+            |                                |               |              
+ stringtext | Strings and constant data      | 1818h - 1826h |   15 words  
+ stringtext | Strings and constant data      | 1827h - 1834h |   14 words  
+ stringtext | Strings and constant data      | 185Dh - 1865h |    9 words  
+ stringtext | Strings and constant data      | 1866h - 186Ch |    7 words  
+ stringtext | Strings and constant data      | 186Dh - 1873h |    7 words  
+ stringtext | Strings and constant data      | 1874h - 187Ah |    7 words  
+ stringtext | Strings and constant data      | 187Bh - 1881h |    7 words  
+ stringtext | Strings and constant data      | 1882h - 1888h |    7 words  
+ stringtext | Strings and constant data      | 1889h - 188Eh |    6 words  
+            |                                |               |              
+ swtext4    |                                | 1800h - 1817h |   24 words  
+ swtext1    |                                | 1835h - 1842h |   14 words  
+ swtext2    |                                | 1843h - 1850h |   14 words  
+ swtext3    |                                | 1851h - 185Ch |   12 words  
+------------|--------------------------------|---------------|--------------
+ cstackCOMM | Stack in common memory         | 0070h - 0078h |    9 bytes  
+ bssCOMMON  | RAM variables in common memory | 0079h - 007Dh |    5 bytes  
+            |                                |               |              
+ cstackBANK | Stack in bank 0                | 0020h - 006Fh |   80 bytes  
+            |                                |               |              
+ bssBANK1   | BSS variables in bank 1        | 00A0h - 00C4h |   37 bytes  
+ cstackBANK | Stack in bank 1                | 00C5h - 00E8h |   36 bytes  
+ dataBANK1  | Data variables in bank 1       | 00E9h - 00EEh |    6 bytes  
+            |                                |               |              
+ bssBANK2   | BSS variables in bank 2        | 0120h - 016Ch |   77 bytes  
+            |                                |               |              
+ dataBANK3  | Data variables in bank 3       | 01A0h - 01C5h |   38 bytes  
+ bssBANK3   | BSS variables in bank 3        | 01C6h - 01E4h |   31 bytes  
+            |                                |               |              
+ bssBANK4   | BSS variables in bank 4        | 0220h - 023Fh |   32 bytes  
+            |                                |               |              
+ dataBANK5  | Data variables in bank 5       | 02A0h - 02E7h |   72 bytes  
+            |                                |               |              
+ abs_s1     | Absolute RAM variables         | 007Eh - 007Fh |    2 bytes  
+------------|--------------------------------|---------------|--------------
+ config     |                                | 8007h - 8008h |    2 words  
+------------|--------------------------------|---------------|--------------
+

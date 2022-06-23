@@ -1,0 +1,26 @@
+---
+:source:
+  :path: test/unit_test/devices
+  :file: test_PMTimer.c
+:successes:
+- :test: test_TimerCountersInit
+  :line: 34
+  :message: ''
+- :test: test_TimerCountersStartAndCheck
+  :line: 50
+  :message: ''
+- :test: test_TimerCountersRunAndCheckAndDisable
+  :line: 68
+  :message: ''
+- :test: test_TimerCountersStopCheck
+  :line: 94
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 4
+  :passed: 4
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

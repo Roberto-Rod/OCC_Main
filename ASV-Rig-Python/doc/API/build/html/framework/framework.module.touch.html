@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>framework.module.touch &mdash; PM1 Pachymeter Automated Software Verification Framework B1-STABLE documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="framework.sequence" href="framework.sequence.html" />
+    <link rel="prev" title="framework.module.serial_debug" href="framework.module.serial_debug.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PM1 Pachymeter Automated Software Verification Framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">framework</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="framework.html"><code class="docutils literal notranslate"><span class="pre">framework</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="framework.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="framework.asv_control.html"><code class="docutils literal notranslate"><span class="pre">framework.asv_control</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.constants.html"><code class="docutils literal notranslate"><span class="pre">framework.constants</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.device.html"><code class="docutils literal notranslate"><span class="pre">framework.device</span></code></a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="framework.module.html"><code class="docutils literal notranslate"><span class="pre">framework.module</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.sequence.html"><code class="docutils literal notranslate"><span class="pre">framework.sequence</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.util.html"><code class="docutils literal notranslate"><span class="pre">framework.util</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PM1 Pachymeter Automated Software Verification Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">framework</a> &raquo;</li>
+          <li><a href="framework.html"><code class="docutils literal notranslate"><span class="pre">framework</span></code></a> &raquo;</li>
+          <li><a href="framework.module.html"><code class="docutils literal notranslate"><span class="pre">framework.module</span></code></a> &raquo;</li>
+      <li><code class="docutils literal notranslate"><span class="pre">framework.module.touch</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/framework/framework.module.touch.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-framework.module.touch">
+<span id="framework-module-touch"></span><h1><code class="docutils literal notranslate"><span class="pre">framework.module.touch</span></code><a class="headerlink" href="#module-framework.module.touch" title="Permalink to this headline"></a></h1>
+<p>Pachymeter Automated Software Verification Rig Touch Module Implementation.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#classes" id="id1">Classes</a></p></li>
+</ul>
+</div>
+<section id="classes">
+<h2><a class="toc-backref" href="#id1">Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#framework.module.touch.TouchPanel" title="framework.module.touch.TouchPanel"><code class="xref py py-class docutils literal notranslate"><span class="pre">TouchPanel</span></code></a>:
+Support Touch Panel Control.</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.module.touch.TouchPanel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.module.touch.</span></span><span class="sig-name descname"><span class="pre">TouchPanel</span></span><a class="headerlink" href="#framework.module.touch.TouchPanel" title="Permalink to this definition"></a></dt>
+<dd><p>Support Touch Panel Control.</p>
+<p>Touch Panel Control/Automation/Simulation is provided via the Total Phase Aardvark I2C/GPIO
+host adapter.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-01825c16bac4e6befb220000a20990623c3b6395.png" alt="Inheritance diagram of TouchPanel" usemap="#inheritance2ae3390aec" class="inheritance graphviz" /></div>
+<map id="inheritance2ae3390aec" name="inheritance2ae3390aec">
+<area shape="rect" id="node1" href="#framework.module.touch.TouchPanel" target="_top" title="Support Touch Panel Control." alt="" coords="5,5,96,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.module.touch.TouchPanel.is_tp_reset">
+<span class="sig-name descname"><span class="pre">is_tp_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#framework.module.touch.TouchPanel.is_tp_reset" title="Permalink to this definition"></a></dt>
+<dd><p>Checks whether TP_RESET# is active (low).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns True if TP_RESET# is active (low), False if TP_RESET# is inactive (high)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.touch.TouchPanel.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#framework.module.touch.TouchPanel.reset" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the TouchPanel object to its default state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.touch.TouchPanel.select_aa_i2c">
+<span class="sig-name descname"><span class="pre">select_aa_i2c</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.touch.TouchPanel.select_aa_i2c" title="Permalink to this definition"></a></dt>
+<dd><p>Sets AA_TP_I2C_EN inactive (low).</p>
+<p>When AA_TP_I2C_EN is inactive DUT I2C is routed to the Aardvark.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.touch.TouchPanel.select_tp_i2c">
+<span class="sig-name descname"><span class="pre">select_tp_i2c</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.touch.TouchPanel.select_tp_i2c" title="Permalink to this definition"></a></dt>
+<dd><p>Sets AA_TP_I2C_EN active (high).</p>
+<p>When AA_TP_I2C_EN is active DUT I2C is routed to the Touch Panel.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.touch.TouchPanel.set_aa_int">
+<span class="sig-name descname"><span class="pre">set_aa_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.touch.TouchPanel.set_aa_int" title="Permalink to this definition"></a></dt>
+<dd><p>Sets AA_INT active (high) or inactive (low).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>active</strong> – True or False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.module.touch.TouchPanel.touch">
+<span class="sig-name descname"><span class="pre">touch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#framework.module.touch.TouchPanel.touch" title="Permalink to this definition"></a></dt>
+<dd><p>Perform a simulated touch sequence.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="framework.module.serial_debug.html" class="btn btn-neutral float-left" title="framework.module.serial_debug" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="framework.sequence.html" class="btn btn-neutral float-right" title="framework.sequence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, LeoTel Software Systems Limited.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

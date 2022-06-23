@@ -1,0 +1,182 @@
+Languages (name),(enabled),,
+default,TRUE,,
+,,,
+Default Language,0,,
+,,,
+Strings (name),(description),(folder path),
+AmpGainString,,/,
+ApplyString,,/,
+AprilString,,/,
+AugustString,,/,
+BlueToothString,,/,
+BsString,,/,
+CString,,/,
+CameraHSTARTString,,/,
+CameraSettingsString,,/,
+CameraVSTARTString,,/,
+CancelString,,/,
+ColonString,,/,
+ComparatorRefString,,/,
+DayString,,/,
+DecemberString,,/,
+DeviceDescriptionString,,/,
+DeviceSettingsString,,/,
+DeviceString,,/,
+EightString,,/,
+FebruaryString,,/,
+FiftyPercentString,,/,
+FiveString,,/,
+FourString,,/,
+HourString,,/,
+IlluminationMaxString,,/,
+JanuaryString,,/,
+JulyString,,/,
+JuneString,,/,
+LCDBrightnessString,,/,
+LedbrightnessString,,/,
+MarchString,,/,
+MaxSeparationString,,/,
+MayString,,/,
+MeasurementString,,/,
+MinSeparationString,,/,
+MinusString,,/,
+MinuteString,,/,
+MonthString,,/,
+NineString,,/,
+NovemberString,,/,
+OctoberString,,/,
+OffString,,/,
+OkString,,/,
+OnString,,/,
+OneHundredPercentString,,/,
+OneString,,/,
+Peak2ThresholdString,,/,
+PeakOneString,,/,
+PlusString,,/,
+PowerString,,/,
+ScanSettingsString,,/,
+SecondString,,/,
+SeptemberString,,/,
+SetTimeAndDateString,,/,
+SevenString,,/,
+SixString,,/,
+SlashString,,/,
+ThreeString,,/,
+TimeString,,/,
+TwoString,,/,
+VoltageString,,/,
+YearString,,/,
+ZeroString,,/,
+ZeroZeroString,,/,
+ZeroZeroZeroZeroString,,/,
+msMaxString,,/,
+msMaxValueString,,/,
+msMeanString,,/,
+msMeanValueString,,/,
+msMinString,,/,
+msMinValueString,,/,
+msModeString,,/,
+msModeValueString,,/,
+msP1AmpString,,/,
+msP1AmpValueString,,/,
+msP1FWHMString,,/,
+msP1FWHMValueString,,/,
+msP1PosString,,/,
+msP1PosValueString,,/,
+msP2AmpString,,/,
+msP2AmpValueString,,/,
+msP2FWHMString,,/,
+msP2FWHMValueString,,/,
+msP2PosString,,/,
+msP2PosValueString,,/,
+scanSummaryString,,/,
+scanSummaryTitleString,,/,
+,,,
+String Entries (name),(language),(value),(font name)
+AmpGainString,default,Amp Gain,NotoSans_Regular
+ApplyString,default,Apply,NotoSans_Bold
+AprilString,default,April,NotoSans_Regular
+AugustString,default,August,NotoSans_Regular
+BlueToothString,default,Bluetooth Enabled,NotoSans_Regular
+BsString,default,BS,NotoSans_Bold
+CString,default,C,NotoSans_Bold
+CameraHSTARTString,default,Camera HSTART,NotoSans_Regular
+CameraSettingsString,default,Camera Settings,NotoSans_Bold
+CameraVSTARTString,default,Camera VSTART,NotoSans_Regular
+CancelString,default,Cancel,NotoSans_Bold
+ColonString,default,:,NotoSans_Bold
+ComparatorRefString,default,Comparator Ref,NotoSans_Regular
+DayString,default,Day,NotoSans_Bold
+DecemberString,default,December,NotoSans_Regular
+DeviceDescriptionString,default,OpticalnNon-contactnPachymeter,PumpW01Light_24
+DeviceSettingsString,default,Device Settings,NotoSans_Bold
+DeviceString,default,P1,PumpW01Light_48
+EightString,default,8,NotoSans_Regular
+FebruaryString,default,February,NotoSans_Regular
+FiftyPercentString,default,0.5,NotoSans_Regular
+FiveString,default,5,NotoSans_Regular
+FourString,default,4,NotoSans_Regular
+HourString,default,Hour,NotoSans_Bold
+IlluminationMaxString,default,Illumination Max.,NotoSans_Regular
+JanuaryString,default,January,NotoSans_Regular
+JulyString,default,July,NotoSans_Regular
+JuneString,default,June,NotoSans_Regular
+LCDBrightnessString,default,LCD Brightness,NotoSans_Regular
+LedbrightnessString,default,LED Brightness,NotoSans_Regular
+MarchString,default,March,NotoSans_Regular
+MaxSeparationString,default,Max Separation,NotoSans_Regular
+MayString,default,May,NotoSans_Regular
+MeasurementString,default,01234567 ± 8.9 µm,NotoSans_Bold_24
+MinSeparationString,default,Min Separation,NotoSans_Regular
+MinusString,default,-,NotoSans_Bold
+MinuteString,default,Min,NotoSans_Bold
+MonthString,default,Month,NotoSans_Bold
+NineString,default,9,NotoSans_Regular
+NovemberString,default,November,NotoSans_Regular
+OctoberString,default,October,NotoSans_Regular
+OffString,default,Off,NotoSans_Regular
+OkString,default,Ok,NotoSans_Bold
+OnString,default,On,NotoSans_Regular
+OneHundredPercentString,default,100%,NotoSans_Regular
+OneString,default,1,NotoSans_Regular
+Peak2ThresholdString,default,Peak 2 Threshold,NotoSans_Regular
+PeakOneString,default,Peak 1 Threshold,NotoSans_Regular
+PlusString,default,+,NotoSans_Bold
+PowerString,default,LASER Power,NotoSans_Regular
+ScanSettingsString,default,Scan Settings,NotoSans_Bold
+SecondString,default,Sec,NotoSans_Bold
+SeptemberString,default,September,NotoSans_Regular
+SetTimeAndDateString,default,Time and Date,NotoSans_Bold
+SevenString,default,7,NotoSans_Regular
+SixString,default,6,NotoSans_Regular
+SlashString,default,/,NotoSans_Bold
+ThreeString,default,3,NotoSans_Regular
+TimeString,default,12:34:56  78/90/2020,NotoSans_Bold
+TwoString,default,2,NotoSans_Regular
+VoltageString,default,Voltage,NotoSans_Regular
+YearString,default,Year,NotoSans_Bold
+ZeroString,default,0,NotoSans_Regular
+ZeroZeroString,default,00,NotoSans_Regular
+ZeroZeroZeroZeroString,default,000,NotoSans_Regular
+msMaxString,default,Max. Thickness,NotoSans_Regular
+msMaxValueString,default,01234567 µm,NotoSans_Regular
+msMeanString,default,Mean Thickness,NotoSans_Regular
+msMeanValueString,default,01234567 ± 8.9 µm,NotoSans_Regular
+msMinString,default,Min. Thickness,NotoSans_Regular
+msMinValueString,default,01234567 µm,NotoSans_Regular
+msModeString,default,Mode Thickness,NotoSans_Regular
+msModeValueString,default,01234567 µm,NotoSans_Regular
+msP1AmpString,default,P1 Amplitude,NotoSans_Regular
+msP1AmpValueString,default,01234567 ± 8.9 V,NotoSans_Regular
+msP1FWHMString,default,P1 FWHM,NotoSans_Regular
+msP1FWHMValueString,default,01234567 ± 8.9 µm,NotoSans_Regular
+msP1PosString,default,P1 Position,NotoSans_Regular
+msP1PosValueString,default,01234567 ± 8.9 µm,NotoSans_Regular
+msP2AmpString,default,P2 Amplitude,NotoSans_Regular
+msP2AmpValueString,default,01234567 ± 8.9 V,NotoSans_Regular
+msP2FWHMString,default,P2 FWHM,NotoSans_Regular
+msP2FWHMValueString,default,01234567 ± 8.9 µm,NotoSans_Regular
+msP2PosString,default,P2 Position,NotoSans_Regular
+msP2PosValueString,default,01234567 ± 8.9 µm,NotoSans_Regular
+scanSummaryString,default,Show Summary,NotoSans_Regular
+scanSummaryTitleString,default,Measurement Summary,NotoSans_Bold

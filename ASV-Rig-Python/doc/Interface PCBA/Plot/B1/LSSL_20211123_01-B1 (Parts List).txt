@@ -1,0 +1,172 @@
+Name      Value     Qty. Part                Description Footprint      Part Number
+-----------------------------------------------------------------------------------
+C1        0.1uF     13   C0805C104K3RACTU    0805 X7R ceramic capacitor, 25V 0.1uF KEMET 100nF Multilayer Ceramic Capacitor (MLCC) 25 V dc +/-10% X7R dielectric C SMD max op. temp. +125C CAPC2012X88N   
+C2                                                       CAPC2012X88N   
+C3                                                       CAPC2012X88N   
+C4                                                       CAPC2012X88N   
+C5                                                       CAPC2012X88N   
+C7                                                       CAPC2012X88N   
+C8                                                       CAPC2012X88N   
+C9                                                       CAPC2012X88N   
+C10                                                      CAPC2012X88N   
+C11                                                      CAPC2012X88N   
+C12                                                      CAPC2012X88N   
+C13                                                      CAPC2012X88N   
+C14                                                      CAPC2012X88N   
+--------------------------------------------------------------------------------
+C6        0.22uF    1    C0805C224K3RACTU    0805 X7R ceramic capacitor, 25V 0.22uF KEMET 220nF Multilayer Ceramic Capacitor (MLCC) 25 V dc +/-10% X7R dielectric C SMD max op. temp. +125C CAPC2012X88N   
+--------------------------------------------------------------------------------
+C15       4.7uF     2    C0805C475K3RACTU    Multilayer Ceramic Capacitors MLCC - SMD/SMT 25V 4.7uF X7R 0805 10% CAPC2012X140N  
+C16                                                      CAPC2012X140N  
+--------------------------------------------------------------------------------
+C21       1uF       2    C0805C105K3RACTU    KEMET - C0805C105K3RACTU - SMD Multilayer Ceramic Capacitor, 1 F, 25 V, 0805 [2012 Metric], +/- 10%, X7R, C Series KEMET CAPC2012X140N  
+C22                                                      CAPC2012X140N  
+--------------------------------------------------------------------------------
+IC1                 2    SN74CB3T1G125DBVR   Texas Instruments SN74CB3T1G125DBVR, Bus Switch, 1 x 1:1, 2.3  3.6 V, 5-Pin SOT-23 SOT95P280X145-5N 
+IC2                                                      SOT95P280X145-5N 
+--------------------------------------------------------------------------------
+IC3                 2    PCA9517D,118        NXP PCA9517D,118, Logic Level Translator, Level Translating I2C Bus Repeater, CMOS, Open Drain SOIC127P600X175-8N 
+IC4                                                      SOIC127P600X175-8N 
+--------------------------------------------------------------------------------
+IC5                 2    SN74LVC1G04DBVT     Single Inverter SOT95P280X145-5N 
+IC14                                                     SOT95P280X145-5N 
+--------------------------------------------------------------------------------
+IC6                 1    MCP4261-103E_SL     Dig.Potentiometer 2ch 10k 257 SPI SOIC14 SOIC127P600X175-14N 
+--------------------------------------------------------------------------------
+IC7                 4    AD8651ARZ           AD8651ARZ, Operational Amplifier 50MHz CMOS, R-R, 3, 5V, 8-Pin SOIC SOIC127P600X175-8N 
+IC9                                                      SOIC127P600X175-8N 
+IC10                                                     SOIC127P600X175-8N 
+IC11                                                     SOIC127P600X175-8N 
+--------------------------------------------------------------------------------
+IC8                 1    LT1004CD-2-5        LT1004CD-2-5, Voltage Reference 2.47 to 2.53V, 20mV 20mA 8-Pin SOIC SOIC127P600X175-8N 
+--------------------------------------------------------------------------------
+IC12                1    LM139AD             Texas Instruments LM139AD Quad Comparator, Open Collector O/P, 1.3us 3  28 V 14-Pin SOIC SOIC127P600X175-14N 
+--------------------------------------------------------------------------------
+IC13                1    TC7USB40FT_EL_      USB Switch ICs Dual SPDT USB Switch 200mW 5pF 3.5Ohm SOP65P640X120-14N 
+--------------------------------------------------------------------------------
+IC16                1    LDL1117S50R         STMICROELECTRONICS - LDL1117S50R - LDO, FIXED, 5V, 1.2A, SOT-223-3 SOT230P700X180-4N 
+--------------------------------------------------------------------------------
+IC17                1    LDL1117S33R         STMICROELECTRONICS - LDL1117S33R - LDO, FIXED, 3.3V, 1.2A, SOT-223-3 SOT230P700X180-4N 
+--------------------------------------------------------------------------------
+J1                  2    SSM-113-L-DV        26 Position, Dual Row, Surface Mount PCB Socket Strip, 0.100&quot; pitch SSM-113-XXX-DV 
+J2                                                       SSM-113-XXX-DV 
+--------------------------------------------------------------------------------
+J3                  1    53398-0971          Molex PICOBLADE 53398, 1.25mm Pitch, 9 Way, 1 Row, Straight PCB Header, Surface Mount 533980971      
+--------------------------------------------------------------------------------
+J4                  2    54104-4033          Molex 54104 Series 0.5mm Pitch 40 Way Right Angle FPC Connector, ZIF Top Contact 541044033      
+J5                                                       541044033      
+--------------------------------------------------------------------------------
+J6                  1    HTST-105-01-L-DV-P  Headers & Wire Housings .100 HTST10501LDVP  
+--------------------------------------------------------------------------------
+J8                  1    FTMH-118-03-F-DV    1.00 mm Surface Mount Micro Terminal Strip, 36 positions, dual row - vertical FTMH-118-03-F-DV 
+--------------------------------------------------------------------------------
+J9                  1    CLM-118-02-F-D      36 Position,Low Profile Dual-Wipe Socket, 1.00mm Pitch CLM-118-02-F-D 
+--------------------------------------------------------------------------------
+J10                 2    SSM-110-L-SV        Headers & Wire Housings .100 SSM110LSV      
+J11                                                      SSM110LSV      
+--------------------------------------------------------------------------------
+J12                 1    54550-1033          0.50mm Pitch Easy-On FFC/FPC Connector, 1.20mm Height, Right-Angle, Surface Mount, ZIF, Top Contact Style,  Circuits, Gold (Au) Contact Plating 545501033      
+--------------------------------------------------------------------------------
+J13                 3    691709710302        Wurth Elektronik WR-TBL 7097, 5mm Pitch, 2 Way, 1 Row, Horizontal PCB Header, Surface Mount 691709710302   
+J19                                                      691709710302   
+J22                                                      691709710302   
+--------------------------------------------------------------------------------
+J14                 1    HTST-108-01-L-DV    16 Position, .100&quot; High-Temp Shrouded Terminal Strip, Cable Mate HTST-108-01-YY-DV 
+--------------------------------------------------------------------------------
+J15                 1    HTST-112-01-L-DV    24 Position, .100&quot; High-Temp Shrouded Terminal Strip, Cable Mate HTST-112-01-YY-DV 
+--------------------------------------------------------------------------------
+J16                 1    HTST-106-01-L-DV    12 Position, .100&quot; High-Temp Shrouded Terminal Strip, Cable Mate HTST-106-01-YY-DV 
+--------------------------------------------------------------------------------
+J17                 1    87583-2010BLF       USB Connectors 4P RECEPTACLE TYPE A 875832010BLF   
+--------------------------------------------------------------------------------
+J18                 1    KUSBX-SMT-BS1N-B30  USB Connectors B TYPE SMT RECPT BLACK 30u GOLD KUSBXSMTBS1NB30 
+--------------------------------------------------------------------------------
+J20                 2    PJ-002BH-SMT-TR     DC Power Connectors Power Jacks PJ002BHSMTTR   
+J21                                                      PJ002BHSMTTR   
+--------------------------------------------------------------------------------
+JP1                 7    S1621-46            Jumper Link, SMT, tin, Loose S162146        
+JP2                                                      S162146        
+JP3                                                      S162146        
+JP4                                                      S162146        
+JP5                                                      S162146        
+JP6                                                      S162146        
+JP7                                                      S162146        
+--------------------------------------------------------------------------------
+Q3                  2    SI2329DS-T1-GE3     Vishay SI2329DS-T1-GE3 P-channel MOSFET Transistor, 6 A, -8 V, 3-Pin TO-236 SOT95P237X112-3N 
+Q5                                                       SOT95P237X112-3N 
+--------------------------------------------------------------------------------
+Q4                  2    BSS138L             ON SEMICONDUCTOR/FAIRCHILD - BSS138L - MOSFET, N-CHANNEL, 50V, 0.2A, SOT-23-3 SOT96P237X111-3N 
+Q6                                                       SOT96P237X111-3N 
+--------------------------------------------------------------------------------
+R1        0R        11   RC0805FR-070RL      Thick Film Resistors - SMD 0 Ohm 1% 1/4W 150V ZERO OHM JUMPER RESC2012X60N   
+R2                                                       RESC2012X60N   
+R3                                                       RESC2012X60N   
+R4                                                       RESC2012X60N   
+R5                                                       RESC2012X60N   
+R6                                                       RESC2012X60N   
+R7                                                       RESC2012X60N   
+R8                                                       RESC2012X60N   
+R18                                                      RESC2012X60N   
+R19                                                      RESC2012X60N   
+R37                                                      RESC2012X60N   
+--------------------------------------------------------------------------------
+R9        10K       21   RC0805FR-0710KL     GENERAL PURPOSE CHIP RESISTORS RESC2012X60N   
+R10                                                      RESC2012X60N   
+R11                                                      RESC2012X60N   
+R12                                                      RESC2012X60N   
+R13                                                      RESC2012X60N   
+R14                                                      RESC2012X60N   
+R15                                                      RESC2012X60N   
+R16                                                      RESC2012X60N   
+R17                                                      RESC2012X60N   
+R20                                                      RESC2012X60N   
+R21                                                      RESC2012X60N   
+R24                                                      RESC2012X60N   
+R28                                                      RESC2012X60N   
+R31                                                      RESC2012X60N   
+R32                                                      RESC2012X60N   
+R33                                                      RESC2012X60N   
+R34                                                      RESC2012X60N   
+R36                                                      RESC2012X60N   
+R40                                                      RESC2012X60N   
+R41                                                      RESC2012X60N   
+R42                                                      RESC2012X60N   
+--------------------------------------------------------------------------------
+R22       24K       1    RC0805FR-0724KL     Thick Film Resistors - SMD 24K OHM 1% RESC2012X60N   
+--------------------------------------------------------------------------------
+R23       30K       1    ERA6AEB303V         PANASONIC ELECTRONIC COMPONENTS - ERA6AEB303V - RES, THIN FILM, 30K, 0.1%, 0.125W, 0805 ERA6A_(0805)   
+--------------------------------------------------------------------------------
+R25       15K       5    ERA6ARB153V         Panasonic ERA Series Metal Film Surface Mount Resistor 0805 Case 15k +/-0.1% 0.125W +/-10ppm/C ERA6A_(0805)   
+R26                                                      ERA6A_(0805)   
+R27                                                      ERA6A_(0805)   
+R29                                                      ERA6A_(0805)   
+R30                                                      ERA6A_(0805)   
+--------------------------------------------------------------------------------
+R38       4K7       1    RC0805FR-074K7L     YAGEO (PHYCOMP) - RC0805FR-074K7L - RES, THICK FILM, 4K7, 1%, 0.125W, 0805 RESC2012X60N   
+--------------------------------------------------------------------------------
+R39       10K       1    TSM4YL103KR05       VISHAY - TSM4YL103KR05 - TRIMMER, POT, 10K, 13TURN, SMD TSM4YL103KR05  
+--------------------------------------------------------------------------------
+TP1                 23   TESTPOINT           Conn Test Point 1 POS Solder ST SMD 1 Port T/R 5015           
+TP2                                                      5015           
+TP3                                                      5015           
+TP4                                                      5015           
+TP5                                                      5015           
+TP6                                                      5015           
+TP8                                                      5015           
+TP9                                                      5015           
+TP10                                                     5015           
+TP18                                                     5015           
+TP19                                                     5015           
+TP20                                                     5015           
+TP24                                                     5015           
+TP25                                                     5015           
+TP26                                                     5015           
+TP27                                                     5015           
+TP28                                                     5015           
+TP29                                                     5015           
+TP31                                                     5015           
+TP32                                                     5015           
+TP33                                                     5015           
+TP35                                                     5015           
+TP56                                                     5015           
+--------------------------------------------------------------------------------

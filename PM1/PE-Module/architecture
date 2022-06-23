@@ -1,0 +1,32 @@
+Module ID, Module name, SOUP?, Layer (0-application 1-driver 2-Hardware), description (no commas!), files
+PE-CI-001, Main application module, 0, 0, Provides main application logic., main.c, app.c, app.h, board.h
+PE-CI-002, Battery module, 0, 0, Provides application-level functionality related to the battery charge status and management., battery_capacity.c, battery_capacity.h
+PE-CI-003, PE-PI communication module, 0, 1, Provides driver-level functionality related to communication with PI PESS., dar_comms.c, dar_comms.h
+PE-CI-004, I2C module, 0, 1, Provides driver-level functionality related to I2C communication., drv_i2c1.c, drv_i2c1.h
+PE-CI-005, Accelerometer module, 0, 1, Provides driver-level functionality related to the LIS2DS12 accelerometer., drv_LIS2DS12.c, drv_LIS2DS12.h
+PE-CI-006, Temperature sensor module, 0, 1, Provides driver-level functionality related to the STTS75 temperature sensor., drv_STTS75.c, drv_STTS75.h
+PE-CI-007, Message exchange module, 0, 0, Provides application-level functionality related to communication with the PI PESS., message_exchange.c, message_exchange.h, pe_interface.h
+PE-CI-008, Debugging communication module, 0, 1, Provides functionality related to debugging communication., debug.c, debug.h
+PE-CI-009, Power switch module, 0, 1, Provides functionality related to the power switch., power_switch_interrupt.c, power_switch_interrupt.h
+PE-CI-010, Temperature monitor module, 0, 0, Provides application-level functionality related to the temperature monitoring switch., temperature_monitor.c, temperature_monitor.h
+PE-CI-011, Analog to Digital Converter module, 0, 0, Provides driver-level functionality related to the Analog to Digital Converter peripheral., adc1.c, adc1.h, adc_module_features.h
+PE-CI-012, Clock module, 1, 1, Provides functionality related to system clock., clock.c, clock.h
+PE-CI-013, Interrupt manager module, 1, 1, Provides functionality related to interrupt management., interrupt_manager.c, interrupt_manager.h
+PE-CI-014, System initialisation module, 1, 0, Provides system initialisation functionality., mcc.c, mcc.h
+PE-CI-015, GPIO module, 1, 1, Provides GPIO peripheral functionality. This module permits the PE software subsystem support interface with hardware - controls GPIO pins and interfaces with e.g. voltage regulators., pin_manager.c, pin_manager.h
+PE-CI-016, System module, 1, 0, Provides system initialisation functionality., system.c, system.h
+PE-CI-017, Timer module, 1, 1, Provides functionality related to Timer 1 peripheral., tmr1.c, tmr1.h
+PE-CI-018, UART module, 1, 1, Provides UART peripheral functionality. This module permits the PE software subsystem support interface with hardware - controls UART peripheral and communication with PI/debugging port., uart2.c, uart2.h, uart1.c, uart1.h
+PE-CI-019, stdint library, 1, 1, Standard integer types library., stdint.h
+PE-CI-020, stdbool library, 1, 1, Standard boolean types library., stdbool.h
+PE-CI-021, xc library, 1, 1, Library providing support for the specific PESS device., xc.h
+PE-CI-022, string library, 1, 1, Library providing string support functions., string.h
+PE-CI-023, stdio library, 1, 1, Library providing standard I/O support functions., stdio.h
+PE-CI-024, stddef library, 1, 1, Library providing standard definitions., stddef.h
+PE-CI-025, stdlib library, 1, 1, Standard utility functions library., stdlib.h
+PE-CI-026, stdarg library, 1, 1, Library providing functionality related to accepting indefinite number of arguments., stdarg.h
+HW-001, Temperature sensor, 0, 2, N/A, PE-CI-004, PE-CI-015
+HW-002, Accelerometer, 0, 2, N/A, PE-CI-004, PE-CI-015
+HW-003, Push button, 0, 2, N/A, PE-CI-015
+HW-004, PI, 0, 2, N/A, PE-CI-018
+HW-005, Voltage regulators, 0, 2, N/A, PE-CI-015

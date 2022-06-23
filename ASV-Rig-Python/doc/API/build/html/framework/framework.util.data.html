@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>framework.util.data &mdash; PM1 Pachymeter Automated Software Verification Framework B1-STABLE documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="framework.util.wavegen" href="framework.util.wavegen.html" />
+    <link rel="prev" title="framework.util.config" href="framework.util.config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PM1 Pachymeter Automated Software Verification Framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">framework</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="framework.html"><code class="docutils literal notranslate"><span class="pre">framework</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="framework.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="framework.asv_control.html"><code class="docutils literal notranslate"><span class="pre">framework.asv_control</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.constants.html"><code class="docutils literal notranslate"><span class="pre">framework.constants</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.device.html"><code class="docutils literal notranslate"><span class="pre">framework.device</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.module.html"><code class="docutils literal notranslate"><span class="pre">framework.module</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="framework.sequence.html"><code class="docutils literal notranslate"><span class="pre">framework.sequence</span></code></a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="framework.util.html"><code class="docutils literal notranslate"><span class="pre">framework.util</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PM1 Pachymeter Automated Software Verification Framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">framework</a> &raquo;</li>
+          <li><a href="framework.html"><code class="docutils literal notranslate"><span class="pre">framework</span></code></a> &raquo;</li>
+          <li><a href="framework.util.html"><code class="docutils literal notranslate"><span class="pre">framework.util</span></code></a> &raquo;</li>
+      <li><code class="docutils literal notranslate"><span class="pre">framework.util.data</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/framework/framework.util.data.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-framework.util.data">
+<span id="framework-util-data"></span><h1><code class="docutils literal notranslate"><span class="pre">framework.util.data</span></code><a class="headerlink" href="#module-framework.util.data" title="Permalink to this headline"></a></h1>
+<p>Pachymeter Automated Software Verification Rig Data Utility.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#classes" id="id1">Classes</a></p></li>
+</ul>
+</div>
+<section id="classes">
+<h2><a class="toc-backref" href="#id1">Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#framework.util.data.PlaybackFileReader" title="framework.util.data.PlaybackFileReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlaybackFileReader</span></code></a>:
+This class reads a playback data file for a single encoder calibration or measurement simulation.</p></li>
+<li><p><a class="reference internal" href="#framework.util.data.PlaybackDataConverter" title="framework.util.data.PlaybackDataConverter"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlaybackDataConverter</span></code></a>:
+This class transforms raw CSV playback data read from a playback data file to a convenient internal format for playback.</p></li>
+<li><p><a class="reference internal" href="#framework.util.data.PlaybackData" title="framework.util.data.PlaybackData"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlaybackData</span></code></a>:
+This class holds the playback data for a single encoder tuning or measurement simulation.</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackFileReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.util.data.</span></span><span class="sig-name descname"><span class="pre">PlaybackFileReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_cache</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.util.data.PlaybackFileReader" title="Permalink to this definition"></a></dt>
+<dd><p>This class reads a playback data file for a single encoder calibration or measurement simulation.</p>
+<p>The playback data is read from a CSV file.
+The first three columns contain the binary motor encoder signals A, B and Z.
+The fourth column contains the signal voltage that is to be presented to the PDC via the 5M1 resistor on the LDA (0 to 5V).
+The fifth column is used to separate the test data into bundles to indicate suitable break points during playback.</p>
+<p>Optionally the first lines of the file contains metadata as key=value pairs on lines starting with a ‘#’.
+There is then a single header line which does not start with a ‘#’.
+The rest of the file contains data lines.</p>
+<p># rate=1000000Hz</p>
+<p>A (binary), B (binary), Z (binary), signal (V fed to PDC via 5M1R on LDA), separate bundles (binary)</p>
+<p>0,0,0,2.50000,0</p>
+<p>1,0,0,2.51740,0</p>
+<p>1,1,0,2.51714,0</p>
+<p>…</p>
+<p>0,0,0,2.51785,1</p>
+<p>1,0,0,2.51740,1</p>
+<p>1,1,0,2.51714,1</p>
+<p>…</p>
+<p>0,0,0,2.51785,0</p>
+<p>1,0,0,2.51740,0</p>
+<p>1,1,0,2.51714,0</p>
+<p>A caching mechanism is available whereby a numpy NPZ file is written following a successful load of the CSV file.
+Further loads of the same file will only need to process the header metadata and can load the raw data arrays from the NPZ
+file.
+The file size and timestamps are checked to make sure the CSV file has not been updated since the NPZ file was written.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-462de7ac9c2d0d986c2aafa685ff91e591522d39.png" alt="Inheritance diagram of PlaybackFileReader" usemap="#inheritance09f03c5c68" class="inheritance graphviz" /></div>
+<map id="inheritance09f03c5c68" name="inheritance09f03c5c68">
+<area shape="rect" id="node1" href="#framework.util.data.PlaybackFileReader" target="_top" title="This class reads a playback data file for a single encoder calibration or measurement simulation." alt="" coords="5,5,144,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackFileReader.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#framework.util.data.PlaybackFileReader.read" title="Permalink to this definition"></a></dt>
+<dd><p>Read a playback data file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>fname</em>) – the filename of the CSV playback data file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackDataConverter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.util.data.</span></span><span class="sig-name descname"><span class="pre">PlaybackDataConverter</span></span><a class="headerlink" href="#framework.util.data.PlaybackDataConverter" title="Permalink to this definition"></a></dt>
+<dd><p>This class transforms raw CSV playback data read from a playback data file to a convenient internal format for playback.</p>
+<p>The raw data is made up of a set of analog samples for playback of the PDA signal into the LDA PCB via AO 0, a set of
+synchronised motor encoder pulses A, B and Z on P0.0, P0.1 and P0.2 and a bundle index to denominate suitable points to
+terminate playback.
+The ndarrays of sample data are held in memory as 1D arrays (of the same length).
+The encoder signals are combined into a single uint32 for streaming to the digital waveform generator.
+The signal voltage is analysed to determine the required settings for the offset and signal digipots and stored in memory as
+the value to be written to AO 0 (-5V to +5V).
+This transformation is done so as to maximise the DAC range used and thus minimise any quantisation noise.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-7b88ba4c989e1401e8fa13b0eed52a64b93b9c17.png" alt="Inheritance diagram of PlaybackDataConverter" usemap="#inheritancee6150d487c" class="inheritance graphviz" /></div>
+<map id="inheritancee6150d487c" name="inheritancee6150d487c">
+<area shape="rect" id="node1" href="#framework.util.data.PlaybackDataConverter" target="_top" title="This class transforms raw CSV playback data read from a playback data file to a convenient internal format for playback." alt="" coords="5,5,163,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackDataConverter.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span></span></span><a class="headerlink" href="#framework.util.data.PlaybackDataConverter.convert" title="Permalink to this definition"></a></dt>
+<dd><p>Convert raw playback data read from a playback data file to a convenient internal format for playback.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">framework.util.data.</span></span><span class="sig-name descname"><span class="pre">PlaybackData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#framework.util.data.PlaybackData" title="Permalink to this definition"></a></dt>
+<dd><p>This class holds the playback data for a single encoder tuning or measurement simulation.</p>
+<p>The raw data is made up of a set of analog samples for playback of the PDA signal into the LDA PCB via AO 0, a set of
+synchronised motor encoder pulses A, B and Z on P0.0, P0.1 and P0.2 and a bundle index to denominate suitable points to
+terminate playback.
+The ndarrays of sample data are held in memory as 1D arrays (of the same length) with the digital data samples being uint32
+where A is bit 0, B is bit 1 and Z is bit 2 and with the analog data being float64 in the range -5V to +5V.</p>
+<p class="rubric">Inheritance</p>
+<div class="graphviz"><img src="../_images/inheritance-5af6dd6e75191a51d1a3fcd23a5d66df8ec61460.png" alt="Inheritance diagram of PlaybackData" usemap="#inheritance1c4c7d9cd4" class="inheritance graphviz" /></div>
+<map id="inheritance1c4c7d9cd4" name="inheritance1c4c7d9cd4">
+<area shape="rect" id="node1" href="#framework.util.data.PlaybackData" target="_top" title="This class holds the playback data for a single encoder tuning or measurement simulation." alt="" coords="5,5,108,31"/>
+</map><dl class="py method">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackData.get_encoder_data">
+<span class="sig-name descname"><span class="pre">get_encoder_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#framework.util.data.PlaybackData.get_encoder_data" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the encoder waveform data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackData.get_fname">
+<span class="sig-name descname"><span class="pre">get_fname</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#framework.util.data.PlaybackData.get_fname" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the playback data filename.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackData.get_rate">
+<span class="sig-name descname"><span class="pre">get_rate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#framework.util.data.PlaybackData.get_rate" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the sample rate.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackData.get_signal_data">
+<span class="sig-name descname"><span class="pre">get_signal_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#framework.util.data.PlaybackData.get_signal_data" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the signal waveform data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackData.get_voff_w">
+<span class="sig-name descname"><span class="pre">get_voff_w</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#framework.util.data.PlaybackData.get_voff_w" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the voff digipot wiper position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="framework.util.data.PlaybackData.get_vsig_w">
+<span class="sig-name descname"><span class="pre">get_vsig_w</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#framework.util.data.PlaybackData.get_vsig_w" title="Permalink to this definition"></a></dt>
+<dd><p>Gets the vsig digipot wiper position.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="framework.util.config.html" class="btn btn-neutral float-left" title="framework.util.config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="framework.util.wavegen.html" class="btn btn-neutral float-right" title="framework.util.wavegen" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, LeoTel Software Systems Limited.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

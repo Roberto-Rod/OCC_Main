@@ -1,0 +1,83 @@
+---
+
+# Notes:
+# Sample project C code is not presently written to produce a release artifact.
+# As such, release build options are disabled.
+# This sample, therefore, only demonstrates running a collection of unit tests.
+
+:project:
+  :use_exceptions: FALSE
+  :use_test_preprocessor: TRUE
+  :use_auxiliary_dependencies: TRUE
+  :build_root: build
+  # :release_build: TRUE
+  :test_file_prefix: Test
+  :which_ceedling: gem
+  :ceedling_version: '?'
+
+#:release_build:
+#  :output: TempSensor.out
+#  :use_assembly: FALSE
+
+:environment: []
+
+:extension:
+  :executable: .out
+
+:paths:
+  :test:
+    - +:apps/arm1_dev_kit/test/**
+    - -:apps/arm1_dev_kit/test/support
+  :source:
+    - apps/arm1_dev_kit/cm7/**
+    - C:\SDK_2_11_0_MIMXRT1170-EVK\devices\MIMXRT1176\utilities\debug_console_lite
+    - C:\SDK_2_11_0_MIMXRT1170-EVK\devices\MIMXRT1176\drivers
+    - C:\SDK_2_11_0_MIMXRT1170-EVK\devices\MIMXRT1176
+    - C:\SDK_2_11_0_MIMXRT1170-EVK\components\uart
+    - C:\SDK_2_11_0_MIMXRT1170-EVK\components\lists
+    - C:\SDK_2_11_0_MIMXRT1170-EVK\devices\MIMXRT1176\xip
+    - C:\SDK_2_11_0_MIMXRT1170-EVK\devices\MIMXRT1176\drivers\cm7
+    - C:\SDK_2_11_0_MIMXRT1170-EVK\CMSIS\Core\Include
+  :support:
+    - apps/arm1_dev_kit/test/support
+
+:defines:
+  :common: &common_defines
+    - CPU_MIMXRT1176AVM8A_cm7
+  :test:
+    - *common_defines
+    - UNITY_SUPPORT_64
+    - TEST
+  :test_preprocess:
+    - *common_defines
+    - TEST
+
+:cmock:
+  :when_no_prototypes: :warn
+  :enforce_strict_ordering: TRUE
+  :plugins:
+    - :ignore
+    - :callback
+    - :expect_any_args
+    - :ignore_arg
+    - :return_thru_ptr
+    - :array
+  :treat_as:
+    uint8:    HEX8
+    uint16:   HEX16
+    uint32:   UINT32
+    int8:     INT8
+    bool:     UINT8
+
+:libraries:
+  :system:
+    - m
+
+:plugins:
+  :load_paths:
+    - "#{Ceedling.load_path}"
+  :enabled:
+    - stdout_pretty_tests_report
+    - module_generator
+    - gcov
+...

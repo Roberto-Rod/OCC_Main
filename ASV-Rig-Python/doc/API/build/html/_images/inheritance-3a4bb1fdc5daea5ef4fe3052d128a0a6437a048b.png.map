@@ -1,0 +1,5 @@
+<map id="inheritance90492a57e5" name="inheritance90492a57e5">
+<area shape="rect" id="node1" href="#framework.module.nidaq.DigitalInputOnChangeControl" target="_top" title="Implements a control for the n&#45;change digital inputs." alt="" coords="348,5,536,31"/>
+<area shape="rect" id="node2" href="framework.device.ni6363.html#framework.device.ni6363.DigitalInputOnChangeTask" target="_top" title="A task to read the specified digital input lines on&#45;change." alt="" coords="125,5,300,31"/>
+<area shape="rect" id="node3" title="Represents a DAQmx Task." alt="" coords="5,5,77,31"/>
+</map>

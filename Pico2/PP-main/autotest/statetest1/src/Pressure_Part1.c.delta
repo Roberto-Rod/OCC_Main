@@ -1,0 +1,25 @@
+a26 9
+
+void logError ( const uint16_t errorNo );
+static int  Auto_Leak_Count = 0; 
+static int autoLeakInstanceCount = 0;
+void Auto_Leak_Detected()
+{
+  Auto_Leak_Count = 1;    
+}
+
+a255 1
+ 
+a263 12
+ 
+  // SCU generate or record  error 
+  if ( Auto_Leak_Count != 0 )
+  {  
+      Auto_Leak_Count--;
+      result = TRUE;
+  }
+  if ( result)
+  {
+      logError((8<<8)+autoLeakInstanceCount++);
+  } 
+  // SCU 

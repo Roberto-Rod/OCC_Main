@@ -1,0 +1,4 @@
+<map id="inheritance73a1fb6db9" name="inheritance73a1fb6db9">
+<area shape="rect" id="node1" href="#framework.device.ni6363.AnalogInputWaveformTask" target="_top" title="A task to read the specified analog input channel multiple times." alt="" coords="125,5,300,31"/>
+<area shape="rect" id="node2" title="Represents a DAQmx Task." alt="" coords="5,5,77,31"/>
+</map>

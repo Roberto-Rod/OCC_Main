@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov-sanitised.info - /c/Repos/RR/Pico2/PP-main/sourcePico/managers/StateMachineTherapyDelivery.c</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="title">LCOV - code coverage report</td></tr>
+        <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+        <tr>
+          <td width="100%">
+            <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">c/Repos/RR/Pico2/PP-main/sourcePico/managers</a> - StateMachineTherapyDelivery.c<span style="font-size: 80%;"> (source / <a href="StateMachineTherapyDelivery.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov-sanitised.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">78</td>
+            <td class="headerCovTableEntry">79</td>
+            <td class="headerCovTableEntryHi">98.7 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-06-21 16:29:00</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+              <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+      </table>
+
+      <table cellpadding=0 cellspacing=0 border=0>
+        <tr>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /********************************************************************************</a>
+<span class="lineNum">       2 </span>            : * File : StateMachineTherapyDelivery.c
+<span class="lineNum">       3 </span>            : *
+<span class="lineNum">       4 </span>            : * Description : Implements the THERAPY DELIVERY state for the device state machine
+<span class="lineNum">       5 </span>            : *
+<span class="lineNum">       6 </span>            : ********************************************************************************/
+<span class="lineNum">       7 </span>            : /* ******************************************************************************
+<span class="lineNum">       8 </span>            :  * This file is copyrighted by and the property of Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">       9 </span>            :  * It contains confidential and proprietary information. It must not be copied
+<span class="lineNum">      10 </span>            :  * (in whole or in part) or otherwise disclosed without prior written consent
+<span class="lineNum">      11 </span>            :  * of the company. Any copies of this file (in whole or in part), made by any
+<span class="lineNum">      12 </span>            :  * method must also include a copy of this legend.
+<span class="lineNum">      13 </span>            :  *
+<span class="lineNum">      14 </span>            :  * (c) 2018, 2019, 2020 Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">      15 </span>            :  *
+<span class="lineNum">      16 </span>            :  ***************************************************************************** */
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : #include &quot;StateMachineTherapyDelivery.h&quot;
+<span class="lineNum">      19 </span>            : #include &quot;Timer.h&quot;
+<span class="lineNum">      20 </span>            : #include &quot;Pump.h&quot;
+<span class="lineNum">      21 </span>            : #include &quot;Pressure_Part1.h&quot;
+<span class="lineNum">      22 </span>            : #include &quot;UIInterfaces.h&quot;
+<span class="lineNum">      23 </span>            : #include &quot;PowerControl.h&quot;
+<span class="lineNum">      24 </span>            : #include &quot;DutyCycle.h&quot;
+<span class="lineNum">      25 </span>            : #include &quot;DeviceStatus.h&quot;
+<span class="lineNum">      26 </span>            : #include &quot;PushButton.h&quot;
+<span class="lineNum">      27 </span>            : #include &quot;Assert.h&quot;
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : static bool_t PumpOn                    = FALSE;
+<span class="lineNum">      30 </span>            : static uint8_t targetVacuumUpdateCount  = 0;
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : static ErrorCode_t TherapyDelivery_OnEntry(void);
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : extern uint16_t ExternalPressureForNRVBlockage;
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : /****************************************************************************
+<span class="lineNum">      37 </span>            :    Function Name  :  TherapyDelivery_Init
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span>            :    Parameters     :  None
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span>            :    Return Value   :  EC_OK
+<span class="lineNum">      42 </span>            : 
+<a name="43"><span class="lineNum">      43 </span>            :    Description    :  Initialises STOPPED state</a>
+<span class="lineNum">      44 </span>            :  *****************************************************************************/
+<span class="lineNum">      45 </span><span class="lineCov">         91 : ErrorCode_t TherapyDelivery_Init(void)</span>
+<span class="lineNum">      46 </span>            : {
+<span class="lineNum">      47 </span>            :     // Initialise the Target Vacuum
+<span class="lineNum">      48 </span><span class="lineCov">         91 :     InitTherapyDeliveryVacuum();</span>
+<span class="lineNum">      49 </span>            : 
+<span class="lineNum">      50 </span>            :     // Reset the update period for Target Vacuum
+<span class="lineNum">      51 </span><span class="lineCov">         91 :     targetVacuumUpdateCount = 0;</span>
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            :     // Reset the Pump On\Off duty cycle history
+<span class="lineNum">      54 </span><span class="lineCov">         91 :     DCHistoryReset();</span>
+<span class="lineNum">      55 </span>            : 
+<span class="lineNum">      56 </span>            :     // No pump on for the next DUTY_CYCLE_UPDATE_TICK_DURATION
+<span class="lineNum">      57 </span><span class="lineCov">         91 :     PumpOn = FALSE;</span>
+<span class="lineNum">      58 </span>            : 
+<span class="lineNum">      59 </span><span class="lineCov">         91 :     return EC_OK_E;</span>
+<span class="lineNum">      60 </span>            : }
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : /****************************************************************************
+<span class="lineNum">      63 </span>            :    Function Name  :  TherapyDelivery
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            :    Parameters     :  aCurrentStateOnEntry   - TRUE if this is the first pass through this state
+<span class="lineNum">      66 </span>            :                      aNewState              - pointer to the next state 
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            :    Return Value   :  EC_OK or error code
+<span class="lineNum">      69 </span>            : 
+<span class="lineNum">      70 </span>            :    Description    :  Implements the THERAPY DEMIVERY state for the device state machine
+<a name="71"><span class="lineNum">      71 </span>            :  *****************************************************************************/</a>
+<span class="lineNum">      72 </span>            : /*lint -e{613} Suppress: Possible use of null pointer 'aNewState' in argument to operator 'unary *'. */
+<span class="lineNum">      73 </span><span class="lineCov">       4900 : ErrorCode_t TherapyDelivery(bool_t aCurrentStateOnEntry, State_t *aNewState)</span>
+<span class="lineNum">      74 </span>            : {
+<span class="lineNum">      75 </span><span class="lineCov">       4900 :     uint16_t internalPressure = 0;</span>
+<span class="lineNum">      76 </span><span class="lineCov">       4900 :     uint16_t externalPressure = 0;</span>
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span><span class="lineCov">       4900 :     ASSERT(aNewState != NULL);</span>
+<span class="lineNum">      79 </span><span class="lineCov">       4899 :     DeviceStatus_SetPressureSensorIsReading(FALSE); //reset pressure sensor read flag in this tick</span>
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            :     // Initialise Therapy Delivery when running for first time
+<span class="lineNum">      82 </span>            :     // One off operations when entering this state for the first time
+<span class="lineNum">      83 </span><span class="lineCov">       4899 :     if (aCurrentStateOnEntry)</span>
+<span class="lineNum">      84 </span>            :     {
+<span class="lineNum">      85 </span><span class="lineCov">         23 :         TherapyDelivery_OnEntry();</span>
+<span class="lineNum">      86 </span>            :     }
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span><span class="lineCov">       4899 :     ErrorCode_t result          = EC_OK_E;</span>
+<span class="lineNum">      89 </span><span class="lineCov">       4899 :     uint16_t    currentVacuum   = 0;</span>
+<span class="lineNum">      90 </span><span class="lineCov">       4899 :     State_t     tmpNextState    = THERAPY_DELIVERY_E;</span>
+<span class="lineNum">      91 </span>            : 
+<span class="lineNum">      92 </span>            :     // Monitor for switch off event
+<span class="lineNum">      93 </span><span class="lineCov">       4899 :     if (PushButton_IsPressed() &amp;&amp; PushButton_IsLongPress())</span>
+<span class="lineNum">      94 </span>            :     {
+<span class="lineNum">      95 </span><span class="lineCov">          3 :         tmpNextState = SHUT_DOWN_E;</span>
+<span class="lineNum">      96 </span>            :     }
+<span class="lineNum">      97 </span>            :     // Deliver therapy
+<span class="lineNum">      98 </span>            :     else
+<span class="lineNum">      99 </span>            :     {
+<span class="lineNum">     100 </span>            :         // Enable the device status alert
+<span class="lineNum">     101 </span><span class="lineCov">       4896 :         if (PUSHBUTTON_TICK_PRESSES_FOR_STATUS == PushButton_GetDepressedTickCount())</span>
+<span class="lineNum">     102 </span>            :         {
+<span class="lineNum">     103 </span><span class="lineCov">          3 :             DeviceStatus_SetCheckStatusAlert(TRUE);</span>
+<span class="lineNum">     104 </span>            :         }
+<span class="lineNum">     105 </span>            : 
+<span class="lineNum">     106 </span>            :         // Disable Main Circuit Power if no LED is ON
+<span class="lineNum">     107 </span><span class="lineCov">       4896 :         if (!DeviceStatus_GetLedsOnStatus())</span>
+<span class="lineNum">     108 </span>            :         {
+<span class="lineNum">     109 </span><span class="lineCov">       4478 :             MP_DisableMainCircuitPower();</span>
+<span class="lineNum">     110 </span>            :         }
+<span class="lineNum">     111 </span>            : 
+<span class="lineNum">     112 </span>            :         // Activate or deactivate the Pump
+<span class="lineNum">     113 </span><span class="lineCov">       4896 :         result = PumpActivate(PumpOn);</span>
+<span class="lineNum">     114 </span><span class="lineCov">       4896 :         if (EC_POWER_TRACKER_FREQUENCY_OUT_OF_RANGE_E == result)</span>
+<span class="lineNum">     115 </span>            :         {
+<span class="lineNum">     116 </span><span class="lineCov">          1 :             tmpNextState = FAULT_E;</span>
+<span class="lineNum">     117 </span>            :         }
+<span class="lineNum">     118 </span><span class="lineCov">       4895 :         else if (EC_VOLTAGE_OUT_OF_RANGE_E == result)</span>
+<span class="lineNum">     119 </span>            :         {
+<span class="lineNum">     120 </span><span class="lineCov">          2 :             tmpNextState = NRE_E;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          2 :             DeviceStatus_SetNRE_Event (NRE_VDC_BRIDGE_RANGE_EVENT_E);</span>
+<span class="lineNum">     122 </span>            :         }
+<span class="lineNum">     123 </span><span class="lineCov">       4893 :         else if (EC_BATTERY_END_OF_LIFE_E == result)</span>
+<span class="lineNum">     124 </span>            :         {
+<span class="lineNum">     125 </span><span class="lineCov">          4 :             tmpNextState = NRE_E;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          4 :             DeviceStatus_SetNRE_Event (NRE_BAT_EOL_EVENT_E);</span>
+<span class="lineNum">     127 </span>            :         }
+<span class="lineNum">     128 </span>            : 
+<span class="lineNum">     129 </span>            :         // Update the Pump On Duty Cycle and power down peripherals
+<span class="lineNum">     130 </span><span class="lineCov">       4896 :         if (PumpOn)</span>
+<span class="lineNum">     131 </span>            :         {
+<span class="lineNum">     132 </span><span class="lineCov">        142 :             PumpOn = FALSE;</span>
+<span class="lineNum">     133 </span><span class="lineCov">        142 :             MP_DisableExternalPeripheralsSupply();</span>
+<span class="lineNum">     134 </span>            :             // Update the Pump On Duty Cycle
+<span class="lineNum">     135 </span><span class="lineCov">        142 :             DCPumpOnUpdate();</span>
+<span class="lineNum">     136 </span>            :         }
+<span class="lineNum">     137 </span>            :     } // End of PUMP ON
+<span class="lineNum">     138 </span>            : 
+<span class="lineNum">     139 </span>            :     // PUMP OFF (if needed)
+<span class="lineNum">     140 </span><span class="lineCov">       9787 :     if ((EC_OK_E == result) &amp;&amp; (THERAPY_DELIVERY_E == tmpNextState) &amp;&amp;</span>
+<span class="lineNum">     141 </span><span class="lineCov">       4888 :         (EXPIRED_COUNTER_E == TimerCounter_Status(STATE_MACHINE_COUNTER_E)))</span>
+<span class="lineNum">     142 </span>            :     {
+<span class="lineNum">     143 </span>            :         // Increment the counter for updating the Target Vacuum
+<span class="lineNum">     144 </span><span class="lineCov">        518 :         targetVacuumUpdateCount++;</span>
+<span class="lineNum">     145 </span>            : 
+<span class="lineNum">     146 </span>            :         // Calculate all the duty cycle statistics up until now
+<span class="lineNum">     147 </span><span class="lineCov">        518 :         DCCalculateAll();</span>
+<span class="lineNum">     148 </span>            : 
+<span class="lineNum">     149 </span>            :         // Check for LEAK
+<span class="lineNum">     150 </span><span class="lineCov">        518 :         if (isTherapyDeliveryLeakDetected())</span>
+<span class="lineNum">     151 </span>            :         {
+<span class="lineNum">     152 </span><span class="lineCov">          6 :             tmpNextState = FAULT_E;</span>
+<span class="lineNum">     153 </span>            :         }
+<span class="lineNum">     154 </span>            :         else
+<span class="lineNum">     155 </span>            :         {
+<span class="lineNum">     156 </span>            :             // Read the vacuum
+<span class="lineNum">     157 </span><span class="lineCov">        512 :             result = GetVacuum(&amp;internalPressure, &amp;externalPressure, &amp;currentVacuum);</span>
+<span class="lineNum">     158 </span><span class="lineCov">        512 :             DeviceStatus_SetPressureSensorIsReading(TRUE); //let others know pressure sensor is being read in this tick</span>
+<span class="lineNum">     159 </span>            : 
+<span class="lineNum">     160 </span>            :             // and state is correct
+<span class="lineNum">     161 </span><span class="lineCov">        512 :             if (EC_OK_E == result)</span>
+<span class="lineNum">     162 </span>            :             {
+<span class="lineNum">     163 </span>            :                 // Good reading has taken place so check if the external pressure is
+<span class="lineNum">     164 </span>            :                 // higher which will cause NRV error
+<span class="lineNum">     165 </span><span class="lineCov">        501 :                 if (externalPressure &gt; ExternalPressureForNRVBlockage)</span>
+<span class="lineNum">     166 </span>            :                 {
+<span class="lineNum">     167 </span><span class="lineCov">          1 :                     tmpNextState = FAULT_E;</span>
+<span class="lineNum">     168 </span>            :                 }
+<span class="lineNum">     169 </span>            :                 else
+<span class="lineNum">     170 </span>            :                 {
+<span class="lineNum">     171 </span>            :                     // Vacuum too low, Pump on in the next cycle
+<span class="lineNum">     172 </span><span class="lineCov">        500 :                     if (!isTargetTherapyDeliveryVacuumAchieved(currentVacuum))</span>
+<span class="lineNum">     173 </span>            :                     {
+<span class="lineNum">     174 </span><span class="lineCov">        143 :                         PumpOn = TRUE;</span>
+<span class="lineNum">     175 </span>            :                     }
+<span class="lineNum">     176 </span>            : 
+<span class="lineNum">     177 </span>            :                     // Update Target Vacuum
+<span class="lineNum">     178 </span><span class="lineCov">        500 :                     if (THERAPY_DELIVERY_TARGET_VACCUM_UPDATE_PERIOD_SECONDS == targetVacuumUpdateCount)</span>
+<span class="lineNum">     179 </span>            :                     {
+<span class="lineNum">     180 </span><span class="lineCov">         49 :                         TherapyDeliveryTargetVacuumUpdate();</span>
+<span class="lineNum">     181 </span><span class="lineCov">         49 :                         targetVacuumUpdateCount = 0;</span>
+<span class="lineNum">     182 </span>            :                     }
+<span class="lineNum">     183 </span>            :                 }
+<span class="lineNum">     184 </span>            :             }
+<span class="lineNum">     185 </span>            :             else
+<span class="lineNum">     186 </span>            :             {
+<span class="lineNum">     187 </span><span class="lineCov">         11 :                 tmpNextState = NRE_E;</span>
+<span class="lineNum">     188 </span>            : 
+<span class="lineNum">     189 </span>            :                 // Establish NRE reason
+<span class="lineNum">     190 </span><span class="lineCov">         11 :                 if ((EC_INT_PRESSURE_SENSOR_FAILED_TO_INITIALISE_E == result) ||</span>
+<span class="lineNum">     191 </span><span class="lineCov">          9 :                     (EC_INT_PRESSURE_SENSOR_FAILED_TO_START_E == result) ||</span>
+<span class="lineNum">     192 </span><span class="lineCov">          8 :                     (EC_INT_PRESSURE_SENSOR_NOT_READY_E == result) ||</span>
+<span class="lineNum">     193 </span>            :                     (EC_INT_PRESSURE_SENSOR_READ_FAILED_E == result))
+<span class="lineNum">     194 </span>            :                 {
+<span class="lineNum">     195 </span><span class="lineCov">          4 :                     DeviceStatus_SetNRE_Event(NRE_INT_SENSOR_UNRELIABLE_EVENT_E);</span>
+<span class="lineNum">     196 </span>            :                 }
+<span class="lineNum">     197 </span><span class="lineCov">          7 :                 else if ((EC_EXT_PRESSURE_SENSOR_FAILED_TO_INITIALISE_E == result) ||</span>
+<span class="lineNum">     198 </span><span class="lineCov">          4 :                          (EC_EXT_PRESSURE_SENSOR_FAILED_TO_START_E == result) ||</span>
+<span class="lineNum">     199 </span><span class="lineCov">          3 :                          (EC_EXT_PRESSURE_SENSOR_NOT_READY_E == result) ||</span>
+<span class="lineNum">     200 </span>            :                          (EC_EXT_PRESSURE_SENSOR_READ_FAILED_E == result))
+<span class="lineNum">     201 </span>            :                 {
+<span class="lineNum">     202 </span><span class="lineCov">          5 :                     DeviceStatus_SetNRE_Event(NRE_EXT_SENSOR_UNRELIABLE_EVENT_E);</span>
+<span class="lineNum">     203 </span>            :                 }
+<span class="lineNum">     204 </span><span class="lineCov">          2 :                 else if (EC_INT_TEMPERATURE_HIGH == result)</span>
+<span class="lineNum">     205 </span>            :                 {
+<span class="lineNum">     206 </span><span class="lineCov">          1 :                     DeviceStatus_SetNRE_Event(NRE_INT_SENSOR_OVERHEAT_EVENT_E);</span>
+<span class="lineNum">     207 </span>            :                 }
+<span class="lineNum">     208 </span><span class="lineCov">          1 :                 else if (EC_EXT_TEMPERATURE_HIGH == result)</span>
+<span class="lineNum">     209 </span>            :                 {
+<span class="lineNum">     210 </span><span class="lineCov">          1 :                     DeviceStatus_SetNRE_Event(NRE_EXT_SENSOR_OVERHEAT_EVENT_E);</span>
+<span class="lineNum">     211 </span>            :                 }
+<span class="lineNum">     212 </span>            :                 else
+<span class="lineNum">     213 </span>            :                 {
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :                     DeviceStatus_SetNRE_Event(NRE_LOGIC_FAIL_EVENT_E);</span>
+<span class="lineNum">     215 </span>            :                 }
+<span class="lineNum">     216 </span>            :             }
+<span class="lineNum">     217 </span>            :         }
+<span class="lineNum">     218 </span>            : 
+<span class="lineNum">     219 </span>            :         // Update the Pump Off Duty Cycle
+<span class="lineNum">     220 </span><span class="lineCov">        518 :         DCPumpOffUpdate();</span>
+<span class="lineNum">     221 </span>            : 
+<span class="lineNum">     222 </span>            :         // Start timeout for next read cycle
+<span class="lineNum">     223 </span><span class="lineCov">        518 :         TimerCounter_Disable(STATE_MACHINE_COUNTER_E);</span>
+<span class="lineNum">     224 </span><span class="lineCov">        518 :         TimerCounter_Start(STATE_MACHINE_COUNTER_E, (uint32_t)DUTY_CYCLE_UPDATE_TICK_DURATION);</span>
+<span class="lineNum">     225 </span>            :     } // End of PUMP OFF
+<span class="lineNum">     226 </span>            : 
+<span class="lineNum">     227 </span>            :     // Cleanup state when moving to a different state
+<span class="lineNum">     228 </span><span class="lineCov">       4899 :     if (THERAPY_DELIVERY_E != tmpNextState)</span>
+<span class="lineNum">     229 </span>            :     {
+<span class="lineNum">     230 </span><span class="lineCov">         28 :         TimerCounter_Disable(STATE_MACHINE_COUNTER_E);</span>
+<span class="lineNum">     231 </span>            :     }
+<span class="lineNum">     232 </span>            : 
+<span class="lineNum">     233 </span>            :     // Update the next state if possible
+<span class="lineNum">     234 </span><span class="lineCov">       4899 :     *aNewState = tmpNextState;</span>
+<span class="lineNum">     235 </span>            : 
+<span class="lineNum">     236 </span><span class="lineCov">       4899 :     return result;</span>
+<span class="lineNum">     237 </span>            : }
+<span class="lineNum">     238 </span>            : 
+<span class="lineNum">     239 </span>            : /****************************************************************************
+<span class="lineNum">     240 </span>            :    Function Name  : TherapyDelivery_OnEntry
+<span class="lineNum">     241 </span>            : 
+<span class="lineNum">     242 </span>            :    Parameters     : None    
+<span class="lineNum">     243 </span>            : 
+<span class="lineNum">     244 </span>            :    Return Value   : EC_OK
+<span class="lineNum">     245 </span>            : 
+<a name="246"><span class="lineNum">     246 </span>            :    Description    : Executed commands only required on the first entry to TherapyDelivery</a>
+<span class="lineNum">     247 </span>            :  *****************************************************************************/
+<span class="lineNum">     248 </span><span class="lineCov">         23 : static ErrorCode_t TherapyDelivery_OnEntry(void)</span>
+<span class="lineNum">     249 </span>            : {
+<span class="lineNum">     250 </span>            :     // Start timeout for next read cycle
+<span class="lineNum">     251 </span><span class="lineCov">         23 :     TimerCounter_Disable(STATE_MACHINE_COUNTER_E);</span>
+<span class="lineNum">     252 </span><span class="lineCov">         23 :     TimerCounter_Start(STATE_MACHINE_COUNTER_E, (uint32_t)DUTY_CYCLE_UPDATE_TICK_DURATION);</span>
+<span class="lineNum">     253 </span>            : 
+<span class="lineNum">     254 </span><span class="lineCov">         23 :     TherapyDelivery_Init();</span>
+<span class="lineNum">     255 </span>            : 
+<span class="lineNum">     256 </span>            :     // Reset the button press event only if that was not generated in FAULT (i.e. Leak)
+<span class="lineNum">     257 </span><span class="lineCov">         23 :     if (!DeviceStatus_GetButtonPressFromLeak())</span>
+<span class="lineNum">     258 </span>            :     {
+<span class="lineNum">     259 </span><span class="lineCov">         21 :         PushButton_ResetEvent();</span>
+<span class="lineNum">     260 </span>            :     }
+<span class="lineNum">     261 </span>            : 
+<span class="lineNum">     262 </span><span class="lineCov">         23 :     return EC_OK_E;</span>
+<span class="lineNum">     263 </span>            : }
+    </pre>
+          </td>
+        </tr>
+      </table>
+      <br>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+      </table>
+      <br>
+
+</body>
+</html>

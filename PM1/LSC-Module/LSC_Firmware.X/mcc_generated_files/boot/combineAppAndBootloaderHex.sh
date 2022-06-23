@@ -1,0 +1,1 @@
+hexmate r0-2FFF,..\..\..\..\DSPIC-Bootloader\DSPIC-Bootloader.X\dist\default\production\DSPIC-Bootloader.X.production.hex r3000-2AFFF,..\..\dist\default\production\DSPIC-Application.X.production.hex r2B000-FFFFFFFF,..\..\..\..\DSPIC-Bootloader\DSPIC-Bootloader.X\dist\default\production\DSPIC-Bootloader.X.production.hex -O..\..\dist\default\production\combined.production.hex

@@ -1,0 +1,2274 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YAT.Model.Base</name>
+    </assembly>
+    <members>
+        <member name="T:YAT.Model.Settings.AutoTriggerSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoTriggerSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoTriggerSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoTriggerSettings.#ctor(YAT.Model.Settings.AutoTriggerSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoTriggerSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoTriggerSettings.Trigger">
+            <remarks>
+            This 'EnumEx' cannot be serialized, thus, the helper below is used for serialization.
+            Still, this settings object shall provide an 'EnumEx' for full control of the setting.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoTriggerSettings.Trigger_ForSerialization">
+            <remarks>
+            Must be string because an 'EnumEx' cannot be serialized.
+            Must be string because of <see cref="F:YAT.Model.Types.AutoTrigger.Explicit"/>.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoTriggerSettings.IsActive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoTriggerSettings.TriggerOptions">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoTriggerSettings.IsByteSequenceTriggered">
+            <remarks>Convenience property, same as <code>!<see cref="P:YAT.Model.Settings.AutoTriggerSettings.IsTextTriggered"/></code>.</remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoTriggerSettings.IsTextTriggered">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoTriggerSettings.Deactivate">
+            <summary>
+            Resets the automatic Action, i.e. trigger and Action are reset to 'None'.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoTriggerSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoTriggerSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoTriggerSettings.Equals(YAT.Model.Settings.AutoTriggerSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoTriggerSettings.op_Equality(YAT.Model.Settings.AutoTriggerSettings,YAT.Model.Settings.AutoTriggerSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoTriggerSettings.op_Inequality(YAT.Model.Settings.AutoTriggerSettings,YAT.Model.Settings.AutoTriggerSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Settings.AutoActionSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoActionSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoActionSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoActionSettings.#ctor(YAT.Model.Settings.AutoActionSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoActionSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoActionSettings.Action">
+            <remarks>
+            This 'EnumEx' cannot be serialized, thus, the helper below is used for serialization.
+            Still, this settings object shall provide an 'EnumEx' for full control of the setting.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoActionSettings.Action_ForSerialization">
+            <remarks>
+            Must be string because an 'EnumEx' cannot be serialized.
+            Is a string rather than enum same as for <see cref="P:YAT.Model.Settings.AutoTriggerSettings.Trigger_ForSerialization"/>.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoActionSettings.IsActive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoActionSettings.ShallHighlight">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoActionSettings.IsFilterOrSuppress">
+            <remarks>"FilterOrSuppress" also means "IsReloadable".</remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoActionSettings.IsActiveAsFilterOrSuppress">
+            <remarks>"FilterOrSuppress" also means "IsReloadable".</remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoActionSettings.IsNeitherFilterNorSuppress">
+            <remarks>"NeitherFilterNorSuppress" also means "IsNotReloadable".</remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoActionSettings.IsActiveAsNeitherFilterNorSuppress">
+            <remarks>"NeitherFilterNorSuppress" also means "IsNotReloadable".</remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoActionSettings.IsCountRatePlot">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoActionSettings.IsNotCountRatePlot">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoActionSettings.Deactivate">
+            <summary>
+            Resets the automatic action, i.e. reset to <see cref="F:YAT.Model.Types.AutoAction.None"/>.
+            </summary>
+            <remarks>
+            The <see cref="P:YAT.Model.Settings.AutoTriggerSettings.Trigger"/>
+            and <see cref="P:YAT.Model.Settings.AutoTriggerSettings.TriggerOptions"/>
+            are not reset. It makes no sense the user has to set the trigger again
+            and it makes no sense to reset more items than needed.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoActionSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoActionSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoActionSettings.Equals(YAT.Model.Settings.AutoActionSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoActionSettings.op_Equality(YAT.Model.Settings.AutoActionSettings,YAT.Model.Settings.AutoActionSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoActionSettings.op_Inequality(YAT.Model.Settings.AutoActionSettings,YAT.Model.Settings.AutoActionSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Settings.AutoResponseSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoResponseSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoResponseSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoResponseSettings.#ctor(YAT.Model.Settings.AutoResponseSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoResponseSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoResponseSettings.Response">
+            <remarks>
+            This 'EnumEx' cannot be serialized, thus, the helper below is used for serialization.
+            Still, this settings object shall provide an 'EnumEx' for full control of the setting.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoResponseSettings.Response_ForSerialization">
+            <remarks>
+            Must be string because an 'EnumEx' cannot be serialized.
+            Must be string because of <see cref="F:YAT.Model.Types.AutoResponse.Explicit"/>.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoResponseSettings.IsActive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.AutoResponseSettings.ResponseOptions">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoResponseSettings.Deactivate">
+            <summary>
+            Resets the automatic response, i.e. reset to <see cref="F:YAT.Model.Types.AutoResponse.None"/>.
+            </summary>
+            <remarks>
+            The <see cref="P:YAT.Model.Settings.AutoTriggerSettings.Trigger"/>
+            and <see cref="P:YAT.Model.Settings.AutoTriggerSettings.TriggerOptions"/>
+            are not reset. It makes no sense the user has to set the trigger again
+            and it makes no sense to reset more items than needed.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoResponseSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoResponseSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoResponseSettings.Equals(YAT.Model.Settings.AutoResponseSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoResponseSettings.op_Equality(YAT.Model.Settings.AutoResponseSettings,YAT.Model.Settings.AutoResponseSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.AutoResponseSettings.op_Inequality(YAT.Model.Settings.AutoResponseSettings,YAT.Model.Settings.AutoResponseSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Settings.LayoutSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Settings.LayoutSettings.TxMonitorPanelIsVisibleDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Settings.LayoutSettings.BidirMonitorPanelIsVisibleDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Settings.LayoutSettings.RxMonitorPanelIsVisibleDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.LayoutSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.LayoutSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.LayoutSettings.#ctor(YAT.Model.Settings.LayoutSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.LayoutSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.TxMonitorPanelIsVisible">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.BidirMonitorPanelIsVisible">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.RxMonitorPanelIsVisible">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.VisibleMonitorPanelCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.MonitorOrientation">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.TxMonitorSplitterRatio">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.RxMonitorSplitterRatio">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.PredefinedPanelIsVisible">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.PredefinedSplitterRatio">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.SendTextPanelIsVisible">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.LayoutSettings.SendFilePanelIsVisible">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.LayoutSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.LayoutSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.LayoutSettings.Equals(YAT.Model.Settings.LayoutSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.LayoutSettings.op_Equality(YAT.Model.Settings.LayoutSettings,YAT.Model.Settings.LayoutSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.LayoutSettings.op_Inequality(YAT.Model.Settings.LayoutSettings,YAT.Model.Settings.LayoutSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Settings.NewTerminalSettings">
+            <remarks>
+            Located in 'Model.Settings' since a new terminal is something handled by the model. From a
+            technical/dependency perspective, these settings could also be located in 'Domain.Settings'.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.NewTerminalSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.NewTerminalSettings.#ctor(MKY.Settings.SettingsType)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.NewTerminalSettings.#ctor(YAT.Model.Settings.NewTerminalSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.NewTerminalSettings.SetMyDefaults">
+             <remarks>
+             Set fields through properties to ensure correct setting of changed flag.
+             Fields are assigned via properties to ensure correct setting of changed flag.
+            
+             Attention: Do not use <see cref="P:MKY.IO.Ports.SerialPortId.FirstAvailablePort"/>
+             for the default port. <see cref="P:MKY.IO.Ports.SerialPortId.FirstStandardPort"/>
+             is way better performing and good enough for most use cases.
+             </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.TerminalType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.IOType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SerialPortId">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SerialPortCommunication">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SerialPortAliveMonitor">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SerialPortAutoReopen">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SocketRemoteHost">
+            <remarks>
+            This 'EnumEx' cannot be serialized, thus, the helper below is used for serialization.
+            Still, this settings object shall provide an 'EnumEx' for full control of the setting.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SocketRemoteHost_ForSerialization">
+            <remarks>
+            Must be string because an 'EnumEx' cannot be serialized.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SocketRemoteTcpPort">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SocketRemoteUdpPort">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SocketLocalInterface">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SocketLocalFilter">
+            <remarks>
+            This 'EnumEx' cannot be serialized, thus, the helper below is used for serialization.
+            Still, this settings object shall provide an 'EnumEx' for full control of the setting.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SocketLocalFilter_ForSerialization">
+            <remarks>
+            Must be string because an 'EnumEx' cannot be serialized.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SocketLocalPort">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SocketLocalTcpPort">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.SocketLocalUdpPort">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.TcpClientAutoReconnect">
+            <remarks>Item is already named "TcpClient", therefore no "Socket" is prepended.</remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.UdpServerSendMode">
+            <remarks>Item is already named "UdpServer", therefore no "Socket" is prepended.</remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.UsbSerialHidDeviceInfo">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.UsbSerialHidPreset">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.UsbSerialHidReportFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.UsbSerialHidRxFilterUsage">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.UsbSerialHidFlowControl">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.UsbSerialHidAutoOpen">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.NewTerminalSettings.StartTerminal">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.NewTerminalSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.NewTerminalSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.NewTerminalSettings.Equals(YAT.Model.Settings.NewTerminalSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.NewTerminalSettings.op_Equality(YAT.Model.Settings.NewTerminalSettings,YAT.Model.Settings.NewTerminalSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.NewTerminalSettings.op_Inequality(YAT.Model.Settings.NewTerminalSettings,YAT.Model.Settings.NewTerminalSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Settings.PredefinedCommandSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Settings.PredefinedCommandSettings.PageLayoutDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Settings.PredefinedCommandSettings.HideUndefinedCommandsDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.#ctor(YAT.Model.Settings.PredefinedCommandSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.PredefinedCommandSettings.PageLayout">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.PredefinedCommandSettings.Pages">
+            <remarks>
+            Commands are intentionally organized as pages but not as subpages.
+            Reason: Subpages are only a representation of the view, but not the settings.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.PredefinedCommandSettings.HideUndefinedCommands">
+            <remarks>
+            Named 'Hide' rather than 'Show' to make default behavior more obvious.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.ClearAndCreateDefaultPage">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.ValidateWhetherCommandIsDefined(System.Int32,System.Int32)">
+            <summary>
+            Validates the given predefined arguments.
+            </summary>
+            <param name="pageIndex">Page index 0..(count-1).</param>
+            <param name="commandIndex">Command index 0..(<see cref="F:YAT.Model.Types.PredefinedCommandPage.MaxCommandCapacityPerPage"/>-1).</param>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.GetCommandIfDefined(System.Int32,System.Int32)">
+            <summary>
+            Gets the given predefined command if the command is defined.
+            </summary>
+            <param name="pageIndex">Page index 0..(count-1).</param>
+            <param name="commandIndex">Command index 0..(<see cref="F:YAT.Model.Types.PredefinedCommandPage.MaxCommandCapacityPerPage"/>-1).</param>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.SetCommand(System.Int32,System.Int32,YAT.Model.Types.Command)">
+            <summary>
+            Sets the given predefined command.
+            </summary>
+            <param name="pageIndex">Page index 0..(count-1).</param>
+            <param name="commandIndex">Command index 0..(<see cref="F:YAT.Model.Types.PredefinedCommandPage.MaxCommandCapacityPerPage"/>-1).</param>
+            <param name="command">Command to be set.</param>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.ClearCommand(System.Int32,System.Int32)">
+            <summary>
+            Clears the given predefined command.
+            </summary>
+            <param name="pageIndex">Page index 0..(count-1).</param>
+            <param name="commandIndex">Command index 0..(<see cref="F:YAT.Model.Types.PredefinedCommandPage.MaxCommandCapacityPerPage"/>-1).</param>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.Equals(YAT.Model.Settings.PredefinedCommandSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.op_Equality(YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Settings.PredefinedCommandSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedCommandSettings.op_Inequality(YAT.Model.Settings.PredefinedCommandSettings,YAT.Model.Settings.PredefinedCommandSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Settings.FindSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.FindSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.FindSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.FindSettings.#ctor(YAT.Model.Settings.FindSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.FindSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.FindSettings.AllIsActive">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.FindSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.FindSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.FindSettings.Equals(YAT.Model.Settings.FindSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.FindSettings.op_Equality(YAT.Model.Settings.FindSettings,YAT.Model.Settings.FindSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.FindSettings.op_Inequality(YAT.Model.Settings.FindSettings,YAT.Model.Settings.FindSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Settings.PredefinedSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedSettings.#ctor(YAT.Model.Settings.PredefinedSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.PredefinedSettings.SelectedPageId">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.PredefinedSettings.HideUndefinedCommands">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedSettings.Equals(YAT.Model.Settings.PredefinedSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedSettings.op_Equality(YAT.Model.Settings.PredefinedSettings,YAT.Model.Settings.PredefinedSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.PredefinedSettings.op_Inequality(YAT.Model.Settings.PredefinedSettings,YAT.Model.Settings.PredefinedSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Settings.SendFileSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Settings.SendFileSettings.MaxRecentCommands">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.#ctor(YAT.Model.Settings.SendFileSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.SendFileSettings.Command">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.SendFileSettings.RecentCommands">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.ClearCommand">
+            <summary>
+            Clears <see cref="P:YAT.Model.Settings.SendFileSettings.Command"/>.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.ClearRecentCommands">
+            <summary>
+            Clears <see cref="P:YAT.Model.Settings.SendFileSettings.RecentCommands"/>.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.Equals(YAT.Model.Settings.SendFileSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.op_Equality(YAT.Model.Settings.SendFileSettings,YAT.Model.Settings.SendFileSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendFileSettings.op_Inequality(YAT.Model.Settings.SendFileSettings,YAT.Model.Settings.SendFileSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Settings.SendTextSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Settings.SendTextSettings.MaxRecentCommands">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.#ctor(YAT.Model.Settings.SendTextSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.SendTextSettings.Command">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.SendTextSettings.RecentCommands">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.ExpandMultiLineText">
+            <summary>
+            Expands the multi-line text of a multi-line command into the corresponding single-line
+            text, taking "\!(EOL)" as additional EOL separator.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.ClearCommand">
+            <summary>
+            Clears <see cref="P:YAT.Model.Settings.SendTextSettings.Command"/>.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.ClearRecentCommands">
+            <summary>
+            Clears <see cref="P:YAT.Model.Settings.SendTextSettings.RecentCommands"/>.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.Equals(YAT.Model.Settings.SendTextSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.op_Equality(YAT.Model.Settings.SendTextSettings,YAT.Model.Settings.SendTextSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.op_Inequality(YAT.Model.Settings.SendTextSettings,YAT.Model.Settings.SendTextSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.SendTextSettings.IsEasterEggCommand(System.String)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Settings.TerminalSettingsItem">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Settings.TerminalSettingsItem.FirstFixedId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.Settings.TerminalSettingsItem.ActiveFixedId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            ID 0 refers to the active terminal, i.e. the 'default' terminal.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.Settings.TerminalSettingsItem.InvalidFixedId">
+            <remarks>
+            IDs are 1 (not 0) based for consistency with "Terminal1"...
+            ID -1 means 'invalid', i.e. no terminal.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.TerminalSettingsItem.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.TerminalSettingsItem.#ctor(MKY.Settings.SettingsType)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.TerminalSettingsItem.#ctor(YAT.Model.Settings.TerminalSettingsItem)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.TerminalSettingsItem.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.TerminalSettingsItem.FilePath">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.TerminalSettingsItem.Guid">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.TerminalSettingsItem.FixedId">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.TerminalSettingsItem.Window">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.TerminalSettingsItem.IsDefined">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.TerminalSettingsItem.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.TerminalSettingsItem.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.TerminalSettingsItem.Equals(YAT.Model.Settings.TerminalSettingsItem)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.TerminalSettingsItem.op_Equality(YAT.Model.Settings.TerminalSettingsItem,YAT.Model.Settings.TerminalSettingsItem)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.TerminalSettingsItem.op_Inequality(YAT.Model.Settings.TerminalSettingsItem,YAT.Model.Settings.TerminalSettingsItem)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Settings.WorkspaceSettings">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Settings.WorkspaceSettings.LayoutDefault">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.WorkspaceSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.WorkspaceSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.WorkspaceSettings.#ctor(YAT.Model.Settings.WorkspaceSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.WorkspaceSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Settings.WorkspaceSettings.Layout">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Settings.WorkspaceSettings.TerminalSettings">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Settings.WorkspaceSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.WorkspaceSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.WorkspaceSettings.Equals(YAT.Model.Settings.WorkspaceSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Settings.WorkspaceSettings.op_Equality(YAT.Model.Settings.WorkspaceSettings,YAT.Model.Settings.WorkspaceSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Settings.WorkspaceSettings.op_Inequality(YAT.Model.Settings.WorkspaceSettings,YAT.Model.Settings.WorkspaceSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Types.AutoAction">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.AutoActionEx">
+            <summary>
+            Extended enum AutoActionEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.Types.AutoActionEx.Default">
+            <summary>Default is <see cref="F:YAT.Model.Types.AutoAction.None"/>.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.#ctor">
+            <summary>Default is <see cref="F:YAT.Model.Types.AutoActionEx.Default"/>.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.#ctor(YAT.Model.Types.AutoAction)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoActionEx.IsActive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoActionEx.ShallHighlight">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoActionEx.IsCountRatePlot">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoActionEx.IsLineScatterHistogramPlot">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoActionEx.IsAnyPlot">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.Equals(YAT.Model.Types.AutoActionEx)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.op_Equality(YAT.Model.Types.AutoActionEx,YAT.Model.Types.AutoActionEx)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.op_Inequality(YAT.Model.Types.AutoActionEx,YAT.Model.Types.AutoActionEx)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.GetLineScatterHistogramPlotItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.TryParse(System.String,YAT.Model.Types.AutoActionEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.TryParse(System.String,YAT.Model.Types.AutoAction@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.op_Implicit(YAT.Model.Types.AutoActionEx)~YAT.Model.Types.AutoAction">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.op_Implicit(YAT.Model.Types.AutoAction)~YAT.Model.Types.AutoActionEx">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.op_Implicit(YAT.Model.Types.AutoActionEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoActionEx.op_Implicit(System.String)~YAT.Model.Types.AutoActionEx">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.AutoResponse">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.AutoResponseEx">
+            <summary>
+            Extended enum AutoResponseEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.Types.AutoResponseEx.InvalidPredefinedCommandId">
+            <summary>
+            The invalid predefined command ID (1..12).
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Types.AutoResponseEx.CommonRegexReplacementPatterns">
+            <summary>Common regular expression replacement patterns.</summary>
+        </member>
+        <member name="F:YAT.Model.Types.AutoResponseEx.Default">
+            <summary>Default is <see cref="F:YAT.Model.Types.AutoResponse.None"/>.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.#ctor">
+            <summary>Default is <see cref="F:YAT.Model.Types.AutoResponseEx.Default"/>.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.#ctor(YAT.Model.Types.AutoResponse)">
+            <remarks>
+            Do not use with <see cref="F:YAT.Model.Types.AutoResponse.Explicit"/> because that selection requires
+            a response command string. Use <see cref="M:YAT.Model.Types.AutoResponseEx.#ctor(System.String)"/> instead.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="response"/> is <see cref="F:YAT.Model.Types.AutoResponse.Explicit"/>. Use <see cref="M:YAT.Model.Types.AutoResponseEx.#ctor(System.String)"/> instead.
+            </exception>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoResponseEx.IsExplicit">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoResponseEx.IsActive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoResponseEx.ReplaceIsSupported">
+            <remarks>
+            Technically, 'Predefined' could also support replace, but doesn't make much sense:
+            <list type="bullet">
+            <item><description>YAT style escapes are useless for text replacement.</description></item>
+            <item><description>Regex style replacement is not supported for commands.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Types.AutoResponseEx.CommandIsRequired">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.ToPredefinedCommandId">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.Equals(YAT.Model.Types.AutoResponseEx)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.op_Equality(YAT.Model.Types.AutoResponseEx,YAT.Model.Types.AutoResponseEx)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.op_Inequality(YAT.Model.Types.AutoResponseEx,YAT.Model.Types.AutoResponseEx)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.GetAllItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.GetFixedItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.GetItems(System.Boolean,System.Boolean)">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.TryParse(System.String,YAT.Model.Types.AutoResponseEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.TryParse(System.String,YAT.Model.Types.AutoResponse@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.op_Implicit(YAT.Model.Types.AutoResponseEx)~YAT.Model.Types.AutoResponse">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.op_Explicit(YAT.Model.Types.AutoResponse)~YAT.Model.Types.AutoResponseEx">
+            <remarks>
+            Explicit because cast doesn't work for <see cref="F:YAT.Model.Types.AutoResponse.Explicit"/>.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="autoResponse"/> is <see cref="F:YAT.Model.Types.AutoResponse.Explicit"/>.
+            </exception>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.op_Implicit(YAT.Model.Types.AutoResponseEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseEx.op_Implicit(System.String)~YAT.Model.Types.AutoResponseEx">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.AutoTrigger">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.AutoTriggerEx">
+            <summary>
+            Extended enum AutoTriggerEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.Types.AutoTriggerEx.InvalidPredefinedCommandId">
+            <summary>
+            The invalid predefined command ID (1..12).
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Types.AutoTriggerEx.CommonRegexCapturePatterns">
+            <summary>Common regular expression capture patterns.</summary>
+        </member>
+        <member name="F:YAT.Model.Types.AutoTriggerEx.Default">
+            <summary>Default is <see cref="F:YAT.Model.Types.AutoTrigger.None"/>.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.#ctor">
+            <summary>Default is <see cref="F:YAT.Model.Types.AutoTriggerEx.Default"/>.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.#ctor(YAT.Model.Types.AutoTrigger)">
+            <remarks>
+            Do not use with <see cref="F:YAT.Model.Types.AutoTrigger.Explicit"/> because that selection requires
+            a trigger command string. Use <see cref="M:YAT.Model.Types.AutoTriggerEx.#ctor(System.String)"/> instead.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="trigger"/> is <see cref="F:YAT.Model.Types.AutoTrigger.Explicit"/>. Use <see cref="M:YAT.Model.Types.AutoTriggerEx.#ctor(System.String)"/> instead.
+            </exception>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoTriggerEx.IsExplicit">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoTriggerEx.IsActive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoTriggerEx.TextIsSupported">
+            <remarks>
+            Technically, 'Predefined' could also support text/regex, but doesn't make much sense:
+            <list type="bullet">
+            <item><description>Command defines a byte sequence anyway.</description></item>
+            <item><description>YAT style escapes are useless for text matching.</description></item>
+            <item><description>Regex style escapes are not supported for commands.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Types.AutoTriggerEx.RegexIsSupported">
+            <remarks>
+            Technically, 'Predefined' could also support text/regex, but doesn't make much sense:
+            <list type="bullet">
+            <item><description>Command defines a byte sequence anyway.</description></item>
+            <item><description>YAT style escapes are useless for text matching.</description></item>
+            <item><description>Regex style escapes are not supported for commands.</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Types.AutoTriggerEx.CommandIsRequired">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.ToPredefinedCommandId">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.Equals(YAT.Model.Types.AutoTriggerEx)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.op_Equality(YAT.Model.Types.AutoTriggerEx,YAT.Model.Types.AutoTriggerEx)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.op_Inequality(YAT.Model.Types.AutoTriggerEx,YAT.Model.Types.AutoTriggerEx)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.GetAllItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.GetFixedItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.GetItems(System.Boolean,System.Boolean)">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.TryParse(System.String,YAT.Model.Types.AutoTriggerEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.TryParse(System.String,YAT.Model.Types.AutoTrigger@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.op_Implicit(YAT.Model.Types.AutoTriggerEx)~YAT.Model.Types.AutoTrigger">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.op_Explicit(YAT.Model.Types.AutoTrigger)~YAT.Model.Types.AutoTriggerEx">
+            <remarks>
+            Explicit because cast doesn't work for <see cref="F:YAT.Model.Types.AutoTrigger.Explicit"/>.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="trigger"/> is <see cref="F:YAT.Model.Types.AutoTrigger.Explicit"/>.
+            </exception>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.op_Implicit(YAT.Model.Types.AutoTriggerEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerEx.op_Implicit(System.String)~YAT.Model.Types.AutoTriggerEx">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.AutoResponseOptions">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoResponseOptions.EnableReplace">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseOptions.#ctor(System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseOptions.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseOptions.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseOptions.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseOptions.Equals(YAT.Model.Types.AutoResponseOptions)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseOptions.op_Equality(YAT.Model.Types.AutoResponseOptions,YAT.Model.Types.AutoResponseOptions)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoResponseOptions.op_Inequality(YAT.Model.Types.AutoResponseOptions,YAT.Model.Types.AutoResponseOptions)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Types.Command">
+            <summary>
+            Stores information about a single line, multi-line or file command.
+            </summary>
+            <remarks>
+            This class intentionally combines all three command types in a single class to allow
+            co-existence of a line and a file command.
+            </remarks>
+            <remarks>
+            This class cannot be implemented immutable [ImmutableObject(true)] because it is directly
+            serialized to .yat files (.xml). Default serialization requires { set } fields/properties.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.Types.Command.DefaultRadixDefault">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Types.Command.DefineCommandText">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Types.Command.EnterTextText">
+            <remarks>'TextText' as it is the text of a text command.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.Command.MultiLineTextText">
+            <remarks>'TextText' as it is the text of a multi-line text command.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.Command.UndefinedFilePathText">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Types.Command.EmptyDescription">
+            <remarks>Explicitly using "[empty]" instead of "[Empty]" same as e.g. "[any]" or "[localhost]".</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.Command.LinesText">
+            <remarks>Explicitly using "lines..." instead of "Lines..." same as "empty above".</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.Command.isDefined">
+            <remarks>Required to allow commands with an empty but non-null string.</remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.#ctor">
+            <remarks>Parameter-less constructor is required to XML serialization.</remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.#ctor(YAT.Domain.Radix)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.Initialize(YAT.Domain.Radix)">
+            <remarks>Note that command is initialized as 'not defined'.</remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.#ctor(System.String,System.Boolean,YAT.Domain.Radix)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.#ctor(System.String,System.String,System.Boolean,YAT.Domain.Radix)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.#ctor(System.Boolean,YAT.Domain.Radix)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.#ctor(System.String[],YAT.Domain.Radix)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.#ctor(System.String,System.String[],YAT.Domain.Radix)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.#ctor(System.String,System.Boolean,System.String,YAT.Domain.Radix)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.#ctor(YAT.Model.Types.Command)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.IsDefined">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.Description">
+            <summary>
+            Gets and sets description.
+            </summary>
+            <remarks>
+            This property shall not be serialized, because a default description text shall not be
+            serialized, thus, the helper below is used for serialization.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Types.Command.Description_ForSerialization">
+            <remarks>
+            Required to limit XML serialization to <see cref="F:YAT.Model.Types.Command.description"/> field rather than <see cref="P:YAT.Model.Types.Command.Description"/> property.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Types.Command.DefaultRadix">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.TextLines">
+            <remarks>
+            XML tag is "CommandLines" for backward compatibility.
+            May be changed to "TextLines" once bugs #232 "Issues with TolerantXmlSerializer"
+            and #246 "Issues with AlternateTolerantXmlSerializer" have been fixed.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Types.Command.IsFilePath">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.FilePath">
+            <summary>
+            The absolute or relative path to the file related to this command.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.IsDefinedOrHasDescription">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.HasDescription">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.Caption">
+            <remarks>
+            Similar to <see cref="P:YAT.Model.Types.Command.Description"/>, but not taking the user defined description string
+            into account. <see cref="F:YAT.Model.Types.Command.DefineCommandText"/> is considered though.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Types.Command.IsText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.IsPartialText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.IsPartialTextEol">
+            <remarks>Required to compose a completed text command after sending the EOL.</remarks>
+        </member>
+        <member name="P:YAT.Model.Types.Command.IsSingleLineText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.IsMultiLineText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.SingleLineText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.PartialText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.MultiLineText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.Command.TextLinesAreNullOrEmpty">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.IsValidText(YAT.Domain.Parser.Mode)">
+            <remarks>
+            Validation is dependent on <see cref="T:YAT.Domain.Parser.Mode"/>! Thus, validation must be
+            done during runtime when the mode is given; i.e. it cannot be done once and then kept.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.IsValidFilePath">
+            <remarks>
+            Method instead of property for consistency with the <see cref="M:YAT.Model.Types.Command.IsValidFilePath(System.String)"/> method below.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.IsValidFilePath(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.IsValid(YAT.Domain.Parser.Mode)">
+            <remarks>
+            Method instead of property for consistency with the <see cref="M:YAT.Model.Types.Command.IsValid(YAT.Domain.Parser.Mode,System.String)"/> method below.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.IsValid(YAT.Domain.Parser.Mode,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.Clear">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.ClearDescription">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.ToCommandWithoutDefaultRadix">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Do not redirect to <see cref="P:YAT.Model.Types.Command.Description"/> in order to ensure that user defined
+            description string is not shown in a combo box or similar. Instead, use the dedicated
+            <see cref="P:YAT.Model.Types.Command.Caption"/> property.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.ToDiagnosticsString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Extended <see cref="M:YAT.Model.Types.Command.ToString"/> method which can be used for trace/debug.
+            </remarks>
+            <remarks>
+            Limited to a single line to keep debug output compact, same as <see cref="M:YAT.Model.Types.Command.ToString"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.ToDiagnosticsString(System.String)">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Extended <see cref="M:YAT.Model.Types.Command.ToString"/> method which can be used for trace/debug.
+            </remarks>
+            <remarks>
+            Limited to a single line to keep debug output compact, same as <see cref="M:YAT.Model.Types.Command.ToString"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.Equals(YAT.Model.Types.Command)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.Command.op_Equality(YAT.Model.Types.Command,YAT.Model.Types.Command)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.op_Inequality(YAT.Model.Types.Command,YAT.Model.Types.Command)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.CompareTo(System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.Compare(System.Object,System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.op_LessThan(YAT.Model.Types.Command,YAT.Model.Types.Command)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.op_GreaterThan(YAT.Model.Types.Command,YAT.Model.Types.Command)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.op_LessThanOrEqual(YAT.Model.Types.Command,YAT.Model.Types.Command)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.Command.op_GreaterThanOrEqual(YAT.Model.Types.Command,YAT.Model.Types.Command)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.PredefinedCommandEventArgs">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandEventArgs.PageId">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandEventArgs.CommandId">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandEventArgs.#ctor(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandEventArgs.#ctor(System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.AutoTriggerOptions">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoTriggerOptions.UseText">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoTriggerOptions.CaseSensitive">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoTriggerOptions.WholeWord">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.AutoTriggerOptions.EnableRegex">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerOptions.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerOptions.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerOptions.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerOptions.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerOptions.Equals(YAT.Model.Types.AutoTriggerOptions)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerOptions.op_Equality(YAT.Model.Types.AutoTriggerOptions,YAT.Model.Types.AutoTriggerOptions)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.AutoTriggerOptions.op_Inequality(YAT.Model.Types.AutoTriggerOptions,YAT.Model.Types.AutoTriggerOptions)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Types.PredefinedCommandPage">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPage.NoCommandId">
+            <remarks>Commands and pages are numbered 1..max, 0 indicates none/invalid.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPage.FirstCommandIdPerPage">
+            <remarks>Commands and pages are numbered 1..max, 0 indicates none/invalid.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPage.CommandCapacityPerSubpage">
+            <remarks>Limited to a) keep view simple for most use cases and b) ease implementation.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPage.CommandCapacityWithShortcut">
+            <remarks>F1..F12 are available, F13..F24 don't seem supported by Windows (any longer).</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPage.MaxCommandCapacityPerPage">
+            <remarks>Possible capacities are 12, 24, 36, 48, 72 or 108.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPage.NoSubpageId">
+            <remarks>Subpages are numbered 1..9, 0 indicates none/invalid.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPage.FirstSubpageId">
+            <remarks>Subpages are numbered 1..9, 0 indicates none/invalid.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPage.LastSubpageId">
+            <remarks>Subpages are numbered 1..9, 0 indicates none/invalid.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPage.MaxSubpageCount">
+            <remarks>Subpages are numbered 1..9, 0 indicates none/invalid.</remarks>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.#ctor(YAT.Model.Types.PredefinedCommandPage)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.#ctor(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.#ctor(System.Int32,System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.Capacity">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.NameIntegrated">
+            <remarks>
+            \remind (2019-08-13..15 / MKY)
+            Property was renamed from "PageName" to "Name" on 2019-08-13 for no longer replicating
+            the class context in the the property name. However, detected on 2019-08-14 that this
+            change is not properly handled by the XML deserialization infrastructure, thus reverted.
+            On 2019-08-15 split into <see cref="P:YAT.Model.Types.PredefinedCommandPage.NameIntegrated"/> and <see cref="P:YAT.Model.Types.PredefinedCommandPage.NameLinked"/>.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.NameLinked">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.Name">
+            <summary>
+            The name effectively in use, either <see cref="P:YAT.Model.Types.PredefinedCommandPage.NameIntegrated"/>, or
+            <see cref="P:YAT.Model.Types.PredefinedCommandPage.NameLinked"/> in case <see cref="P:YAT.Model.Types.PredefinedCommandPage.LinkFilePath"/> is defined.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.Caption">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.CommandsIntegrated">
+            <remarks>XML is named "Commands" for simplicity/comprehensibility as well as backward compatibility.</remarks>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.CommandsLinked">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.Commands">
+            <summary>
+            The commands effectively in use, either <see cref="P:YAT.Model.Types.PredefinedCommandPage.CommandsIntegrated"/>, or
+            <see cref="P:YAT.Model.Types.PredefinedCommandPage.CommandsLinked"/> in case <see cref="P:YAT.Model.Types.PredefinedCommandPage.LinkFilePath"/> is defined.
+            </summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.LinkFilePath">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.IsLinkedToFilePath">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPage.DefinedCommandCount">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.CaptionFallback(YAT.Model.Types.PredefinedCommandPage,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.CaptionOrFallback(YAT.Model.Types.PredefinedCommandPage,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.SubpageIdToString(System.Int32)">
+            <param name="subpageId">Subpage ID <see cref="F:YAT.Model.Types.PredefinedCommandPage.FirstSubpageId"/>..<see cref="F:YAT.Model.Types.PredefinedCommandPage.LastSubpageId"/>.</param>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.SetCommand(System.Int32,YAT.Model.Types.Command)">
+            <remarks>
+            Modifies the commands effectively in use, i.e. either <see cref="P:YAT.Model.Types.PredefinedCommandPage.CommandsIntegrated"/>,
+            or <see cref="P:YAT.Model.Types.PredefinedCommandPage.CommandsLinked"/> in case <see cref="P:YAT.Model.Types.PredefinedCommandPage.LinkFilePath"/> is defined.
+            </remarks>
+            <param name="index">Command index 0..(<see cref="F:YAT.Model.Types.PredefinedCommandPage.MaxCommandCapacityPerPage"/> - 1).</param>
+            <param name="command">Command to be set.</param>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.ClearCommand(System.Int32)">
+            <remarks>
+            Modifies the commands effectively in use, i.e. either <see cref="P:YAT.Model.Types.PredefinedCommandPage.CommandsIntegrated"/>,
+            or <see cref="P:YAT.Model.Types.PredefinedCommandPage.CommandsLinked"/> in case <see cref="P:YAT.Model.Types.PredefinedCommandPage.LinkFilePath"/> is defined.
+            </remarks>
+            <param name="index">Command index 0..(<see cref="F:YAT.Model.Types.PredefinedCommandPage.MaxCommandCapacityPerPage"/> - 1).</param>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.RemoveTrailingCommands">
+            <remarks>
+            Modifies the commands effectively in use, i.e. either <see cref="P:YAT.Model.Types.PredefinedCommandPage.CommandsIntegrated"/>,
+            or <see cref="P:YAT.Model.Types.PredefinedCommandPage.CommandsLinked"/> in case <see cref="P:YAT.Model.Types.PredefinedCommandPage.LinkFilePath"/> is defined.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.Link(System.String,System.String,System.Collections.Generic.List{YAT.Model.Types.Command})">
+            <summary>
+            Activates the link to a file.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.UpdateEffectivelyInUse(YAT.Model.Types.PredefinedCommandPage)">
+            <summary>
+            Updates the items effectively in use, i.e. <see cref="P:YAT.Model.Types.PredefinedCommandPage.Name"/> and <see cref="P:YAT.Model.Types.PredefinedCommandPage.Commands"/>.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.Unlink">
+            <summary>
+            Clears the link to a file.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.Equals(YAT.Model.Types.PredefinedCommandPage)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.EqualsEffectivelyInUse(YAT.Model.Types.PredefinedCommandPage)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality
+            on the items effectively in use, i.e. <see cref="P:YAT.Model.Types.PredefinedCommandPage.Name"/> and <see cref="P:YAT.Model.Types.PredefinedCommandPage.Commands"/>.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.op_Equality(YAT.Model.Types.PredefinedCommandPage,YAT.Model.Types.PredefinedCommandPage)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.op_Inequality(YAT.Model.Types.PredefinedCommandPage,YAT.Model.Types.PredefinedCommandPage)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.CompareTo(System.Object)">
+            <summary>
+            Compares this instance to a specified object and returns an indication
+            of their relative values.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.Compare(System.Object,System.Object)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.op_LessThan(YAT.Model.Types.PredefinedCommandPage,YAT.Model.Types.PredefinedCommandPage)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.op_GreaterThan(YAT.Model.Types.PredefinedCommandPage,YAT.Model.Types.PredefinedCommandPage)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.op_LessThanOrEqual(YAT.Model.Types.PredefinedCommandPage,YAT.Model.Types.PredefinedCommandPage)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPage.op_GreaterThanOrEqual(YAT.Model.Types.PredefinedCommandPage,YAT.Model.Types.PredefinedCommandPage)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.PredefinedCommandPageCollection">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPageCollection.NoPageId">
+            <remarks>Commands and pages are numbered 1..max, 0 indicates none/invalid.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPageCollection.FirstPageId">
+            <remarks>Commands and pages are numbered 1..max, 0 indicates none/invalid.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPageCollection.MaxCapacity">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPageCollection.StandardPageNamePrefix">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPageCollection.FirstPageNameDefault">
+            <remarks>Constant (and not a generated readonly) for simplicity.</remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPageCollection.StandardPageNameRegex">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPageCollection.DefaultPage">
+            <remarks>
+            Must be implemented as property (instead of a readonly) since <see cref="T:YAT.Model.Types.PredefinedCommandPage"/>
+            is a mutable reference type. Defining a readonly would correctly result in FxCop
+            message CA2104 "DoNotDeclareReadOnlyMutableReferenceTypes" (Microsoft.Security).
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.#ctor(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.#ctor(System.Collections.Generic.IEnumerable{YAT.Model.Types.PredefinedCommandPage})">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPageCollection.MaxDefinedCommandCountPerPage">
+            <remarks>Explicitly named "Command" to clearly distinguish from list of pages.</remarks>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPageCollection.TotalDefinedCommandCount">
+            <remarks>Explicitly named "Command" to clearly distinguish from list of pages.</remarks>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPageCollection.LinkedToFilePathCount">
+            <summary>The number of pages linked to a file.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.StandardPageName(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.IsStandardPageName(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.AddSpreaded(System.Collections.Generic.IEnumerable{YAT.Model.Types.PredefinedCommandPage},System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.InsertSpreaded(System.Int32,System.Collections.Generic.IEnumerable{YAT.Model.Types.PredefinedCommandPage},System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.CreateSpread(YAT.Model.Types.PredefinedCommandPage,System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.AddMerged(System.Collections.Generic.IEnumerable{YAT.Model.Types.PredefinedCommandPage},System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.InsertMerged(System.Int32,System.Collections.Generic.IEnumerable{YAT.Model.Types.PredefinedCommandPage},System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.CreateMerge(System.Collections.Generic.IEnumerable{YAT.Model.Types.PredefinedCommandPage},System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.AddTruncated(System.Collections.Generic.IEnumerable{YAT.Model.Types.PredefinedCommandPage},System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.InsertTruncated(System.Int32,System.Collections.Generic.IEnumerable{YAT.Model.Types.PredefinedCommandPage},System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.CreateTruncation(YAT.Model.Types.PredefinedCommandPage,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.Renumber">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageCollection.UnlinkAll">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.PredefinedCommandPageLayout">
+            <summary>
+            Specifies the layout of a predefined command page.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Types.PredefinedCommandPageLayoutEx">
+            <summary>
+            Extended enum PredefinedCommandPageLayoutEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.Types.PredefinedCommandPageLayoutEx.Default">
+            <summary>Default is <see cref="F:YAT.Model.Types.PredefinedCommandPageLayout.OneByOne"/>.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.#ctor">
+            <summary>Default is <see cref="F:YAT.Model.Types.PredefinedCommandPageLayoutEx.Default"/>.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.#ctor(YAT.Model.Types.PredefinedCommandPageLayout)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.TryParse(System.String,YAT.Model.Types.PredefinedCommandPageLayoutEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.TryParse(System.String,YAT.Model.Types.PredefinedCommandPageLayout@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPageLayoutEx.ColumnsPerPage">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPageLayoutEx.RowsPerPage">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Model.Types.PredefinedCommandPageLayoutEx.CommandCapacityPerPage">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.GetMatchingCommandCapacityPerPage(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.GetMatchingItem(System.Int32)">
+            <summary>
+            Gets the item for best matches the given count.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.op_Implicit(YAT.Model.Types.PredefinedCommandPageLayoutEx)~YAT.Model.Types.PredefinedCommandPageLayout">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.op_Implicit(YAT.Model.Types.PredefinedCommandPageLayout)~YAT.Model.Types.PredefinedCommandPageLayoutEx">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.op_Implicit(YAT.Model.Types.PredefinedCommandPageLayoutEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.PredefinedCommandPageLayoutEx.op_Implicit(System.String)~YAT.Model.Types.PredefinedCommandPageLayoutEx">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Model.Types.WorkspaceLayout">
+            <summary>
+            Specifies the layout of multiple document interface (MDI) child windows in an MDI parent window.
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Types.WorkspaceLayout.Automatic">
+            <summary>
+            All child windows are automatically positioned within the client region of the MDI parent form.
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Types.WorkspaceLayout.Cascade">
+            <summary>
+            All child windows are cascaded within the client region of the MDI parent form.
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Types.WorkspaceLayout.TileHorizontal">
+            <summary>
+            All child windows are tiled horizontally within the client region of the MDI parent form.
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Types.WorkspaceLayout.TileVertical">
+            <summary>
+            All child windows are tiled vertically within the client region of the MDI parent form.
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Types.WorkspaceLayout.Manual">
+            <summary>
+            All child windows are manually positioned within the client region of the MDI parent form.
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Types.WorkspaceLayout.Minimize">
+            <summary>
+            All child windows are minimized within the client region of the MDI parent form.
+            </summary>
+        </member>
+        <member name="F:YAT.Model.Types.WorkspaceLayout.Maximize">
+            <summary>
+            All child windows are maximized within the client region of the MDI parent form.
+            </summary>
+        </member>
+        <member name="T:YAT.Model.Types.WorkspaceLayoutEx">
+            <summary>
+            Extended enum WorkspaceLayoutEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:YAT.Model.Types.WorkspaceLayoutEx.Default">
+            <summary>Default is <see cref="F:YAT.Model.Types.WorkspaceLayout.Automatic"/>.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.#ctor">
+            <summary>Default is <see cref="F:YAT.Model.Types.WorkspaceLayoutEx.Default"/>.</summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.#ctor(YAT.Model.Types.WorkspaceLayout)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.TryParse(System.String,YAT.Model.Types.WorkspaceLayoutEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.TryParse(System.String,YAT.Model.Types.WorkspaceLayout@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.op_Implicit(YAT.Model.Types.WorkspaceLayoutEx)~YAT.Model.Types.WorkspaceLayout">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.op_Implicit(YAT.Model.Types.WorkspaceLayout)~YAT.Model.Types.WorkspaceLayoutEx">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.op_Implicit(YAT.Model.Types.WorkspaceLayoutEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.op_Implicit(System.Int32)~YAT.Model.Types.WorkspaceLayoutEx">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.op_Implicit(YAT.Model.Types.WorkspaceLayoutEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.op_Implicit(System.String)~YAT.Model.Types.WorkspaceLayoutEx">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.op_Implicit(YAT.Model.Types.WorkspaceLayoutEx)~System.Windows.Forms.MdiLayout">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Model.Types.WorkspaceLayoutEx.op_Implicit(System.Windows.Forms.MdiLayout)~YAT.Model.Types.WorkspaceLayoutEx">
+            <summary></summary>
+        </member>
+    </members>
+</doc>

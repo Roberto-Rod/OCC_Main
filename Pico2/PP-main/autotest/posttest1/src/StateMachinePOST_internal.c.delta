@@ -1,0 +1,101 @@
+a30 42
+
+
+
+
+// SCU for the POST test 
+void convertA ( uint16_t val,uint8_t *data  )
+{
+    for ( int i = 0; i< 5 ; i++) 
+    {
+        data[i] = '0'; 
+    }
+    
+    int offset = 4;
+    while ( val > 0 )
+    {
+        data[offset] =  ( val % 10 ) +'0'; 
+        val = val / 10; 
+        offset--;     
+    }  
+}
+ErrorCode_t TX_Write1(uint8_t *data, uint8_t numBytes)
+{
+    
+  uint8_t  message[7];
+  ErrorCode_t result = EC_OK_E;
+     
+  uint16_t value = 0;
+     
+  value = (data[1]<<8)+data[2];
+     
+  convertA( value, &message[2] );
+  //send message on the TX
+  message[0] = data[0] +'0';
+  message[1] ='-';
+
+  result = TX_Write(message, 7); 
+  printf ("  \r");
+    
+   return EC_OK_E; //dummy function just for compilation purposes 
+}
+
+
+a46 1
+    /* SCU do not work from Input signals
+a48 3
+     */
+    int x = 1;  
+    if ( x == 1)
+a107 7
+  
+  // SCU In test just cycle thru the tests
+  if (POST_STATE_MAX <= ++subStateNum)
+  {
+      subStateNum = POST_STATE_00;
+  }
+  
+a172 1
+  /*
+a173 3
+  */
+  printf (" \r");
+  result = TX_Write1(message, 4);
+a255 1
+    /*
+a256 2
+    */
+    result = TX_Write1(message, 4);
+a294 1
+    /*
+a295 2
+    */
+    result = TX_Write1(message, 4);
+a381 1
+  /*
+a382 4
+  */
+  TXResult = TX_Write1(message, 4);
+  
+  
+a426 1
+  /*
+a427 3
+  */
+  result = TX_Write1(message, 4);
+  
+a464 1
+  /*
+a465 2
+  */
+  result = TX_Write1(message, 4);
+a497 1
+  /*
+a498 2
+  */
+  result = TX_Write1(message, 4);
+a548 1
+  /*
+a549 2
+  */
+  result = TX_Write1(message, 4);

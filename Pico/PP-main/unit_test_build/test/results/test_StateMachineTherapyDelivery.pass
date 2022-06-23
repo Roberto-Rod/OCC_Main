@@ -1,0 +1,82 @@
+---
+:source:
+  :path: test/unit_test/managers
+  :file: test_StateMachineTherapyDelivery.c
+:successes:
+- :test: test_InitialiseInternalVariablesAndReturnOk
+  :line: 146
+  :message: ''
+- :test: test_InvalidParameterForDeliveryTherapyStateFunctionThatReurnsAnError
+  :line: 155
+  :message: ''
+- :test: test_TherapyDeliveryStateReturnsInvalidInputParameter
+  :line: 162
+  :message: ''
+- :test: test_TherapyDeliveryOnEntryFromDifferntState
+  :line: 176
+  :message: ''
+- :test: test_TherapyDeliveryDetectLeakAndGoIntoFault
+  :line: 213
+  :message: ''
+- :test: test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsExtInitalise
+  :line: 234
+  :message: ''
+- :test: test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsExtStart
+  :line: 256
+  :message: ''
+- :test: test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsExtNotReady
+  :line: 279
+  :message: ''
+- :test: test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsExtReadExtReadFail
+  :line: 302
+  :message: ''
+- :test: test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsIntInitalise
+  :line: 325
+  :message: ''
+- :test: test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsIntStart
+  :line: 347
+  :message: ''
+- :test: test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsIntNotReady
+  :line: 370
+  :message: ''
+- :test: test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsIntReadIntReadFail
+  :line: 393
+  :message: ''
+- :test: test_TherapyDeliveryDetectExternalTemperatureThreshholdAndEnterNRE
+  :line: 416
+  :message: ''
+- :test: test_TherapyDeliveryDetectInternalTemperatureThreshholdAndEnterNRE
+  :line: 440
+  :message: ''
+- :test: test_TherapyDeliveryDetectsShortButtonPressAndEnablesTheAlertsForTheDeviceStatusCheck
+  :line: 468
+  :message: ''
+- :test: test_TherapyDeliveryDetectLongButtonPressAndEventuallyGoesInShutdown
+  :line: 510
+  :message: ''
+- :test: test_TherapyDeliveryVacuumAtTargetValueDoNotPumpOn
+  :line: 539
+  :message: ''
+- :test: test_TherapyDeliveryVacuumBelowTargetValueThereforeDoPumpOn
+  :line: 574
+  :message: ''
+- :test: test_TherapyDeliveryUpdateTargetVacuumPeriodicallyToSaveBattery
+  :line: 621
+  :message: ''
+- :test: test_TherapyDeliveryFailToActivatePumpAndGoToEitherFaultOrNonRecoverableError
+  :line: 654
+  :message: ''
+- :test: test_TherapyDeliveryDetectHighExternalPressureAndGoIntoFault
+  :line: 721
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 22
+  :passed: 22
+  :failed: 0
+  :ignored: 0
+:stdout:
+- 'Assert raised at sourcePico/managers/StateMachineTherapyDelivery.c[78] on test:
+  aNewState != NULL'
+- ''

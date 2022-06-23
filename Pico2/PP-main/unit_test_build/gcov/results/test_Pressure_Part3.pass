@@ -1,0 +1,62 @@
+---
+:source:
+  :path: test/unit_test/devices
+  :file: test_Pressure_Part3.c
+:successes:
+- :test: test_InitialisePressureSensorsAndCheck
+  :line: 120
+  :message: ''
+- :test: test_InitialisePressureSensorsWithWriteToExtSensorFailAndCheck
+  :line: 136
+  :message: ''
+- :test: test_InitialisePressureSensorsWithWriteToIntSensorFailAndCheck
+  :line: 153
+  :message: ''
+- :test: test_InitialisePressureSensorsWithWriteToIntAndExtSensorsFailAndCheck
+  :line: 171
+  :message: ''
+- :test: test_InitialisePressureSensorsWithReadFromExtSensorFailAndRetryTimeoutAndCheck
+  :line: 189
+  :message: ''
+- :test: test_InitialisePressureSensorsWithReadFromIntSensorFailAndRetryTimeoutAndCheck
+  :line: 205
+  :message: ''
+- :test: test_InitialisePressureSensorsWithReadFromBothSensorsFailAndRetryTimeoutAndCheck
+  :line: 221
+  :message: ''
+- :test: test_InitialisePressureSensorsWithReadNoBootStatusFromExternalSensorsAndRetryTimeoutAndCheck
+  :line: 237
+  :message: ''
+- :test: test_StartSensorsAndCheck
+  :line: 252
+  :message: ''
+- :test: test_StartSensorsWithWriteToExtSensorFailAndCheck
+  :line: 267
+  :message: ''
+- :test: test_StartSensorsWithWriteToIntSensorFailAndCheck
+  :line: 280
+  :message: ''
+- :test: test_StartSensorsWithWriteToBotSensorFailAndCheck
+  :line: 293
+  :message: ''
+- :test: test_GetPressureFromSensorsAndCheck
+  :line: 308
+  :message: ''
+- :test: test_GetPressureFromSensorsFailsAndCheck
+  :line: 350
+  :message: ''
+- :test: test_CalculatePressureDifferenceAndCheck
+  :line: 407
+  :message: ''
+- :test: test_IfPressureSensorIsReadyAndCheck
+  :line: 483
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 16
+  :passed: 16
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

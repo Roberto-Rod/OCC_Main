@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/PicoOnboard/sourcePico/main.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/devices/InternalTemperature.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/devices/PMTimer.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/devices/PerformanceLogger.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/devices/Pump.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/managers/LoggingManager.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/mcc_generated_files/tmr1.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/application/Application.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/managers/StateMachineTherapyDelivery.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/devices/MPPowerControl.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/devices/Battery.c</file>
+            <file>file:/C:/PicoOnboard/sourcePico/mcc_generated_files/mcc.c</file>
+        </group>
+    </open-files>
+</project-private>

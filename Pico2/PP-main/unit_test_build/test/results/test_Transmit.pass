@@ -1,0 +1,28 @@
+---
+:source:
+  :path: test/unit_test/devices
+  :file: test_Transmit.c
+:successes:
+- :test: test_InitDoesNothing
+  :line: 33
+  :message: ''
+- :test: test_TransmitDoesRangeCheckingOnDataPointer
+  :line: 40
+  :message: ''
+- :test: test_TransmitDoesRangeCheckingonDataSize
+  :line: 47
+  :message: ''
+- :test: test_TransmitCallsEUSARTWriteForEachCharacter
+  :line: 56
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 4
+  :passed: 4
+  :failed: 0
+  :ignored: 0
+:stdout:
+- 'Assert raised at sourcePico/devices/Transmit.c[49] on test: data != NULL'
+- 'Assert raised at sourcePico/devices/Transmit.c[50] on test: numBytes > 0'
+- ''

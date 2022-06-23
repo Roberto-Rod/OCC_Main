@@ -1,0 +1,1170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Configuration>
+  <Configurator>
+    <Name dnOrder="0" value="PIC32MZ2048EFH100"/>
+    <Processor dnOrder="1" value="PIC32MZ1024EFH100"/>
+    <Harmony dnOrder="2" path="../../../.."/>
+    <Folder_Name dnOrder="3" value=""/>
+    <Manifest dnOrder="4">
+      <Files dnOrder="0">
+        <File dnOrder="0">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">drv_usbhs.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">61FD4E5A1D63F33B9D3CE91856FFC2F8</GeneratedChecksum>
+          <UserChecksum dnOrder="6">61FD4E5A1D63F33B9D3CE91856FFC2F8</UserChecksum>
+        </File>
+        <File dnOrder="1">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">drv_usbhs_device.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">4FC9C8844840FA41A8E98C1BA496A670</GeneratedChecksum>
+          <UserChecksum dnOrder="6">1E6A7D3B04A51A3F5A955081DA2FB1C4</UserChecksum>
+        </File>
+        <File dnOrder="2">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">exceptions.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">322976BB28859B437B0D6D3B8E2AFE42</GeneratedChecksum>
+          <UserChecksum dnOrder="6">B915E0456AB307C727C1B2FB90A7DA27</UserChecksum>
+        </File>
+        <File dnOrder="3">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">initialization.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">9E4B5631DA2469F40DC34CF72092F545</GeneratedChecksum>
+          <UserChecksum dnOrder="6">1547EA916F7AFDDCF88C7908A9409106</UserChecksum>
+        </File>
+        <File dnOrder="4">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">interrupts.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">41E1E3BCDA935CC443CC354C7DBBFDEB</GeneratedChecksum>
+          <UserChecksum dnOrder="6">30931A584C507BDADF5FD442F2E04188</UserChecksum>
+        </File>
+        <File dnOrder="5">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">main.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3"/>
+          <PhysicalPath dnOrder="4">/../../</PhysicalPath>
+          <GeneratedChecksum dnOrder="5"/>
+          <UserChecksum dnOrder="6"/>
+        </File>
+        <File dnOrder="6">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">pdab.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3"/>
+          <PhysicalPath dnOrder="4">/../../</PhysicalPath>
+          <GeneratedChecksum dnOrder="5"/>
+          <UserChecksum dnOrder="6"/>
+        </File>
+        <File dnOrder="7">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_adchs.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/adchs/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/adchs/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">F9B51DF6A7C63F0FEFA166EC4089ECD3</GeneratedChecksum>
+          <UserChecksum dnOrder="6">F9B51DF6A7C63F0FEFA166EC4089ECD3</UserChecksum>
+        </File>
+        <File dnOrder="8">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_cache.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/cache/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/cache/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">65A7BD3CB0B8FE05768B2EC9A503C3AB</GeneratedChecksum>
+          <UserChecksum dnOrder="6">65A7BD3CB0B8FE05768B2EC9A503C3AB</UserChecksum>
+        </File>
+        <File dnOrder="9">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_cache_local.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/cache/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/cache/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">4FD2B20C75E8ABCE5AFD77297FA520F4</GeneratedChecksum>
+          <UserChecksum dnOrder="6">4FD2B20C75E8ABCE5AFD77297FA520F4</UserChecksum>
+        </File>
+        <File dnOrder="10">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_cache_pic32mz.S</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/cache/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/cache/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">0DA10C8889278A796D0EE4C6096B57C3</GeneratedChecksum>
+          <UserChecksum dnOrder="6">0DA10C8889278A796D0EE4C6096B57C3</UserChecksum>
+        </File>
+        <File dnOrder="11">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_clk.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/clk/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/clk/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">F65E6D200C4EAEB66F74826442606506</GeneratedChecksum>
+          <UserChecksum dnOrder="6">F65E6D200C4EAEB66F74826442606506</UserChecksum>
+        </File>
+        <File dnOrder="12">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_cmp.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/cmp/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/cmp/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">87F1B760EB725E39655842C5B2E9CCC4</GeneratedChecksum>
+          <UserChecksum dnOrder="6">A6467D6457737FC4E01DC34B82173679</UserChecksum>
+        </File>
+        <File dnOrder="13">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_coretimer.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/coretimer/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/coretimer/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">2FEFEA0D4E94F5A5F3D76BAEC3D602E5</GeneratedChecksum>
+          <UserChecksum dnOrder="6">2FEFEA0D4E94F5A5F3D76BAEC3D602E5</UserChecksum>
+        </File>
+        <File dnOrder="14">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_cvr.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/cvr/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/cvr/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">14C1833599C45E35C2C5254C9A30321E</GeneratedChecksum>
+          <UserChecksum dnOrder="6">14C1833599C45E35C2C5254C9A30321E</UserChecksum>
+        </File>
+        <File dnOrder="15">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_dmac.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/dmac/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/dmac/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">65792DE9F0330E32ACC4EB5F1C1C7AFA</GeneratedChecksum>
+          <UserChecksum dnOrder="6">17E9FCCB852F9681345F6D9D60402989</UserChecksum>
+        </File>
+        <File dnOrder="16">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_evic.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/evic/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/evic/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">D1FFCD81B2E63A5B7A3A61BD87077AEF</GeneratedChecksum>
+          <UserChecksum dnOrder="6">D1FFCD81B2E63A5B7A3A61BD87077AEF</UserChecksum>
+        </File>
+        <File dnOrder="17">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_gpio.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/gpio/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/gpio/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">1D8775CA360B457EC6D6B6E9AAD74225</GeneratedChecksum>
+          <UserChecksum dnOrder="6">B76BDCDA218A35B647B3C463840C02EF</UserChecksum>
+        </File>
+        <File dnOrder="18">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_i2c4.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/i2c/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/i2c/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">4B1DDE5092283A7C655746A718596885</GeneratedChecksum>
+          <UserChecksum dnOrder="6">4B1DDE5092283A7C655746A718596885</UserChecksum>
+        </File>
+        <File dnOrder="19">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_pmp.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/pmp/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/pmp/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">1D65B95E5E1A2ECCFEB86E3C44F955DF</GeneratedChecksum>
+          <UserChecksum dnOrder="6">1D65B95E5E1A2ECCFEB86E3C44F955DF</UserChecksum>
+        </File>
+        <File dnOrder="20">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_sqi1.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/sqi/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/sqi/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">6FFB55449E41A0AC76CB60BB5C60B24E</GeneratedChecksum>
+          <UserChecksum dnOrder="6">6FFB55449E41A0AC76CB60BB5C60B24E</UserChecksum>
+        </File>
+        <File dnOrder="21">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_tmr1.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/tmr1/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/tmr1/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">80F757BBA9D9654284CCE2F56973ADF3</GeneratedChecksum>
+          <UserChecksum dnOrder="6">80F757BBA9D9654284CCE2F56973ADF3</UserChecksum>
+        </File>
+        <File dnOrder="22">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_tmr2.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/tmr/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/tmr/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">08C6CA719F66B4C73ADF9F460473AC99</GeneratedChecksum>
+          <UserChecksum dnOrder="6">08C6CA719F66B4C73ADF9F460473AC99</UserChecksum>
+        </File>
+        <File dnOrder="23">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_tmr3.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/tmr/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/tmr/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">8A6D4D52912A479A450E26F0804FF126</GeneratedChecksum>
+          <UserChecksum dnOrder="6">8A6D4D52912A479A450E26F0804FF126</UserChecksum>
+        </File>
+        <File dnOrder="24">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_tmr4.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/tmr/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/tmr/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">15A8C11F975B736CC6619DFA72CC9DB1</GeneratedChecksum>
+          <UserChecksum dnOrder="6">15A8C11F975B736CC6619DFA72CC9DB1</UserChecksum>
+        </File>
+        <File dnOrder="25">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_uart1.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/uart/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/uart/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">140EB7A94C5A2EA7BE6B6FA645F8CA4C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">06009D79C1DDB1026AB01B618F4F4D6B</UserChecksum>
+        </File>
+        <File dnOrder="26">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_uart3.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/uart/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/uart/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">A20AA33B8505589D79AE352C9E3087D3</GeneratedChecksum>
+          <UserChecksum dnOrder="6">A8314027B2781675A01B15EE3B3FB5F1</UserChecksum>
+        </File>
+        <File dnOrder="27">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">plib_uart4.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/uart/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/uart/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">B79CB5AB9FC2046E7AED62FAE7CC8577</GeneratedChecksum>
+          <UserChecksum dnOrder="6">B79CB5AB9FC2046E7AED62FAE7CC8577</UserChecksum>
+        </File>
+        <File dnOrder="28">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">sys_cache.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/cache/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/cache/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">430ED47B023F040A26D8BBB22FCA78E5</GeneratedChecksum>
+          <UserChecksum dnOrder="6">430ED47B023F040A26D8BBB22FCA78E5</UserChecksum>
+        </File>
+        <File dnOrder="29">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">sys_dma.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/dma/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/dma/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">2E02308556447B0510575953A9E9DF6E</GeneratedChecksum>
+          <UserChecksum dnOrder="6">2E02308556447B0510575953A9E9DF6E</UserChecksum>
+        </File>
+        <File dnOrder="30">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">sys_int.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/int/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/int/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">640A4B35B8CDB53BD8EA5077D81386BE</GeneratedChecksum>
+          <UserChecksum dnOrder="6">640A4B35B8CDB53BD8EA5077D81386BE</UserChecksum>
+        </File>
+        <File dnOrder="31">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">sys_time.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/time/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/time/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">70DAE413C209782D51F61D7C896593FB</GeneratedChecksum>
+          <UserChecksum dnOrder="6">70DAE413C209782D51F61D7C896593FB</UserChecksum>
+        </File>
+        <File dnOrder="32">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">tasks.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">65B287FCC71DD46854A18497FD2448F7</GeneratedChecksum>
+          <UserChecksum dnOrder="6">A3F84B1FD21D04A832797EDB580DBA20</UserChecksum>
+        </File>
+        <File dnOrder="33">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">usb_device.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">BCCEF5B801FFD0CF22D0B454D2F25F1F</GeneratedChecksum>
+          <UserChecksum dnOrder="6">BCCEF5B801FFD0CF22D0B454D2F25F1F</UserChecksum>
+        </File>
+        <File dnOrder="34">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">usb_device_endpoint_functions.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">E81965F9AF1D7FBAC5D322A8A15C0E85</GeneratedChecksum>
+          <UserChecksum dnOrder="6">E81965F9AF1D7FBAC5D322A8A15C0E85</UserChecksum>
+        </File>
+        <File dnOrder="35">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">usb_device_init_data.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">D8F37181FC056FC9159A80CDB584504B</GeneratedChecksum>
+          <UserChecksum dnOrder="6">A8DEEF4182F75BF29B006CD9043D6371</UserChecksum>
+        </File>
+        <File dnOrder="36">
+          <Type dnOrder="0">SOURCE</Type>
+          <Name dnOrder="1">xc32_monitor.c</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/stdio/</LogicalPath>
+          <PhysicalPath dnOrder="4">/stdio/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">A9F55E7CB78F22D9000CA03DC635973C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">A9F55E7CB78F22D9000CA03DC635973C</UserChecksum>
+        </File>
+        <File dnOrder="37">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">configuration.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">030083F320CF00DA46762A36DE638CCB</GeneratedChecksum>
+          <UserChecksum dnOrder="6">030083F320CF00DA46762A36DE638CCB</UserChecksum>
+        </File>
+        <File dnOrder="38">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">definitions.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">7B63FD54BAF0BDAAAC25EFCB9E52EF9C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">3634563E97B77A81D91040D6C28CE271</UserChecksum>
+        </File>
+        <File dnOrder="39">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">device.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">packs/PIC32MZ1024EFH100_DFP/</LogicalPath>
+          <PhysicalPath dnOrder="4">/../../packs/PIC32MZ1024EFH100_DFP/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">5D5C52527AB1435153DB9B50ADE6B79D</GeneratedChecksum>
+          <UserChecksum dnOrder="6">5D5C52527AB1435153DB9B50ADE6B79D</UserChecksum>
+        </File>
+        <File dnOrder="40">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">device_cache.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">1CA1C2C02834207DCB4B0E3C00338FCC</GeneratedChecksum>
+          <UserChecksum dnOrder="6">1CA1C2C02834207DCB4B0E3C00338FCC</UserChecksum>
+        </File>
+        <File dnOrder="41">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">driver.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">1D2094DFA60F847FFD4E8153B6E78027</GeneratedChecksum>
+          <UserChecksum dnOrder="6">1D2094DFA60F847FFD4E8153B6E78027</UserChecksum>
+        </File>
+        <File dnOrder="42">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">driver_common.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">CC7DFCC51CD25171A3E400E18969354F</GeneratedChecksum>
+          <UserChecksum dnOrder="6">CC7DFCC51CD25171A3E400E18969354F</UserChecksum>
+        </File>
+        <File dnOrder="43">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">drv_usb.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">38148410A4C123F6D3C8D2A5684C2D2D</GeneratedChecksum>
+          <UserChecksum dnOrder="6">DF147276AE56CA76E3E9BEB8447620AB</UserChecksum>
+        </File>
+        <File dnOrder="44">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">drv_usb_external_dependencies.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">5E2621860496A1FD0821B43178B3C75A</GeneratedChecksum>
+          <UserChecksum dnOrder="6">5E2621860496A1FD0821B43178B3C75A</UserChecksum>
+        </File>
+        <File dnOrder="45">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">drv_usbhs.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">28999752D72713FD357EC84F99871D93</GeneratedChecksum>
+          <UserChecksum dnOrder="6">111CA749DD3C4A12029D163277253BBF</UserChecksum>
+        </File>
+        <File dnOrder="46">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">drv_usbhs_local.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">3B3FD1E40A9CA581FF4D113058B1E46C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">3B3FD1E40A9CA581FF4D113058B1E46C</UserChecksum>
+        </File>
+        <File dnOrder="47">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">drv_usbhs_variant_mapping.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">9E342EE43594612EE8D5ED88AB99353D</GeneratedChecksum>
+          <UserChecksum dnOrder="6">9E342EE43594612EE8D5ED88AB99353D</UserChecksum>
+        </File>
+        <File dnOrder="48">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">pdab.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3"/>
+          <PhysicalPath dnOrder="4">/../../</PhysicalPath>
+          <GeneratedChecksum dnOrder="5"/>
+          <UserChecksum dnOrder="6"/>
+        </File>
+        <File dnOrder="49">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_adchs.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/adchs/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/adchs/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">D3E788D4FA49BC8A0AF84A9363C50ABC</GeneratedChecksum>
+          <UserChecksum dnOrder="6">D3E788D4FA49BC8A0AF84A9363C50ABC</UserChecksum>
+        </File>
+        <File dnOrder="50">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_adchs_common.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/adchs/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/adchs/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">8B9CC19AAA7FCCE989C0D0CF678E7AD3</GeneratedChecksum>
+          <UserChecksum dnOrder="6">8B9CC19AAA7FCCE989C0D0CF678E7AD3</UserChecksum>
+        </File>
+        <File dnOrder="51">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_cache.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/cache/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/cache/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">24BC8C10232FA4332F1DE3BB31302AE6</GeneratedChecksum>
+          <UserChecksum dnOrder="6">24BC8C10232FA4332F1DE3BB31302AE6</UserChecksum>
+        </File>
+        <File dnOrder="52">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_cache_pic32mz.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/cache/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/cache/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">3D2558D7758EF020BBF792820203C0A2</GeneratedChecksum>
+          <UserChecksum dnOrder="6">3D2558D7758EF020BBF792820203C0A2</UserChecksum>
+        </File>
+        <File dnOrder="53">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_clk.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/clk/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/clk/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">7066CC390335CF75126E2A50C46E3BDD</GeneratedChecksum>
+          <UserChecksum dnOrder="6">7066CC390335CF75126E2A50C46E3BDD</UserChecksum>
+        </File>
+        <File dnOrder="54">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_cmp.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/cmp/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/cmp/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">80B540CC775A24B9715E449533AB2B00</GeneratedChecksum>
+          <UserChecksum dnOrder="6">80B540CC775A24B9715E449533AB2B00</UserChecksum>
+        </File>
+        <File dnOrder="55">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_coretimer.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/coretimer/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/coretimer/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">77E2C83A700CD1F724CFD90ED3AA2B71</GeneratedChecksum>
+          <UserChecksum dnOrder="6">77E2C83A700CD1F724CFD90ED3AA2B71</UserChecksum>
+        </File>
+        <File dnOrder="56">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_cvr.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/cvr/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/cvr/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">519595A71797770B586ED17BE1FE4584</GeneratedChecksum>
+          <UserChecksum dnOrder="6">519595A71797770B586ED17BE1FE4584</UserChecksum>
+        </File>
+        <File dnOrder="57">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_dmac.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/dmac/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/dmac/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">010E7C6872724F56A94D25C46D528ECA</GeneratedChecksum>
+          <UserChecksum dnOrder="6">0DFE789DE2FE900C6A39FDF7EBC06439</UserChecksum>
+        </File>
+        <File dnOrder="58">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_evic.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/evic/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/evic/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">AC5DD3DAA18C2111288938F71CC73E0A</GeneratedChecksum>
+          <UserChecksum dnOrder="6">AC5DD3DAA18C2111288938F71CC73E0A</UserChecksum>
+        </File>
+        <File dnOrder="59">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_gpio.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/gpio/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/gpio/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">F84A85E5AEC280365D0823DDBEC50E2D</GeneratedChecksum>
+          <UserChecksum dnOrder="6">F84A85E5AEC280365D0823DDBEC50E2D</UserChecksum>
+        </File>
+        <File dnOrder="60">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_i2c4.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/i2c/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/i2c/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">7858D5B8AB479D9C3B07CFFA882B8423</GeneratedChecksum>
+          <UserChecksum dnOrder="6">7858D5B8AB479D9C3B07CFFA882B8423</UserChecksum>
+        </File>
+        <File dnOrder="61">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_i2c_master.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/i2c/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/i2c/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">0CE7018D4B951DF14C45D3AC2E8F9B19</GeneratedChecksum>
+          <UserChecksum dnOrder="6">0CE7018D4B951DF14C45D3AC2E8F9B19</UserChecksum>
+        </File>
+        <File dnOrder="62">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_pmp.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/pmp/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/pmp/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">EDE43D716DC3479694CA8B9D4962DE0B</GeneratedChecksum>
+          <UserChecksum dnOrder="6">EDE43D716DC3479694CA8B9D4962DE0B</UserChecksum>
+        </File>
+        <File dnOrder="63">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_sqi1.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/sqi/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/sqi/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">83A29BB1714DD4AF71B7176C4A487262</GeneratedChecksum>
+          <UserChecksum dnOrder="6">83A29BB1714DD4AF71B7176C4A487262</UserChecksum>
+        </File>
+        <File dnOrder="64">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_sqi_common.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/sqi/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/sqi/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">BA2AAEA19E581F59C1E78E73982F7C78</GeneratedChecksum>
+          <UserChecksum dnOrder="6">BA2AAEA19E581F59C1E78E73982F7C78</UserChecksum>
+        </File>
+        <File dnOrder="65">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_tmr1.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/tmr1/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/tmr1/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">32D7539D9231F3C159ABECE91A0281EA</GeneratedChecksum>
+          <UserChecksum dnOrder="6">32D7539D9231F3C159ABECE91A0281EA</UserChecksum>
+        </File>
+        <File dnOrder="66">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_tmr1_common.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/tmr1/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/tmr1/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">69E7C8CDAB1B32838331EE261170CEA4</GeneratedChecksum>
+          <UserChecksum dnOrder="6">69E7C8CDAB1B32838331EE261170CEA4</UserChecksum>
+        </File>
+        <File dnOrder="67">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_tmr2.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/tmr/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/tmr/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">612994C7F3C27F2CFA2621C1F65D4068</GeneratedChecksum>
+          <UserChecksum dnOrder="6">612994C7F3C27F2CFA2621C1F65D4068</UserChecksum>
+        </File>
+        <File dnOrder="68">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_tmr3.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/tmr/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/tmr/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">AB441E032FD7B269DB6B2AA5661A890C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">AB441E032FD7B269DB6B2AA5661A890C</UserChecksum>
+        </File>
+        <File dnOrder="69">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_tmr4.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/tmr/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/tmr/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">1309AAC9EB67B9416B65FBFD32BE3B59</GeneratedChecksum>
+          <UserChecksum dnOrder="6">1309AAC9EB67B9416B65FBFD32BE3B59</UserChecksum>
+        </File>
+        <File dnOrder="70">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_tmr_common.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/tmr/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/tmr/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">D948F2CE092CAB556EF299D3CCD83A55</GeneratedChecksum>
+          <UserChecksum dnOrder="6">D948F2CE092CAB556EF299D3CCD83A55</UserChecksum>
+        </File>
+        <File dnOrder="71">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_uart1.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/uart/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/uart/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">C96A0261FB3AEFE719475D935F7A6CEE</GeneratedChecksum>
+          <UserChecksum dnOrder="6">C96A0261FB3AEFE719475D935F7A6CEE</UserChecksum>
+        </File>
+        <File dnOrder="72">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_uart3.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/uart/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/uart/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">CBDE51C4D7967B05C699F0206DE84C9B</GeneratedChecksum>
+          <UserChecksum dnOrder="6">CBDE51C4D7967B05C699F0206DE84C9B</UserChecksum>
+        </File>
+        <File dnOrder="73">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_uart4.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/uart/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/uart/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">936132D798A12B8082FFA5A1026CB93F</GeneratedChecksum>
+          <UserChecksum dnOrder="6">936132D798A12B8082FFA5A1026CB93F</UserChecksum>
+        </File>
+        <File dnOrder="74">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_uart_common.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/peripheral/uart/</LogicalPath>
+          <PhysicalPath dnOrder="4">/peripheral/uart/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">903175300C64256E267D1DB8F91D7861</GeneratedChecksum>
+          <UserChecksum dnOrder="6">903175300C64256E267D1DB8F91D7861</UserChecksum>
+        </File>
+        <File dnOrder="75">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_usbhs.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">CD26F27EDC181E4AAB47A522AD24EA5F</GeneratedChecksum>
+          <UserChecksum dnOrder="6">CD26F27EDC181E4AAB47A522AD24EA5F</UserChecksum>
+        </File>
+        <File dnOrder="76">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">plib_usbhs_header.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">696059AC9F4DC7CE9282F22900F397C2</GeneratedChecksum>
+          <UserChecksum dnOrder="6">696059AC9F4DC7CE9282F22900F397C2</UserChecksum>
+        </File>
+        <File dnOrder="77">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">sys_cache.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/cache/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/cache/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">AFAAF7D896D57569CA4CF73BB3339481</GeneratedChecksum>
+          <UserChecksum dnOrder="6">AFAAF7D896D57569CA4CF73BB3339481</UserChecksum>
+        </File>
+        <File dnOrder="78">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">sys_dma.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/dma/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/dma/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">4A7FFAD7ACF8378CEC16FBF2BC2368BE</GeneratedChecksum>
+          <UserChecksum dnOrder="6">4A7FFAD7ACF8378CEC16FBF2BC2368BE</UserChecksum>
+        </File>
+        <File dnOrder="79">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">sys_dma_mapping.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/dma/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/dma/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">FF2FADFBBFB94FF4B4A57085D719E7C8</GeneratedChecksum>
+          <UserChecksum dnOrder="6">FF2FADFBBFB94FF4B4A57085D719E7C8</UserChecksum>
+        </File>
+        <File dnOrder="80">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">sys_int.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/int/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/int/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">47330C2D8F204B2B69F8A86240A564B6</GeneratedChecksum>
+          <UserChecksum dnOrder="6">47330C2D8F204B2B69F8A86240A564B6</UserChecksum>
+        </File>
+        <File dnOrder="81">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">sys_int_mapping.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/int/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/int/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">FC7B55936A09E0CA1395AE4DFB1A188F</GeneratedChecksum>
+          <UserChecksum dnOrder="6">FC7B55936A09E0CA1395AE4DFB1A188F</UserChecksum>
+        </File>
+        <File dnOrder="82">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">sys_ports.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/ports/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/ports/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">600EE4F7D062D59DF6A0E8E241B9FD35</GeneratedChecksum>
+          <UserChecksum dnOrder="6">600EE4F7D062D59DF6A0E8E241B9FD35</UserChecksum>
+        </File>
+        <File dnOrder="83">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">sys_ports_mapping.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/ports/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/ports/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">BC6E1661BF4CAC21B70F5F56A0D7BBDB</GeneratedChecksum>
+          <UserChecksum dnOrder="6">BC6E1661BF4CAC21B70F5F56A0D7BBDB</UserChecksum>
+        </File>
+        <File dnOrder="84">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">sys_time.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/time/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/time/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">5B1C0201624F17531B457421E59F38CD</GeneratedChecksum>
+          <UserChecksum dnOrder="6">5B1C0201624F17531B457421E59F38CD</UserChecksum>
+        </File>
+        <File dnOrder="85">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">sys_time_definitions.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/time/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/time/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">F8165EAB8A02643100386E92CD7EB3C6</GeneratedChecksum>
+          <UserChecksum dnOrder="6">F8165EAB8A02643100386E92CD7EB3C6</UserChecksum>
+        </File>
+        <File dnOrder="86">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">sys_time_local.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/time/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/time/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">62F39464265EC34979649F761FB4FE57</GeneratedChecksum>
+          <UserChecksum dnOrder="6">62F39464265EC34979649F761FB4FE57</UserChecksum>
+        </File>
+        <File dnOrder="87">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">system.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">BE95B4F134C5C929787B9DA6FDBF3501</GeneratedChecksum>
+          <UserChecksum dnOrder="6">BE95B4F134C5C929787B9DA6FDBF3501</UserChecksum>
+        </File>
+        <File dnOrder="88">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">system_common.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">C3F5136D520DAC4416512EBFCCA023C3</GeneratedChecksum>
+          <UserChecksum dnOrder="6">C3F5136D520DAC4416512EBFCCA023C3</UserChecksum>
+        </File>
+        <File dnOrder="89">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">system_module.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/system/</LogicalPath>
+          <PhysicalPath dnOrder="4">/system/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">1C75A8A6B60598A2FD0D533F57839B72</GeneratedChecksum>
+          <UserChecksum dnOrder="6">1C75A8A6B60598A2FD0D533F57839B72</UserChecksum>
+        </File>
+        <File dnOrder="90">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">toolchain_specifics.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">9D344CAF1743381AA0EA1641ABCDE373</GeneratedChecksum>
+          <UserChecksum dnOrder="6">9D344CAF1743381AA0EA1641ABCDE373</UserChecksum>
+        </File>
+        <File dnOrder="91">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_chapter_9.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">39659CDE2CC726544BD68544FB7EF4B2</GeneratedChecksum>
+          <UserChecksum dnOrder="6">39659CDE2CC726544BD68544FB7EF4B2</UserChecksum>
+        </File>
+        <File dnOrder="92">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_common.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">2AAF1AB3341FB7F74004B6C7EFF8929C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">2AAF1AB3341FB7F74004B6C7EFF8929C</UserChecksum>
+        </File>
+        <File dnOrder="93">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_device.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">ADA8E23F9930D84A8E1124A83E35CC3A</GeneratedChecksum>
+          <UserChecksum dnOrder="6">ADA8E23F9930D84A8E1124A83E35CC3A</UserChecksum>
+        </File>
+        <File dnOrder="94">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_device_function_driver.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">626BFDDD140B808E90C9DD2E4A27421E</GeneratedChecksum>
+          <UserChecksum dnOrder="6">626BFDDD140B808E90C9DD2E4A27421E</UserChecksum>
+        </File>
+        <File dnOrder="95">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_device_local.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">9B727D396CAEBD5FCB12F1F8264C4FD9</GeneratedChecksum>
+          <UserChecksum dnOrder="6">9B727D396CAEBD5FCB12F1F8264C4FD9</UserChecksum>
+        </File>
+        <File dnOrder="96">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_device_mapping.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">C8D4A1D9092FD842506F565CE9B8C265</GeneratedChecksum>
+          <UserChecksum dnOrder="6">C8D4A1D9092FD842506F565CE9B8C265</UserChecksum>
+        </File>
+        <File dnOrder="97">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_external_dependencies.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">5AAF69767C8CBB1A9952695AAF110C43</GeneratedChecksum>
+          <UserChecksum dnOrder="6">6C4A6859DB16EA8C046F995C6B6C1C6F</UserChecksum>
+        </File>
+        <File dnOrder="98">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_host.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">F127C67A3E33E5788C0F057F648EE57C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">F127C67A3E33E5788C0F057F648EE57C</UserChecksum>
+        </File>
+        <File dnOrder="99">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_host_client_driver.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">6EBC5E4D06FC96A02ADF3B7416957DD6</GeneratedChecksum>
+          <UserChecksum dnOrder="6">6EBC5E4D06FC96A02ADF3B7416957DD6</UserChecksum>
+        </File>
+        <File dnOrder="100">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_host_hub_interface.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">757C8484C955543C893361992D11FD4C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">757C8484C955543C893361992D11FD4C</UserChecksum>
+        </File>
+        <File dnOrder="101">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usb_hub.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/usb/</LogicalPath>
+          <PhysicalPath dnOrder="4">/usb/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">3E3CC6BC9128194CB4D19F29C57E312B</GeneratedChecksum>
+          <UserChecksum dnOrder="6">3E3CC6BC9128194CB4D19F29C57E312B</UserChecksum>
+        </File>
+        <File dnOrder="102">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_ClockResetControl_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">92EB24A8BD2D772947C0BF8AC050833F</GeneratedChecksum>
+          <UserChecksum dnOrder="6">92EB24A8BD2D772947C0BF8AC050833F</UserChecksum>
+        </File>
+        <File dnOrder="103">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_ClockResetControl_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">DE4F2288F390CFA9881DE462794F0DDA</GeneratedChecksum>
+          <UserChecksum dnOrder="6">DE4F2288F390CFA9881DE462794F0DDA</UserChecksum>
+        </File>
+        <File dnOrder="104">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_EP0Status_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">C633386FC9C5872623EA1EFBAB764442</GeneratedChecksum>
+          <UserChecksum dnOrder="6">C633386FC9C5872623EA1EFBAB764442</UserChecksum>
+        </File>
+        <File dnOrder="105">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_EP0Status_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">D3CA06CFFAF0BAED492DB71AC775EEBD</GeneratedChecksum>
+          <UserChecksum dnOrder="6">D3CA06CFFAF0BAED492DB71AC775EEBD</UserChecksum>
+        </File>
+        <File dnOrder="106">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_EndpointFIFO_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">D1DA501EF7BAB24A2CEADE3CBD29AEB6</GeneratedChecksum>
+          <UserChecksum dnOrder="6">D1DA501EF7BAB24A2CEADE3CBD29AEB6</UserChecksum>
+        </File>
+        <File dnOrder="107">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_EndpointFIFO_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">4A752D8534E86F7FE62082A735AD041D</GeneratedChecksum>
+          <UserChecksum dnOrder="6">4A752D8534E86F7FE62082A735AD041D</UserChecksum>
+        </File>
+        <File dnOrder="108">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_EndpointOperations_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">78FB74FDBAB09F28AD644ED2959752A2</GeneratedChecksum>
+          <UserChecksum dnOrder="6">78FB74FDBAB09F28AD644ED2959752A2</UserChecksum>
+        </File>
+        <File dnOrder="109">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_EndpointOperations_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">381AB7453B25DF9AB7A16A93704FEBC8</GeneratedChecksum>
+          <UserChecksum dnOrder="6">381AB7453B25DF9AB7A16A93704FEBC8</UserChecksum>
+        </File>
+        <File dnOrder="110">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_HighSpeedSupport_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">456E97A1CFF4C0C132CC9FB17FA86A54</GeneratedChecksum>
+          <UserChecksum dnOrder="6">456E97A1CFF4C0C132CC9FB17FA86A54</UserChecksum>
+        </File>
+        <File dnOrder="111">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_HighSpeedSupport_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">9B6843BEE1C3DE488EFA017EF03E239E</GeneratedChecksum>
+          <UserChecksum dnOrder="6">9B6843BEE1C3DE488EFA017EF03E239E</UserChecksum>
+        </File>
+        <File dnOrder="112">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_Interrupts_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">A7B4C37BC9B019F1EF0D638AE3B5F751</GeneratedChecksum>
+          <UserChecksum dnOrder="6">A7B4C37BC9B019F1EF0D638AE3B5F751</UserChecksum>
+        </File>
+        <File dnOrder="113">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_Interrupts_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">F64EC7A0E28E413630A114E4A2BD81EE</GeneratedChecksum>
+          <UserChecksum dnOrder="6">F64EC7A0E28E413630A114E4A2BD81EE</UserChecksum>
+        </File>
+        <File dnOrder="114">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_ModuleControl_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">6B89CE47C098F2F2C08D7FD6269CF8A2</GeneratedChecksum>
+          <UserChecksum dnOrder="6">6B89CE47C098F2F2C08D7FD6269CF8A2</UserChecksum>
+        </File>
+        <File dnOrder="115">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_ModuleControl_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">5C0545CC006D8D8F43B2674F99AF3D8F</GeneratedChecksum>
+          <UserChecksum dnOrder="6">5C0545CC006D8D8F43B2674F99AF3D8F</UserChecksum>
+        </File>
+        <File dnOrder="116">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_RxEPStatus_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">4C53000458C43B6AA3D342A5C0E19D98</GeneratedChecksum>
+          <UserChecksum dnOrder="6">4C53000458C43B6AA3D342A5C0E19D98</UserChecksum>
+        </File>
+        <File dnOrder="117">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_RxEPStatus_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">80935F65B5AA43F175AE93EDB0429F0E</GeneratedChecksum>
+          <UserChecksum dnOrder="6">80935F65B5AA43F175AE93EDB0429F0E</UserChecksum>
+        </File>
+        <File dnOrder="118">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_SoftReset_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">6EBA0CA23919D6861098B126EE5BB68F</GeneratedChecksum>
+          <UserChecksum dnOrder="6">6EBA0CA23919D6861098B126EE5BB68F</UserChecksum>
+        </File>
+        <File dnOrder="119">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_SoftReset_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">958C517D7A3A0DADAC6EAA0151016948</GeneratedChecksum>
+          <UserChecksum dnOrder="6">958C517D7A3A0DADAC6EAA0151016948</UserChecksum>
+        </File>
+        <File dnOrder="120">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_TxEPStatus_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">DD22742221B2FFC5CF75A5FE70050337</GeneratedChecksum>
+          <UserChecksum dnOrder="6">DD22742221B2FFC5CF75A5FE70050337</UserChecksum>
+        </File>
+        <File dnOrder="121">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_TxEPStatus_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">5A0C7E357552842059C217766C2DEB25</GeneratedChecksum>
+          <UserChecksum dnOrder="6">5A0C7E357552842059C217766C2DEB25</UserChecksum>
+        </File>
+        <File dnOrder="122">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_USBIDControl_Default.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">75C41D5914D078AAA731F9BA9D07E88C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">75C41D5914D078AAA731F9BA9D07E88C</UserChecksum>
+        </File>
+        <File dnOrder="123">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_USBIDControl_Unsupported.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">AF999B951C57AD5D333E1260532C88E2</GeneratedChecksum>
+          <UserChecksum dnOrder="6">AF999B951C57AD5D333E1260532C88E2</UserChecksum>
+        </File>
+        <File dnOrder="124">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_registers.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">A0803FFCE7DA932883C0B89AD48FA04C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">A0803FFCE7DA932883C0B89AD48FA04C</UserChecksum>
+        </File>
+        <File dnOrder="125">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">usbhs_registers.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/driver/usb/usbhs/src/templates</LogicalPath>
+          <PhysicalPath dnOrder="4">/driver/usb/usbhs/src/templates/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5">A0803FFCE7DA932883C0B89AD48FA04C</GeneratedChecksum>
+          <UserChecksum dnOrder="6">A0803FFCE7DA932883C0B89AD48FA04C</UserChecksum>
+        </File>
+        <File dnOrder="126">
+          <Type dnOrder="0">HEADER</Type>
+          <Name dnOrder="1">user.h</Name>
+          <Security dnOrder="2">NON_SECURE</Security>
+          <LogicalPath dnOrder="3">config/PIC32MZ2048EFH100/</LogicalPath>
+          <PhysicalPath dnOrder="4">/</PhysicalPath>
+          <GeneratedChecksum dnOrder="5"/>
+          <UserChecksum dnOrder="6"/>
+        </File>
+      </Files>
+      <Settings dnOrder="1">
+        <Setting append="true" category="C32" delimiter=";" dnOrder="0" key="extra-include-directories" security="NON_SECURE" value="../src;../src/config/PIC32MZ2048EFH100;../src/packs/PIC32MZ1024EFH100_DFP;"/>
+        <Setting category="C32-LD" dnOrder="1" key="heap-size" security="NON_SECURE" value="512"/>
+        <Setting category="C32-LD" dnOrder="2" key="no-device-startup-code" security="NON_SECURE" value="true"/>
+        <Setting append="true" category="C32-LD" delimiter=";" dnOrder="3" key="preprocessor-macros" security="NON_SECURE" value=""/>
+      </Settings>
+    </Manifest>
+    <Settings dnOrder="5">
+      <Setting dnOrder="0" key="CMSISPath" value=".\dev_packs\arm\CMSIS\5.6.0"/>
+      <Setting dnOrder="1" key="DFPPath" value=".\dev_packs\Microchip\PIC32MZ-EF_DFP\1.1.45\atdf\PIC32MZ1024EFH100.atdf"/>
+      <Setting dnOrder="2" key="FORCE_OPTIMIZATION" value="false"/>
+      <Setting dnOrder="3" key="GENERATE_BACKUP" value="true"/>
+      <Setting dnOrder="4" key="MERGE_STRATEGY" value="USER_RECENT"/>
+      <Setting dnOrder="5" key="PackageFilter" value="aerospace;audio;bootloader;bootloader_apps_uart;bootloader_apps_usb;bsp;bt;core;core_apps_pic32mz_da;core_apps_pic32mz_ef;crypto;csp;csp_apps_pic32mz_da;csp_apps_pic32mz_ef;gfx;gfx_apps;micrium_ucos3;motor_control;reference_apps;net;quick_docs;touch;usb;wireless;"/>
+    </Settings>
+  </Configurator>
+</Configuration>

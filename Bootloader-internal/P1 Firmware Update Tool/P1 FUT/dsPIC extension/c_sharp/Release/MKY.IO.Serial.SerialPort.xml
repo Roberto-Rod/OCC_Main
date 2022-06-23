@@ -1,0 +1,1208 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MKY.IO.Serial.SerialPort</name>
+    </assembly>
+    <members>
+        <member name="T:MKY.IO.Serial.SerialPort.SerialDataReceivedEventArgs">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialDataReceivedEventArgs.#ctor(System.Byte,MKY.IO.Ports.SerialPortId)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialDataReceivedEventArgs.#ctor(System.Byte[],MKY.IO.Ports.SerialPortId)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialDataReceivedEventArgs.Device">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.SerialPort.SerialDataSentEventArgs">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialDataSentEventArgs.#ctor(System.Byte,MKY.IO.Ports.SerialPortId)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialDataSentEventArgs.#ctor(System.Byte[],MKY.IO.Ports.SerialPortId)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialDataSentEventArgs.Device">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.SerialPort.SerialCommunicationSettings">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.BaudRateDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.DataBitsDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.ParityDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.StopBitsDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FlowControlDefault">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.#ctor">
+            <summary>
+            Creates new port settings with defaults.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary>
+            Creates new port settings with defaults.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.#ctor(System.Int32,MKY.IO.Ports.DataBits,System.IO.Ports.Parity,System.IO.Ports.StopBits,MKY.IO.Serial.SerialPort.SerialFlowControl)">
+            <summary>
+            Creates new port settings with specified arguments.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.#ctor(System.Int32,MKY.IO.Ports.DataBits,System.IO.Ports.Parity,System.IO.Ports.StopBits,MKY.IO.Serial.SerialPort.SerialFlowControl,MKY.IO.Serial.SerialPort.SerialControlPinState,MKY.IO.Serial.SerialPort.SerialControlPinState)">
+            <summary>
+            Creates new port settings with specified arguments.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.#ctor(MKY.IO.Serial.SerialPort.SerialCommunicationSettings)">
+            <summary>
+            Creates new port settings from <paramref name="rhs"/>.
+            </summary>
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.BaudRate">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.DataBits">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.Parity">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.StopBits">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.BitsPerFrame">
+            <summary>
+            The number of bits per frame.
+            </summary>
+            <remarks>
+            Typically an integral value, but may be .5 in case of
+            <see cref="F:System.IO.Ports.StopBits.OnePointFive"/>.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FrameTime">
+            <summary>
+            The frame duration in milliseconds.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FramesPerMillisecond">
+            <summary>
+            The number of frames per millisecond. Typically equivalent to
+            the number of bytes per millisecond.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FlowControl">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FlowControlIsInUse">
+            <summary>
+            Returns <c>true</c> if flow control is in use.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FlowControlUsesRtsCts">
+            <summary>
+            Returns <c>true</c> if the RTS/CTS lines are use, i.e. if one or the other kind of
+            hardware flow control is active.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FlowControlManagesRtsCtsAutomatically">
+            <summary>
+            Returns <c>true</c> if the RTS/CTS control pins are managed automatically.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FlowControlManagesDtrDsrAutomatically">
+            <summary>
+            Returns <c>true</c> if the DTR/DSR control pins are managed automatically.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FlowControlUsesXOnXOff">
+            <summary>
+            Returns <c>true</c> if XOn/XOff is in use, i.e. if one or the other kind of XOn/XOff
+            flow control is active.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FlowControlManagesXOnXOffManually">
+            <summary>
+            Returns <c>true</c> if XOn/XOff is managed manually.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.RtsPin">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.DtrPin">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.ToRtsPinDefault(MKY.IO.Serial.SerialPort.SerialFlowControl)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.ToDtrPinDefault(MKY.IO.Serial.SerialPort.SerialFlowControl)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.ToShortString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.Equals(MKY.IO.Serial.SerialPort.SerialCommunicationSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.op_Equality(MKY.IO.Serial.SerialPort.SerialCommunicationSettings,MKY.IO.Serial.SerialPort.SerialCommunicationSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.op_Inequality(MKY.IO.Serial.SerialPort.SerialCommunicationSettings,MKY.IO.Serial.SerialPort.SerialCommunicationSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.Parse(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for serial communication settings and returns a corresponding settings object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.TryParse(System.String,MKY.IO.Serial.SerialPort.SerialCommunicationSettings@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for serial communication settings and returns a corresponding settings object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Serial.SerialPort.SerialControlPinState">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.SerialPort.SerialControlPinStateEx">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Serial.SerialPort.SerialControlPinState.Automatic"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.#ctor(MKY.IO.Serial.SerialPort.SerialControlPinState)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.TryParse(System.String,MKY.IO.Serial.SerialPort.SerialControlPinStateEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.TryParse(System.String,MKY.IO.Serial.SerialPort.SerialControlPinState@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.op_Implicit(MKY.IO.Serial.SerialPort.SerialControlPinStateEx)~MKY.IO.Serial.SerialPort.SerialControlPinState">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.op_Implicit(MKY.IO.Serial.SerialPort.SerialControlPinState)~MKY.IO.Serial.SerialPort.SerialControlPinStateEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.op_Implicit(MKY.IO.Serial.SerialPort.SerialControlPinStateEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.op_Implicit(System.Int32)~MKY.IO.Serial.SerialPort.SerialControlPinStateEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.op_Implicit(MKY.IO.Serial.SerialPort.SerialControlPinStateEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialControlPinStateEx.op_Implicit(System.String)~MKY.IO.Serial.SerialPort.SerialControlPinStateEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.SerialPort.SerialFlowControl">
+            <remarks>
+            I think flow control is the better identifier, no clue why .NET uses the term handshake.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Serial.SerialPort.SerialFlowControlEx">
+            <summary>
+            Extended enum SerialFlowControlEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialFlowControlEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Serial.SerialPort.SerialFlowControl.None"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Serial.SerialPort.SerialFlowControlEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.#ctor(MKY.IO.Serial.SerialPort.SerialFlowControl)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.ToShortString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.TryParse(System.String,MKY.IO.Serial.SerialPort.SerialFlowControlEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.TryParse(System.String,MKY.IO.Serial.SerialPort.SerialFlowControl@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.TryFrom(System.Int32,MKY.IO.Serial.SerialPort.SerialFlowControlEx@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.TryFrom(System.Int32,MKY.IO.Serial.SerialPort.SerialFlowControl@)">
+            <summary>
+            Tries to create an item from the given value.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.IsDefined(System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.op_Implicit(MKY.IO.Serial.SerialPort.SerialFlowControlEx)~MKY.IO.Serial.SerialPort.SerialFlowControl">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.op_Implicit(MKY.IO.Serial.SerialPort.SerialFlowControl)~MKY.IO.Serial.SerialPort.SerialFlowControlEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.op_Implicit(MKY.IO.Serial.SerialPort.SerialFlowControlEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.op_Implicit(System.Int32)~MKY.IO.Serial.SerialPort.SerialFlowControlEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.op_Implicit(MKY.IO.Serial.SerialPort.SerialFlowControlEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.op_Implicit(System.String)~MKY.IO.Serial.SerialPort.SerialFlowControlEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.op_Implicit(MKY.IO.Serial.SerialPort.SerialFlowControlEx)~System.IO.Ports.Handshake">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialFlowControlEx.op_Implicit(System.IO.Ports.Handshake)~MKY.IO.Serial.SerialPort.SerialFlowControlEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.SerialPort.SerialPort">
+            <remarks>
+            This partial class implements the receive part of <see cref="T:MKY.IO.Serial.SerialPort.SerialPort"/>.
+            </remarks>
+            <remarks>
+            This partial class implements the send part of <see cref="T:MKY.IO.Serial.SerialPort.SerialPort"/>.
+            </remarks>
+            <summary>
+            Implements the <see cref="T:MKY.IO.Serial.IIOProvider"/> interface for serial COM ports.
+            </summary>
+            <remarks>
+            In addition, this class...
+            <list type="bullet">
+            <item><description>...wraps <see cref="T:MKY.IO.Ports.SerialPortEx"/> with send/receive FIFOs.</description></item>
+            <item><description>...adds advanced connection management (alive ticker, reopen timer).</description></item>
+            <item><description>...adds advanced flow control management (manual flow control).</description></item>
+            <item><description>...adds advanced break management.</description></item>
+            </list>
+            </remarks>
+            <remarks>
+            This class is implemented using partial classes separating sending/receiving functionality.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.ReceiveThread">
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.port_DataReceived(System.Object,MKY.IO.Ports.SerialDataReceivedEventArgs)"/> event above, or by XOn/XOff while
+            sending.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugReceive(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugReceiveEnqueue(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugReceiveDequeue(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugReceiveSignal(System.Int32)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.Send(System.Byte)">
+            <remarks>
+            If the underlying buffer has space, this method will immediately return; otherwise
+            this method will be blocking until there is space, or the I/O instance is stopped
+            or gets disconnected/closed.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.Send(System.Byte[])">
+            <remarks>
+            If the underlying buffer has space, this method will immediately return; otherwise
+            this method will be blocking until there is space, or the I/O instance is stopped
+            or gets disconnected/closed.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.AssumeOutputXOn">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.SignalInputXOn">
+            <summary>
+            Signals the other communication endpoint that this device is in XOn state.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.SignalInputXOff">
+            <summary>
+            Signals the other communication endpoint that this device is in XOff state.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.ToggleInputXOnXOff">
+            <summary>
+            Toggles the input XOn/XOff state.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.FlushSendBuffer(System.Int32)">
+            <summary>
+            Flushes the send buffer(s) and waits for a time corresponding to the given number of frames.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.ClearSendBuffer">
+            <summary>
+            Clears the send buffer(s) immediately.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.SendThread">
+            <summary>
+            Asynchronously manage outgoing send requests to ensure that software and/or hardware
+            flow control is properly buffered and suspended if the communication counterpart
+            requests so.
+            Also, the mechanism implemented below reduces the amount of events that are propagated
+            to the main application. Small chunks of sent data would generate many events in
+            <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.Send(System.Byte[])"/>. However, since <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.OnDataSent(MKY.IO.Serial.DataSentEventArgs)"/> synchronously
+            invokes the event, it will take some time until the send queue is checked again.
+            During this time, no more new events are invoked, instead, outgoing data is buffered.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.Send(System.Byte[])"/> method above, or by XOn/XOff while receiving.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.TryWriteByteToPort(System.Byte,System.Boolean@,System.Boolean@,System.Boolean@,System.DateTime@)">
+            <remarks>
+            Attention, sending a whole chunk is implemented in <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.TryWriteChunkToPort(System.Int32,System.Collections.Generic.List{System.Byte}@,System.Boolean@,System.Boolean@,System.Boolean@,System.DateTime@)"/> below.
+            Changes here may have to be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.TryWriteChunkToPort(System.Int32,System.Collections.Generic.List{System.Byte}@,System.Boolean@,System.Boolean@,System.Boolean@,System.DateTime@)">
+            <remarks>
+            Attention, sending a single byte is implemented in <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.TryWriteByteToPort(System.Byte,System.Boolean@,System.Boolean@,System.Boolean@,System.DateTime@)"/> above.
+            Changes here may have to be applied there too.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.InvokeOutputBreakWarningsEventIfEnabled">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.InvokeCtsInactiveWarningEventIfEnabled">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.InvokeXOffWarningEventIfEnabled">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugSend(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugSendChunk(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugSendWrite(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.NextInstanceId">
+            <summary>
+            Gets the next instance identifier.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPort.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPort.receiveQueue">
+            <remarks>
+            Async receiving. The capacity is set large enough to reduce the number of resizing
+            operations while adding items.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPort.iXOnXOffHelper">
+            <remarks>
+            Only used with <see cref="F:MKY.IO.Serial.SerialPort.SerialFlowControl.ManualSoftware"/>
+            and <see cref="F:MKY.IO.Serial.SerialPort.SerialFlowControl.ManualCombined"/>.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPort.aliveMonitorTimeout">
+            <summary>
+            Alive timer detects port disconnects, i.e. when a USB to serial converter is disconnected.
+            </summary>
+        </member>
+        <member name="E:MKY.IO.Serial.SerialPort.SerialPort.IOChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.SerialPort.SerialPort.IOControlChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.SerialPort.SerialPort.IOWarning">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.SerialPort.SerialPort.IOError">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.SerialPort.SerialPort.DataReceived">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.SerialPort.SerialPort.DataSent">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MKY.IO.Serial.SerialPort.SerialPort"/> class with
+            default values of the <see cref="T:MKY.IO.Serial.SerialPort.SerialPortSettings"/>.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.#ctor(MKY.IO.Serial.SerialPort.SerialPortSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MKY.IO.Serial.SerialPort.SerialPort"/> class with
+            the given <see cref="T:MKY.IO.Serial.SerialPort.SerialPortSettings"/>.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.Settings">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.PortId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.IsStopped">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.IsStarted">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.IsOpen">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.IsConnected">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.IsTransmissive">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.IsSending">
+            <remarks>
+            The value of this property reflects the state of the send queue as well as
+            <see cref="P:System.IO.Ports.SerialPort.BytesToWrite"/>.
+            <para>
+            Neither is the state of the underlying operating system object nor hardware taken into
+            account, as their state cannot be retrieved from within this .NET implementation by
+            common means.
+            </para></remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.ControlPins">
+            <summary>
+            Serial port control pins.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.ControlPinCount">
+            <summary>
+            Serial port control pin counts.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.XOnXOffIsInUse">
+            <summary>
+            Returns <c>true</c> if XOn/XOff is in use, i.e. if one or the other kind of XOn/XOff
+            flow control is active.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.InputIsXOn">
+            <summary>
+            Gets the input XOn/XOff state.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.OutputIsXOn">
+            <summary>
+            Gets the output XOn/XOff state.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.SentXOnCount">
+            <summary>
+            Returns the number of sent XOn bytes, i.e. the count of input XOn/XOff signaling.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.SentXOffCount">
+            <summary>
+            Returns the number of sent XOff bytes, i.e. the count of input XOn/XOff signaling.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.ReceivedXOnCount">
+            <summary>
+            Returns the number of received XOn bytes, i.e. the count of output XOn/XOff signaling.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.ReceivedXOffCount">
+            <summary>
+            Returns the number of received XOff bytes, i.e. the count of output XOn/XOff signaling.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.InputBreakCount">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.OutputBreakCount">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPort.UnderlyingIOInstance">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.Start">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.Stop">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.ResetXOnXOffCount">
+            <summary>
+            Resets the XOn/XOff signaling count.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.ResetFlowControlCount">
+            <summary>
+            Resets the flow control signaling count.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.ResetBreakCount">
+            <summary>
+            Resets the break count.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.CreateAndOpenPortAndThreadsAndNotify">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.StartThreads">
+             <remarks>
+             Measuring timing after introducing the signal related keywords like \!(RTSToggle) in YAT
+             revealed a limitation with the current implementation:
+            
+             Sending "A\!(RTSToggle)B+EOL" will result in a significant delay before sending "B+EOL".
+             The delay is ~20 ms.
+            
+             The limitation can be made visible by placing debug outputs at various locations in the
+             following methods:
+             <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.Send(System.Byte[])"/>, <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.SignalSendThreadSafely"/>, <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.SendThread"/>,
+             <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.TryWriteChunkToPort(System.Int32,System.Collections.Generic.List{System.Byte}@,System.Boolean@,System.Boolean@,System.Boolean@,System.DateTime@)"/>
+            
+             The debug outputs reveal that the two send calls ("A" and "B+EOL") of course result in
+             scheduling of two threads: The terminal send thread and the I/O send thread.
+            
+             Scheduling will happen at arbitrary locations, but will (always) result in the second
+             chunk being significantly delayed.
+            
+             An attempt to raise the priority of the <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.SendThread"/> made the situation even
+             worse:
+            
+             Doing \!(RTSToggle) will happen way before "AB+EOL" is sent!
+            
+             Accepting the current limitation, but keeping in mind, that refactoring to an action
+             queue combining send data and change signal requests could be done to improve this.
+             </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.SignalThreadsSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.SignalSendThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.SignalReceiveThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.StopThreads">
+            <remarks>
+            Using 'Stop' instead of 'Terminate' to emphasize graceful termination, i.e. trying
+            to join first, then abort if not successfully joined.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.port_DataReceived(System.Object,MKY.IO.Ports.SerialDataReceivedEventArgs)">
+             <remarks>
+             As soon as YAT started to write the maximum chunk size (in Q1/2016), data got lost even
+             for e.g. a local port loopback pair. All seems to work fine as long as small chunks of
+             e.g. 48 bytes some now and then are transmitted.
+            
+             For a while, I assumed data loss happens in the receive path. Therefore, I tried to use
+             async reading instead of the 'DataReceived' event, as suggested by online resources like
+             http://www.sparxeng.com/blog/software/must-use-net-system-io-ports-serialport written by
+             Ben Voigt.
+            
+             However, there seems to be no difference whether 'DataReceived' and 'BytesToRead' or
+             async reading is used. Both loose the equal amount of data, this fact is also supported
+             be the 'DriverAnalysis'. Also, opposed to what Ben Voigt states, async reading actually
+             results in smaller chunks, mostly 1 byte reads. Whereas the obvious 'DataReceived' and
+             "BytesToRead" mostly result in 1..4 byte reads, even up to 20..30 bytes. Thus, this
+             implementation again uses the 'normal' method.
+            
+             Finally (MKy/SSt/ATo in Q3/2016), the root cause for the data loss could be tracked down
+             to the physical limitations of the USB/COM and SPI/COM converter: If more data is sent
+             than the baud rate permits forwarding, the converter simply discards supernumerous data!
+             Of course, what else could it do... Actually, it could propagate the information back to
+             <see cref="P:System.IO.Ports.SerialPort.BytesToWrite"/>. But that apparently isn't done...
+            
+            
+             Additional information on receiving
+             -----------------------------------
+             Another improvement suggested by Marco Stroppel on 2011-02-17 doesn't work with YAT.
+            
+             Suggestion: The while (BytesAvailable > 0) raises endless events, because I did not call
+             the Receive() method. That was, because I receive only the data when the other port to
+             write the data is opened. So the BytesAvailable got never zero. My idea was (not knowing
+             if this is good) to do something like:
+            
+             while (BytesAvailable > LastTimeBytesAvailable)
+             {
+                 LastTimeBytesAvailable = BytesAvailable;
+                 OnDataReceived(EventArgs.Empty);
+             }
+            
+             This suggestions doesn't work because YAT shall show every single byte as soon as it
+             get's received. If 3 bytes are received while 5 bytes are taken out of the receive
+             queue, no more event gets raised. Thus, the 3 bytes do not get shown until new data
+             arrives. This is not acceptable.
+             </remarks>
+             <remarks>
+             Asynchronously manage incoming events to prevent potential deadlocks if close/dispose
+             was called from a ISynchronizeInvoke target (i.e. a form) on an event thread.
+             Also, the mechanism implemented below reduces the amount of events that are propagated
+             to the main application. Small chunks of received data will generate many events
+             handled by <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.port_DataReceived(System.Object,MKY.IO.Ports.SerialDataReceivedEventArgs)"/>. However, since <see cref="M:MKY.IO.Serial.SerialPort.SerialPort.OnDataReceived(MKY.IO.Serial.DataReceivedEventArgs)"/>
+             synchronously invokes the event, it will take some time until the send queue is checked
+             again. During this time, no more new events are invoked, instead, incoming data is
+             buffered.
+             </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.port_PinChanged(System.Object,MKY.IO.Ports.SerialPinChangedEventArgs)">
+            <remarks>
+            Asynchronously invoke incoming events to prevent potential deadlocks if close/dispose
+            was called from a ISynchronizeInvoke target (i.e. a form) on an event thread.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.port_ErrorReceived(System.Object,MKY.IO.Ports.SerialErrorReceivedEventArgs)">
+            <remarks>
+            Asynchronously invoke incoming events to prevent potential deadlocks if close/dispose
+            was called from a ISynchronizeInvoke target (i.e. a form) on an event thread.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.StartAliveMonitor">
+            <remarks>
+            Note that this monitor is active even during sending and receiving data. Restarting the
+            timer on each write and read operation to the port, i.e. temporarily disable the timer,
+            is too time consuming. It's way better performing by simply letting the monitor run.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.OnIOChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.OnIOChangedAsync(MKY.EventArgs{System.DateTime})">
+            <remarks>See remarks on top of MKY.IO.Ports.SerialPort.SerialPortEx why asynchronously is required.</remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.OnIOControlChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.OnIOControlChangedAsync(MKY.EventArgs{System.DateTime})">
+            <remarks>See remarks on top of MKY.IO.Ports.SerialPort.SerialPortEx why asynchronously is required.</remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.OnIOWarning(MKY.IO.Serial.IOWarningEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.OnIOError(MKY.IO.Serial.IOErrorEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.OnIOErrorAsync(MKY.IO.Serial.IOErrorEventArgs)">
+            <remarks>See remarks on top of MKY.IO.Ports.SerialPort.SerialPortEx why asynchronously is required.</remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.OnDataReceived(MKY.IO.Serial.DataReceivedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.OnDataSent(MKY.IO.Serial.DataSentEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.ToPortName">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugMessage(System.String,System.Object[])">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with the formatted message, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugState(System.String,System.Object[])">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPort.DebugThreads(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Serial.SerialPort.SerialPortSettings">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPortSettings.SignalXOnWhenOpenedDefault">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.AliveMonitorDefault">
+            <remarks>
+            Must be implemented as property that creates a new object on each call to ensure that
+            there aren't multiple clients referencing (and modifying) the same object.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPortSettings.AliveMonitorMinInterval">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.AutoReopenDefault">
+            <remarks>
+            Must be implemented as property that creates a new object on each call to ensure that
+            there aren't multiple clients referencing (and modifying) the same object.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPortSettings.AutoReopenMinInterval">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.OutputBufferSizeDefault">
+            <remarks>
+            Must be implemented as property that creates a new object on each call to ensure that
+            there aren't multiple clients referencing (and modifying) the same object.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPortSettings.BufferMaxBaudRateDefault">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.MaxChunkSizeDefault">
+             <summary>
+             Default of 48 bytes reflects the typical USB report size of 64, minus some bytes of
+             meta data, minus some spare bytes, to a value that looks 'well' for computer engineers.
+            
+             Some concrete values 'measured' by experiment:
+              > Prolific USB/COM @ MT MKY loses data as soon as chunks above 356 bytes are sent.
+              > Dell docking station @ MT SST (SPI/COM Intel chipset, Microsoft driver), looses
+                                                 data as soon as chunks above 56 bytes are sent.
+             </summary>
+             <remarks>
+             Must be implemented as property that creates a new object on each call to ensure that
+             there aren't multiple clients referencing (and modifying) the same object.
+             </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.MaxSendRateDefault">
+            <summary>
+            Default is 48 bytes per 10 milliseconds, an example limitation of an embedded system.
+            </summary>
+            <remarks>
+            Must be implemented as property that creates a new object on each call to ensure that
+            there aren't multiple clients referencing (and modifying) the same object.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPortSettings.SendRateMaxInterval">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPortSettings.IgnoreFramingErrorsDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPortSettings.EnableRetainingWarningsDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPortSettings.NoSendOnOutputBreakDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.SerialPort.SerialPortSettings.NoSendOnInputBreakDefault">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.#ctor">
+            <summary>
+            Creates new port settings with defaults.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary>
+            Creates new port settings with defaults.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.#ctor(MKY.IO.Ports.SerialPortId)">
+            <summary>
+            Creates new port settings with specified arguments.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.#ctor(MKY.IO.Ports.SerialPortId,MKY.IO.Serial.SerialPort.SerialCommunicationSettings)">
+            <summary>
+            Creates new port settings with specified arguments.
+            </summary>
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.#ctor(MKY.IO.Serial.SerialPort.SerialPortSettings)">
+            <summary>
+            Creates new port settings from <paramref name="rhs"/>.
+            </summary>
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.SetMyDefaults">
+             <remarks>
+             Fields are assigned via properties to ensure correct setting of changed flag.
+            
+             Attention: Do not use <see cref="P:MKY.IO.Ports.SerialPortId.FirstAvailablePort"/>
+             for the default port. <see cref="P:MKY.IO.Ports.SerialPortId.FirstStandardPort"/>
+             is way better performing and good enough for most use cases.
+             </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.PortId">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.Communication">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.SignalXOnWhenOpened">
+            <remarks>Applies if <see cref="P:MKY.IO.Serial.SerialPort.SerialCommunicationSettings.FlowControlUsesXOnXOff"/>.</remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.AliveMonitor">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.AutoReopen">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.OutputBufferSize">
+            <summary>
+            The serial ports 'WriteBufferSize' typically is 2048. However, devices may
+            not be able to deal with that much data. <see cref="T:MKY.IO.Serial.SerialPort.SerialPort"/> for details.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.BufferMaxBaudRate">
+            <summary>
+            The serial ports 'WriteBufferSize' typically is 2048. However, devices may
+            not be able to deal with that much data. <see cref="T:MKY.IO.Serial.SerialPort.SerialPort"/> for details.
+            </summary>
+            <remarks>
+            Somewhat awkward name, but neither "OutputMaxBaudRate" nor "WriteMaxBaudRate"
+            nor "LimitBufferToBaudRate" are better... And "MaxBaudRate" would obviously
+            be misleading...
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.MaxChunkSize">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.MaxChunkSizeMaxSize">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.MaxSendRate">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.IgnoreFramingErrors">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.EnableRetainingWarnings">
+            <summary>
+            Enables warnings like "XOff state, retaining data..." on sending.
+            </summary>
+            <remarks>
+            This setting is enabled by default.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.NoSendOnOutputBreak">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SerialPortSettings.NoSendOnInputBreak">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.ToShortPortString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.ToShortString">
+            <summary>
+            Returns port ID and port settings as a single string.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.Equals(MKY.IO.Serial.SerialPort.SerialPortSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.op_Equality(MKY.IO.Serial.SerialPort.SerialPortSettings,MKY.IO.Serial.SerialPort.SerialPortSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.op_Inequality(MKY.IO.Serial.SerialPort.SerialPortSettings,MKY.IO.Serial.SerialPort.SerialPortSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.ParseShort(System.String)">
+            <summary>
+            Parses <paramref name="s"/> for short serial port settings and returns a corresponding settings object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SerialPortSettings.TryParseShort(System.String,MKY.IO.Serial.SerialPort.SerialPortSettings@)">
+            <summary>
+            Tries to parse <paramref name="s"/> for short serial port settings and returns a corresponding settings object.
+            </summary>
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Serial.SerialPort.SizeSettingTuple">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SizeSettingTuple.Enabled">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.SizeSettingTuple.Size">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SizeSettingTuple.#ctor(System.Boolean,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SizeSettingTuple.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SizeSettingTuple.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SizeSettingTuple.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SizeSettingTuple.Equals(MKY.IO.Serial.SerialPort.SizeSettingTuple)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SizeSettingTuple.op_Equality(MKY.IO.Serial.SerialPort.SizeSettingTuple,MKY.IO.Serial.SerialPort.SizeSettingTuple)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.SizeSettingTuple.op_Inequality(MKY.IO.Serial.SerialPort.SizeSettingTuple,MKY.IO.Serial.SerialPort.SizeSettingTuple)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Serial.SerialPort.RateSettingTuple">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.RateSettingTuple.Enabled">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.RateSettingTuple.Size">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.SerialPort.RateSettingTuple.Interval">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.RateSettingTuple.#ctor(System.Boolean,System.Int32,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.RateSettingTuple.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+            <remarks>
+            Use properties instead of fields. This ensures that 'intelligent' properties,
+            i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.RateSettingTuple.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.RateSettingTuple.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.RateSettingTuple.Equals(MKY.IO.Serial.SerialPort.RateSettingTuple)">
+            <summary>
+            Determines whether this instance and the specified object have value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.RateSettingTuple.op_Equality(MKY.IO.Serial.SerialPort.RateSettingTuple,MKY.IO.Serial.SerialPort.RateSettingTuple)">
+            <summary>
+            Determines whether the two specified objects have value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.SerialPort.RateSettingTuple.op_Inequality(MKY.IO.Serial.SerialPort.RateSettingTuple,MKY.IO.Serial.SerialPort.RateSettingTuple)">
+            <summary>
+            Determines whether the two specified objects have value inequality.
+            </summary>
+        </member>
+    </members>
+</doc>

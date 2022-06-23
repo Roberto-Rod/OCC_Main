@@ -1,0 +1,11 @@
+digraph "find_ac_peak"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="find_ac_peak",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Returning a data window (q1, q2) in scany containing the points above half height around the specifie..."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="median",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ndpa__tools_8c.html#a7ffac73dc0966b86fc85f2a717d66e5f",tooltip="Returns the median of the specified vector of size n."];
+  Node2 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - lcov-sanitised.info - /d/Repos/Damysus/PIC.EmbeddedSoftware/sourcePico/devices/Pressure_Part2.c</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../gcov.css">
+</head>
+
+<body>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="title">LCOV - code coverage report</td></tr>
+        <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+        <tr>
+          <td width="100%">
+            <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../index.html">top level</a> - <a href="index.html">d/Repos/Damysus/PIC.EmbeddedSoftware/sourcePico/devices</a> - Pressure_Part2.c<span style="font-size: 80%;"> (source / <a href="Pressure_Part2.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">lcov-sanitised.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">29</td>
+            <td class="headerCovTableEntry">29</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-01-05 09:25:44</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+              <tr><td><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+      </table>
+
+      <table cellpadding=0 cellspacing=0 border=0>
+        <tr>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*****************************************************************************</a>
+<span class="lineNum">       2 </span>            :  *   File        : Pressure_Part2.c
+<span class="lineNum">       3 </span>            :  *
+<span class="lineNum">       4 </span>            :  *   Description : Source for implementation of pressure measurements
+<span class="lineNum">       5 </span>            :  *
+<span class="lineNum">       6 </span>            :  *****************************************************************************/
+<span class="lineNum">       7 </span>            : /* ***************************************************************************
+<span class="lineNum">       8 </span>            :  * This file is copyrighted by and the property of Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">       9 </span>            :  * It contains confidential and proprietary information. It must not be copied
+<span class="lineNum">      10 </span>            :  * (in whole or in part) or otherwise disclosed without prior written consent 
+<span class="lineNum">      11 </span>            :  * of the company. Any copies of this file (in whole or in part), made by any
+<span class="lineNum">      12 </span>            :  * method must also include a copy of this legend. 
+<span class="lineNum">      13 </span>            :  * 
+<span class="lineNum">      14 </span>            :  * (c) 2018, 2019, 2020 Smith &amp; Nephew Medical Ltd.
+<span class="lineNum">      15 </span>            :  * 
+<span class="lineNum">      16 </span>            :  *************************************************************************** */
+<span class="lineNum">      17 </span>            : 
+<span class="lineNum">      18 </span>            : #include &quot;Pressure_Part2.h&quot;
+<span class="lineNum">      19 </span>            : #include &quot;Pressure_Part3.h&quot;
+<span class="lineNum">      20 </span>            : #include &quot;PerformanceLogger.h&quot;
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span>            : /****************************************************************************
+<span class="lineNum">      23 </span>            : Function Name  :  TryToGetSingleVacuumMeasurement
+<span class="lineNum">      24 </span>            : 
+<span class="lineNum">      25 </span>            : Parameters     :  pInternal - Pointer to the internal pressure 
+<span class="lineNum">      26 </span>            :                   pExternal - Pointer to the external pressure  
+<span class="lineNum">      27 </span>            :                   pDiff - Pointer to the difference between the pressures
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : Return Value   :  EC_OK_E if the pressures are read OK and the temperatures are below
+<span class="lineNum">      30 </span>            :                   the thresholds, or errors otherwise.
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span>            : Description    :  Reads the external and internal pressure sensors and
+<span class="lineNum">      33 </span>            :                   calculate their difference. 
+<span class="lineNum">      34 </span>            :                   Additionally read the internal and external sensor temperatures
+<span class="lineNum">      35 </span>            :                   and check against thresholds for over-heating.
+<span class="lineNum">      36 </span>            : *****************************************************************************/
+<a name="37"><span class="lineNum">      37 </span>            : </a>
+<span class="lineNum">      38 </span>            : /*lint -e{613} Suppress: Possible use of null pointer 'pInternal', 'pExternal', 'pDiff' in argument to operator 'unary *'. */
+<span class="lineNum">      39 </span><span class="lineCov">         14 : ErrorCode_t TryToGetSingleVacuumMeasurement(uint16_t* pInternal, uint16_t* pExternal, uint16_t* pDiff)</span>
+<span class="lineNum">      40 </span>            : {
+<span class="lineNum">      41 </span><span class="lineCov">         14 :     ErrorCode_t result      = EC_OK_E;</span>
+<span class="lineNum">      42 </span><span class="lineCov">         14 :     uint16_t    ExtPressure = 0;</span>
+<span class="lineNum">      43 </span><span class="lineCov">         14 :     uint16_t    IntPressure = 0;</span>
+<span class="lineNum">      44 </span><span class="lineCov">         14 :     uint16_t    ExtTemperature = 0;</span>
+<span class="lineNum">      45 </span><span class="lineCov">         14 :     uint16_t    IntTemperature = 0;</span>
+<span class="lineNum">      46 </span>            :     
+<span class="lineNum">      47 </span><span class="lineCov">         14 :     if ((NULL == pInternal) || (NULL == pExternal) || (NULL == pDiff))</span>
+<span class="lineNum">      48 </span>            :     {
+<span class="lineNum">      49 </span><span class="lineCov">          3 :         result = EC_INVALID_INPUT_PARAMETER_E;</span>
+<span class="lineNum">      50 </span>            :     }
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span><span class="lineCov">         14 :     if (EC_OK_E == result)</span>
+<span class="lineNum">      53 </span>            :     {
+<span class="lineNum">      54 </span><span class="lineCov">         11 :         if (TRUE == isPressureSensorReady(PS_EXTERNAL_PRESSURE_E))</span>
+<span class="lineNum">      55 </span>            :         {
+<span class="lineNum">      56 </span><span class="lineCov">          9 :             result = PM_GetPressure(PS_EXTERNAL_PRESSURE_E, &amp;ExtPressure, &amp;ExtTemperature);</span>
+<span class="lineNum">      57 </span><span class="lineCov">          9 :             PerformanceLogger_SetExternalPressure(ExtPressure);</span>
+<span class="lineNum">      58 </span><span class="lineCov">          9 :             PerformanceLogger_SetExternalTemperature(ExtTemperature);</span>
+<span class="lineNum">      59 </span>            :         }
+<span class="lineNum">      60 </span>            :         else
+<span class="lineNum">      61 </span>            :         {
+<span class="lineNum">      62 </span><span class="lineCov">          2 :             result = EC_EXT_PRESSURE_SENSOR_NOT_READY_E;</span>
+<span class="lineNum">      63 </span>            :         }
+<span class="lineNum">      64 </span>            :     }
+<span class="lineNum">      65 </span>            : 
+<span class="lineNum">      66 </span><span class="lineCov">         14 :     if (EC_OK_E == result)</span>
+<span class="lineNum">      67 </span>            :     {
+<span class="lineNum">      68 </span><span class="lineCov">          8 :         if (TRUE == isPressureSensorReady(PS_INTERNAL_PRESSURE_E))</span>
+<span class="lineNum">      69 </span>            :         {
+<span class="lineNum">      70 </span><span class="lineCov">          7 :             result = PM_GetPressure(PS_INTERNAL_PRESSURE_E, &amp;IntPressure, &amp;IntTemperature);</span>
+<span class="lineNum">      71 </span><span class="lineCov">          7 :             PerformanceLogger_SetInternalTemperature(IntTemperature);</span>
+<span class="lineNum">      72 </span>            :         }
+<span class="lineNum">      73 </span>            :         else
+<span class="lineNum">      74 </span>            :         {
+<span class="lineNum">      75 </span><span class="lineCov">          1 :             result = EC_INT_PRESSURE_SENSOR_NOT_READY_E;</span>
+<span class="lineNum">      76 </span>            :         }
+<span class="lineNum">      77 </span>            :     }
+<span class="lineNum">      78 </span>            : 
+<span class="lineNum">      79 </span><span class="lineCov">         14 :     if (EC_OK_E == result)</span>
+<span class="lineNum">      80 </span>            :     {
+<span class="lineNum">      81 </span><span class="lineCov">          6 :         result = PM_CalcDiffPressure(ExtPressure, IntPressure, pDiff);</span>
+<span class="lineNum">      82 </span><span class="lineCov">          6 :         PerformanceLogger_SetDifferentialPressure(*pDiff);</span>
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span><span class="lineCov">          6 :         *pInternal = IntPressure;</span>
+<span class="lineNum">      85 </span><span class="lineCov">          6 :         *pExternal = ExtPressure;</span>
+<span class="lineNum">      86 </span>            : 
+<span class="lineNum">      87 </span>            :         // Check temperature readings for overheating
+<span class="lineNum">      88 </span><span class="lineCov">          6 :         if ((int16_t)IntTemperature &gt; INT_TEMPERATURE_THRESHOLD)</span>
+<span class="lineNum">      89 </span>            :         {
+<span class="lineNum">      90 </span><span class="lineCov">          1 :             result = EC_INT_TEMPERATURE_HIGH;</span>
+<span class="lineNum">      91 </span>            :         }
+<span class="lineNum">      92 </span>            :         
+<span class="lineNum">      93 </span><span class="lineCov">          5 :         else if ((int16_t)ExtTemperature &gt; EXT_TEMPERATURE_THRESHOLD)</span>
+<span class="lineNum">      94 </span>            :         {
+<span class="lineNum">      95 </span><span class="lineCov">          1 :             result = EC_EXT_TEMPERATURE_HIGH;</span>
+<span class="lineNum">      96 </span>            :         }
+<span class="lineNum">      97 </span>            :     }
+<span class="lineNum">      98 </span>            : 
+<span class="lineNum">      99 </span><span class="lineCov">         14 :     return result;</span>
+<span class="lineNum">     100 </span>            : }
+<span class="lineNum">     101 </span>            : 
+<span class="lineNum">     102 </span>            : 
+    </pre>
+          </td>
+        </tr>
+      </table>
+      <br>
+
+      <table width="100%" border=0 cellspacing=0 cellpadding=0>
+        <tr><td class="ruler"><img src="../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.11</a></td></tr>
+      </table>
+      <br>
+
+</body>
+</html>

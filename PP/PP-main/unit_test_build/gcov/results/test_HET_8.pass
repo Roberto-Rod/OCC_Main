@@ -1,0 +1,20 @@
+---
+:source:
+  :path: test/acceptance_test
+  :file: test_HET_8.c
+:successes:
+- :test: test_DetectLeakInTherapyDeliveryAndAlertTheUserOfTheErrorCondition
+  :line: 76
+  :message: ''
+- :test: test_DetectAndIgnoreLeakInTherapyDeliveryWhenBoostVoltageDenandIsBelow27V
+  :line: 202
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 2
+  :passed: 2
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

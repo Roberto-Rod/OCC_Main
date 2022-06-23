@@ -1,0 +1,4 @@
+<map id="inheritanced6d8619557" name="inheritanced6d8619557">
+<area shape="rect" id="node1" href="#framework.device.ni6363.AnalogOutputTask" target="_top" title="A task to write the specified analog output channel(s) on&#45;demand." alt="" coords="125,5,255,31"/>
+<area shape="rect" id="node2" title="Represents a DAQmx Task." alt="" coords="5,5,77,31"/>
+</map>

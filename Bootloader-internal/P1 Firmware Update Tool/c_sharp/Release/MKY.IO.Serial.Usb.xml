@@ -1,0 +1,633 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MKY.IO.Serial.Usb</name>
+    </assembly>
+    <members>
+        <member name="T:MKY.IO.Serial.Usb.SerialDataReceivedEventArgs">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialDataReceivedEventArgs.#ctor(System.Byte,MKY.IO.Usb.DeviceInfo,System.Boolean,System.Byte)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialDataReceivedEventArgs.#ctor(System.Byte[],MKY.IO.Usb.DeviceInfo,System.Boolean,System.Byte)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialDataReceivedEventArgs.Device">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Usb.SerialDataSentEventArgs">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialDataSentEventArgs.#ctor(System.Byte[],System.DateTime,MKY.IO.Usb.DeviceInfo,System.Boolean,System.Byte)">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialDataSentEventArgs.Device">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Usb.SerialHidDevice">
+            <remarks>
+            This partial class implements the receive part of <see cref="T:MKY.IO.Serial.Usb.SerialHidDevice"/>.
+            </remarks>
+            <remarks>
+            This partial class implements the send part of <see cref="T:MKY.IO.Serial.Usb.SerialHidDevice"/>.
+            </remarks>
+            <summary>
+            Implements the <see cref="T:MKY.IO.Serial.IIOProvider"/> interface for serial COM ports.
+            </summary>
+            <remarks>
+            In addition, this class...
+            <list type="bullet">
+            <item><description>...wraps <see cref="T:MKY.IO.Usb.SerialHidDevice"/> with send/receive FIFOs.</description></item>
+            <item><description>...adds software flow control (XOn/XOff).</description></item>
+            </list>
+            </remarks>
+            <remarks>
+            This class is implemented using partial classes separating sending/receiving functionality.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.ReceiveThread">
+            <summary>
+            Asynchronously manage incoming events to prevent potential deadlocks if close/dispose
+            was called from a ISynchronizeInvoke target (i.e. a form) on an event thread.
+            Also, the mechanism implemented below reduces the amount of events that are propagated
+            to the main application. Small chunks of received data will generate many events
+            handled by <see cref="M:MKY.IO.Serial.Usb.SerialHidDevice.device_DataReceived(System.Object,System.EventArgs)"/>. However, since <see cref="M:MKY.IO.Serial.Usb.SerialHidDevice.OnDataReceived(MKY.IO.Serial.DataReceivedEventArgs)"/>
+            synchronously invokes the event, it will take some time until the send queue is checked
+            again. During this time, no more new events are invoked, instead, incoming data is
+            buffered.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Serial.Usb.SerialHidDevice.device_DataReceived(System.Object,System.EventArgs)"/> event above.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.Send(System.Byte)">
+            <remarks>
+            If the underlying buffer has space, this method will immediately return; otherwise
+            this method will be blocking until there is space, or the I/O instance is stopped
+            or gets disconnected/closed.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.Send(System.Byte[])">
+            <remarks>
+            If the underlying buffer has space, this method will immediately return; otherwise
+            this method will be blocking until there is space, or the I/O instance is stopped
+            or gets disconnected/closed.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.AssumeOutputXOn">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.SignalInputXOn">
+            <summary>
+            Signals the other communication endpoint that this device is in XOn state.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.SignalInputXOff">
+            <summary>
+            Signals the other communication endpoint that this device is in XOff state.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.ToggleInputXOnXOff">
+            <summary>
+            Toggles the input XOn/XOff state.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.ResetXOnXOffCount">
+            <summary>
+            Resets the XOn/XOff signaling count.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.ClearSendBuffer">
+            <summary>
+            Clears the send buffer(s) immediately.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.SendThread">
+            <summary>
+            Asynchronously manage outgoing send requests to ensure that send events are not
+            invoked on the same thread that triggered the send operation.
+            Also, the mechanism implemented below reduces the amount of events that are propagated
+            to the main application. Small chunks of sent data would generate many events in
+            <see cref="M:MKY.IO.Serial.Usb.SerialHidDevice.Send(System.Byte[])"/>. However, since <see cref="M:MKY.IO.Serial.Usb.SerialHidDevice.OnDataSent(MKY.IO.Serial.DataSentEventArgs)"/> synchronously
+            invokes the event, it will take some time until the send queue is checked again.
+            During this time, no more new events are invoked, instead, outgoing data is buffered.
+            </summary>
+            <remarks>
+            Will be signaled by <see cref="M:MKY.IO.Serial.Usb.SerialHidDevice.Send(System.Byte[])"/> method above.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.InvokeXOffWarningEventIfEnabled">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.NextInstanceId">
+            <summary>
+            Gets the next instance identifier.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDevice.eventHelper">
+            <summary>
+            A dedicated event helper to allow discarding exceptions when object got disposed.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDevice.receiveQueue">
+            <remarks>
+            Async receiving. The capacity is set large enough to reduce the number of resizing
+            operations while adding items.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDevice.iXOnXOffHelper">
+            <remarks>
+            Only used with <see cref="F:MKY.IO.Serial.Usb.SerialHidFlowControl.Software"/>
+            and <see cref="F:MKY.IO.Serial.Usb.SerialHidFlowControl.ManualSoftware"/>.
+            </remarks>
+        </member>
+        <member name="E:MKY.IO.Serial.Usb.SerialHidDevice.IOChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Usb.SerialHidDevice.IOControlChanged">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Usb.SerialHidDevice.IOWarning">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Usb.SerialHidDevice.IOError">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Usb.SerialHidDevice.DataReceived">
+            <summary></summary>
+        </member>
+        <member name="E:MKY.IO.Serial.Usb.SerialHidDevice.DataSent">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.#ctor(MKY.IO.Serial.Usb.SerialHidDeviceSettings)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:MKY.IO.Serial.Usb.SerialHidDevice.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.Settings">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.Info">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.InfoString">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.IsStopped">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.IsStarted">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.IsConnected">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.IsOpen">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.IsTransmissive">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.IsSending">
+            <remarks>
+            The value of this property only reflects the state of the send queue.
+            <para>
+            The state of the underlying <see cref="T:MKY.IO.Usb.SerialHidDevice"/> (i.e. calls to
+            <see cref="M:MKY.IO.Usb.SerialHidDevice.Send(System.Byte)"/> and
+            <see cref="M:MKY.IO.Usb.SerialHidDevice.Send(System.Byte[])"/> and their callbacks to
+            <see cref="E:MKY.IO.Usb.SerialHidDevice.DataSent"/>) is not taken into account because keeping
+            track of ongoing send requests and callbacks is not feasible to implement in a solid way.
+            E.g. incrementing the number of requested bytes and decrementing them in the callback
+            would be susceptible to inconsistencies, e.g. in case of device related exceptions.
+            </para><para>
+            Neither is the state of the underlying operating system object nor hardware taken into
+            account, as their state cannot be retrieved from within this .NET implementation by
+            common means.
+            </para></remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.XOnXOffIsInUse">
+            <summary>
+            Returns <c>true</c> if XOn/XOff is in use, i.e. if one or the other kind of XOn/XOff
+            flow control is active.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.InputIsXOn">
+            <summary>
+            Gets the input XOn/XOff state.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.OutputIsXOn">
+            <summary>
+            Gets the output XOn/XOff state.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.SentXOnCount">
+            <summary>
+            Returns the number of sent XOn bytes, i.e. the count of input XOn/XOff signaling.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.SentXOffCount">
+            <summary>
+            Returns the number of sent XOff bytes, i.e. the count of input XOn/XOff signaling.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.ReceivedXOnCount">
+            <summary>
+            Returns the number of received XOn bytes, i.e. the count of output XOn/XOff signaling.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.ReceivedXOffCount">
+            <summary>
+            Returns the number of received XOff bytes, i.e. the count of output XOn/XOff signaling.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDevice.UnderlyingIOInstance">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.Start">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.Stop">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.CalculateTotalReportByteLength(System.Byte[])">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.TryCreateAndStartDevice">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.SignalSendThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.SignalReceiveThreadSafely">
+            <remarks>
+            Especially useful during potentially dangerous creation and disposal sequence.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.StopThreads">
+            <remarks>
+            Using 'Stop' instead of 'Terminate' to emphasize graceful termination, i.e. trying
+            to join first, then abort if not successfully joined.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.OnIOChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.OnIOControlChanged(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.OnIOControlChangedAsync(MKY.EventArgs{System.DateTime})">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.OnIOWarning(MKY.IO.Serial.IOWarningEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.OnIOError(MKY.IO.Serial.IOErrorEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.OnDataReceived(MKY.IO.Serial.DataReceivedEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.OnDataSent(MKY.IO.Serial.DataSentEventArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.ToShortString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.ToDeviceInfoString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.ToShortDeviceInfoString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.DebugMessage(System.String)">
+            <remarks>
+            Name "DebugWriteLine" would show relation to <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            However, named "Message" for compactness and more clarity that something will happen
+            with <paramref name="message"/>, and rather than e.g. "Common" for comprehensibility.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDevice.DebugThreads(System.String)">
+            <remarks>
+            <c>private</c> because value of <see cref="T:System.Diagnostics.ConditionalAttribute"/> is limited to file scope.
+            </remarks>
+        </member>
+        <member name="T:MKY.IO.Serial.Usb.SerialHidFlowControl">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidFlowControl.None">
+            <summary>
+            No flow control, fully relying on underlying USB flow control.
+            </summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidFlowControl.Software">
+            <summary>
+            Automatically managing XOn/XOff flow control, useful with devices that provide XOn/XOff
+            for USB Ser/HID, e.g. MT Ser/HID devices.
+            </summary>
+            <remarks>
+            This USB Ser/HID host implementation so far never sends an XOff, since the buffers are
+            dynamically managed and increased if necessary. Received XOff will be taken into account
+            though.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidFlowControl.ManualSoftware">
+            <summary>
+            Manually managing XOn/XOff flow control, mainly useful for development of devices that
+            provide XOn/XOff for USB Ser/HID, e.g. MT Ser/HID devices.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Usb.SerialHidFlowControlEx">
+            <summary>
+            Extended enum SerialHidFlowControlEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidFlowControlEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Serial.Usb.SerialHidFlowControl.None"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Serial.Usb.SerialHidFlowControlEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.#ctor(MKY.IO.Serial.Usb.SerialHidFlowControl)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.ToShortString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.TryParse(System.String,MKY.IO.Serial.Usb.SerialHidFlowControlEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.TryParse(System.String,MKY.IO.Serial.Usb.SerialHidFlowControl@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.op_Implicit(MKY.IO.Serial.Usb.SerialHidFlowControlEx)~MKY.IO.Serial.Usb.SerialHidFlowControl">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.op_Implicit(MKY.IO.Serial.Usb.SerialHidFlowControl)~MKY.IO.Serial.Usb.SerialHidFlowControlEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.op_Implicit(MKY.IO.Serial.Usb.SerialHidFlowControlEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.op_Implicit(System.Int32)~MKY.IO.Serial.Usb.SerialHidFlowControlEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.op_Implicit(MKY.IO.Serial.Usb.SerialHidFlowControlEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlEx.op_Implicit(System.String)~MKY.IO.Serial.Usb.SerialHidFlowControlEx">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Usb.SerialHidDeviceSettings">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDeviceSettings.MatchSerialDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDeviceSettings.PresetDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDeviceSettings.ReportFormatDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDeviceSettings.RxFilterUsageDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDeviceSettings.FlowControlDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDeviceSettings.SignalXOnWhenOpenedDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDeviceSettings.AutoOpenDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDeviceSettings.EnableRetainingWarningsDefault">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidDeviceSettings.IncludeNonPayloadDataDefault">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDeviceSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDeviceSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDeviceSettings.#ctor(MKY.IO.Serial.Usb.SerialHidDeviceSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDeviceSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.DeviceInfo">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.MatchSerial">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.Preset">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.ReportFormat">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.RxFilterUsage">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.FlowControl">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.FlowControlIsInUse">
+            <summary>
+            Returns <c>true</c> if flow control is in use.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.FlowControlUsesXOnXOff">
+            <summary>
+            Returns <c>true</c> if XOn/XOff is in use, i.e. if one or the other kind of XOn/XOff
+            flow control is active.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.FlowControlManagesXOnXOffManually">
+            <summary>
+            Returns <c>true</c> if XOn/XOff is managed manually.
+            </summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.SignalXOnWhenOpened">
+            <remarks>Applies if <see cref="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.FlowControlUsesXOnXOff"/>.</remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.AutoOpen">
+            <summary></summary>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.EnableRetainingWarnings">
+            <summary>
+            Enables warnings like "XOff state, retaining data..." on sending.
+            </summary>
+            <remarks>
+            This setting is enabled by default.
+            </remarks>
+        </member>
+        <member name="P:MKY.IO.Serial.Usb.SerialHidDeviceSettings.IncludeNonPayloadData">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDeviceSettings.ToShortDeviceInfoString">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDeviceSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDeviceSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDeviceSettings.Equals(MKY.IO.Serial.Usb.SerialHidDeviceSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDeviceSettings.op_Equality(MKY.IO.Serial.Usb.SerialHidDeviceSettings,MKY.IO.Serial.Usb.SerialHidDeviceSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidDeviceSettings.op_Inequality(MKY.IO.Serial.Usb.SerialHidDeviceSettings,MKY.IO.Serial.Usb.SerialHidDeviceSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Usb.SerialHidFlowControlPreset">
+            <summary></summary>
+        </member>
+        <member name="T:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx">
+            <summary>
+            Extended enum SerialHidFlowControlPresetEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.UserSummary">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.MT_SerHid_VendorIds">
+            <summary></summary>
+        </member>
+        <member name="F:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.Default">
+            <summary>Default is <see cref="F:MKY.IO.Serial.Usb.SerialHidFlowControlPreset.YAT"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.#ctor">
+            <summary>Default is <see cref="F:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.Default"/>.</summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.#ctor(MKY.IO.Serial.Usb.SerialHidFlowControlPreset)">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.Parse(System.String)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.TryParse(System.String,MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.TryParse(System.String,MKY.IO.Serial.Usb.SerialHidFlowControlPreset@)">
+            <remarks>
+            Following the convention of the .NET framework, whitespace is trimmed from <paramref name="s"/>.
+            </remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.TryFrom(MKY.IO.Usb.DeviceInfo,MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx@)">
+            <remarks>Returns <c>false</c> and <see cref="F:MKY.IO.Serial.Usb.SerialHidFlowControlPreset.None"/> if no matching preset has been found.</remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.TryFrom(MKY.IO.Usb.DeviceInfo,MKY.IO.Serial.Usb.SerialHidFlowControlPreset@)">
+            <remarks>Returns <c>false</c> and <see cref="F:MKY.IO.Serial.Usb.SerialHidFlowControlPreset.None"/> if no matching preset has been found.</remarks>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.ToFlowControl">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.op_Implicit(MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx)~MKY.IO.Serial.Usb.SerialHidFlowControlPreset">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.op_Implicit(MKY.IO.Serial.Usb.SerialHidFlowControlPreset)~MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.op_Implicit(MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx)~MKY.IO.Serial.Usb.SerialHidFlowControl">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.op_Implicit(MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx)~System.Int32">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.op_Implicit(System.Int32)~MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.op_Implicit(MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx.op_Implicit(System.String)~MKY.IO.Serial.Usb.SerialHidFlowControlPresetEx">
+            <summary></summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YAT.Settings.Application</name>
+    </assembly>
+    <members>
+        <member name="T:YAT.Settings.Application.RoamingUserSettingsRoot">
+            <remarks>Root name is relevant for <see cref="P:YAT.Settings.Application.RoamingUserSettingsRoot.AlternateXmlElements"/>.</remarks>
+            <remarks>
+            An explicit name makes little sense as this is the very root of the XML. But accidentally
+            named the root explicitly. Should be renamed, but doesn't work because root is not properly
+            handled by the alternate tolerant deserialization. To be solved using XML transformation.
+            </remarks>
+        </member>
+        <member name="F:YAT.Settings.Application.RoamingUserSettingsRoot.settingsVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Application.RoamingUserSettingsRoot.productVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="M:YAT.Settings.Application.RoamingUserSettingsRoot.#ctor">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Application.RoamingUserSettingsRoot.#ctor(YAT.Settings.Application.RoamingUserSettingsRoot)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.SettingsName">
+            <remarks>Settings name is kind of a title, therefore capital 'R', 'U' and 'S'.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.SettingsVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.ProductVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.Warning">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.Mark">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.Color">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.Font">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.Socket">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.Find">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.AutoAction">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.AutoResponse">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.View">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.Plot">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.Extensions">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Settings.Application.RoamingUserSettingsRoot.StaticAlternateXmlElements">
+            <summary>
+            Alternate XML elements for backward compatibility with old settings.
+            </summary>
+        </member>
+        <member name="P:YAT.Settings.Application.RoamingUserSettingsRoot.AlternateXmlElements">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Application.RoamingUserSettingsRoot.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Application.RoamingUserSettingsRoot.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Application.RoamingUserSettingsRoot.Equals(YAT.Settings.Application.RoamingUserSettingsRoot)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Application.RoamingUserSettingsRoot.op_Equality(YAT.Settings.Application.RoamingUserSettingsRoot,YAT.Settings.Application.RoamingUserSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Application.RoamingUserSettingsRoot.op_Inequality(YAT.Settings.Application.RoamingUserSettingsRoot,YAT.Settings.Application.RoamingUserSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Settings.Application.LocalUserSettingsRoot">
+            <remarks>Root name is relevant for <see cref="P:YAT.Settings.Application.LocalUserSettingsRoot.AlternateXmlElements"/>.</remarks>
+            <remarks>
+            An explicit name makes little sense as this is the very root of the XML. But accidentally
+            named the root explicitly. Should be renamed, but doesn't work because root is not properly
+            handled by the alternate tolerant deserialization. To be solved using XML transformation.
+            </remarks>
+        </member>
+        <member name="F:YAT.Settings.Application.LocalUserSettingsRoot.settingsVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="F:YAT.Settings.Application.LocalUserSettingsRoot.productVersion">
+            <remarks>Is basically constant, but must be a variable for automatic XML serialization.</remarks>
+        </member>
+        <member name="M:YAT.Settings.Application.LocalUserSettingsRoot.#ctor">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Application.LocalUserSettingsRoot.#ctor(YAT.Settings.Application.LocalUserSettingsRoot)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.SettingsName">
+            <remarks>Settings name is kind of a title, therefore capital 'L', 'U' and 'S'.</remarks>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.SettingsVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.ProductVersion">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.Warning">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.Mark">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.General">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.Paths">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.AutoWorkspace">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.MainWindow">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.NewTerminal">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.RecentFiles">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.PlotWindow">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Settings.Application.LocalUserSettingsRoot.StaticAlternateXmlElements">
+            <summary>
+            Alternate XML elements for backward compatibility with old settings.
+            </summary>
+        </member>
+        <member name="P:YAT.Settings.Application.LocalUserSettingsRoot.AlternateXmlElements">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Application.LocalUserSettingsRoot.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Application.LocalUserSettingsRoot.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Application.LocalUserSettingsRoot.Equals(YAT.Settings.Application.LocalUserSettingsRoot)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Application.LocalUserSettingsRoot.op_Equality(YAT.Settings.Application.LocalUserSettingsRoot,YAT.Settings.Application.LocalUserSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Application.LocalUserSettingsRoot.op_Inequality(YAT.Settings.Application.LocalUserSettingsRoot,YAT.Settings.Application.LocalUserSettingsRoot)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Settings.Application.ApplicationSettings">
+            <remarks>
+            Should these application settings be static? Well, there's pro and con as so often:
+            Pro:
+             > Easier to access throughout the application.
+             > Easier to load, and they can be loaded before any application 'Main' is created.
+             > Easier for those test cases where the settings have to be changed before the test is run.
+            Con:
+             > Static shall be avoided whenever possible, especially if a class holds data.
+             > Hardly possible to automatically test concurrent applications by NUnit test cases:
+               > The easy way would simply be to create two 'Main' objects and run them in parallel but
+                 then both objects share the same static application settings object which isn't the
+                 case if they're loaded in separate processes.
+               > The alternative is to do these test cases manually...
+            </remarks>
+        </member>
+        <member name="P:YAT.Settings.Application.ApplicationSettings.LocalUserSettingsAreAvailable">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.ApplicationSettings.LocalUserSettings">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.ApplicationSettings.LocalUserSettingsFilePath">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.ApplicationSettings.LocalUserSettingsSuccessfullyLoadedFromFile">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.ApplicationSettings.LocalUserSettingsAreCurrentlyOwnedByThisInstance">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.ApplicationSettings.RoamingUserSettingsAreAvailable">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.ApplicationSettings.RoamingUserSettings">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.ApplicationSettings.RoamingUserSettingsFilePath">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.ApplicationSettings.RoamingUserSettingsSuccessfullyLoadedFromFile">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Settings.Application.ApplicationSettings.RoamingUserSettingsAreCurrentlyOwnedByThisInstance">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Settings.Application.ApplicationSettings.Create(MKY.Settings.ApplicationSettingsFileAccess)">
+            <summary>
+            Create settings.
+            </summary>
+            <remarks>
+            So far, there are local and roaming user settings.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Application.ApplicationSettings.Load">
+            <summary>
+            Load settings.
+            </summary>
+            <remarks>
+            So far, there are local and roaming user settings.
+            </remarks>
+            <returns>
+            Returns <c>true</c> if settings could be loaded from the respective file paths,
+            returns <c>false</c> if they could not be loaded and were set to defaults instead.
+            </returns>
+        </member>
+        <member name="M:YAT.Settings.Application.ApplicationSettings.Save">
+            <summary>
+            Save settings. To improved performance, settings shall only be saved if they have changed.
+            </summary>
+            <remarks>
+            So far, there are local and roaming user settings.
+            </remarks>
+        </member>
+        <member name="M:YAT.Settings.Application.ApplicationSettings.SaveLocalUserSettings">
+            <summary>
+            Save local user settings. To improved performance, settings shall only be saved if they have changed.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Application.ApplicationSettings.SaveRoamingUserSettings">
+            <summary>
+            Save roaming user settings. To improved performance, settings shall only be saved if they have changed.
+            </summary>
+        </member>
+        <member name="M:YAT.Settings.Application.ApplicationSettings.CloseAndDispose">
+            <summary>
+            Close the application settings and release all resources.
+            </summary>
+        </member>
+    </members>
+</doc>

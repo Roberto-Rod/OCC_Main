@@ -1,0 +1,65 @@
+---
+:source:
+  :path: test/unit_test/managers
+  :file: test_StateMachinePOST_internal.c
+:successes:
+- :test: test_getAndSetOfStateNumber
+  :line: 148
+  :message: ''
+- :test: test_doPostChecksThePinsOnlyTheFirstTime_POST_is_a_go
+  :line: 155
+  :message: ''
+- :test: test_doPostChecksThePinsOnlyTheFirstTime_POST_is_a_no
+  :line: 181
+  :message: ''
+- :test: test_weCycleThroughTheStatesProperly
+  :line: 205
+  :message: ''
+- :test: test_State00SetsRC4
+  :line: 245
+  :message: ''
+- :test: test_State01SetsReferenceVBoostReadsBoostVoltageADCAndTransmitsOnTX
+  :line: 256
+  :message: ''
+- :test: test_State02SetsRC7AndClearsVBoost
+  :line: 293
+  :message: ''
+- :test: test_State03SetsRC5ClearsRC7
+  :line: 306
+  :message: ''
+- :test: test_State04SetsRC2ClearsRC5ReadsAndTransmitsTheExternalVacuum
+  :line: 317
+  :message: ''
+- :test: test_State05ClearsRC2ReadsAndTransmitsTheInternalVacuum
+  :line: 369
+  :message: ''
+- :test: test_State06WritesToTheEEPROMAndReadsItBack
+  :line: 422
+  :message: ''
+- :test: test_State07TogglesRC6ClearsRC3SetsVBoostReadsTheADCAndTransmitsADCOnTX
+  :line: 511
+  :message: ''
+- :test: test_State08TogglesRC6SetsRC3SetsVBoostReadsTheADCAndTransmitsADCOnTX
+  :line: 570
+  :message: ''
+- :test: test_State09ClearsRC3SetsDACto0ReadsRA5AndTransmitsRA5OnTX
+  :line: 627
+  :message: ''
+- :test: test_State10SetsRB5
+  :line: 679
+  :message: ''
+- :test: test_StateErrorSendsAMessageOnTheTXLine
+  :line: 690
+  :message: ''
+- :test: test_InitInitialiseTransmit
+  :line: 719
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 17
+  :passed: 17
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

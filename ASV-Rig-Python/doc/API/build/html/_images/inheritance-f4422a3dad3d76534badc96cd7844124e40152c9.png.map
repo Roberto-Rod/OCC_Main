@@ -1,0 +1,5 @@
+<map id="inheritance64ca6feebb" name="inheritance64ca6feebb">
+<area shape="rect" id="node1" href="#framework.module.nidaq.DigitalOutputControl" target="_top" title="Implements a control for the on&#45;demand digital outputs." alt="" coords="299,5,437,31"/>
+<area shape="rect" id="node2" href="framework.device.ni6363.html#framework.device.ni6363.DigitalOutputTask" target="_top" title="A task to write the specified digital output lines on&#45;demand." alt="" coords="125,5,251,31"/>
+<area shape="rect" id="node3" title="Represents a DAQmx Task." alt="" coords="5,5,77,31"/>
+</map>

@@ -1,0 +1,4 @@
+1) run_npda()
+    is_increasing_monotonically() called in each measurement, while this should only be called defore or right after uploading calib data to the device
+
+2) 

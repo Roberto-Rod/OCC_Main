@@ -1,0 +1,5 @@
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\netrtfwriter\RtfWriter\bin\Debug\RtfWriter.dll
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\netrtfwriter\RtfWriter\bin\Debug\RtfWriter.pdb
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\netrtfwriter\RtfWriter\obj\Debug\RtfWriter.dll
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\netrtfwriter\RtfWriter\obj\Debug\RtfWriter.pdb
+C:\Users\PiotrLaszczak\MPLABXProjects\bootloader-26-04-2021\yat\YAT-2.4.0\netrtfwriter\RtfWriter\obj\Debug\RtfWriter.csprojResolveAssemblyReference.cache

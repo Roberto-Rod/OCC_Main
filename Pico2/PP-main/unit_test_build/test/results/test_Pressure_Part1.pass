@@ -1,0 +1,38 @@
+---
+:source:
+  :path: test/unit_test/devices
+  :file: test_Pressure_Part1.c
+:successes:
+- :test: test_SetInitiaExternalPressureAndCheck
+  :line: 83
+  :message: ''
+- :test: test_InitialisePressureForPumpdownAndCheck
+  :line: 99
+  :message: ''
+- :test: test_TargetPumpDownVacuumAchievedOrNotAndCheck
+  :line: 109
+  :message: ''
+- :test: test_GetVacuumFailForInvalidInputParameterOrSensorsNotInitialisedAndCheck
+  :line: 202
+  :message: ''
+- :test: test_GetVacuumPassFirstTryAndCheck
+  :line: 246
+  :message: ''
+- :test: test_GetVacuumProvidesInternalPressureWhenAsked
+  :line: 299
+  :message: ''
+- :test: test_GetVacuumProvidesExternalPressureWhenAsked
+  :line: 357
+  :message: ''
+- :test: test_CheckTheLeakDetectionIsActiveWhenTheReferenceBoostVoltageIs27V
+  :line: 410
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 8
+  :passed: 8
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

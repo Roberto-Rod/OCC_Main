@@ -1,0 +1,20 @@
+---
+:source:
+  :path: test/acceptance_test
+  :file: test_HET_2.c
+:successes:
+- :test: test_TurnOffTheLEDsWhenDetectBatteryLowEventInIdleAndPumpDownAndDisableTheDeviceToDeliverFurtherTherapy
+  :line: 69
+  :message: ''
+- :test: test_TurnOffTheLEDsWhenDetectBatteryLowEventInTherapyDeliveryAndDisableTheDeviceToDeliverFurtherTherapy
+  :line: 167
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 2
+  :passed: 2
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

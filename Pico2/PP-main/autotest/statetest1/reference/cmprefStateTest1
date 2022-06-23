@@ -1,0 +1,39 @@
+
+
+
+count=0 
+ls -1 xx* | while read FILE ; do
+    echo ${FILE}
+
+    if [[ "$count" -eq 0 ]]; then 
+         echo Compare ${FILE}   and refStateTest1A
+         diff ${FILE} refStateTest1A
+    fi
+
+    if [[ "$count" -eq 1 ]]; then 
+         echo Compare ${FILE}   and refStateTest1B
+         diff ${FILE} refStateTest1B
+    fi
+
+    if [[ "$count" -eq 2 ]]; then 
+         echo Compare ${FILE}   and refStateTest1C
+         diff ${FILE} refStateTest1C
+    fi
+
+    if [[ "$count" -eq 3 ]]; then 
+         echo Compare ${FILE}   and refStateTest1D
+         diff ${FILE} refStateTest1D
+    fi
+
+    if [[ "$count" -eq 4 ]]; then 
+         echo Compare ${FILE}   and refStateTest1E
+         diff ${FILE} refStateTest1E
+    fi
+
+    count=$((count+1))
+    if [[ "$count" -ge 5 ]]; then 
+        count=0
+    fi
+
+    echo -----------------------------------------------------------
+done

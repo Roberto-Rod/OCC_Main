@@ -1,0 +1,767 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<TestRun>
+	<FailedTests/>
+	<SuccessfulTests>
+		<Test id="1">
+			<Name>test/unit_test/application/test_Application.c::test_ApplicationInitInitialiseManagers</Name>
+		</Test>
+		<Test id="2">
+			<Name>test/unit_test/application/test_Application.c::test_ApplicationSleepGoesToSleepWhenNotAtPOSTStateAndRelaxationOscillatorIsUsed</Name>
+		</Test>
+		<Test id="3">
+			<Name>test/unit_test/application/test_Application.c::test_ApplicationDoesNotGoToSleepWhenAtPOSTStateAndRelaxationOscillatorIsUsed</Name>
+		</Test>
+		<Test id="4">
+			<Name>test/unit_test/application/test_Application.c::test_RunDoesNotTickControllerWhenTimerFlagIsNotSet</Name>
+		</Test>
+		<Test id="5">
+			<Name>test/unit_test/application/test_Application.c::test_RunTicksControllersAndState</Name>
+		</Test>
+		<Test id="6">
+			<Name>test/unit_test/devices/test_Battery.c::test_BatteryOutOfRangeWhenVddIsOver3V6</Name>
+		</Test>
+		<Test id="7">
+			<Name>test/unit_test/devices/test_Battery.c::test_BoostVoltageIsOutOfRangeWhenBoostVoltageIsAbove33V</Name>
+		</Test>
+		<Test id="8">
+			<Name>test/unit_test/devices/test_Battery.c::test_BoostVoltageIsOutOfRangeWhenBoostVoltageIsBelow16V</Name>
+		</Test>
+		<Test id="9">
+			<Name>test/unit_test/devices/test_Battery.c::test_BatteryEndOfLifeWhenVddIsBelow1V9AndInitBoostDemandBelow18V</Name>
+		</Test>
+		<Test id="10">
+			<Name>test/unit_test/devices/test_Battery.c::test_ReduceInitBootstDemandWhenVddIsBelow2V2</Name>
+		</Test>
+		<Test id="11">
+			<Name>test/unit_test/devices/test_Battery.c::test_ReduceInitBootstDemandDownTo18VWhenVddIsBelow2V2</Name>
+		</Test>
+		<Test id="12">
+			<Name>test/unit_test/devices/test_DeviceStatus.c::test_DeviceStatusSetAndGet</Name>
+		</Test>
+		<Test id="13">
+			<Name>test/unit_test/devices/test_DeviceStatus.c::test_IsPumpRunning</Name>
+		</Test>
+		<Test id="14">
+			<Name>test/unit_test/devices/test_DeviceStatus.c::test_IsPressureSensorReading</Name>
+		</Test>
+		<Test id="15">
+			<Name>test/unit_test/devices/test_DutyCycle.c::test_PumpOnOffHistoryResetSetAndGetDutyCycleStats</Name>
+		</Test>
+		<Test id="16">
+			<Name>test/unit_test/devices/test_DutyCycle.c::test_PumpOnOffNumberOfTimesToHitTheLimitsOfDutyCycleHistoryAndCheck</Name>
+		</Test>
+		<Test id="17">
+			<Name>test/unit_test/devices/test_DutyCycle.c::test_PumpOffWithNoPumpOnPhasesOutOlderPumpOnEventsFromHistory</Name>
+		</Test>
+		<Test id="18">
+			<Name>test/unit_test/devices/test_I2CEEPROM.c::test_InitJustCallsTheLowerLevelInit</Name>
+		</Test>
+		<Test id="19">
+			<Name>test/unit_test/devices/test_I2CEEPROM.c::test_ReadDoesRangeChecking</Name>
+		</Test>
+		<Test id="20">
+			<Name>test/unit_test/devices/test_I2CEEPROM.c::test_ReadHappyCase</Name>
+		</Test>
+		<Test id="21">
+			<Name>test/unit_test/devices/test_I2CEEPROM.c::test_ReadHappyRetry</Name>
+		</Test>
+		<Test id="22">
+			<Name>test/unit_test/devices/test_I2CEEPROM.c::test_ReadRetryFailure</Name>
+		</Test>
+		<Test id="23">
+			<Name>test/unit_test/devices/test_I2CEEPROM.c::test_WriteDoesRangeChecking</Name>
+		</Test>
+		<Test id="24">
+			<Name>test/unit_test/devices/test_I2CEEPROM.c::test_WriteHappyCase</Name>
+		</Test>
+		<Test id="25">
+			<Name>test/unit_test/devices/test_I2CEEPROM.c::test_WriteHappyRetry</Name>
+		</Test>
+		<Test id="26">
+			<Name>test/unit_test/devices/test_I2CEEPROM.c::test_WriteRetryFailure</Name>
+		</Test>
+		<Test id="27">
+			<Name>test/unit_test/devices/test_PMTimer.c::test_TimerCountersInit</Name>
+		</Test>
+		<Test id="28">
+			<Name>test/unit_test/devices/test_PMTimer.c::test_TimerCountersStartAndCheck</Name>
+		</Test>
+		<Test id="29">
+			<Name>test/unit_test/devices/test_PMTimer.c::test_TimerCountersRunAndCheckAndDisable</Name>
+		</Test>
+		<Test id="30">
+			<Name>test/unit_test/devices/test_PMTimer.c::test_TimerCountersStopCheck</Name>
+		</Test>
+		<Test id="31">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_SetInternalTemperature</Name>
+		</Test>
+		<Test id="32">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_SetExternalTemperature</Name>
+		</Test>
+		<Test id="33">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_SetDifferentialPressure</Name>
+		</Test>
+		<Test id="34">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_SetExternalPressure</Name>
+		</Test>
+		<Test id="35">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_SetPumpHistory</Name>
+		</Test>
+		<Test id="36">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_SetBatteryVoltage</Name>
+		</Test>
+		<Test id="37">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_InitResetCounter</Name>
+		</Test>
+		<Test id="38">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_FailedEEPROMWriteDoesNotAdvanceAddress</Name>
+		</Test>
+		<Test id="39">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_PersistWriteToEEPROMAndAdvanceAddress</Name>
+		</Test>
+		<Test id="40">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_IPDDuration</Name>
+		</Test>
+		<Test id="41">
+			<Name>test/unit_test/devices/test_PerformanceLogger.c::test_SkipToNextBlock</Name>
+		</Test>
+		<Test id="42">
+			<Name>test/unit_test/devices/test_PowerTracker.c::test_WhenCurrentStaysTheSameNoFrequencyAdjustment</Name>
+		</Test>
+		<Test id="43">
+			<Name>test/unit_test/devices/test_PowerTracker.c::test_OnDownwardSlopeWhenCurrentIsIncreasedThenDecreaseFrequency</Name>
+		</Test>
+		<Test id="44">
+			<Name>test/unit_test/devices/test_PowerTracker.c::test_WhenCurrentIsIncreasedOnIncreasedFrequencyThenKeepIncreasingFrequency</Name>
+		</Test>
+		<Test id="45">
+			<Name>test/unit_test/devices/test_PowerTracker.c::test_IfCurrentIsDecreasedInResponseToIncreasedFrequencyThenIncreaseFrequency</Name>
+		</Test>
+		<Test id="46">
+			<Name>test/unit_test/devices/test_PowerTracker.c::test_IfCurrentIsDecreasedInResponseToIncreasedFrequencyThenDecreaseFrequency</Name>
+		</Test>
+		<Test id="47">
+			<Name>test/unit_test/devices/test_PowerTracker.c::test_FrequencyOutOfRangeLowerBoundCheck</Name>
+		</Test>
+		<Test id="48">
+			<Name>test/unit_test/devices/test_PowerTracker.c::test_FrequencyOutOfRangeUpperBoundCheck</Name>
+		</Test>
+		<Test id="49">
+			<Name>test/unit_test/devices/test_Pressure_Part1.c::test_SetInitiaExternalPressureAndCheck</Name>
+		</Test>
+		<Test id="50">
+			<Name>test/unit_test/devices/test_Pressure_Part1.c::test_InitialisePressureForPumpdownAndCheck</Name>
+		</Test>
+		<Test id="51">
+			<Name>test/unit_test/devices/test_Pressure_Part1.c::test_TargetPumpDownVacuumAchievedOrNotAndCheck</Name>
+		</Test>
+		<Test id="52">
+			<Name>test/unit_test/devices/test_Pressure_Part1.c::test_GetVacuumFailForInvalidInputParameterOrSensorsNotInitialisedAndCheck</Name>
+		</Test>
+		<Test id="53">
+			<Name>test/unit_test/devices/test_Pressure_Part1.c::test_GetVacuumPassFirstTryAndCheck</Name>
+		</Test>
+		<Test id="54">
+			<Name>test/unit_test/devices/test_Pressure_Part1.c::test_GetVacuumProvidesInternalPressureWhenAsked</Name>
+		</Test>
+		<Test id="55">
+			<Name>test/unit_test/devices/test_Pressure_Part1.c::test_GetVacuumProvidesExternalPressureWhenAsked</Name>
+		</Test>
+		<Test id="56">
+			<Name>test/unit_test/devices/test_Pressure_Part1.c::test_CheckTheLeakDetectionIsActiveWhenTheReferenceBoostVoltageIs27V</Name>
+		</Test>
+		<Test id="57">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleDifferentialVacuumMeasurementOkAndCheck</Name>
+		</Test>
+		<Test id="58">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumInternalMeasurementOkAndCheck</Name>
+		</Test>
+		<Test id="59">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumExternalMeasurementOkAndCheck</Name>
+		</Test>
+		<Test id="60">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumMeasurementInvalidInputParameterAndCheck</Name>
+		</Test>
+		<Test id="61">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumMeasurementExternalSensorNotReadyAndCheck</Name>
+		</Test>
+		<Test id="62">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumMeasurementInternalSensorNotReadyAndCheck</Name>
+		</Test>
+		<Test id="63">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumMeasurementBothSensorsNotReadyAndCheck</Name>
+		</Test>
+		<Test id="64">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumMeasurementFailGettingExtPressureAndCheck</Name>
+		</Test>
+		<Test id="65">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumMeasurementFailGettingIntPressureAndCheck</Name>
+		</Test>
+		<Test id="66">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumMeasurementFailToCalculatePressureDiffAndCheck</Name>
+		</Test>
+		<Test id="67">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumMeasurementFailToCalculatePressureExternalTemperatureThreshholdReached</Name>
+		</Test>
+		<Test id="68">
+			<Name>test/unit_test/devices/test_Pressure_Part2.c::test_TryToGetSingleVacuumMeasurementFailToCalculatePressureInternalTemperatureThreshholdReached</Name>
+		</Test>
+		<Test id="69">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_InitialisePressureSensorsAndCheck</Name>
+		</Test>
+		<Test id="70">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_InitialisePressureSensorsWithWriteToExtSensorFailAndCheck</Name>
+		</Test>
+		<Test id="71">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_InitialisePressureSensorsWithWriteToIntSensorFailAndCheck</Name>
+		</Test>
+		<Test id="72">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_InitialisePressureSensorsWithWriteToIntAndExtSensorsFailAndCheck</Name>
+		</Test>
+		<Test id="73">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_InitialisePressureSensorsWithReadFromExtSensorFailAndRetryTimeoutAndCheck</Name>
+		</Test>
+		<Test id="74">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_InitialisePressureSensorsWithReadFromIntSensorFailAndRetryTimeoutAndCheck</Name>
+		</Test>
+		<Test id="75">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_InitialisePressureSensorsWithReadFromBothSensorsFailAndRetryTimeoutAndCheck</Name>
+		</Test>
+		<Test id="76">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_InitialisePressureSensorsWithReadNoBootStatusFromExternalSensorsAndRetryTimeoutAndCheck</Name>
+		</Test>
+		<Test id="77">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_StartSensorsAndCheck</Name>
+		</Test>
+		<Test id="78">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_StartSensorsWithWriteToExtSensorFailAndCheck</Name>
+		</Test>
+		<Test id="79">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_StartSensorsWithWriteToIntSensorFailAndCheck</Name>
+		</Test>
+		<Test id="80">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_StartSensorsWithWriteToBotSensorFailAndCheck</Name>
+		</Test>
+		<Test id="81">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_GetPressureFromSensorsAndCheck</Name>
+		</Test>
+		<Test id="82">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_GetPressureFromSensorsFailsAndCheck</Name>
+		</Test>
+		<Test id="83">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_CalculatePressureDifferenceAndCheck</Name>
+		</Test>
+		<Test id="84">
+			<Name>test/unit_test/devices/test_Pressure_Part3.c::test_IfPressureSensorIsReadyAndCheck</Name>
+		</Test>
+		<Test id="85">
+			<Name>test/unit_test/devices/test_Pump.c::test_ActivateAndDeactivatePumpReturnOk</Name>
+		</Test>
+		<Test id="86">
+			<Name>test/unit_test/devices/test_Pump.c::test_ActivatePumpAndCheckResultOfIsPumpActivatedFunction</Name>
+		</Test>
+		<Test id="87">
+			<Name>test/unit_test/devices/test_Pump.c::test_IsPumpRunningFlagSetOnPumpActivate</Name>
+		</Test>
+		<Test id="88">
+			<Name>test/unit_test/devices/test_PushButton.c::test_IsPressedReadRA5</Name>
+		</Test>
+		<Test id="89">
+			<Name>test/unit_test/devices/test_PushButton.c::test_HasDepressedForDurationIncrementWhenButtonIsDepressed</Name>
+		</Test>
+		<Test id="90">
+			<Name>test/unit_test/devices/test_PushButton.c::test_DepressedCountIsResetWhenButtonIsReleased</Name>
+		</Test>
+		<Test id="91">
+			<Name>test/unit_test/devices/test_PushButton.c::test_HasDepressedForDuration</Name>
+		</Test>
+		<Test id="92">
+			<Name>test/unit_test/devices/test_PushButton.c::test_PushButtonStuckDoesNotRegisterAsLongPress</Name>
+		</Test>
+		<Test id="93">
+			<Name>test/unit_test/devices/test_PushButton.c::test_IfPushButtonIsNotReleaseAfterInitNotPressEventIsRegistered</Name>
+		</Test>
+		<Test id="94">
+			<Name>test/unit_test/devices/test_PushButton.c::test_PressEventStartsWithReleaseState</Name>
+		</Test>
+		<Test id="95">
+			<Name>test/unit_test/devices/test_PushButton.c::test_ShortPressRequiresMoreThanTwoTicks</Name>
+		</Test>
+		<Test id="96">
+			<Name>test/unit_test/devices/test_Transmit.c::test_InitDoesNothing</Name>
+		</Test>
+		<Test id="97">
+			<Name>test/unit_test/devices/test_Transmit.c::test_TransmitDoesRangeCheckingOnDataPointer</Name>
+		</Test>
+		<Test id="98">
+			<Name>test/unit_test/devices/test_Transmit.c::test_TransmitDoesRangeCheckingonDataSize</Name>
+		</Test>
+		<Test id="99">
+			<Name>test/unit_test/devices/test_Transmit.c::test_TransmitCallsEUSARTWriteForEachCharacter</Name>
+		</Test>
+		<Test id="100">
+			<Name>test/unit_test/devices/test_UIInterfaces.c::test_SetLEDToOrangeEnablesPowerAndDrivesLEDOrange</Name>
+		</Test>
+		<Test id="101">
+			<Name>test/unit_test/devices/test_UIInterfaces.c::test_SetLEDToGreenEnablesPowerAndDrivesLEDGreen</Name>
+		</Test>
+		<Test id="102">
+			<Name>test/unit_test/devices/test_UIInterfaces.c::test_SetLEDDisablesLEDAtOffPeriod</Name>
+		</Test>
+		<Test id="103">
+			<Name>test/unit_test/devices/test_UIInterfaces.c::test_PushButtonPressed</Name>
+		</Test>
+		<Test id="104">
+			<Name>test/unit_test/devices/test_UIInterfaces.c::test_FlashPattern</Name>
+		</Test>
+		<Test id="105">
+			<Name>test/unit_test/devices/test_UIInterfaces.c::test_FlashPatternForTwoLeds</Name>
+		</Test>
+		<Test id="106">
+			<Name>test/unit_test/managers/test_AlertManager.c::test_AlertManagerInitialise</Name>
+		</Test>
+		<Test id="107">
+			<Name>test/unit_test/managers/test_AlertManager.c::test_RunAlertManagerWhenStateMachineInFaultOrUnknownStateAndCheck</Name>
+		</Test>
+		<Test id="108">
+			<Name>test/unit_test/managers/test_AlertManager.c::test_RunAlertManagerWhenSwitchingBetweenDisplaySequences</Name>
+		</Test>
+		<Test id="109">
+			<Name>test/unit_test/managers/test_AlertManager.c::test_RunAlertManagerWhenSwitchingToPowerDownSeq</Name>
+		</Test>
+		<Test id="110">
+			<Name>test/unit_test/managers/test_AlertManager.c::test_RunAlertManagerWhenStateMachineInIdleStateAndCheck</Name>
+		</Test>
+		<Test id="111">
+			<Name>test/unit_test/managers/test_LoggingManager.c::test_Initialise</Name>
+		</Test>
+		<Test id="112">
+			<Name>test/unit_test/managers/test_LoggingManager.c::test_LogEveryMinuteWhenNotIdle</Name>
+		</Test>
+		<Test id="113">
+			<Name>test/unit_test/managers/test_LoggingManager.c::test_NoLoggingIfPumpIsRunning</Name>
+		</Test>
+		<Test id="114">
+			<Name>test/unit_test/managers/test_LoggingManager.c::test_NoLoggingIfPressureSensorReadingIsPerformed</Name>
+		</Test>
+		<Test id="115">
+			<Name>test/unit_test/managers/test_LoggingManager.c::test_SkipLoggingWhenStateIsIdle</Name>
+		</Test>
+		<Test id="116">
+			<Name>test/unit_test/managers/test_LoggingManager.c::test_LogEveryMinuteButEnterNREWhenEEPROMFull</Name>
+		</Test>
+		<Test id="117">
+			<Name>test/unit_test/managers/test_StateMachine.c::test_OnInitReturnIdleState</Name>
+		</Test>
+		<Test id="118">
+			<Name>test/unit_test/managers/test_StateMachine.c::test_RunInIdleStateWithNoButtonPresses</Name>
+		</Test>
+		<Test id="119">
+			<Name>test/unit_test/managers/test_StateMachine.c::test_RunInIdleStateWithError</Name>
+		</Test>
+		<Test id="120">
+			<Name>test/unit_test/managers/test_StateMachine.c::test_RunInIdleStateAndGoToPumpDownStateAndTherapyDelivery</Name>
+		</Test>
+		<Test id="121">
+			<Name>test/unit_test/managers/test_StateMachine.c::test_RunInPumpDownStateReturningUnknownStateAndGoToFaultState</Name>
+		</Test>
+		<Test id="122">
+			<Name>test/unit_test/managers/test_StateMachineFault.c::test_StateChecksAgainstNullPointer</Name>
+		</Test>
+		<Test id="123">
+			<Name>test/unit_test/managers/test_StateMachineFault.c::test_OnEntryInitialiseDependencyModules</Name>
+		</Test>
+		<Test id="124">
+			<Name>test/unit_test/managers/test_StateMachineFault.c::test_OnShortPressTransitToPumpDown</Name>
+		</Test>
+		<Test id="125">
+			<Name>test/unit_test/managers/test_StateMachineFault.c::test_AfterSetNumberOfMinutesTransitToIPD</Name>
+		</Test>
+		<Test id="126">
+			<Name>test/unit_test/managers/test_StateMachineIdle.c::test_OnInitClearSystemTimerReferenceReturnOk</Name>
+		</Test>
+		<Test id="127">
+			<Name>test/unit_test/managers/test_StateMachineIdle.c::test_IdleCheckStateReturnsInvalidParameter</Name>
+		</Test>
+		<Test id="128">
+			<Name>test/unit_test/managers/test_StateMachineIdle.c::test_OnEntryInitialiseUIAndPowerSettingAndWhenSwitchIsNotPressedGoToIdle</Name>
+		</Test>
+		<Test id="129">
+			<Name>test/unit_test/managers/test_StateMachineIdle.c::test_IdleStateRunsWhenSwitchIsPressedNotLongEnoughToSwitchOnAndStayInIdle</Name>
+		</Test>
+		<Test id="130">
+			<Name>test/unit_test/managers/test_StateMachineIdle.c::test_IdleStateRunsWhenSwitchIsPressedLongEnoughToGoIntoPumpDown</Name>
+		</Test>
+		<Test id="131">
+			<Name>test/unit_test/managers/test_StateMachineIdle.c::test_OnRunIfPushButtonIsNotPressedDisablePeripheral</Name>
+		</Test>
+		<Test id="132">
+			<Name>test/unit_test/managers/test_StateMachineIdle.c::test_IfTimerExpireGoToIPDEvenIfNoButtonIsPressed</Name>
+		</Test>
+		<Test id="133">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_OnInitSetsStateToZeroAndReturnsZero</Name>
+		</Test>
+		<Test id="134">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_ifNotDoingPOSTRunTransistionsToIdleState</Name>
+		</Test>
+		<Test id="135">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunStateTestGoToDefaultWithInvalidSwitch</Name>
+		</Test>
+		<Test id="136">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState00CalledWhenStateIsZero</Name>
+		</Test>
+		<Test id="137">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState01CalledWhenStateIsOne</Name>
+		</Test>
+		<Test id="138">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState02CalledWhenStateIsTwo</Name>
+		</Test>
+		<Test id="139">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState03CalledWhenStateIsThree</Name>
+		</Test>
+		<Test id="140">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState04CalledWhenStateIsFour</Name>
+		</Test>
+		<Test id="141">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState05CalledWhenStateIsFive</Name>
+		</Test>
+		<Test id="142">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState06CalledWhenStateIsSix</Name>
+		</Test>
+		<Test id="143">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState07CalledWhenStateIsSeven</Name>
+		</Test>
+		<Test id="144">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState08CalledWhenStateIsEight</Name>
+		</Test>
+		<Test id="145">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState09CalledWhenStateIsNine</Name>
+		</Test>
+		<Test id="146">
+			<Name>test/unit_test/managers/test_StateMachinePOST.c::test_onRunState10CalledWhenStateIsTen</Name>
+		</Test>
+		<Test id="147">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_getAndSetOfStateNumber</Name>
+		</Test>
+		<Test id="148">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_doPostChecksThePinsOnlyTheFirstTime_POST_is_a_go</Name>
+		</Test>
+		<Test id="149">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_doPostChecksThePinsOnlyTheFirstTime_POST_is_a_no</Name>
+		</Test>
+		<Test id="150">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_weCycleThroughTheStatesProperly</Name>
+		</Test>
+		<Test id="151">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State00SetsRC4</Name>
+		</Test>
+		<Test id="152">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State01SetsReferenceVBoostReadsBoostVoltageADCAndTransmitsOnTX</Name>
+		</Test>
+		<Test id="153">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State02SetsRC7AndClearsVBoost</Name>
+		</Test>
+		<Test id="154">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State03SetsRC5ClearsRC7</Name>
+		</Test>
+		<Test id="155">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State04SetsRC2ClearsRC5ReadsAndTransmitsTheExternalVacuum</Name>
+		</Test>
+		<Test id="156">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State05ClearsRC2ReadsAndTransmitsTheInternalVacuum</Name>
+		</Test>
+		<Test id="157">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State06WritesToTheEEPROMAndReadsItBack</Name>
+		</Test>
+		<Test id="158">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State07TogglesRC6ClearsRC3SetsVBoostReadsTheADCAndTransmitsADCOnTX</Name>
+		</Test>
+		<Test id="159">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State08TogglesRC6SetsRC3SetsVBoostReadsTheADCAndTransmitsADCOnTX</Name>
+		</Test>
+		<Test id="160">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State09ClearsRC3SetsDACto0ReadsRA5AndTransmitsRA5OnTX</Name>
+		</Test>
+		<Test id="161">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_State10SetsRB5</Name>
+		</Test>
+		<Test id="162">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_StateErrorSendsAMessageOnTheTXLine</Name>
+		</Test>
+		<Test id="163">
+			<Name>test/unit_test/managers/test_StateMachinePOST_internal.c::test_InitInitialiseTransmit</Name>
+		</Test>
+		<Test id="164">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_OnInitDisableStateTimerInitialiseStateVacuumAndReurnOk</Name>
+		</Test>
+		<Test id="165">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownStateReturnsInvalidInputParameter</Name>
+		</Test>
+		<Test id="166">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunsUntilReachingTargetVacuumWithVacuumReadAndPumpActivateAlternating</Name>
+		</Test>
+		<Test id="167">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownDurationUpdatedWithPerformanceLogger</Name>
+		</Test>
+		<Test id="168">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunsFor20SecondWhenPressureReachedButOutwith5SecondWindow</Name>
+		</Test>
+		<Test id="169">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunsCannotReachTargetVacuum</Name>
+		</Test>
+		<Test id="170">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownFailsToTakeVacuumReadingAndReturnsError</Name>
+		</Test>
+		<Test id="171">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownDetectButtonPressAndEventuallyGoesInShutdown</Name>
+		</Test>
+		<Test id="172">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunsButExternalPressureIncreasesCausingNoneReturnValveError</Name>
+		</Test>
+		<Test id="173">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunnningDetectsExternalOverTemperatureEventAndEntersNRE</Name>
+		</Test>
+		<Test id="174">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunnningDetectsInternalOverTemperatureEventAndEntersNRE</Name>
+		</Test>
+		<Test id="175">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_IntInitalise</Name>
+		</Test>
+		<Test id="176">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_IntStart</Name>
+		</Test>
+		<Test id="177">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_IntNotReady</Name>
+		</Test>
+		<Test id="178">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_IntReadFailed</Name>
+		</Test>
+		<Test id="179">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_ExtInitalise</Name>
+		</Test>
+		<Test id="180">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_ExtStart</Name>
+		</Test>
+		<Test id="181">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_ExtNotReady</Name>
+		</Test>
+		<Test id="182">
+			<Name>test/unit_test/managers/test_StateMachinePumpDown.c::test_PumpDownRunnningReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsAndEnterNRE_ExtReadFailed</Name>
+		</Test>
+		<Test id="183">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_InitialiseInternalVariablesAndReturnOk</Name>
+		</Test>
+		<Test id="184">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_InvalidParameterForDeliveryTherapyStateFunctionThatReurnsAnError</Name>
+		</Test>
+		<Test id="185">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryStateReturnsInvalidInputParameter</Name>
+		</Test>
+		<Test id="186">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryOnEntryFromDifferntState</Name>
+		</Test>
+		<Test id="187">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryDetectLeakAndGoIntoFault</Name>
+		</Test>
+		<Test id="188">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsExtInitalise</Name>
+		</Test>
+		<Test id="189">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsExtStart</Name>
+		</Test>
+		<Test id="190">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsExtNotReady</Name>
+		</Test>
+		<Test id="191">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsExtReadExtReadFail</Name>
+		</Test>
+		<Test id="192">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsIntInitalise</Name>
+		</Test>
+		<Test id="193">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsIntStart</Name>
+		</Test>
+		<Test id="194">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsIntNotReady</Name>
+		</Test>
+		<Test id="195">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryStopAndEnterNREWhenReliablePreassureAndTemperatureReadingsCantBeObtainedFromSensorsIntReadIntReadFail</Name>
+		</Test>
+		<Test id="196">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryDetectExternalTemperatureThreshholdAndEnterNRE</Name>
+		</Test>
+		<Test id="197">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryDetectInternalTemperatureThreshholdAndEnterNRE</Name>
+		</Test>
+		<Test id="198">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryDetectsShortButtonPressAndEnablesTheAlertsForTheDeviceStatusCheck</Name>
+		</Test>
+		<Test id="199">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryDetectLongButtonPressAndEventuallyGoesInShutdown</Name>
+		</Test>
+		<Test id="200">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryVacuumAtTargetValueDoNotPumpOn</Name>
+		</Test>
+		<Test id="201">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryVacuumBelowTargetValueThereforeDoPumpOn</Name>
+		</Test>
+		<Test id="202">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryUpdateTargetVacuumPeriodicallyToSaveBattery</Name>
+		</Test>
+		<Test id="203">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryFailToActivatePumpAndGoToEitherFaultOrNonRecoverableError</Name>
+		</Test>
+		<Test id="204">
+			<Name>test/unit_test/managers/test_StateMachineTherapyDelivery.c::test_TherapyDeliveryDetectHighExternalPressureAndGoIntoFault</Name>
+		</Test>
+		<Test id="205">
+			<Name>test/acceptance_test/test_HET_1.c::test_WhenButtonIsPressedGreenLEDIsEnabled</Name>
+		</Test>
+		<Test id="206">
+			<Name>test/acceptance_test/test_HET_13.c::test_GoFromIdleToPumpDownAndClearTheWatchdogAtEveryExecution</Name>
+		</Test>
+		<Test id="207">
+			<Name>test/acceptance_test/test_HET_15.c::test_PeriodicallyRefreshLedsAndPwmOutputPinsSoThatNoiseDoesNotPreventTherapyDelivery</Name>
+		</Test>
+		<Test id="208">
+			<Name>test/acceptance_test/test_HET_16.c::test_AtIdleSpuriousButtonPressDoesNotStartTherapy</Name>
+		</Test>
+		<Test id="209">
+			<Name>test/acceptance_test/test_HET_16.c::test_AtPumpDownOrTherapyDeliverySpuriousButtonPressesDoNotStopTherapy</Name>
+		</Test>
+		<Test id="210">
+			<Name>test/acceptance_test/test_HET_18.c::test_TestEEPROMWriteAndReadHappyCase</Name>
+		</Test>
+		<Test id="211">
+			<Name>test/acceptance_test/test_HET_18.c::test_TestEEPROMWriteAndReadWithIncorrectBytesRead</Name>
+		</Test>
+		<Test id="212">
+			<Name>test/acceptance_test/test_HET_2.c::test_TurnOffTheLEDsWhenDetectBatteryLowEventInIdleAndPumpDownAndDisableTheDeviceToDeliverFurtherTherapy</Name>
+		</Test>
+		<Test id="213">
+			<Name>test/acceptance_test/test_HET_2.c::test_TurnOffTheLEDsWhenDetectBatteryLowEventInTherapyDeliveryAndDisableTheDeviceToDeliverFurtherTherapy</Name>
+		</Test>
+		<Test id="214">
+			<Name>test/acceptance_test/test_HET_22.c::test_PeriodicallyTurnThePumpOffAndDisableBoostVoltageCircuitToMakeSureThePumpIsDeactivatedWhenNotNeeded</Name>
+		</Test>
+		<Test id="215">
+			<Name>test/acceptance_test/test_HET_24.c::test_TurnOffDeviceDuringIPDWhenPushButtonIsHeldForTwoSeconds</Name>
+		</Test>
+		<Test id="216">
+			<Name>test/acceptance_test/test_HET_24.c::test_DeviceCanBeTurnedOffDuringMPD</Name>
+		</Test>
+		<Test id="217">
+			<Name>test/acceptance_test/test_HET_31.c::test_RunThroughPostStatesUsingTwoInputLinesDrivenByIct</Name>
+		</Test>
+		<Test id="218">
+			<Name>test/acceptance_test/test_HET_31.c::test_SkipPostAndGoToIdleIfTwoInputPinsAreConfiguredAsInNormalOperationMode</Name>
+		</Test>
+		<Test id="219">
+			<Name>test/acceptance_test/test_HET_33.c::test_TestEEPROMWriteAndReadHappyCase</Name>
+		</Test>
+		<Test id="220">
+			<Name>test/acceptance_test/test_HET_33.c::test_TestEEPROMWriteAndReadWithIncorrectBytesRead</Name>
+		</Test>
+		<Test id="221">
+			<Name>test/acceptance_test/test_HET_34.c::test_DetectBatteryDepletedDuringIPDAndTryToStartDeviceAgainWithNoLuck</Name>
+		</Test>
+		<Test id="222">
+			<Name>test/acceptance_test/test_HET_34.c::test_DetectBatteryDepletedDuringMPDAndTryToStartDeviceAgainWithNoLuck</Name>
+		</Test>
+		<Test id="223">
+			<Name>test/acceptance_test/test_HET_35.c::test_TheDeviceDetectsEndOfLifeErrorDuringPumpdownAndCannotBeRestartedToDeliverFurtherTherapy</Name>
+		</Test>
+		<Test id="224">
+			<Name>test/acceptance_test/test_HET_35.c::test_TheDeviceDetectsEndOfLifeErrorDuringTherapyDeliveryAndCannotBeRestartedToDeliverFurtherTherapy</Name>
+		</Test>
+		<Test id="225">
+			<Name>test/acceptance_test/test_HET_36.c::test_PerformanceDataIsStoredEveryMinuteDuringMPD</Name>
+		</Test>
+		<Test id="226">
+			<Name>test/acceptance_test/test_HET_37.c::test_UserCanTurnOffDeviceDuringPumpDown</Name>
+		</Test>
+		<Test id="227">
+			<Name>test/acceptance_test/test_HET_39.c::test_DuringIPDWhenTargetPressureIsReachedTransitToMPD</Name>
+		</Test>
+		<Test id="228">
+			<Name>test/acceptance_test/test_HET_43.c::test_TestTXHappyCase</Name>
+		</Test>
+		<Test id="229">
+			<Name>test/acceptance_test/test_HET_44.c::test_AlertTheUserAccordingToACompositeLedFlashinPatternWhenTargetPressureIsReachedAndBeyond</Name>
+		</Test>
+		<Test id="230">
+			<Name>test/acceptance_test/test_HET_5.c::test_DuringIPDWhenTargetPressureIsNotAchievedTransitToFault</Name>
+		</Test>
+		<Test id="231">
+			<Name>test/acceptance_test/test_HET_50.c::test_DetectAnOutOfRangeVoltageDuringTherapyDeliveryGoIntoNRE</Name>
+		</Test>
+		<Test id="232">
+			<Name>test/acceptance_test/test_HET_51.c::test_After60MinInFaultStateRestartIPD</Name>
+		</Test>
+		<Test id="233">
+			<Name>test/acceptance_test/test_HET_52.c::test_WhenButtonIsNotPressedIndleTheTherapyIsStartedAfter60Minutes</Name>
+		</Test>
+		<Test id="234">
+			<Name>test/acceptance_test/test_HET_53.c::test_LongButtonPressStartedInIdleDoesNotSwitchTheDeviceOffDuringInitialPumpDownOrTherapyDelivery</Name>
+		</Test>
+		<Test id="235">
+			<Name>test/acceptance_test/test_HET_53.c::test_LongButtonPressStartedInIdleDoesNotSwitchTheDeviceOffDuringInitialPumpDownOrTherapyDeliveryAfterGoingFromLeakToIdle</Name>
+		</Test>
+		<Test id="236">
+			<Name>test/acceptance_test/test_HET_55.c::test_ShortBottonPressInTherapyDeliveryWhenAtTargetVacuunAndAlertTheUserEverythingIsOK</Name>
+		</Test>
+		<Test id="237">
+			<Name>test/acceptance_test/test_HET_59.c::test_DetectAnOutOfRangeVoltageDuringPumpDownGoIntoNRE</Name>
+		</Test>
+		<Test id="238">
+			<Name>test/acceptance_test/test_HET_6.c::test_TherapyIsMaintained</Name>
+		</Test>
+		<Test id="239">
+			<Name>test/acceptance_test/test_HET_60.c::test_LogInitialPumpDownDurationInPersistentMemoryWhenInTherapyDelivery</Name>
+		</Test>
+		<Test id="240">
+			<Name>test/acceptance_test/test_HET_60.c::test_LogUnsuccessfulInitialPumpDownDurationInPersistentMemoryWhenInFault</Name>
+		</Test>
+		<Test id="241">
+			<Name>test/acceptance_test/test_HET_61.c::test_RestartTheTherapyWithShortButtonPressFromLeakErrorCondition</Name>
+		</Test>
+		<Test id="242">
+			<Name>test/acceptance_test/test_HET_65.c::test_SwitchTheDeviceOffWithLongButtonPressStartedInLeakErrorConditionAndDetectedInPumpDown</Name>
+		</Test>
+		<Test id="243">
+			<Name>test/acceptance_test/test_HET_67.c::test_SwitchTheDeviceOffWithLongButtonPressStartedInLeakErrorConditionAndDetectedInTherapyDelivery</Name>
+		</Test>
+		<Test id="244">
+			<Name>test/acceptance_test/test_HET_68.c::test_CompleteIctPostAndCheckTheEepromIsUnchangedThenRestartDeviceSkipPostAndCheckTheEepromIsStillUnchanged</Name>
+		</Test>
+		<Test id="245">
+			<Name>test/acceptance_test/test_HET_69.c::test_PerformanceStatsSkippedInIdleState</Name>
+		</Test>
+		<Test id="246">
+			<Name>test/acceptance_test/test_HET_7.c::test_InIdleStateWhenNoButtonIsPressedGoToLowPowerDisablingPeripherals</Name>
+		</Test>
+		<Test id="247">
+			<Name>test/acceptance_test/test_HET_8.c::test_DetectLeakInTherapyDeliveryAndAlertTheUserOfTheErrorCondition</Name>
+		</Test>
+		<Test id="248">
+			<Name>test/acceptance_test/test_HET_8.c::test_DetectAndIgnoreLeakInTherapyDeliveryWhenBoostVoltageDenandIsBelow27V</Name>
+		</Test>
+		<Test id="249">
+			<Name>test/acceptance_test/test_HET_82.c::test_FailToReadVacuumInTherapyDeliveryAndAlertTheUserOfTheErrorConditionAndEnterNRE</Name>
+		</Test>
+		<Test id="250">
+			<Name>test/acceptance_test/test_HET_83.c::test_VerifyNREStateIsEnteredWhenNRErrorRaisedInIdle</Name>
+		</Test>
+		<Test id="251">
+			<Name>test/acceptance_test/test_HET_83.c::test_VerifyNREStateIsEnteredWhenNRErrorRaisedInTherapy</Name>
+		</Test>
+	</SuccessfulTests>
+	<IgnoredTests/>
+	<Statistics>
+		<Tests>251</Tests>
+		<Ignores>0</Ignores>
+		<FailuresTotal>0</FailuresTotal>
+		<Errors>0</Errors>
+		<Failures>0</Failures>
+	</Statistics>
+</TestRun>

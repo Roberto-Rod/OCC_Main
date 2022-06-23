@@ -1,0 +1,907 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YAT.Log</name>
+    </assembly>
+    <members>
+        <member name="T:YAT.Log.Log">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.#ctor(System.Boolean,System.Func{System.String},System.String,YAT.Log.LogFileWriteMode)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.Log.Log.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:YAT.Log.Log.IsEnabled">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Log.FileExists">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Log.FilePath">
+            <summary>
+            The absolute path to the log file.
+            </summary>
+        </member>
+        <member name="P:YAT.Log.Log.IsOn">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.ApplySettings(System.Boolean,System.Boolean,System.Func{System.String},System.String,YAT.Log.LogFileWriteMode)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.MakeFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.MakeUniqueFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.Open">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.Flush">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.Clear">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.Close">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.OpenWriter(System.IO.FileStream)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.FlushWriter">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.CloseWriter">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.TriggerFlushTimer">
+            <summary>
+            Triggers the flush timer. After triggering, <see cref="M:YAT.Log.Log.Flush"/> will be called within
+            approx. <see cref="F:YAT.Log.Log.FlushTimeoutMin"/> and <see cref="F:YAT.Log.Log.FlushTimeoutMax"/> milliseconds.
+            </summary>
+            <remarks>
+            This flushing mechanism is needed because neither <see cref="T:System.IO.Stream"/> nor any derived
+            class implements some kind of time-out controlled intelligent flushing. .NET would keep
+            4096 bytes buffered. This would lead to:
+            <list type="bullet">
+            <item><description>"Slow" data would not be written to the file before 4096 got transmitted.</description></item>
+            <item><description>Data at the end of a transmission would not be written before stopping log or closing terminal/YAT.</description></item>
+            </list>
+            Note that <see cref="P:System.IO.StreamWriter.AutoFlush"/> does not solve this issue, that is very
+            inefficient as it "will flush its buffer to the underlying stream after every call
+            to StreamWriter.Write()".
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.Log.StopAndDisposeFlushTimer">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Log.flushTimer_OneShot_Elapsed(System.Object)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.TextLog">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.TextLog.FileType">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.TextLog.#ctor(System.Boolean,System.Func{System.String},System.String,YAT.Log.LogFileWriteMode,System.Text.Encoding,YAT.Format.Settings.FormatSettings)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.TextLog.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.Log.TextLog.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="M:YAT.Log.TextLog.ApplySettings(System.Boolean,System.Boolean,System.Func{System.String},System.String,YAT.Log.LogFileWriteMode,System.Text.Encoding,YAT.Format.Settings.FormatSettings)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.TextLog.MakeFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.TextLog.ToFileType(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.TextLog.OpenWriter(System.IO.FileStream)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.TextLog.FlushWriter">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.TextLog.CloseWriter">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.TextLog.CloseAndDisposeWriterNotSynchronized">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.TextLog.CloseAndDisposeXmlWriterNotSynchronized">
+            <remarks>
+            Separated (instead of implemented in <see cref="M:YAT.Log.TextLog.CloseAndDisposeWriterNotSynchronized"/> above)
+            for reducing the coupling to <see cref="T:YAT.Log.Utilities.RtfWriter"/>, i.e. prevent unnecessary loading of that
+            assemble when calling <see cref="M:YAT.Log.TextLog.CloseAndDisposeWriterNotSynchronized"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.TextLog.CloseAndDisposeRtfWriterNotSynchronized">
+            <remarks>
+            Separated (instead of implemented in <see cref="M:YAT.Log.TextLog.CloseAndDisposeWriterNotSynchronized"/> above)
+            for reducing the coupling to <see cref="T:YAT.Log.Utilities.RtfWriter"/>, i.e. prevent unnecessary loading of that
+            assemble when calling <see cref="M:YAT.Log.TextLog.CloseAndDisposeWriterNotSynchronized"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.TextLog.CloseAndDisposeTextWriterNotSynchronized">
+            <remarks>
+            Separated (instead of implemented in <see cref="M:YAT.Log.TextLog.CloseAndDisposeWriterNotSynchronized"/> above)
+            for reducing the coupling to <see cref="T:YAT.Log.Utilities.RtfWriter"/>, i.e. prevent unnecessary loading of that
+            assemble when calling <see cref="M:YAT.Log.TextLog.CloseAndDisposeWriterNotSynchronized"/>.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.TextLog.WriteLine(YAT.Domain.DisplayLine)">
+            <remarks>
+            Since text log uses formatted display lines, only the items that are shown are written to the log.
+            This differs from raw log, where all items (time stamp, device, direction) are written to the log.
+            </remarks>
+        </member>
+        <member name="T:YAT.Log.RawLog">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.RawLog.FileType">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.RawLog.#ctor(System.Boolean,System.Func{System.String},System.String,YAT.Log.LogFileWriteMode,System.Text.Encoding)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.RawLog.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.Log.RawLog.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="M:YAT.Log.RawLog.ApplySettings(System.Boolean,System.Boolean,System.Func{System.String},System.String,YAT.Log.LogFileWriteMode,System.Text.Encoding)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.RawLog.MakeFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.RawLog.ToFileType(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.RawLog.OpenWriter(System.IO.FileStream)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.RawLog.FlushWriter">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.RawLog.CloseWriter">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.RawLog.CloseAndDisposeWriterNotSynchronized">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.RawLog.Write(YAT.Domain.RawChunk)">
+            <remarks>
+            Since raw log uses raw items (time stamp, device, direction) all items are written to the log.
+            This differs from text log, where only the items that are shown are written to the log.
+            </remarks>
+        </member>
+        <member name="T:YAT.Log.Provider">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Provider.#ctor(YAT.Log.Settings.LogSettings,System.Text.Encoding,YAT.Format.Settings.FormatSettings)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Provider.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.Log.Provider.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:YAT.Log.Provider.TextTerminalEncoding">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.NeatFormat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.Settings">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.EnabledCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.AnyIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.ControlIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.AnyControlIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.RawTxIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.RawBidirIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.RawRxIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.AnyRawIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.NeatTxIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.NeatBidirIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.NeatRxIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.AnyNeatIsOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.AllAreOn">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.FileExists">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Provider.SwitchOn">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Provider.Clear">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Provider.Flush">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Provider.SwitchOff">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Provider.Write(YAT.Domain.RawChunk,YAT.Log.LogChannel)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Provider.WriteLine(YAT.Domain.DisplayLine,YAT.Log.LogChannel)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Provider.GetLog(YAT.Log.LogChannel)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Provider.FilePaths">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.Settings.LogSettings">
+            <remarks>
+            Same naming postfix as all other '...Settings' classes.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.#ctor(MKY.Settings.SettingsType)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.#ctor(YAT.Log.Settings.LogSettings)">
+            <remarks>
+            Fields are assigned via properties even though changed flag will be cleared anyway.
+            There potentially is additional code that needs to be run within the property method.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.SetMyDefaults">
+            <remarks>
+            Fields are assigned via properties to ensure correct setting of changed flag.
+            </remarks>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.RootDirectoryPath">
+            <remarks>
+            XML tag is "RootPath" for backward compatibility.
+            May be changed to "RootDirectoryPath" once bugs #232 "Issues with TolerantXmlSerializer"
+            and #246 "Issues with AlternateTolerantXmlSerializer" have been fixed.
+            </remarks>
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.FileNameBase">
+            <remarks>
+            XML tag is "RootFileName" for backward compatibility.
+            May be changed to "FileNameBase" once bugs #232 "Issues with TolerantXmlSerializer"
+            and #246 "Issues with AlternateTolerantXmlSerializer" have been fixed.
+            </remarks>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.RootAndBase">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.ControlLog">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.ControlRootRelativeFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.MakeControlFilePath">
+            <summary>
+            Builds the absolute or relative path to the log file, expanding environment variables.
+            </summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.ControlExtension">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.RawLogTx">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.RawTxRootRelativeFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.MakeRawTxFilePath">
+            <summary>
+            Builds the absolute or relative path to the log file, expanding environment variables.
+            </summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.RawLogBidir">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.RawBidirRootRelativeFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.MakeRawBidirFilePath">
+            <summary>
+            Builds the absolute or relative path to the log file, expanding environment variables.
+            </summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.RawLogRx">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.RawRxRootRelativeFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.MakeRawRxFilePath">
+            <summary>
+            Builds the absolute or relative path to the log file, expanding environment variables.
+            </summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.RawExtension">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NeatLogTx">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NeatTxRootRelativeFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.MakeNeatTxFilePath">
+            <summary>
+            Builds the absolute or relative path to the log file, expanding environment variables.
+            </summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NeatLogBidir">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NeatBidirRootRelativeFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.MakeNeatBidirFilePath">
+            <summary>
+            Builds the absolute or relative path to the log file, expanding environment variables.
+            </summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NeatLogRx">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NeatRxRootRelativeFilePath">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.MakeNeatRxFilePath">
+            <summary>
+            Builds the absolute or relative path to the log file, expanding environment variables.
+            </summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NeatExtension">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.ControlCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.AnyControl">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.MultipleControl">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.RawCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.AnyRaw">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.MultipleRaw">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NeatCount">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.AnyNeat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.MultipleNeat">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.Any">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.Multiple">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.SameType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.SameDirection">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.SameExtension">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.Count">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NameType">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NameDirection">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NameDate">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NameTime">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NameSeparator">
+            <remarks>
+            This 'EnumEx' cannot be serialized, thus, the helper below is used for serialization.
+            Still, this settings object shall provide an 'EnumEx' for full control of the setting.
+            </remarks>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NameSeparator_ForSerialization">
+            <remarks>
+            Must be string because an 'EnumEx' cannot be serialized.
+            </remarks>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.NameSeparatorString">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.FolderType">
+            <remarks>
+            Using "Folder" instead of "Directory" as today's users are more used to that term.
+            All other identifiers in code shall use "Directory" (same as .NET uses "Directory").
+            </remarks>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.FolderDirection">
+            <remarks>
+            Using "Folder" instead of "Directory" as today's users are more used to that term.
+            All other identifiers in code shall use "Directory" (same as .NET uses "Directory").
+            </remarks>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.WriteMode">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.TextEncodingIsSupported">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.TextEncoding">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.Settings.LogSettings.EmitEncodingPreamble">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.ToTextEncoding(System.Text.Encoding)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <remarks>
+            Use properties instead of fields to calculate hash code. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.Equals(YAT.Log.Settings.LogSettings)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+            <remarks>
+            Use properties instead of fields to determine equality. This ensures that 'intelligent'
+            properties, i.e. properties with some logic, are also properly handled.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.op_Equality(YAT.Log.Settings.LogSettings,YAT.Log.Settings.LogSettings)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Settings.LogSettings.op_Inequality(YAT.Log.Settings.LogSettings,YAT.Log.Settings.LogSettings)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="T:YAT.Log.LogType">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogType.Control">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogType.Raw">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogType.Neat">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.LogDirection">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogDirection.None">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogDirection.Tx">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogDirection.Bidir">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogDirection.Rx">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.LogChannel">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogChannel.Control">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogChannel.RawTx">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogChannel.RawBidir">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogChannel.RawRx">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogChannel.NeatTx">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogChannel.NeatBidir">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogChannel.NeatRx">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.LogFileWriteMode">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogFileWriteMode.Create">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.LogFileWriteMode.Append">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.TextEncoding">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.TextEncoding.UTF8">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.TextEncoding.Terminal">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.FileNameSeparator">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.FileNameSeparatorEx">
+            <summary>
+            Extended enum FileNameSeparatorEx.
+            </summary>
+            <remarks>
+            This <see cref="T:MKY.EnumEx"/> based type is not serializable because <see cref="T:System.Enum"/> isn't.
+            Use the underlying enum for serialization, or alternatively, a string representation.
+            </remarks>
+        </member>
+        <member name="F:YAT.Log.FileNameSeparatorEx.Default">
+            <summary>Default is <see cref="F:YAT.Log.FileNameSeparator.Dash"/>.</summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.#ctor">
+            <summary>Default is <see cref="F:YAT.Log.FileNameSeparatorEx.Default"/>.</summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.#ctor(YAT.Log.FileNameSeparator)">
+            <remarks>
+            Do not use with <see cref="F:YAT.Log.FileNameSeparator.Explicit"/> because that selection requires
+            a separator string. Use <see cref="M:YAT.Log.FileNameSeparatorEx.#ctor(System.String)"/> instead.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="separator"/> is <see cref="F:YAT.Log.FileNameSeparator.Explicit"/>. Use <see cref="M:YAT.Log.FileNameSeparatorEx.#ctor(System.String)"/> instead.
+            </exception>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="P:YAT.Log.FileNameSeparatorEx.IsExplicit">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.ToSeparator">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.ToDescription">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.ToString">
+            <summary>
+            Converts the value of this instance to its equivalent string representation.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.Equals(System.Object)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.Equals(YAT.Log.FileNameSeparatorEx)">
+            <summary>
+            Determines whether this instance and the specified object have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.op_Equality(YAT.Log.FileNameSeparatorEx,YAT.Log.FileNameSeparatorEx)">
+            <summary>
+            Determines whether the two specified objects have reference or value equality.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.op_Inequality(YAT.Log.FileNameSeparatorEx,YAT.Log.FileNameSeparatorEx)">
+            <summary>
+            Determines whether the two specified objects have reference and value inequality.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.GetItems">
+            <remarks>
+            An array of extended enum items is returned for more versatile use, e.g. view lists.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.Parse(System.String)">
+            <remarks>
+            Opposed to the convention of the .NET framework, whitespace is NOT
+            trimmed from <paramref name="s"/> as certain separators contain spaces.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.TryParse(System.String,YAT.Log.FileNameSeparatorEx@)">
+            <remarks>
+            Opposed to the convention of the .NET framework, whitespace is NOT
+            trimmed from <paramref name="s"/> as certain separators contain spaces.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.TryParse(System.String,YAT.Log.FileNameSeparator@)">
+            <remarks>
+            Opposed to the convention of the .NET framework, whitespace is NOT
+            trimmed from <paramref name="s"/> as certain separators contain spaces.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.op_Implicit(YAT.Log.FileNameSeparatorEx)~YAT.Log.FileNameSeparator">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.op_Explicit(YAT.Log.FileNameSeparator)~YAT.Log.FileNameSeparatorEx">
+            <remarks>
+            Explicit because cast doesn't work for <see cref="F:YAT.Log.FileNameSeparator.Explicit"/>.
+            </remarks>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="separator"/> is <see cref="F:YAT.Log.FileNameSeparator.Explicit"/>.
+            </exception>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.op_Implicit(YAT.Log.FileNameSeparatorEx)~System.String">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.FileNameSeparatorEx.op_Implicit(System.String)~YAT.Log.FileNameSeparatorEx">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.Utilities.RtfWriter">
+            <summary>
+            Utility class providing RTF writer functionality for YAT.
+            </summary>
+            <remarks>
+            Wraps an 'netrtfwriter' based <see cref="T:DW.RtfWriter.RtfDocument"/> into an object.
+            </remarks>
+        </member>
+        <member name="M:YAT.Log.Utilities.RtfWriter.#ctor(System.IO.FileStream,YAT.Format.Settings.FormatSettings)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.RtfWriter.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.Log.Utilities.RtfWriter.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="M:YAT.Log.Utilities.RtfWriter.WriteLine(YAT.Domain.DisplayLine)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.RtfWriter.Flush">
+            <summary>
+            Clears all buffers for the current writer and causes any buffered data to be written
+            to the underlying <see cref="T:System.IO.StreamWriter"/> stream.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.RtfWriter.Close">
+            <summary>
+            Closes the current object and the underlying <see cref="T:System.IO.StreamWriter"/> stream.
+            </summary>
+        </member>
+        <member name="T:YAT.Log.Utilities.TextWriter">
+            <summary>
+            Utility class providing text writer functionality for YAT.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.TextWriter.#ctor(System.IO.FileStream,System.Text.Encoding)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.TextWriter.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.Log.Utilities.TextWriter.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="M:YAT.Log.Utilities.TextWriter.Flush">
+            <summary>
+            Clears all buffers for the current writer and causes any buffered data to be written
+            to the underlying <see cref="T:System.IO.StreamWriter"/> stream.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.TextWriter.Close">
+            <summary>
+            Closes the current object and the underlying <see cref="T:System.IO.StreamWriter"/> stream.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.TextWriter.WriteLine(YAT.Domain.DisplayLine)">
+            <summary></summary>
+        </member>
+        <member name="T:YAT.Log.Utilities.XmlWriter">
+            <summary>
+            Utility class providing XML writer functionality for YAT.
+            </summary>
+        </member>
+        <member name="F:YAT.Log.Utilities.XmlWriter.Header">
+            <summary></summary>
+        </member>
+        <member name="F:YAT.Log.Utilities.XmlWriter.Schema">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriter.#ctor(System.IO.FileStream,System.Text.Encoding,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriter.#ctor(System.IO.FileStream,System.Text.Encoding,System.Collections.Generic.IEnumerable{System.String})">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriter.Dispose(System.Boolean)">
+            <param name="disposing">
+            <c>true</c> when called from <see cref="M:YAT.Log.Utilities.XmlWriter.Dispose(System.Boolean)"/>,
+            <c>false</c> when called from finalizer.
+            </param>
+        </member>
+        <member name="P:YAT.Log.Utilities.XmlWriter.IndentSize">
+            <summary>
+            Gets or sets the number of spaces in an indent.
+            </summary>
+            <value>
+            The number of spaces in an indent. The default is two.
+            </value>
+        </member>
+        <member name="P:YAT.Log.Utilities.XmlWriter.IndentLevel">
+            <summary>
+            Gets or sets the indent level.
+            </summary>
+            <value>
+            The indent level. The default is zero.
+            </value>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriter.Indent">
+            <summary>
+            Increases the current <see cref="P:YAT.Log.Utilities.XmlWriter.IndentLevel"/> by one.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriter.Unindent">
+            <summary>
+            Decreases the current <see cref="P:YAT.Log.Utilities.XmlWriter.IndentLevel"/> by one.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriter.WriteLine(System.String)">
+            <param name="content">The line content without indentation spaces.</param>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriter.Flush">
+            <summary>
+            Clears all buffers for the current writer and causes any buffered data to be written
+            to the underlying <see cref="T:System.IO.StreamWriter"/> stream.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriter.Close(System.String)">
+            <summary>
+            Closes the current object and the underlying <see cref="T:System.IO.StreamWriter"/> stream.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriter.Close(System.String[])">
+            <summary>
+            Closes the current object and the underlying <see cref="T:System.IO.StreamWriter"/> stream.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriter.Close">
+            <summary>
+            Closes the current object and the underlying <see cref="T:System.IO.StreamWriter"/> stream.
+            </summary>
+        </member>
+        <member name="T:YAT.Log.Utilities.XmlWriterRaw">
+            <summary>
+            Utility class providing raw XML writer functionality for YAT.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterRaw.#ctor(System.IO.FileStream,System.Text.Encoding,System.Boolean,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterRaw.WriteLine(YAT.Domain.RawChunk)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterRaw.Close">
+            <summary>
+            Closes the current object and the underlying <see cref="T:System.IO.StreamWriter"/> stream.
+            </summary>
+        </member>
+        <member name="T:YAT.Log.Utilities.XmlWriterText">
+            <summary>
+            Utility class providing text XML writer functionality for YAT.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterText.#ctor(System.IO.FileStream,System.Text.Encoding,System.Boolean,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterText.WriteLine(YAT.Domain.DisplayLine)">
+            <summary></summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterText.Close">
+            <summary>
+            Closes the current object and the underlying <see cref="T:System.IO.StreamWriter"/> stream.
+            </summary>
+        </member>
+        <member name="T:YAT.Log.Utilities.XmlWriterHelperText">
+            <summary>
+            Static utility class providing XML writer functionality for YAT.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterHelperText.SaveLinesToFile(YAT.Domain.DisplayLineCollection,System.String,System.Boolean)">
+            <returns>Returns the number of lines that could successfully be written to the file.</returns>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterHelperText.ConvertLines(YAT.Domain.DisplayLineCollection,System.Collections.Generic.List{YAT.Domain.Utilities.XmlTransferTextLine}@)">
+            <returns>Returns the number of lines that could successfully be converted.</returns>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterHelperText.ConvertLine(YAT.Domain.DisplayLine,YAT.Domain.Utilities.XmlTransferTextLine@)">
+            <returns>Returns <c>true</c> if the line could successfully be converted.</returns>
+        </member>
+        <member name="T:YAT.Log.Utilities.XmlWriterHelperRaw">
+            <summary>
+            Static utility class providing XML writer functionality for YAT.
+            </summary>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterHelperRaw.SaveLinesToFile(YAT.Domain.DisplayLineCollection,System.String,System.Boolean)">
+            <returns>Returns the number of lines that could successfully be written to the file.</returns>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterHelperRaw.ConvertLines(YAT.Domain.DisplayLineCollection,System.Collections.Generic.List{YAT.Domain.Utilities.XmlTransferRawLine}@)">
+            <returns>Returns the number of lines that could successfully be converted.</returns>
+        </member>
+        <member name="M:YAT.Log.Utilities.XmlWriterHelperRaw.ConvertLine(YAT.Domain.DisplayLine,YAT.Domain.Utilities.XmlTransferRawLine@)">
+            <returns>Returns <c>true</c> if the line could successfully be converted.</returns>
+        </member>
+    </members>
+</doc>

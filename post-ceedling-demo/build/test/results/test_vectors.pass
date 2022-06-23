@@ -1,0 +1,34 @@
+---
+:source:
+  :path: test
+  :file: test_vectors.c
+:successes:
+- :test: test_initVector
+  :line: 9
+  :message: ''
+  :unity_test_time: 0
+- :test: test_sumVectors
+  :line: 18
+  :message: ''
+  :unity_test_time: 0
+- :test: test_cmp_vectors_equal
+  :line: 32
+  :message: ''
+  :unity_test_time: 0
+- :test: test_cmp_vectors_different_y
+  :line: 43
+  :message: ''
+  :unity_test_time: 0
+- :test: test_cmp_vectors_different_x
+  :line: 54
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 5
+  :passed: 5
+  :failed: 0
+  :ignored: 0
+:stdout: []
+:time: 0.0209307000041008

@@ -1,0 +1,17 @@
+---
+
+# Notes:
+# This configuration is for running test fixture running tests in simulator.
+# For detailed help see: https://github.com/ThrowTheSwitch/Ceedling/blob/master/docs/CeedlingPacket.md
+
+:defines:
+  :common: &common_defines
+    - SIMULATOR_TEST # Define that configures test files, so that Unity output goes to standard implementation of putc().
+
+:tools:
+  :test_fixture:
+    :arguments:
+      - test/sim-test/sim_test_fixture.rb # This option runs tests in simulator.
+ #:test_fixture: this test fixture is used to run the test in simulator
+
+...

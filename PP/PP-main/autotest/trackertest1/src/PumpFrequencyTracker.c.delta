@@ -1,0 +1,63 @@
+a46 10
+
+// SCU for frequency analyse variables
+extern uint16_t therapy_count; 
+
+uint16_t pumpcount = 0;
+uint16_t currtotal = 0;
+      
+uint16_t maxF = 0;
+uint16_t minF = 0;   
+
+a55 19
+ 
+  
+  // SCU Analysis on the tracker 
+   printf ( "ncoF %d  curr: %d  cur prev: %d  delta %d time %d\r",ncoFrequency,latestCurrentAdc,previousCurrentAdc,deltaPwmFreq,therapy_count  );
+   
+   pumpcount++;
+   currtotal += latestCurrentAdc;
+   
+   // Print out the average stats every 5 minutes
+   // Note. The time may be over 5 minutes as this function is only called when a pump action is needed 
+   if ( therapy_count >= (10*60*5))
+   {
+     printf ( "5min stats %d pumpcount %d curr tot %d ave curr %d minF %d maxF %d diff %d\r", therapy_count,pumpcount, currtotal,currtotal/pumpcount, minF,maxF,maxF-minF ); 
+     therapy_count = 0;
+     currtotal = 0;
+     pumpcount = 0;
+     maxF = 0;
+     minF = 0;
+   }  
+a102 31
+   
+  // SCU record the range of the frequency 
+  if ( maxF == 0 )
+  {
+      maxF = ncoFrequency;
+      minF = ncoFrequency;
+  }
+  else
+  {
+      if ( ncoFrequency > maxF)
+      {
+          maxF = ncoFrequency;
+      }
+      
+      if ( ncoFrequency < minF)
+      {
+          minF = ncoFrequency;
+      }   
+  }
+   
+   
+   
+#ifdef FIXED_FREQUENCY 
+   ncoFrequency = 2780;
+   
+     NCO1INCH = (uint8_t)((0xFF00 & ncoFrequency) >> 8);
+    NCO1INCL = (uint8_t)(0x00FF & ncoFrequency);
+  
+#endif 
+   
+

@@ -1,0 +1,28 @@
+---
+:source:
+  :path: test/unit_test/managers
+  :file: test_StateMachineFault.c
+:successes:
+- :test: test_StateChecksAgainstNullPointer
+  :line: 40
+  :message: ''
+- :test: test_OnEntryInitialiseDependencyModules
+  :line: 47
+  :message: ''
+- :test: test_OnShortPressTransitToPumpDown
+  :line: 65
+  :message: ''
+- :test: test_AfterSetNumberOfMinutesTransitToIPD
+  :line: 102
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 4
+  :passed: 4
+  :failed: 0
+  :ignored: 0
+:stdout:
+- 'Assert raised at sourcePico/managers/StateMachineFault.c[41] on test: nextState
+  != NULL'
+- ''
